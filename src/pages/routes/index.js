@@ -1,10 +1,10 @@
 
-import Home from '../pages/Home/index.js';
-import Login from '../pages/Login/index.js';
-import Signup from '../pages/Signup/index.js';
-import Profile from '../pages/Profile/index.js';
-import Upload from '../pages/Upload/index.js';
-import CreateTestTeacher from '../pages/Teacher/CreateTestTeacher/index.js';
+import Home from '../Home/index.js';
+import Login from '../../pages/Login/index.js';
+import Signup from '../../pages/Signup/index.js';
+import Profile from '../../pages/Profile/index.js';
+import Upload from '../../pages/Upload/index.js';
+import CreateTestTeacher from '../Teacher/CreateTestTeacher/index.js';
 import AnswerStudent from '~/pages/AnswerStudent/index.js';
 
 const publicRoutes = [
@@ -18,7 +18,7 @@ const publicRoutes = [
 
 
 
-    {path: '/create', component: CreateTestTeacher, layout: null }
+    {path: '/create', component: CreateTestTeacher}
 
 
 ]
