@@ -1,10 +1,11 @@
+import SidebarStudent from '~/components/Layout/DefaultLayout/Sidebar/SidebarStudent';
 import './style.scss'
-import Sidebar from '~/components/Layout/DefaultLayout/Sidebar';
+
 
 function AnswerStudent() {
     return ( 
         <div className='answerStudent'>
-            <Sidebar/>
+            <SidebarStudent/>
             <div className='answerStudent__header'>
                 sygshbs
             </div>
