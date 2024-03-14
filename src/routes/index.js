@@ -8,8 +8,8 @@ import Upload from '../pages/Upload/index.js';
 
 import SidebarTeacher from '~/components/Layout/DefaultLayout/Sidebar/SidebarTeacher/index.js';
 
-import CreateTestTeacher from '../pages/Teacher/CreateTestTeacher/index.js';
-import AnswerStudent from '~/pages/AnswerStudent/index.js';
+import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
+import AnswerStudent from '~/pages/Student/Answer/index.js';
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
