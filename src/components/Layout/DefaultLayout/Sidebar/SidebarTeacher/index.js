@@ -1,18 +1,21 @@
-import "./style.scss"
+import "../style.scss"
 import {Link} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
+import { GiTabletopPlayers } from "react-icons/gi";
 import { IoIosCreate } from "react-icons/io";
 import { FaClipboardList } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
-import logoSidebar from '../../../../anhcuatao/logo.jpg'
-import avatar from '../../../../anhcuatao/avatar.png'
-function Sidebar() {
+import logoSidebar from '~/components/asset/img/logo.jpg'
+import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
+function SidebarTeacher() {
     return ( 
         <div className="sidebar">
             <div className="top">
                 <Link to="/" style={{textDecoration:"none"}}>
+                    <div className="top_logo">
                     <img src={logoSidebar} className="logo"></img>
+                    <span>TAD</span>
+                    </div>
                 </Link>
             </div>
             <hr />
@@ -30,7 +33,7 @@ function Sidebar() {
                     </Link>
                     <Link to="/" style={{textDecoration:"none"}}>
                         <li>
-                            <FaPlay  className="icon"/>
+                            <GiTabletopPlayers  className="icon"/>
                             <span>Chơi 2 người</span>
                         </li>
                     </Link>
@@ -58,4 +61,4 @@ function Sidebar() {
      );
 }
 
-export default Sidebar;
+export default SidebarTeacher;
