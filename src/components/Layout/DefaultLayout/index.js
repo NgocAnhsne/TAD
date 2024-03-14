@@ -8,8 +8,6 @@ function DefaultLayout({children}) {
         <div>
            <div className="container">
 
-<SidebarStudent/>
-
 
 
 <div className="content">
