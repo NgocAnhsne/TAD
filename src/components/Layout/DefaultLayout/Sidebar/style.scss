@@ -1,11 +1,27 @@
+
 .sidebar{
     border-right: 0.5px solid lightgray;
     min-height: 100vh;
     background-color: white;
     width: 250px;
-    padding: 25px;
+    
     .top{
         height: 60px;
+        margin-left: 20px;
+        margin-top: 20px;
+        
+        .top_logo{
+            display: flex;
+            align-items: center;
+        }
+        span{
+            font-size: 30px;
+            color: #3d6194;
+            font-weight: 600;
+            font-family: "Coiny", system-ui;
+            margin-left: 25px;
+            margin-top: 10px;
+        }
     }
 
     .logo{
@@ -20,8 +36,9 @@
     .user{
         display: flex;
         align-items: center;
-        margin: 15px 0;
-
+        margin: 20px 0;
+        cursor: pointer;
+        
         span{
             margin-left: 20px !important;
             font-size: 20px;
@@ -46,23 +63,24 @@
             li{
                 display: flex;
                 align-items: center;
-                padding: 15px 5px;
+                padding: 15px 5px 15px 20px;
                 cursor: pointer;
 
                 &:hover{
-                    background-color: #9786ee75;
+                    background-color: #baddf3;
+                    border-top-right-radius: 30px;
+                    border-bottom-right-radius: 30px;
                 }
 
                 .icon{
                     font-size: 25px;
-                    color: blue;
+                    color: #3d6194;
                     margin-right: 10px;
                 }
 
                 span{
                     font-size: 20px;
-                    font-weight: 600;
-                    color: #888;
+                    color: black;
                     margin-left: 10px;  
                 }
             }
