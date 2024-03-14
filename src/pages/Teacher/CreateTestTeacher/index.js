@@ -1,13 +1,8 @@
-import SidebarTeacher from "~/components/Layout/DefaultLayout/Sidebar/SidebarTeacher";
+import { BsTypeH1 } from "react-icons/bs";
 
 function CreateTestTeacher() {
     return ( 
-        <div className="container">
-            <SidebarTeacher/>
-            <div className="content">
-                <h2>sadsadasdad</h2>
-            </div>
-        </div>
+        <h1>sada</h1>
      );
 }
 
