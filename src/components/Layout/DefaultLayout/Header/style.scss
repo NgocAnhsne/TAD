@@ -1,0 +1,60 @@
+
+.top_navigation {
+    position: sticky;
+    z-index: 99;
+    width: 100%;
+    box-shadow: 0px 2px #E5E5E5;
+}
+
+/* Header container */
+.header_container {
+    max-width: 1650px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    min-height: 90px;
+}
+
+/* Logo header */
+.header_logo img {
+    width: 45px;
+}
+
+.header_logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.header_logo-title {
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+/* button header */
+.header_btn-wrapper {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.header_btn {
+    padding: 18px 20px;
+    background-color: #62C7F3;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0px 3px #2097CB;
+    font-size: 25px;
+}
+
+.header_signup-btn {
+    padding: 18px 29px;
+}
+
+.header_btn:hover {
+    background-color: #5c9aff;
+
+}
