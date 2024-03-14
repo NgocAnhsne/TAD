@@ -3,10 +3,13 @@ import Login from '../pages/Login/index.js';
 import Signup from '../pages/Signup/index.js';
 import Profile from '../pages/Profile/index.js';
 import Upload from '../pages/Upload/index.js';
-import CreateTestTeacher from '../pages/CreateTestTeacher/index.js';
+
 //layout
-import AnswerStudent from '~/pages/Student/Answer/index.js';
+
 import SidebarTeacher from '~/components/Layout/DefaultLayout/Sidebar/SidebarTeacher/index.js';
+
+import CreateTestTeacher from '../pages/Teacher/CreateTestTeacher/index.js';
+import AnswerStudent from '~/pages/AnswerStudent/index.js';
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},

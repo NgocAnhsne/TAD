@@ -8,7 +8,7 @@
 
 /* Header container */
 .header_container {
-    max-width: 1650px;
+    max-width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,6 @@
 .header_logo img {
     width: 45px;
 }
-
 .header_logo {
     display: flex;
     align-items: center;
@@ -41,17 +40,17 @@
 }
 
 .header_btn {
-    padding: 18px 20px;
+    padding: 15px 16px;
     background-color: #62C7F3;
     border-radius: 10px;
     color: white;
     font-weight: 700;
     box-shadow: 0px 3px #2097CB;
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .header_signup-btn {
-    padding: 18px 29px;
+    padding: 15px 29px;
 }
 
 .header_btn:hover {
