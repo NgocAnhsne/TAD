@@ -8,7 +8,7 @@ function DefaultLayout({children}) {
         <div>
            <div className="container">
 
-{/* <Sidebar/> */}
+<SidebarAdmin/>
 
 
 

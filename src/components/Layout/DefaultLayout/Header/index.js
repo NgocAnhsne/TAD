@@ -1,5 +1,5 @@
 import "./style.scss";
-import logo from '~/components/asset/img/iMG_69641.jpg';
+import logo from '~/components/asset/img/logo.jpg';
 function Header() {
     return ( 
         <header class="top_navigation">
@@ -7,7 +7,6 @@ function Header() {
         <div class="header_container">
             {/* <!-- wrapper logo --> */}
             <div class="header_logo">
-                {/* <img src="imgs/logo_web.jpg" alt=""> */}
                 <img src={logo} alt="logo_header" />
                 <div class="header_logo-title">Folk Learn</div>
             </div>
@@ -20,9 +19,7 @@ function Header() {
                     Đăng ký
                 </button>
             </div>
-
         </div>
-
     </header>
      );
 }
