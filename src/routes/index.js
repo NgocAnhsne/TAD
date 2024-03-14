@@ -6,7 +6,7 @@ import Upload from '../pages/Upload/index.js';
 
 //layout
 
-import SidebarTeacher from '~/components/Layout/DefaultLayout/Sidebar/SidebarTeacher/index.js';
+import SidebarTeacher from '~/components/Layout/SidebarTeacher';
 
 import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
 import AnswerStudent from '~/pages/Student/Answer/index.js';
@@ -20,9 +20,9 @@ const publicRoutes = [
     {path: '/answerstudent', component: AnswerStudent},
 
 
-
-
     {path: '/create', component: CreateTestTeacher, layout: SidebarTeacher }
+
+
 
 
 ]
