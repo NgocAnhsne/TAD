@@ -5,7 +5,7 @@ import { GiTabletopPlayers } from "react-icons/gi";
 import { IoIosCreate } from "react-icons/io";
 import { FaClipboardList } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
-import logoSidebar from '~/components/asset/img/logo.jpg'
+import logo from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 function SidebarTeacher() {
     return ( 
@@ -13,7 +13,7 @@ function SidebarTeacher() {
             <div className="top">
                 <Link to="/" style={{textDecoration:"none"}}>
                     <div className="top_logo">
-                    <img src={logoSidebar} className="logo"></img>
+                    <img src={logo} className="logo"></img>
                     <span>TAD</span>
                     </div>
                 </Link>
