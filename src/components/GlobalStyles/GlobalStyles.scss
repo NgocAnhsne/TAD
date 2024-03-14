@@ -1,0 +1,68 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+ 
+:root {
+  --color-background-0: #000;
+  --color-background-1: #fff;
+  --color-background-2: #aee7f9;
+  --color-background-3: #62c7f3;
+  --color-background-4: #3d6194;
+  --color-background-5: #4b4b4b;
+  --color-background-6: #81abdf;
+  --color-background-7: #5c7dac;
+  --color-background-8: #45e9ff;
+  --color-background-9: #90cdf3;
+  --color-background-10: #fb0f0f;
+  --color-background-11: #b0d8e6;
+  --color-background-12: #eaddb5;
+  --color-background-13: #fe8760;
+
+  /* List color text */ 
+  --color-text-0: #000000;
+  --color-text-2: #fff;
+  --color-text-2: #aee7f9;
+  --color-text-3: #62c7f3;
+  --color-text-4: #3d6194;
+  --color-text-5: #4b4b4b;
+  --color-text-6: #81abdf;
+  --color-text-7: #5c7dac;
+  --color-text-8: #45e9ff;
+  --color-text-9: #90cdf3;
+  --color-text-10: #fb0f0f;
+  --color-text-11: #b0d8e6;
+  --color-text-12: #eaddb5;
+  --color-text-13: #fe8760;
+
+  /* List text size */
+  --size-text-0: 6px;
+  --size-text-1: 8px;
+  --size-text-2: 10px;
+  --size-text-3: 12px;
+  --size-text-4: 14px;
+  --size-text-5: 16px;
+  --size-text-6: 20px;
+  --size-text-7: 24px;
+  --size-text-8: 26px;
+  --size-text-9: 27px;
+  --size-text-10: 28px;
+  --size-text-11: 29px;
+  --size-text-12: 18px;
+
+  /* List border radius */
+  --border-radius-size-0: 6px;
+  --border-radius-size-1: 8px;
+  --border-radius-size-2: 12px;
+  --border-radius-size-3: 14px;
+  --border-radius-size-4: 16px;
+  --border-radius-size-5: 20px;
+  --border-radius-size-6: 999px;
+}
+html{
+  font-size: 16px;
+}
+body{
+  font-family: "Roboto", sans-serif;
+  // font-family: "Montserrat", sans-serif;
+  // font-family: "Coiny", system-ui;
+  line-height: 1.5;
+}
