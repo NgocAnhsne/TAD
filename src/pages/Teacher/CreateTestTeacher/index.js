@@ -1,8 +1,17 @@
+
 import { BsTypeH1 } from "react-icons/bs";
+
+
 
 function CreateTestTeacher() {
     return ( 
-        <h1>sada</h1>
+        <div className="container">
+        
+            <div className="content">
+                <h2>sadsadasdad</h2>
+            </div>
+        </div>
+
      );
 }
 
