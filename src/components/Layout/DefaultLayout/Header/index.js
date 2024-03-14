@@ -1,6 +1,29 @@
+import "./style.scss";
+import logo from '~/components/asset/img/iMG_69641.jpg';
 function Header() {
     return ( 
-        <h2>Header</h2>
+        <header class="top_navigation">
+        {/* <!-- header container --> */}
+        <div class="header_container">
+            {/* <!-- wrapper logo --> */}
+            <div class="header_logo">
+                {/* <img src="imgs/logo_web.jpg" alt=""> */}
+                <img src={logo} alt="logo_header" />
+                <div class="header_logo-title">Folk Learn</div>
+            </div>
+            {/* <!-- wrapper button --> */}
+            <div class="header_btn-wrapper">
+                <button class="header_btn header_login-btn">
+                    Đăng nhập
+                </button>
+                <button class="header_btn header_signup-btn">
+                    Đăng ký
+                </button>
+            </div>
+
+        </div>
+
+    </header>
      );
 }
 
