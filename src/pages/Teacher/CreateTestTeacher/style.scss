@@ -1,22 +1,5 @@
-.create_test{
-   background-color: var(--color-background-14);
-   width: 100%;
-   min-height: 100vh;
-   padding: 30px 50px 0 50px;
-    
-    h1{
-        margin-bottom: 70px;
-        font-size: 50px;
-    }
-   h1, span{
-    color: var(--color-text-4);
-    font-weight: 600;
-   }
-   span{
-    font-size: 25px;
-    margin-right: 10px;
-    width: 100%;
-   }
+.teacher{
+   
    input,textarea,.css-13cymwt-control,.css-t3ipsp-control{
     box-sizing: border-box;
     padding: 15px;
@@ -79,9 +62,14 @@
                         align-items: center;
                         gap: 10px;
                         cursor: pointer;
+
+                        &:hover{
+                            background-color: var(--color-background-14);
+                        }
                     }
                 }
             }
+
         }
 
         .container_right{
@@ -103,20 +91,4 @@
             
    }
 
-   .btn{
-    display: flex;
-    justify-content: end;
-    margin-top: 70px;
-    button{
-        font-family: "Coiny", system-ui;
-        font-size: 25px;
-        color: var(--color-text-4);
-        padding:  25px 90px;
-        background-color: var(--color-background-3);
-        box-shadow: 0px 9px 0px rgba(32, 151, 203, 0.5);
-        border-radius: 20px;
-        cursor: pointer;
-
-       }
-   }
 }

@@ -1,8 +1,12 @@
 import CayDua from '~/components/asset/img/CayDua.jpg'
 import background from '~/components/asset/img/background.jpg'
 import './style.scss'
+import '../../Teacher/style.scss'
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import Select from 'react-select'
+import { FaRegImage } from "react-icons/fa";
+import { HiSpeakerWave } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
 
 const options = [
     { value: '15p', label: '15p' },
@@ -12,7 +16,7 @@ const options = [
 
 function CreateTestTeacher() {
     return ( 
-        <div className="create_test">
+        <div className="teacher">
             <h1>Tạo bộ đề </h1>
             <div className='create_container'>
                 <div className='container_left'>
@@ -29,18 +33,24 @@ function CreateTestTeacher() {
                     <div className='left_bottom'>
                         <span>Tạo loại câu hỏi</span>
                         <div className='bottom_btn'>
+                            <Link to='/teacher/questiontext'>
+                                <div>
+                                    <BsFillQuestionCircleFill className='left_icon'/>
+                                    <span>Chữ</span>
+                                </div>
+                            </Link>
+                            <Link to='/teacher/questionlisten'>
                             <div>
-                                <BsFillQuestionCircleFill className='left_icon'/>
-                                <span>Trắc nghiệm</span>
+                                <HiSpeakerWave className='left_icon'/>
+                                <span>Âm thanh</span>
                             </div>
-                            <div>
-                                <BsFillQuestionCircleFill className='left_icon'/>
-                                <span>Trắc nghiệm</span>
-                            </div>
-                            <div>
-                                <BsFillQuestionCircleFill className='left_icon'/>
-                                <span>Trắc nghiệm</span>
-                            </div>
+                            </Link>
+                            <Link to='/teacher/questionimg'>
+                                <div>
+                                    <FaRegImage className='left_icon'/>
+                                    <span>Hình ảnh</span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -55,7 +65,7 @@ function CreateTestTeacher() {
                     </div>
                 </div>
             </div>
-            <div className='btn'><button>Tạo</button></div>
+            
         </div>
 
      );
