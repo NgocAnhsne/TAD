@@ -17,7 +17,7 @@ const publicRoutes = [
     {path: '/signup', component: Signup },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
-    {path: '/answerstudent', component: AnswerStudent},
+    {path: '/answerstudent', component: AnswerStudent, layout: null},
 
 
     {path: '/create', component: CreateTestTeacher, layout: SidebarTeacher }
