@@ -1,15 +1,14 @@
+import React from 'react'
+import '../style.scss'
 import './style.scss'
-import '../../Teacher/style.scss'
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiPlay } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 import caydua from '~/components/asset/img/CayDua.jpg'
-function ListTest() {
+export default function ListTest() {
     return (
-        <div className="teacher">
-            <h1>Danh sách bộ đề</h1>
-            <img src={caydua}></img>
+        <div className='teacher_component'>
             <div className='list_container'>
                 <div className='list_content'>
                     <div className='list_header'>
@@ -25,7 +24,7 @@ function ListTest() {
                         <div><span>Type :<span>Text</span>
                         </span>
                         </div>
-                        <div><span className='body_opacity'>Edited 2 days ago</span></div>
+                        <div><span className='body_opacity opacity'>Edited 2 days ago</span></div>
                     </div>
                     <hr></hr>
                     <div className='list_footer'>
@@ -42,7 +41,5 @@ function ListTest() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
-
-export default ListTest;
