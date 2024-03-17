@@ -11,6 +11,11 @@ import SidebarTeacher from '~/components/Layout/SidebarTeacher';
 import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
 import AnswerStudent from '~/pages/Student/Answer/index.js';
 
+import ListTest from '~/pages/Teacher/ListTest/index.js';
+import QuestionListen from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
+import QuestionImg from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
+import QuestionText from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
+
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login },
@@ -20,7 +25,17 @@ const publicRoutes = [
     {path: '/answerstudent', component: AnswerStudent},
 
 
-    {path: '/create', component: CreateTestTeacher, layout: SidebarTeacher }
+    {path: '/teacher/create', component: CreateTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/list', component: ListTest, layout: SidebarTeacher },
+
+    {path: '/teacher/questiontext', component: QuestionText, layout: SidebarTeacher },
+    {path: '/teacher/questiontext:id', component: QuestionText, layout: SidebarTeacher },
+
+    {path: '/teacher/questionlisten', component: QuestionListen, layout: SidebarTeacher },
+    {path: '/teacher/questionlisten:id', component: QuestionListen, layout: SidebarTeacher },
+    
+    {path: '/teacher/questionimg', component: QuestionImg, layout: SidebarTeacher },
+    {path: '/teacher/questionimg:id', component: QuestionImg, layout: SidebarTeacher },
 
 
 
