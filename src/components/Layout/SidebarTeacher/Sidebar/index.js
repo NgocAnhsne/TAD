@@ -19,7 +19,7 @@ function SidebarTeacher() {
                 </Link>
             </div>
             <hr />
-            <Link to="/profileteacher">
+            <Link to="/teacher/profile">
                 <div className="user">
                     <img src={avatar} className="logo"></img>
                     <span>Teacher</span>
