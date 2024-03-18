@@ -39,7 +39,7 @@ function SidebarTeacher() {
                             <span>Chơi 2 người</span>
                         </li>
                     </Link>
-                    <Link to="/teacher/create" style={{textDecoration:"none"}}>
+                    <Link to="/teacher" style={{textDecoration:"none"}}>
                         <li>
                             <IoIosCreate  className="icon"/>
                             <span>Tạo bài test</span>

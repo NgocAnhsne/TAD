@@ -31,7 +31,7 @@ const publicRoutes = [
     
 
 
-    {path: '/teacher/create', component: CreateTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
 
