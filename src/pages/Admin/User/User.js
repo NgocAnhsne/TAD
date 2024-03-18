@@ -12,7 +12,7 @@ export default function AdminUser() {
 
     const [isVisibleLoading, setIsVisibleLoading] = useState(false)
 
-    const [userData, setUSerData] = useState([]);
+    const [userData, setUserData] = useState([]);
     useEffect(() => {
         fetchData();
     }, [])
@@ -21,28 +21,29 @@ export default function AdminUser() {
         try {
             const result = await axios("http://127.0.0.1:8000/api/alluser");
             
-            setUSerData(result.data.data)
+            setUserData(result.data.data)
         } catch (err) {
             console.log("somthing Wrong");
         }
     }
 
-    const handleDelete = async (id) => {
+    const handleDelete=async(id)=>{
         console.log(id);
-        await axios.delete("http://127.0.0.1:8000/api/alluser/delete" + id);
-        const newUserData = userData.filter((item) => {
-            return (
-                item.id !== id
+        await axios.delete("http://127.0.0.1:8000/api/user/delete/"+id);
+        const newUserData=userData.filter((item)=>{
+            alert("Đã xoá danh mục");
+            return(
+                item.id !==id
             )
         })
-        setUSerData(newUserData);
+        setUserData(newUserData);
     }
 
     return (
         <div className='Admin'>
             <div className='header'>
                 <div><h1>Người dùng</h1></div>
-                <Link to='/admin/edit'>
+                <Link to='/admin/users/add'>
                 <div className='header_add'>
                     <span>Thêm người dùng</span>
                 </div>
@@ -69,14 +70,14 @@ export default function AdminUser() {
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role}1</td>
+                                <td>{user.role}</td>
                                 <td className='icon'>
-                                    <Link to={`/user/edit/${user.id}`}>
+                                    <Link to={`/admin/users/edit/${user.id}`}>
                                         <FaRegEdit color='blue' />
                                     </Link>
                                 </td>
                                 <td className='icon'>
-                                    <div >
+                                    <div onClick={()=>handleDelete(user.id)}>
                                         <AiOutlineDelete color='red' />
                                     </div>
                                 </td>

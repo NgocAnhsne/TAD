@@ -21,6 +21,7 @@ import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
 import AdminUser from '~/pages/Admin/User/User.js';
 import { SidebarAdmin } from '~/components/Layout/index.js';
 import EditUser from '~/pages/Admin/User/EditUser.js';
+import AddUser from '~/pages/Admin/User/AddUser.js';
 
 
 
@@ -49,9 +50,9 @@ const publicRoutes = [
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
 
 
-    {path: '/admin/users', component: AdminUser, layout: SidebarAdmin }, 
-    {path: '/admin/edit', component: EditUser, layout: SidebarAdmin }, 
-    {path: '/admin/edit/:id', component: EditUser, layout: SidebarAdmin }, 
+    {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
+    {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
+    {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
 
 ]
 

@@ -4,18 +4,16 @@ import { Button, Form } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import AdminUser from './User';
 
-export default function EditUser() {
+export default function AddUser() {
 
     const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
-    
  
     const [userField, setUserField] = useState({
         name: "",
         email: "",
-        password: "",
-        role: "",
+        password: ""
     });
  
     useEffect(()=>{
@@ -25,6 +23,7 @@ export default function EditUser() {
     const fetchUser=async()=>{
         try{
             const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
+            console.log(result.data.data);
             setUserField(result.data.data)
         }catch(err){
             console.log("Something Wrong");
@@ -43,11 +42,16 @@ export default function EditUser() {
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.put("http://127.0.0.1:8000/api/user/update/"+id, userField);
-            navigate('/admin/users')
+           await axios.post("http://127.0.0.1:8000/api/register", userField);
+            setLoading(true);
         } catch (err) {
             console.log("Something Wrong");
         }
+    }
+    if(loading){
+        return (
+            navigate('/admin/users')
+        )
     }
 
 
@@ -78,8 +82,7 @@ export default function EditUser() {
                   name="name"
                   title="name"
                   required
-                  value={userField.name}
-                  onChange={e => changeUserFieldHandler(e)}
+                  onChange={e => changeUserFieldHandler(e)} 
                 />
                 <Form.Control.Feedback type="invalid">
                   Không được bỏ trống.
@@ -97,8 +100,7 @@ export default function EditUser() {
                   name="email"
                   title="Email"
                   required
-                  value={userField.email}
-                  onChange={e => changeUserFieldHandler(e)}
+                  onChange={e => changeUserFieldHandler(e)} 
                 />
                 <Form.Control.Feedback type="invalid">
                   Không được bỏ trống
@@ -117,36 +119,10 @@ export default function EditUser() {
                   name="password"
                   title="Password"
                   required
-                  value={userField.password} 
                   onChange={e => changeUserFieldHandler(e)}
                 />
                 <Form.Control.Feedback type="invalid">
                   Không được bỏ trống
-                </Form.Control.Feedback>
-              </div>
-            </div>
-            <div className="row mb-3">
-              <Form.Label className="col-sm-2 col-form-label">
-                Vai trò
-              </Form.Label>
-              <div className="col-sm-10">
-                <Form.Select
-                  name="role"
-                  title="role"
-                  value={userField.role}
-                  required
-                  onChange={e => changeUserFieldHandler(e)}
-                >
-                  <option value="">-- Vai trò--</option>
-                  {/* {userField.role.length > 0 &&
-                    userField.role.map((item, index) => (
-                      <option key={index} value={item.value}>
-                        {item.text}
-                      </option>
-                    ))} */}
-                </Form.Select>
-                <Form.Control.Feedback type="invalid">
-                  Không được bỏ trống.
                 </Form.Control.Feedback>
               </div>
             </div>
