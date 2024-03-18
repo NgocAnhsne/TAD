@@ -52,7 +52,7 @@ export default function EditUser() {
 
 
   return (
-    <div className='Admin'>
+    <div className='admin'>
         <div className='header'>
                 <div><h1>Thêm/cập nhật người dùng</h1></div>
                 <div>

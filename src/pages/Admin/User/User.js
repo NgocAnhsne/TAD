@@ -40,7 +40,7 @@ export default function AdminUser() {
     }
 
     return (
-        <div className='Admin'>
+        <div className='admin'>
             <div className='header'>
                 <div><h1>Người dùng</h1></div>
                 <Link to='/admin/users/add'>

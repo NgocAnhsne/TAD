@@ -22,6 +22,7 @@ import AdminUser from '~/pages/Admin/User/User.js';
 import { SidebarAdmin } from '~/components/Layout/index.js';
 import EditUser from '~/pages/Admin/User/EditUser.js';
 import AddUser from '~/pages/Admin/User/AddUser.js';
+import AdminHome from '~/pages/Admin/Dashboard/index.js';
 
 
 
@@ -49,6 +50,8 @@ const publicRoutes = [
     {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
 
+
+    {path: '/admin', component: AdminHome, layout: SidebarAdmin },  
 
     {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
     {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
