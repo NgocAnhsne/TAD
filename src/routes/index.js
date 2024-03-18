@@ -18,6 +18,10 @@ import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ind
 import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
 import QuestionImgTeacher from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
 import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
+import AdminUser from '~/pages/Admin/User/User.js';
+import { SidebarAdmin } from '~/components/Layout/index.js';
+import EditUser from '~/pages/Admin/User/EditUser.js';
+
 
 
 const publicRoutes = [
@@ -45,7 +49,9 @@ const publicRoutes = [
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
 
 
-
+    {path: '/admin/users', component: AdminUser, layout: SidebarAdmin }, 
+    {path: '/admin/edit', component: EditUser, layout: SidebarAdmin }, 
+    {path: '/admin/edit/:id', component: EditUser, layout: SidebarAdmin }, 
 
 ]
 
