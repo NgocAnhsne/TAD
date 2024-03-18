@@ -26,6 +26,7 @@ import AdminHome from '~/pages/Admin/Dashboard/index.js';
 
 
 
+
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login },

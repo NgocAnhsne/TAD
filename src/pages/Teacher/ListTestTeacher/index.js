@@ -6,6 +6,7 @@ import ListTest from '~/components/Teacher/List';
 function ListTestTeacher() {
     useEffect(() => {
         document.title = "Danh sách bộ đề";
+
       }, []);
     return (
         <div className="teacher">
