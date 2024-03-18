@@ -11,10 +11,20 @@ import SidebarTeacher from '~/components/Layout/SidebarTeacher';
 import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
 import AnswerStudent from '~/pages/Student/Answer/index.js';
 
-import ListTest from '~/pages/Teacher/ListTest/index.js';
-import QuestionListen from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
-import QuestionImg from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
-import QuestionText from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
+
+import Game from '~/pages/Student/Game/index.js';
+import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
+import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
+import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
+import QuestionImgTeacher from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
+import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
+import AdminUser from '~/pages/Admin/User/User.js';
+import { SidebarAdmin } from '~/components/Layout/index.js';
+import EditUser from '~/pages/Admin/User/EditUser.js';
+import AddUser from '~/pages/Admin/User/AddUser.js';
+import AdminHome from '~/pages/Admin/Dashboard/index.js';
+
+
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
@@ -23,22 +33,29 @@ const publicRoutes = [
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
     {path: '/answerstudent', component: AnswerStudent},
-
-
-    {path: '/teacher/create', component: CreateTestTeacher, layout: SidebarTeacher },
-    {path: '/teacher/list', component: ListTest, layout: SidebarTeacher },
-
-    {path: '/teacher/questiontext', component: QuestionText, layout: SidebarTeacher },
-    {path: '/teacher/questiontext:id', component: QuestionText, layout: SidebarTeacher },
-
-    {path: '/teacher/questionlisten', component: QuestionListen, layout: SidebarTeacher },
-    {path: '/teacher/questionlisten:id', component: QuestionListen, layout: SidebarTeacher },
+    {path: '/game', component: Game, layout: null},
     
-    {path: '/teacher/questionimg', component: QuestionImg, layout: SidebarTeacher },
-    {path: '/teacher/questionimg:id', component: QuestionImg, layout: SidebarTeacher },
 
 
+    {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
 
+    {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
+    {path: '/teacher/questiontext/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
+
+    {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
+    {path: '/teacher/questionlisten/:id', component: QuestionListenTeacher, layout: SidebarTeacher },
+    
+    {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
+    {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
+
+
+    {path: '/admin', component: AdminHome, layout: SidebarAdmin },  
+
+    {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
+    {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
+    {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
 
 ]
 
