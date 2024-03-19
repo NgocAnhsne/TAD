@@ -1,9 +1,7 @@
 import Profiles from "~/components/Teacher/Profile";
-
-function ProfileTeacher() {
-
 import { useEffect } from "react";
-import Profiles from "~/components/Teacher/Profile";
+
+
 
 function ProfileTeacher() {
 

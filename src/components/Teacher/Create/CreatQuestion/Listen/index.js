@@ -64,7 +64,7 @@ export default function CreatQuestionListen() {
                     </div>
                 </div>
             </div>
-                <div className="btn" >
+                <div className="btn_end" >
                     <button onClick={showAlert}>Hoàn tất</button>
                 </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 
 import './style.scss'
 
+
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import Select from 'react-select'
 import { FaRegImage } from "react-icons/fa";
