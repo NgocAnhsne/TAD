@@ -19,7 +19,10 @@ html {
   color: black;
   scroll-behavior: smooth;
 }
-
+.container{
+  max-width: none !important;
+  padding: 0;
+}
 a {
   -webkit-tap-highlight-color: transparent;
   text-decoration: none !important;

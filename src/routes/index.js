@@ -18,6 +18,13 @@ import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ind
 import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
 import QuestionImgTeacher from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
 import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
+import AdminUser from '~/pages/Admin/User/User.js';
+import { SidebarAdmin } from '~/components/Layout/index.js';
+import EditUser from '~/pages/Admin/User/EditUser.js';
+import AddUser from '~/pages/Admin/User/AddUser.js';
+import AdminHome from '~/pages/Admin/Dashboard/index.js';
+
+
 
 
 const publicRoutes = [
@@ -31,7 +38,7 @@ const publicRoutes = [
     
 
 
-    {path: '/teacher/create', component: CreateTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
 
@@ -45,7 +52,11 @@ const publicRoutes = [
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
 
 
+    {path: '/admin', component: AdminHome, layout: SidebarAdmin },  
 
+    {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
+    {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
+    {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
 
 ]
 

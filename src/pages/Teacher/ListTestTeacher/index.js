@@ -5,7 +5,8 @@ import caydua from '~/components/asset/img/CayDua.jpg'
 import ListTest from '~/components/Teacher/List';
 function ListTestTeacher() {
     useEffect(() => {
-        document.title = "Giới thiệu";
+        document.title = "Danh sách bộ đề";
+
       }, []);
     return (
         <div className="teacher">
