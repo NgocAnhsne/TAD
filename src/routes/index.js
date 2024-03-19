@@ -22,7 +22,7 @@ import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
-    {path: '/login', component: Login },
+    {path: '/login', component: Login, layout: null},
     {path: '/signup', component: Signup },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
