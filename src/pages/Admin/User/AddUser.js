@@ -13,7 +13,8 @@ export default function AddUser() {
     const [userField, setUserField] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        role: "",
     });
  
     useEffect(()=>{
@@ -23,7 +24,6 @@ export default function AddUser() {
     const fetchUser=async()=>{
         try{
             const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
-            console.log(result.data.data);
             setUserField(result.data.data)
         }catch(err){
             console.log("Something Wrong");
@@ -126,6 +126,28 @@ export default function AddUser() {
                 </Form.Control.Feedback>
               </div>
             </div>
+            {/* <div className="row mb-3">
+              <Form.Label className="col-sm-2 col-form-label">
+                Vai trò
+              </Form.Label>
+              <div className="col-sm-10">
+                <Form.Select
+                  name="role"
+                  title="role"
+                  value={userField.role}
+                  required
+                  onChange={e => changeUserFieldHandler(e)}
+                >
+                  <option value="">-- Vai trò--</option>
+                  <option value="0">-- Admin--</option>
+                  <option value="1">-- Student--</option>
+                  <option value="2">-- Teacher--</option>
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                  Không được bỏ trống.
+                </Form.Control.Feedback>
+              </div>
+            </div> */}
           </Form>
     </div>
   )
