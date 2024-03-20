@@ -23,13 +23,15 @@ import { SidebarAdmin } from '~/components/Layout/index.js';
 import EditUser from '~/pages/Admin/User/EditUser.js';
 import AddUser from '~/pages/Admin/User/AddUser.js';
 import AdminHome from '~/pages/Admin/Dashboard/index.js';
+import AdminQuestions from '~/pages/Admin/Questions/Question.js';
+import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
 
 
 
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
-    {path: '/login', component: Login },
+    {path: '/login', component: Login, layout: null},
     {path: '/signup', component: Signup },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
@@ -40,7 +42,9 @@ const publicRoutes = [
 
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
+
     {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
+    {path: '/teacher/profile/edit', component: EditProfileTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
     {path: '/teacher/questiontext/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
@@ -57,6 +61,8 @@ const publicRoutes = [
     {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
     {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
     {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
+
+    {path: '/admin/question', component: AdminQuestions, layout: SidebarAdmin },  
 
 ]
 

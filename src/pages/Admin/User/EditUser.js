@@ -138,6 +138,10 @@ export default function EditUser() {
                   onChange={e => changeUserFieldHandler(e)}
                 >
                   <option value="">-- Vai trò--</option>
+                  <option value="0">-- Admin--</option>
+                  <option value="1">-- Student--</option>
+                  <option value="2">-- Teacher--</option>
+
                   {/* {userField.role.length > 0 &&
                     userField.role.map((item, index) => (
                       <option key={index} value={item.value}>
