@@ -26,18 +26,14 @@ path{
 
 
 .home_wrapper {
-    padding: 60px 65px 0 65px;
-    text-size-adjust: 0.4;
+    max-width: 1280px;
+    margin: 0 auto 100px auto;
+  
 }
 
 .home_container {
-    
-    max-width: 1280px;
-    margin: 60px;
-    margin: 0 auto 100px auto;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
-    
     align-items: center;
 }
 
@@ -116,4 +112,12 @@ margin: 0 auto;
     font-style: normal;
     font-size: 16px;
     border-radius: 10px;
+}
+
+.homeRating_viewmore button:hover{
+    background-color: #3D6194;
+    color: #C0EDFC;
+}
+.box_shadow{
+   box-shadow:  0px 3px #2097CB;
 }
