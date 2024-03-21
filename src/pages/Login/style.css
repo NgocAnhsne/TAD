@@ -1,0 +1,12 @@
+.container{
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.imageLoginForm{
+    position: absolute;
+}
+
+.imageLoginForm img{
+    width: 250px;
+}
