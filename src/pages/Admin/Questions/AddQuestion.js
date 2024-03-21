@@ -1,42 +1,30 @@
 import React from 'react'
 import Select from 'react-select'
-import Swal from 'sweetalert2';
-import { Link, useNavigate } from 'react-router-dom';
+import './style.scss'
+import { Link } from 'react-router-dom'
 
-
-
-export default function CreatQuestionImg() {
-    const navigate = useNavigate();
-
-    function showAlert() {
-        Swal.fire({
-            title: "Are you save?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Save"
-          }).then((result) => {
-            if (result.isConfirmed) {
-            navigate(`/teacher/list`)
-        }
-    });
-}
-
+export default function AddQuestionAdmin() {
     const options = [
         { value: 'A', label: 'A' },
         { value: 'B', label: 'B' },
         { value: 'C', label: 'C' },
-        { value: 'C', label: 'D' }
+        { value: 'D', label: 'D' }
       ]
   return (
-    <div className='teacher_component'>
-                    <div className="question_header">
-                <div><h1>Tạo câu hỏi ảnh</h1></div>
-                <div><span>Số lượng hiện tại</span> <b>2</b></div>
+    
+    <div className='admin'>
+        <div className='header'>
+                <div><h1>Thêm câu hỏi</h1></div>
+                <div>
+                <Link to='/admin/question' className='header_cancel'>
+                    <span>Hủy và quay lại</span>
+                </Link>
+                <Link className='header_save'>
+                    <span>Lưu các thay đổi</span>
+                </Link>
+                </div>
             </div>
-            <div className="question_content">
-                <div className="content_section">
+        <div className="content_section">
                     <div className="content_header">
                         <span>Question 1</span>
                         <input placeholder='Question?'></input>
@@ -63,10 +51,6 @@ export default function CreatQuestionImg() {
                         <span>True Answer</span>
                         <Select options={options} />
                     </div>
-                </div>
-            </div>
-                <div className="btn_end" >
-                    <button onClick={showAlert}>Hoàn tất</button>
                 </div>
     </div>
   )

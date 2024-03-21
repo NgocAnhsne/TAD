@@ -16,7 +16,7 @@ export default function AdminUser() {
     useEffect(() => {
         fetchData();
     }, [])
-
+    
     const fetchData = async () => {
         try {
             const result = await axios("http://127.0.0.1:8000/api/alluser");
@@ -70,7 +70,7 @@ export default function AdminUser() {
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role}</td>
+                                <td>{(user.role == 0) ? 'Học Sinh' : ((user.role == 1) ? 'Giáo Viên' : 'Admin')}</td>
                                 <td className='icon'>
                                     <Link to={`/admin/users/edit/${user.id}`}>
                                         <FaRegEdit color='blue' />
