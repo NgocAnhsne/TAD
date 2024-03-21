@@ -6,7 +6,7 @@
   import imgBanner3 from "~/components/asset/img/homebanner3.png";
   import Signup from "../Login/Signup";
   import Popup from "~/components/Popup/Popup";
-import { useState } from "react";
+  import { useState } from "react";
   // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
 
   function Home() {
@@ -17,47 +17,47 @@ import { useState } from "react";
               <Popup trigger={buttonLogin}> <Signup/></Popup>
         <Header />
 
-        <div class="home_wrapper">
-          <div class="home_container">
+        <div className="home_wrapper">
+          <div className="home_container">
             {/* banner 1 */}
-            <div class="home_first-banner">
+            <div className="home_first-banner">
               <img src={imgBanner1}></img>
             </div>
-            <div class="home_first-banner_content">
-              <div class="home_first-banner_title">
+            <div className="home_first-banner_content">
+              <div className="home_first-banner_content-title">
                 Nâng cao kỹ năng tiếng Anh với các trò chơi dân gian
               </div>
-              <div class="home_first-banner_desc">
-                <button className="box_shadow" onClick={()=>setButtonPopup(true)}>Bắt đầu ngay !</button>
+              <div className="home_first-banner_content-desc">
+                <button className="home_first-banner_content-desc_btn box_shadow" onClick={()=>setButtonPopup(true)}>Bắt đầu ngay !</button>
                 {/* <img src="../imgs/home_firstBanner_gif.jpg" alt=""> */}
               </div>
             </div>
           </div>
-          <div class="home_container">
+          <div className="home_container">
             {/* banner 2 */}
           
-            <div class="home_first-banner_content">
-              <div class="home_first-banner_title">
+            <div className="home_first-banner_content">
+              <div className="home_first-banner_content-title">
               Vui chơi cùng bạn bè
               </div>
-              <div class="home_first-banner_desc">
+              <div className="home_first-banner_content-desc">
               Tham gia các trò chơi và tận hưởng cùng những người bạn 
               </div>
             </div>
-            <div class="home_first-banner">
+            <div className="home_first-banner">
               <img src={imgBanner2}></img>
             </div>
           </div>
             {/* banner 3 */}
-          <div class="home_container">
-            <div class="home_first-banner">
+          <div className="home_container">
+            <div className="home_first-banner">
               <img src={imgBanner3}></img>
             </div>
-            <div class="home_first-banner_content">
-              <div class="home_first-banner_title">
+            <div className="home_first-banner_content">
+              <div className="home_first-banner_content-title">
             Tạo thêm động lực
               </div>
-              <div class="home_first-banner_desc">
+              <div className="home_first-banner_content_desc">
               Theo dõi lộ trình,  xây dựng thói quen học tập, qua những tính năng mô phỏng trò chơi, các thử thách vui vẻ, và nhắc nhở mỗi ngày
               </div>
             </div>
@@ -69,7 +69,7 @@ import { useState } from "react";
                   Đánh giá
               </div>
               <div className="homeRating_viewmore">
-                  <button className="box_shadow">Xem thêm</button>
+                  <button className="homeRating_viewmore-btn box_shadow">Xem thêm</button>
               </div>
           </div>
         </div>
