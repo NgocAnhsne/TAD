@@ -1,6 +1,6 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
-import Signup from '../pages/Signup/index.js';
+
 import Profile from '../pages/Profile/index.js';
 import Upload from '../pages/Upload/index.js';
 
@@ -25,6 +25,7 @@ import AddUser from '~/pages/Admin/User/AddUser.js';
 import AdminHome from '~/pages/Admin/Dashboard/index.js';
 import AdminQuestions from '~/pages/Admin/Questions/Question.js';
 import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
+import Signup from '~/pages/Login/Signup.js';
 
 
 
@@ -32,7 +33,7 @@ import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeache
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
-    {path: '/signup', component: Signup },
+    {path: '/signup', component: Signup,layout: null },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
     {path: '/answerstudent', component: AnswerStudent},

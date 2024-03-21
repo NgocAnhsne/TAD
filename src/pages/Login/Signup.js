@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import "./style.scss";
-import image_login from"~/components/asset/img/login_banner.JPG";
+import image_signup from"~/components/asset/img/signup_banner.png";
 
-function Login() {
+function Signup() {
   // Tạo state để lưu trữ giá trị của input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,33 +31,40 @@ function Login() {
   return (
     <div className="login_wrapper">
       <div className="login_container">
-      <img src={image_login}></img>
+      <img src={image_signup}></img>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
            
             <input
               type="text"
-              id="email"
+              id="name"
               value={email}
               onChange={handleEmailChange}
-              placeholder="Email"
+              placeholder="Tên người dùng"
             />
           </div>
           <div className="form-group">
         
             <input
+              type="text"
+              id="mail"
+
+              placeholder="Email"
+            />
+
+<input
               type="password"
               id="password"
-              value={password}
               onChange={handlePasswordChange}
+              value={password}
               placeholder="Mật khẩu"
-            />
+            /> 
           </div>
-          <button type="submit" className="login-button">Đăng nhập</button>
+          <button type="submit" className="login-button">Đăng ký</button>
         </form>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Signup;
