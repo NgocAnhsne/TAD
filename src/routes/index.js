@@ -1,6 +1,6 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
-import Signup from '../pages/Signup/index.js';
+
 import Profile from '../pages/Profile/index.js';
 import Upload from '../pages/Upload/index.js';
 
@@ -30,10 +30,11 @@ import AddQuestionAdmin from '~/pages/Admin/Questions/AddQuestion.js';
 
 
 
+
+
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
-    {path: '/signup', component: Signup },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
     {path: '/answerstudent', component: AnswerStudent},
