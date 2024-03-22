@@ -36,7 +36,7 @@ export default function CreatQuestionText() {
                 <div><span>Số lượng hiện tại</span> <b>2</b></div>
             </div>
             <div className="question_content">
-                <div className="content">
+                <div className="content_section">
                     <div className="content_header">
                         <span>Question 1</span>
                         <input placeholder='Question?'></input>

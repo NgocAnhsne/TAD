@@ -38,7 +38,7 @@ export default function AdminQuestions() {
     <div className='admin'>
         <div className='header'>
                 <div><h1>Quản lý câu hỏi</h1></div>
-                <Link to='/admin/users/add'>
+                <Link to='/admin/question/add'>
                 <div className='header_add'>
                     <span>Thêm câu hỏi</span>
                 </div>

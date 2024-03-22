@@ -25,7 +25,9 @@ import AddUser from '~/pages/Admin/User/AddUser.js';
 import AdminHome from '~/pages/Admin/Dashboard/index.js';
 import AdminQuestions from '~/pages/Admin/Questions/Question.js';
 import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
-import Signup from '~/pages/Login/Signup.js';
+import AddQuestionAdmin from '~/pages/Admin/Questions/AddQuestion.js';
+
+
 
 
 
@@ -33,7 +35,6 @@ import Signup from '~/pages/Login/Signup.js';
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
-    {path: '/signup', component: Signup,layout: null },
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
     {path: '/answerstudent', component: AnswerStudent},
@@ -64,6 +65,7 @@ const publicRoutes = [
     {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
 
     {path: '/admin/question', component: AdminQuestions, layout: SidebarAdmin },  
+    {path: '/admin/question/add', component: AddQuestionAdmin, layout: SidebarAdmin },  
 
 ]
 
