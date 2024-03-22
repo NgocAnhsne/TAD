@@ -1,0 +1,87 @@
+.answerStudent {
+  height: 100%;
+  background-color: var(--color-background-2);
+
+  &__header {
+    background-color: var(--color-background-14);
+    padding: 10px 0;
+    &--wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--size-text-6);
+      font-family: "Coiny", system-ui;
+      color: var(--color-text-4);
+    }
+    // &--number {
+    //   &__item {
+    //   }
+    //   &__total {
+    //   }
+    // }
+    // &--score {
+    //   &__text {
+    //   }
+    //   &__number {
+    //   }
+    // }
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1060px;
+    margin: auto;
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    &--img {
+      img {
+        max-height: 500px;
+        width: 80%;
+      }
+    }
+    &--question {
+      &__box {
+        background-color: var(--color-background-1);
+        padding: 40px 40px;
+        border-radius: var(--border-radius-size-4);
+        ::before {
+        }
+        &--fill {
+        }
+        &--text {
+          font-size: var(--size-text-7);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  &__answer {
+    padding-bottom: 20px;
+
+    &--list {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1060px;
+      margin: auto;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+      &__item {
+        margin: 20px;
+        width: 40%;
+
+        button {
+          background-color: var(--color-background-1);
+          padding: 25px 50px;
+          width: 100%;
+          border-radius: var(--border-radius-size-4);
+          font-size: var(--size-text-6);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
