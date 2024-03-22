@@ -19,10 +19,12 @@ function SidebarTeacher() {
                 </Link>
             </div>
             <hr />
-            <div className="user">
-                <img src={avatar} className="logo"></img>
-                <span>Teacher</span>
-            </div>
+            <Link to="/teacher/profile">
+                <div className="user">
+                    <img src={avatar} className="logo"></img>
+                    <span>Teacher</span>
+                </div>
+            </Link>
             <div className="center">
                 <ul>
                     <Link to="/" style={{textDecoration:"none"}}>
@@ -37,13 +39,13 @@ function SidebarTeacher() {
                             <span>Chơi 2 người</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/teacher" style={{textDecoration:"none"}}>
                         <li>
                             <IoIosCreate  className="icon"/>
                             <span>Tạo bài test</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/teacher/list" style={{textDecoration:"none"}}>
                         <li>
                             <FaClipboardList  className="icon"/>
                             <span>Danh sách đề</span>

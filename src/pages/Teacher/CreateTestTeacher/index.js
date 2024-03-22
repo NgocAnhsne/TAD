@@ -1,12 +1,17 @@
 
+
+import { CreatTest } from '~/components/Teacher/Create/CreateTest';
+import '../style.scss'
+
+
 function CreateTestTeacher() {
+
     return ( 
-        <div className="container">
-            {/* <SidebarTeacher/> */}
-            <div className="content">
-                <h2>sadsadasdad</h2>
-            </div>
+        <div className="teacher">
+            <h1>Tạo bộ đề </h1>
+                <CreatTest/>
         </div>
+
      );
 }
 

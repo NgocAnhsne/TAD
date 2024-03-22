@@ -26,31 +26,31 @@ function SidebarAdmin() {
             </div>
             <div className="center">
                 <ul>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/admin" style={{textDecoration:"none"}}>
                         <li>
                             <FaHome  className="icon"/>
                             <span>Dashboard</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/admin/users" style={{textDecoration:"none"}}>
                         <li>
                             <IoPersonSharp  className="icon"/>
                             <span>Quản lý người dùng</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/admin/game" style={{textDecoration:"none"}}>
                         <li>
                             <FaGamepad  className="icon"/>
                             <span>Quản lý trò chơi</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/admin/topic" style={{textDecoration:"none"}}>
                         <li>
                             <LuPaintbrush  className="icon"/>
                             <span>Quản lý chủ đề</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/admin/question" style={{textDecoration:"none"}}>
                         <li>
                             <BsFillQuestionOctagonFill  className="icon"/>
                             <span>Quản lý câu hỏi</span>
