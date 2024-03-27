@@ -1,5 +1,8 @@
 
 
+.home_cover{
+    overflow: hidden;
+}
 .home_wrapper {
     max-width: 1280px;
     margin: 0 auto 100px auto;
@@ -31,7 +34,7 @@
     }
 
     .home_container {
-        height: 100vh;
+        height: 80vh;
         display: flex;
         align-items: center;
         margin-bottom: 20px;
