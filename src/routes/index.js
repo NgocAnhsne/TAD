@@ -9,7 +9,9 @@ import Upload from '../pages/Upload/index.js';
 import SidebarTeacher from '~/components/Layout/SidebarTeacher';
 
 import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
+// student
 import AnswerStudent from '~/pages/Student/Answer/index.js';
+import Rank from '~/pages/Student/Rank/index.js';
 
 
 import Game from '~/pages/Student/Game/index.js';
@@ -37,11 +39,14 @@ const publicRoutes = [
     {path: '/login', component: Login, layout: null},
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
-    {path: '/answerstudent', component: AnswerStudent},
+//student
+    {path: '/answerstudent', component: AnswerStudent, layout: null},
+    {path: '/rank', component: Rank},
+
     {path: '/game', component: Game, layout: null},
     
 
-
+//teacher
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
 
@@ -51,13 +56,14 @@ const publicRoutes = [
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
     {path: '/teacher/questiontext/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
 
+
     {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
     {path: '/teacher/questionlisten/:id', component: QuestionListenTeacher, layout: SidebarTeacher },
     
     {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
-
-
+  
+//admin
     {path: '/admin', component: AdminHome, layout: SidebarAdmin },  
 
     {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
