@@ -4,17 +4,16 @@
   import imgBanner1 from "~/components/asset/img/homeBanner1.jpg";
   import imgBanner2 from "~/components/asset/img/home_banner2.png";
   import imgBanner3 from "~/components/asset/img/homebanner3.png";
-  import Signup from "../Login/Signup";
+  import Login from "../Login/index";
   import Popup from "~/components/Popup/Popup";
   import { useState } from "react";
   // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
 
   function Home() {
     const [buttonLogin,setButtonPopup]=useState(false);
-    const toggleModal =()=>{}
+    const [openPopup, setOpenPopup]=useState(false)
     return (
       <div>
-              <Popup trigger={buttonLogin}> <Signup/></Popup>
         <Header />
 
         <div className="home_wrapper">
@@ -28,7 +27,11 @@
                 Nâng cao kỹ năng tiếng Anh với các trò chơi dân gian
               </div>
               <div className="home_first-banner_content-desc">
-                <button className="home_first-banner_content-desc_btn box_shadow" onClick={()=>setButtonPopup(true)}>Bắt đầu ngay !</button>
+                <button 
+                  className="home_first-banner_content-desc_btn box_shadow" 
+                  onClick={()=>setOpenPopup(true)}>
+                  Bắt đầu ngay !
+                </button>
                 {/* <img src="../imgs/home_firstBanner_gif.jpg" alt=""> */}
               </div>
             </div>
@@ -74,9 +77,9 @@
           </div>
         </div>
         <svg
-          width="1700"
+          width="1900"
           height="850"
-          viewBox="0 0 1700 850"
+          viewBox="0 0 1900 850"
           xmlns="http://www.w3.org/2000/svg"
         >
           
