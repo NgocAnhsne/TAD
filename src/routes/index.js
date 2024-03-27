@@ -26,6 +26,8 @@ import AdminHome from '~/pages/Admin/Dashboard/index.js';
 import AdminQuestions from '~/pages/Admin/Questions/Question.js';
 import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
 import AddQuestionAdmin from '~/pages/Admin/Questions/AddQuestion.js';
+import EditQuestionAdmin from '~/pages/Admin/Questions/EditQuestion.js';
+import NotFound from '~/components/Layout/NotFound.js';
 
 
 
@@ -66,6 +68,11 @@ const publicRoutes = [
 
     {path: '/admin/question', component: AdminQuestions, layout: SidebarAdmin },  
     {path: '/admin/question/add', component: AddQuestionAdmin, layout: SidebarAdmin },  
+    {path: '/admin/question/edit/:id', component: EditQuestionAdmin, layout: SidebarAdmin },  
+    
+    
+    
+    {path: '/*', component: NotFound,layout: null },  
 
 ]
 
