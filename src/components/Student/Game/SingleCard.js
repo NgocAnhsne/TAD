@@ -3,7 +3,9 @@ import './SingleCard.scss'
 import cover from '~/components/asset/img/caibong.JPG'
 
 export default function SingleCard({ card , handleChoice, flipped, disabled}) {
+
     const handleClick = () => {
+        
         if (!disabled){
             handleChoice(card)
         }
@@ -15,7 +17,7 @@ export default function SingleCard({ card , handleChoice, flipped, disabled}) {
                 <img 
                     className='back' 
                     src={cover} 
-                    onClick={handleClick}
+                    onDoubleClick={handleClick}
                     alt='card back'></img>
             </div>
         </div>

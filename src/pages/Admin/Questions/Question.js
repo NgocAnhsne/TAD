@@ -64,7 +64,7 @@ export default function AdminQuestions() {
                                 <td>{user.name}</td>
 
                                 <td className='icon'>
-                                    <Link to={`/admin/users/edit/${user.id}`}>
+                                    <Link to={`/admin/question/edit/${user.id}`}>
                                         <FaRegEdit color='blue' />
                                     </Link>
                                 </td>
@@ -79,7 +79,7 @@ export default function AdminQuestions() {
                         <tr>
                             <td colSpan={7}>
                                 <h4 className="text-danger text-center">
-                                    Không tìm thấy người dùng nào
+                                    Không tìm thấy câu hỏi nào
                                 </h4>
                             </td>
                         </tr>
