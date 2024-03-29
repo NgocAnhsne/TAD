@@ -3,8 +3,9 @@ import './style.scss'
 import SingleCard from '~/components/Student/Game/SingleCard';
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import background from '~/components/asset/img/AnswerStudent.png'
-import cogai26 from '~/components/asset/img/image 26.png'
+
+import  background from '~/components/asset/img/AnswerStudent.png' 
+import  cogai26 from '~/components/asset/img/image 26.png' 
 
 
 function Game() {
