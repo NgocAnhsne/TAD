@@ -12,6 +12,7 @@ import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
 // student
 import AnswerStudent from '~/pages/Student/Answer/index.js';
 import Rank from '~/pages/Student/Rank/index.js';
+import HistoryStudent from '~/pages/Student/History/index.js';
 
 
 import Game from '~/pages/Student/Game/index.js';
@@ -42,6 +43,7 @@ const publicRoutes = [
 //student
     {path: '/answerstudent', component: AnswerStudent, layout: null},
     {path: '/rank', component: Rank},
+    {path: '/historystudent', component: HistoryStudent},
 
     {path: '/game', component: Game, layout: null},
     
