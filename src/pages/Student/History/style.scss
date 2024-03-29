@@ -1,0 +1,107 @@
+.historyStudent {
+  position: relative;
+  top: 0;
+  &__background {
+    position: absolute;
+    height: 100%;
+    z-index: -100;
+  }
+  &__title {
+    padding: 20px 30px;
+    h1 {
+      font-family: "Coiny", system-ui;
+      color: var(--color-text-4);
+      font-size: var(--size-text-16);
+    }
+  }
+  &__content{
+    &--list{
+      display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 30px;
+            flex-wrap: wrap;
+            &__item{
+              margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: var(--color-background-1);
+            width: 24%;
+            border-radius: var(--border-radius-size-5);
+            padding: 20px 30px;
+            color: var(--color-text-4);
+            // font-family: "Coiny", system-ui;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 800;
+            &--title{
+                font-size: var(--size-text-15);
+                border-bottom: 1px solid  var(--color-background-4);
+                width: 100%;
+            }
+            &--body{
+                padding: 20px 0;
+                width: 100%;
+                border-bottom: 1px solid  var(--color-background-4);
+                &__row{
+                    display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    &--col{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        font-size: var(--size-text-6);
+                        &__left{
+                            &--ques{
+                            }
+                            &--time{
+    
+                            }
+                            &--score{
+    
+                            }
+                            &--playdate{
+    
+                            }
+                        }
+                        &__right{
+                            display: flex;
+                            flex-direction: column;
+                        align-items: flex-end;
+                        justify-content: center;
+                            &--player{
+
+                            }
+                            &--time{
+    
+                            }
+                            &--score{
+    
+                            }
+                            &--playdate{
+    
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            &--btn{
+              margin: 20px 0 10px 0;
+              width: 100%;
+              text-align: right;
+              button{
+                padding: 10px 35px;
+                background-color: var(--color-background-3);
+                border-radius: var(--border-radius-size-5);
+            color: var(--color-text-4);
+            font-weight: 800;
+            font-size: var(--size-text-7);
+                
+              }
+            }
+        }
+    }
+  }
+}
