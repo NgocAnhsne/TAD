@@ -1,0 +1,35 @@
+.profileStudent{
+
+    &__left{
+        width: 70%;
+        &--personal{
+            &__ava{
+
+            }
+            &__info{
+                &--name{
+
+                }
+                &--nickname{
+                    &__name{
+
+                    }
+                    &__sex{
+                        img{
+
+                        }
+                    }
+                }
+
+            }
+
+        }
+        &--statistical{
+
+        }
+    }
+    &__right{
+        width: 30%;
+
+    }
+}
