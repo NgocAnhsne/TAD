@@ -1,6 +1,6 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
-
+import rolechooser from '../pages/RoleChooser/index.js';
 import Profile from '../pages/Profile/index.js';
 import Upload from '../pages/Upload/index.js';
 
@@ -39,6 +39,9 @@ const publicRoutes = [
     {path: '/login', component: Login, layout: null},
     {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
+//role
+    {path: '/rolechooser', component: rolechooser, layout: null},
+
 //student
     {path: '/answerstudent', component: AnswerStudent, layout: null},
     {path: '/rank', component: Rank},

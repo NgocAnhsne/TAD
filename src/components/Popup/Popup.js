@@ -8,10 +8,10 @@ export default function Popup(props) {
     <div>
       <dialog open={openSignUp} className="popup">
         <button
+          className="banner_btn"
           onClick={() => {
             setOpenSignUp(false);
-          }}
-        >
+          }}>
           X
         </button>
         <div className="banner">
@@ -21,11 +21,10 @@ export default function Popup(props) {
 
       <dialog open={openPopup} className="popup">
         <button
+          className="banner_btn"
           onClick={() => {
             setOpenPopup(false);
-          }}
-        >
-          X
+          }}> X
         </button>
         <div className="banner">
           <Login></Login>{" "}

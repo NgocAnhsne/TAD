@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import "./style.scss";
+import Popup from "../../components/Popup/Popup";
 import image_login from"~/components/asset/img/login_banner.JPG";
-
 function Login() {
   // Tạo state để lưu trữ giá trị của input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = async(event) => {
+    event.preventDefault();
+  }
   // Hàm xử lý sự kiện khi giá trị của input email thay đổi
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -30,6 +33,7 @@ function Login() {
 
   return (
     <div className="login_wrapper">
+      <form onSubmit={handleLogin}>
       <div className="login_container">
       <img src={image_login}></img>
         <form onSubmit={handleSubmit}>
@@ -53,9 +57,13 @@ function Login() {
               placeholder="Mật khẩu"
             />
           </div>
+          <div>
+              <a className='changePass_link' ></a>
+          </div>
           <button type="submit" className="login-button">Đăng nhập</button>
         </form>
       </div>
+      </form>
     </div>
   );
 }
