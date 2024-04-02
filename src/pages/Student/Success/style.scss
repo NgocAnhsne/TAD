@@ -1,0 +1,86 @@
+.successStudent {
+  // position: relative;
+  background-color: var(--color-background-14);
+//   height: 100vh;
+margin: auto;
+min-height: 980px;
+&__background {
+    width: 100%;
+}
+&__content {
+    vertical-align: middle;
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+    height: 900px;
+    &--img {
+      width: 20%;
+      img {
+        width: 300px;
+      }
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      width: 65%;
+      justify-content: center;
+      &__title {
+        color: var(--color-text-4);
+        font-size: var(--size-text-16);
+        font-weight: 800;
+        text-align: center;
+        margin: 60px 0;
+      }
+      &__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &--score {
+            background-color: var(--color-background-13);
+            border-radius: var(--border-radius-size-4);
+            font-weight: 800;
+            text-align: center;
+            padding: 7px;
+            h2{
+                padding: 20px 30px;
+                color: var(--color-text-1);
+                font-weight: 800;
+                // letter-spacing: 1.2px;
+            }
+          &__content {
+            background-color: var(--color-background-1);
+            border-radius: var(--border-radius-size-4);
+            color: var(--color-text-13);
+            padding: 40px 117px;
+            font-size: var(--size-text-17);
+
+          }
+        }
+        &--accuracy {
+            background-color: var(--color-background-17);
+            border-radius: var(--border-radius-size-4);
+            font-weight: 800;
+            text-align: center;
+            padding: 7px;
+            h2{
+                padding: 20px 30px;
+                color: var(--color-text-1);
+                font-weight: 800;
+                // letter-spacing: 1.2px;
+            }
+          &__content {
+            background-color: var(--color-background-1);
+            border-radius: var(--border-radius-size-4);
+            color: var(--color-text-17);
+            padding: 40px 90px;
+            font-size: var(--size-text-17);
+
+          }
+        }
+      }
+    }
+  }
+}

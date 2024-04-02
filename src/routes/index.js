@@ -1,7 +1,9 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
+
 import rolechooser from '../pages/RoleChooser/index.js';
 import Profile from '../pages/Profile/index.js';
+
 import Upload from '../pages/Upload/index.js';
 
 //layout
@@ -13,7 +15,8 @@ import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
 import AnswerStudent from '~/pages/Student/Answer/index.js';
 import Rank from '~/pages/Student/Rank/index.js';
 import HistoryStudent from '~/pages/Student/History/index.js';
-
+import SuccessStudent from '~/pages/Student/Success/index.js';
+import ProfileStudent from '~/pages/Student/Profile/index.js';
 
 import Game from '~/pages/Student/Game/index.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
@@ -36,19 +39,21 @@ import NotFound from '~/components/Layout/NotFound.js';
 
 
 
-
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
-    {path: '/profile', component: Profile },
     {path: '/upload', component: Upload},
+
+    //student
+    {path: '/student/answer', component: AnswerStudent, layout: null},
+    {path: '/student/rank', component: Rank},
+    {path: '/student/history', component: HistoryStudent},
+    {path: '/student/success', component: SuccessStudent, layout: null},
+    {path: '/student/profile', component: ProfileStudent },
+
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},
 
-//student
-    {path: '/answerstudent', component: AnswerStudent, layout: null},
-    {path: '/rank', component: Rank},
-    {path: '/historystudent', component: HistoryStudent},
 
     {path: '/game', component: Game, layout: null},
     
