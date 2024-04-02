@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.scss";
 import logo from "~/components/asset/img/logo.jpg";
 import Popup from "~/components/Popup/Popup";
-
+import Button from "~/components/Button/banner_button"
 function Header() {
   const [openPopup, setOpenPopup] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
@@ -21,6 +21,9 @@ function Header() {
         </div>
         {/* <!-- wrapper button --> */}
         <div class="header_btn-wrapper">
+          <Button onClick={() => setOpenPopup(true)}>
+            Đăng nhập
+          </Button>
           <button
             class="header_btn header_login-btn"
             onClick={() => setOpenPopup(true)}>

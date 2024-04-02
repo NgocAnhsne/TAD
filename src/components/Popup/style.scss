@@ -6,6 +6,7 @@
         background-color: #21212121;
         width: 100%;
         height: 100vh;
+        border: 0;
 }
 .close-Popup{
         width: 20px;
@@ -14,5 +15,13 @@
         color: black;
 }
 dialog{
-        border: 0;
+        // border: 0;
+
+}
+.banner{
+        position: relative;
+}
+.banner-btn{
+        position: absolute;
+        top:0
 }
