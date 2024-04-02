@@ -52,8 +52,12 @@ function Game() {
                     })
                 })
                 resetTurn()
-            } else {
+
+                
+            } else{
+
                 setTimeout(() => resetTurn(), 1000)
+                
             }
         }
 
@@ -70,23 +74,18 @@ function Game() {
         shuffleCards()
     }, [])
 
-    return ( <
-        div className = 'game' >
-        <
-        img className = 'background'
-        src = { background } > < /img> <
-        img className = 'background2'
-        src = { cogai26 } > < /img> <
-        div className = 'game_header' >
-        <
-        Link > < div className = 'game_icon' > < IoIosArrowBack / > < /div></Link >
-        <
-        div className = 'game_score' > Score: < b > 3 < /b></div >
-        <
-        /div> <
-        div className = "App" >
-        <
-        div className = 'game_reset' > < button onClick = { shuffleCards } > Reset Game < /button></div >
+
+    return ( 
+        <div className='game'>
+            <img className='background' src={background}></img>
+            <img className='background2' src={cogai26}></img>
+            <div className='game_header'>
+                <Link><div className='game_icon'><IoIosArrowBack/></div></Link>
+                <div className='game_score'>Turn: <b>{turns}</b></div>
+                <div className='game_score'>Score: <b>3</b></div>
+            </div>
+            <div className="App">
+                <div className='game_reset'><button onClick={shuffleCards}>New Game</button></div>
 
         <
         div className = 'card_grid' > {
