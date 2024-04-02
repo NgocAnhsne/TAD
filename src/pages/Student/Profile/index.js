@@ -1,5 +1,5 @@
 import "./style.scss";
-import ProfilesImg from "~/components/asset/img/profile.png";
+// import ProfilesImg from "~/components/asset/img/profile.png";
 
 function ProfileStudent() {
   return (
