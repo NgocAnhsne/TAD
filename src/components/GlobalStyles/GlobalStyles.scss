@@ -48,6 +48,10 @@ ol {
   margin: 0;
   padding: 0;
 }
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+  padding: 0;
+}
 
 //! ROOT
 
@@ -102,6 +106,8 @@ ol {
   --size-text-10: 28px;
   --size-text-11: 29px;
   --size-text-12: 18px;
+  --size-text-15: 40px;
+  --size-text-16: 50px;
 
   /* List border radius */
   --border-radius-size-0: 6px;
