@@ -1,17 +1,20 @@
 import "./style.scss";
 import ProfilesImg from "~/components/asset/img/profile.png";
+import avaBtn from "~/components/asset/img/Group 90.png";
+import avaImg from "~/components/asset/img/image 32.png";
+
 
 function ProfileStudent() {
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
         <div className="profileStudent__left--personal">
-          <div className="profileStudent__left--personal__ava">
+          <div className="profileStudent__left--personal__ava shadow">
           <div className="profileStudent__left--personal__ava--img">
-
+          <img src={avaImg} />
           </div>
           <div className="profileStudent__left--personal__ava--button">
-
+          <img src={avaBtn} />
           </div>
           </div>
           <div className="profileStudent__left--personal__info">
