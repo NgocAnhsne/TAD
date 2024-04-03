@@ -1,16 +1,10 @@
 .rank {
-  // position: relative;
-  top: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  // &__background {
-  //   position: absolute;
-  //   right: 0;
-  height: 100%;
-  //   // z-index: -100;
-  //   // background-image: url('~/components/asset/img/bgRank.png');
-  // }
+  background-color: var(--color-background-14);
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 50px 0 50px;
+    z-index: 1;
+    position: sticky;
   
   &__title {
     padding: 20px 30px;

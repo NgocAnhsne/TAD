@@ -1,15 +1,45 @@
 .profileStudent{
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 50px 0 50px;
+    z-index: 1;
+    position: sticky;
 
     &__left{
         width: 70%;
         &--personal{
+            background-color: var(--color-background-14);
+            border-radius: var(--border-radius-size-5);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             &__ava{
+                background-color: var(--color-background-1);
+                margin-right: 20px;
+                position: relative;
+                border-radius: var(--border-radius-size-5);
 
+                &--img{
+                    padding: 10px;
+                    img{
+                    width: 200px;
+                    }
+                }
+                &--button{
+                    position: absolute;
+                    bottom: -20px;
+                    right: -20px;
+                    img{
+                        width: 50px;
+                    }
+                }
             }
             &__info{
                 &--name{
-
-                }
+                      color: var(--color-text-4);
+                      font-size: 40px;
+            }           
                 &--nickname{
                     &__name{
 
