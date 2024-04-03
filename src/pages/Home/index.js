@@ -1,11 +1,11 @@
 import Header from "~/components/Layout/DefaultLayout/Header";
-
 import "./style.scss";
 import imgBanner1 from "~/components/asset/img/homeBanner1.jpg";
 import imgBanner2 from "~/components/asset/img/home_banner2.png";
 import imgBanner3 from "~/components/asset/img/homebanner3.png";
 import Popup from "../../components/Popup/Popup";
 import { useState } from "react";
+
 // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
 
 function Home() {

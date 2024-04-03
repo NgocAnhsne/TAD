@@ -4,6 +4,7 @@ import avaBtn from "~/components/asset/img/Group 90.png";
 import avaImg from "~/components/asset/img/image 32.png";
 
 
+
 function ProfileStudent() {
   return (
     <div className="profileStudent">

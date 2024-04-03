@@ -1,6 +1,8 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
 
+import rolechooser from '../pages/RoleChooser/index.js';
+
 import Upload from '../pages/Upload/index.js';
 
 //layout
@@ -40,12 +42,17 @@ const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
     {path: '/upload', component: Upload},
+
     //student
     {path: '/student/answer', component: AnswerStudent, layout: null},
     {path: '/student/rank', component: Rank},
     {path: '/student/history', component: HistoryStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
+
+//role
+    {path: '/rolechooser', component: rolechooser, layout: null},
+
 
     {path: '/game', component: Game, layout: null},
     
