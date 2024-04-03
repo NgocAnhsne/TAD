@@ -40,7 +40,7 @@ export default function CreatQuestionText() {
 
     const fetchUser = async () => {
         try {
-            const result = await axios.get("http://127.0.0.1:8000/api/lession/" + id);
+            const result = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestionData(result.data.data)
         } catch (err) {
             console.log("Something Wrong");

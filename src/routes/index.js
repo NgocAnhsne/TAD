@@ -32,6 +32,11 @@ import AddQuestionAdmin from '~/pages/Admin/Questions/AddQuestion.js';
 import EditQuestionAdmin from '~/pages/Admin/Questions/EditQuestion.js';
 import NotFound from '~/components/Layout/NotFound.js';
 import EditLessionTeacher from '~/pages/Teacher/EditLession/index.js';
+import AdminGame from '~/pages/Admin/Game/Game.js';
+import EditGame from '~/pages/Admin/Game/EditGame.js';
+import AdminLession from '~/pages/Admin/Lession/Lession.js';
+import EditLession from '~/pages/Admin/Lession/EditLession.js';
+import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 
 
 
@@ -80,7 +85,12 @@ const publicRoutes = [
     {path: '/admin/question/add', component: AddQuestionAdmin, layout: SidebarAdmin },  
     {path: '/admin/question/edit/:id', component: EditQuestionAdmin, layout: SidebarAdmin },  
     
-    
+    {path: '/admin/game', component: AdminGame, layout: SidebarAdmin }, 
+    {path: '/admin/game/edit/:id', component: EditGame, layout: SidebarAdmin },   
+
+    {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
+    {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   
+    {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },   
     
     {path: '/*', component: NotFound,layout: null },  
 
