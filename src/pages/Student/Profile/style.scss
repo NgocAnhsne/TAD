@@ -1,65 +1,126 @@
-.profileStudent{
-    width: 100%;
-    min-height: 100vh;
-    padding: 30px 50px 0 50px;
-    z-index: 1;
-    position: sticky;
-
-    &__left{
-        width: 70%;
-        &--personal{
-            background-color: var(--color-background-14);
-            border-radius: var(--border-radius-size-5);
-            padding: 20px;
+.profileStudent {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 50px 0 50px;
+  z-index: 1;
+  position: sticky;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  &__left {
+    width: 60%;
+    &--personal {
+      background-color: var(--color-background-14);
+      border-radius: var(--border-radius-size-5);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+      &__ava {
+        background-color: var(--color-background-1);
+        margin-right: 20px;
+        position: relative;
+        border-radius: var(--border-radius-size-5);
+        margin-right: 10px;
+        &--img {
+          padding: 10px;
+          img {
+            width: 200px;
+          }
+        }
+        &--button {
+          position: absolute;
+          bottom: -20px;
+          right: -20px;
+          img {
+            width: 50px;
+          }
+        }
+      }
+      &__info {
+        &--name {
+          color: var(--color-text-4);
+          font-size: 40px;
+          font-weight: 900;
+          margin-bottom: 5px;
+        }
+        &--nickname {
+          color: var(--color-text-4);
+          font-weight: 600;
+          margin-bottom: 20px;
+          font-size: var(--size-text-6);
+        }
+        &--level {
+          color: var(--color-text-18);
+          background-color: var(--color-background-8);
+          width: 50%;
+          padding: 5px 10px;
+          border-radius: var(--border-radius-size-5);
+          font-weight: 800;
+          margin-bottom: 20px;
+          text-align: center;
+          font-size: var(--size-text-12);
+        }
+        &--date {
+          color: var(--color-text-4);
+          font-weight: 800;
+          font-size: var(--size-text-6);
+        }
+      }
+      &__edit {
+        margin-top: 10px;
+        &--btn {
+          svg {
+            width: 35px;
+            height: 35px;
+            color: var(--color-text-4);
+          }
+        }
+      }
+    }
+    &--statistical {
+        margin-top: 50px;
+        &__title{
+            h1{
+                font-weight: 600;
+            }
+        }
+        &__list{
             display: flex;
             align-items: center;
-            justify-content: center;
-            &__ava{
-                background-color: var(--color-background-1);
+            justify-content: flex-start;
+            margin-top: 20px;
+            &--item{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 15px 24px;
+                border: 2px solid var(--color-text-19);
+                border-radius: var(--border-radius-size-4);
                 margin-right: 20px;
-                position: relative;
-                border-radius: var(--border-radius-size-5);
-
-                &--img{
-                    padding: 10px;
+                &__img{
+                    margin-right: 10px;
                     img{
-                    width: 200px;
+                        width: 21px;
+                        color: var();
                     }
                 }
-                &--button{
-                    position: absolute;
-                    bottom: -20px;
-                    right: -20px;
-                    img{
-                        width: 50px;
+                &__content{
+                    margin-left: 5px;
+                    &--top{
+                        font-weight: 600;
+                    }
+                    &--bottom{
+                        color: #afafaf;
                     }
                 }
             }
-            &__info{
-                &--name{
-                      color: var(--color-text-4);
-                      font-size: 40px;
-            }           
-                &--nickname{
-                    &__name{
-
-                    }
-                    &__sex{
-                        img{
-
-                        }
-                    }
-                }
-
-            }
-
-        }
-        &--statistical{
 
         }
     }
-    &__right{
-        width: 30%;
-
-    }
+  }
+  &__right {
+    width: 30%;
+  }
 }
