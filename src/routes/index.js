@@ -31,6 +31,7 @@ import EditProfileTeacher from '~/pages/Teacher/ProfileTeacher/EditProfileTeache
 import AddQuestionAdmin from '~/pages/Admin/Questions/AddQuestion.js';
 import EditQuestionAdmin from '~/pages/Admin/Questions/EditQuestion.js';
 import NotFound from '~/components/Layout/NotFound.js';
+import EditLessionTeacher from '~/pages/Teacher/EditLession/index.js';
 
 
 
@@ -52,13 +53,14 @@ const publicRoutes = [
 
 //teacher
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
-    {path: '/teacher/list', component: ListTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/lession', component: ListTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/lession/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile/edit', component: EditProfileTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
-    {path: '/teacher/questiontext/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
+    {path: '/teacher/questiontext/edit/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
 
 
     {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },

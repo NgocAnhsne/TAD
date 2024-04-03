@@ -2,6 +2,7 @@
 
 import { CreatTest } from '~/components/Teacher/Create/CreateTest';
 import '../style.scss'
+import { EditLession } from '~/components/Teacher/Create/CreateTest/EditLession';
 
 
 function CreateTestTeacher() {

@@ -45,7 +45,7 @@ function SidebarTeacher() {
                             <span>Tạo bài test</span>
                         </li>
                     </Link>
-                    <Link to="/teacher/list" style={{textDecoration:"none"}}>
+                    <Link to="/teacher/lession" style={{textDecoration:"none"}}>
                         <li>
                             <FaClipboardList  className="icon"/>
                             <span>Danh sách đề</span>

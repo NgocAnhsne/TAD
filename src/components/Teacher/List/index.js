@@ -1,45 +1,85 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style.scss'
 import './style.scss'
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { FiPlay } from "react-icons/fi";
+import { TbAdjustmentsQuestion } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import caydua from '~/components/asset/img/CayDua.jpg'
+import axios from 'axios';
+import Moment from 'moment';
 export default function ListTest() {
+
+    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
+
+    const [lessionData, setLessionData] = useState([]);
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = async () => {
+        try {
+            const result = await axios("http://127.0.0.1:8000/api/lession/all");
+            setLessionData(result.data.data)
+        } catch (err) {
+            console.log("somthing Wrong");
+        }
+    }
+
+    const handleDelete=async(id)=>{
+        console.log(id);
+        await axios.delete("http://127.0.0.1:8000/api/lession/delete/"+id);
+        const newListData=lessionData.filter((item)=>{
+            alert("Đã xoá danh mục");
+            return(
+                item.id !==id
+            )
+        })
+        setLessionData(newListData);
+    }
+    var moment = require('moment')
     return (
         <div className='teacher_component'>
             <div className='list_container'>
+            {lessionData.length > 0 ? (
+                        lessionData.map((lession, i) => (
+
                 <div className='list_content'>
                     <div className='list_header'>
-                        <span>Test 1</span>
+                        <span>{lession.name}</span>
                     </div>
                     <hr></hr>
                     <div className='list_body'>
                         <div className='body_top'>
-                            <div><span>45 questions</span></div>
-                            <div><span>6 plays</span></div>
+                            {/* <div><span>45 questions</span></div>
+                            <div><span>6 plays</span></div> */}
+                            <span>Description: {lession.description}</span>
                         </div>
-                        <div><span>15 minutes</span></div>
-                        <div><span>Type :<span>Text</span>
+                        <div><span>{lession.time} minutes</span></div>
+                        <div><span>Type :<span> {lession.type}</span>
                         </span>
                         </div>
-                        <div><span className='body_opacity opacity'>Edited 2 days ago</span></div>
+                        <div><span format='YYYY dddd MMMM' className='body_opacity opacity'>{moment(lession.created_at).format('L')}</span></div>
                     </div>
                     <hr></hr>
                     <div className='list_footer'>
-                        <Link to='/teacher/questiontext'>
+                        <Link to={`/teacher/lession/edit/${lession.id}`}>
                             <FaRegEdit className='icon' />
                         </Link>
-                        <Link>
+                        <div onClick={()=>handleDelete(lession.id)}>
                             <RiDeleteBinLine className='icon' />
-                        </Link>
-                        <Link to='/'>
-                            <FiPlay className='icon' />
+                        </div>
+                        <Link to={`/teacher/questiontext/edit/${lession.id}`}>
+                            <TbAdjustmentsQuestion className='icon' />
                         </Link>
                     </div>
                 </div>
+                        ))
+            ) : (
+                <div></div>
+            )}
             </div>
+    
         </div>
     )
 }

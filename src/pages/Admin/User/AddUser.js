@@ -17,19 +17,6 @@ export default function AddUser() {
         role: "",
     });
  
-    useEffect(()=>{
-        fetchUser();
-    },[id])
-    
-    const fetchUser=async()=>{
-        try{
-            const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
-            setUserField(result.data.data)
-        }catch(err){
-            console.log("Something Wrong");
-        }
-    }
-    
     const changeUserFieldHandler = (e) => {
         setUserField({
             ...userField,
