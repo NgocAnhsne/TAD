@@ -1,5 +1,5 @@
 import "./style.scss";
-import ProfilesImg from "~/components/asset/img/profile.png";
+
 
 function ProfileStudent() {
   return (
@@ -23,7 +23,7 @@ function ProfileStudent() {
                   ngocanhisme
                 </div>
                 <div className="profileStudent__left--personal__info--nickname__sex">
-                  {/* <img src={ProfilesImg} /> */}
+        
                 </div>
               </div>
               <div className="profileStudent__left--personal__info--level">

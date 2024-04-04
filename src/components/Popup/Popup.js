@@ -27,7 +27,7 @@ export default function Popup(props) {
           }}> X
         </button>
         <div className="banner">
-          <Login></Login>{" "}
+          <Login></Login>
         </div>
       </dialog>
     </div>

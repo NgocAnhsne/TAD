@@ -9,7 +9,7 @@ import { useState } from "react";
 // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
 
 function Home() {
-  const [openPopup, setOpenPopup] = useState(false);
+  const [openPopup, setOpenPopup] = useState(true);
   return (
     <div className="home_cover">
       <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}></Popup>
@@ -74,6 +74,62 @@ function Home() {
             <button className="homeRating_viewmore-btn box_shadow">
               Xem thêm
             </button>
+          </div>
+        </div>
+        {/* banner user  rate*/}
+        <div className="user_rating-container">
+          <div className="user_rating">
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
           </div>
         </div>
       </div>
