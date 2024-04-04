@@ -44,10 +44,10 @@ function SidebarAdmin() {
                             <span>Quản lý trò chơi</span>
                         </li>
                     </Link>
-                    <Link to="/admin/topic" style={{textDecoration:"none"}}>
+                    <Link to="/admin/lession" style={{textDecoration:"none"}}>
                         <li>
                             <LuPaintbrush  className="icon"/>
-                            <span>Quản lý chủ đề</span>
+                            <span>Quản lý bài học</span>
                         </li>
                     </Link>
                     <Link to="/admin/question" style={{textDecoration:"none"}}>
