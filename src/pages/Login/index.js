@@ -39,8 +39,9 @@ function Login() {
     <div className="login_wrapper">
       <div className='login_wrapper-container'>
         <div className='login_wrapper-container_wrap'>
+        <img src={image_login}></img>
           <div className='login_wrapper-container_wrap-group'>
-          <img src={image_login}></img>
+    
             <label>Email:</label>
             <input type="email" className="form-control" placeholder='Nhập email...'
               value={email}

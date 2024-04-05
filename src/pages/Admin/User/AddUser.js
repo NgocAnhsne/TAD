@@ -113,7 +113,7 @@ export default function AddUser() {
                 </Form.Control.Feedback>
               </div>
             </div>
-            {/* <div className="row mb-3">
+            <div className="row mb-3">
               <Form.Label className="col-sm-2 col-form-label">
                 Vai trò
               </Form.Label>
@@ -134,7 +134,7 @@ export default function AddUser() {
                   Không được bỏ trống.
                 </Form.Control.Feedback>
               </div>
-            </div> */}
+            </div>
           </Form>
     </div>
   )

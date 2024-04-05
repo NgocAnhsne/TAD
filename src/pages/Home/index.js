@@ -9,7 +9,7 @@ import { useState } from "react";
 // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
 
 function Home() {
-  const [openPopup, setOpenPopup] = useState(true);
+  const [openPopup, setOpenPopup] = useState(false);
   return (
     <div className="home_cover">
       <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}></Popup>
