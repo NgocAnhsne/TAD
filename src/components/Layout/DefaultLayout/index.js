@@ -4,12 +4,10 @@ import "~/components/GlobalStyles/GlobalStyles.scss";
 
 function DefaultLayout({ children }) {
   return (
-    <div>
       <div className="container">
         <SidebarStudent/>
         <div className="content">{children}</div>
       </div>
-    </div>
   );
 
 }
