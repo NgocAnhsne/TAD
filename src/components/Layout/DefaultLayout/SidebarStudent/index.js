@@ -43,7 +43,7 @@ function SidebarStudent() {
                     <Link to="/" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
-                            <span>Chơi 2 người</span>
+                            <span>Lộ trình</span>
                         </li>
                     </Link>
                     <Link to="/student/rank" style={{textDecoration:"none"}}>

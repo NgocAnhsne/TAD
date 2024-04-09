@@ -16,6 +16,7 @@ import Rank from '~/pages/Student/Rank/index.js';
 import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
+import LessonStudent from '~/pages/Student/Lesson/index.js';
 
 import Game from '~/pages/Student/Game/index.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
@@ -42,8 +43,6 @@ import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 
 
 
-
-
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
     {path: '/login', component: Login, layout: null},
@@ -55,6 +54,7 @@ const publicRoutes = [
     {path: '/student/history', component: HistoryStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
+    {path: '/student/lesson', component: LessonStudent },
 
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},

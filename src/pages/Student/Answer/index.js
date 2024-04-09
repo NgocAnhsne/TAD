@@ -50,7 +50,6 @@ function AnswerStudent() {
               </div>
             </div>
       </div>
-
       </div>
     </div>
   );
