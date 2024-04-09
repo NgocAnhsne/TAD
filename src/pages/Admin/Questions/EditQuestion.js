@@ -61,7 +61,7 @@ export default function EditQuestionAdmin() {
 
         <div className='admin'>
             <div className='header'>
-                <div><h1>Thêm câu hỏi</h1></div>
+                <div><h1>Sửa câu hỏi</h1></div>
                 <div>
                     <Link to='/admin/question' className='header_cancel'>
                         <span>Hủy và quay lại</span>
@@ -100,12 +100,22 @@ export default function EditQuestionAdmin() {
                     </div>
                 </div>
                 <div className='content_footer'>
+                    <div>
                     <span>True Answer</span>
                     <select value={questionField.answer} name='answer' onChange={e => changeQuestionFieldHandler(e)}>
                         {options.map(options => (
                             <option value={options.value} >{options.label}</option>
                         ))}
                     </select>
+                    </div>
+                    <div>
+                    <span>Lession</span>
+                    <select value={questionField.answer} name='answer' onChange={e => changeQuestionFieldHandler(e)}>
+                        {options.map(options => (
+                            <option value={options.value} >{options.label}</option>
+                        ))}
+                    </select>
+                    </div>
                 </div>
             </div>
         </div>

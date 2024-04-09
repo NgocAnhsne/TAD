@@ -39,6 +39,7 @@ import EditGame from '~/pages/Admin/Game/EditGame.js';
 import AdminLession from '~/pages/Admin/Lession/Lession.js';
 import EditLession from '~/pages/Admin/Lession/EditLession.js';
 import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
+import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 
 
 
@@ -97,7 +98,8 @@ const publicRoutes = [
 
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   
-    {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },   
+    {path: '/admin/lession/edit/:id', component: ViewQuestion, layout: SidebarAdmin },   
+    {path: '/admin/lession/view/:id', component: EditLession, layout: SidebarAdmin },   
     
     {path: '/*', component: NotFound,layout: null },  
 
