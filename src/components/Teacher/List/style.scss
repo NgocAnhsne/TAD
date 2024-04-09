@@ -3,13 +3,13 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 50px;
+        gap: 40px;
         
         .list_content{
             background: #FFFFFF;
             box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.5);
             border-radius: 20px;
-            width: 320px;
+            min-width: 320px;
             .list_header{
                 padding: 20px;
 
@@ -30,6 +30,11 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+
+                    span{
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
                 }
                 .body_opacity{
                     font-size: 20px;

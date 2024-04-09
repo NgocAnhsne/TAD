@@ -4,12 +4,28 @@
         display: flex;
         justify-content: space-between;
 
+        .header_right{
+            display: flex;
+            align-items: start;
+        }
+
         b{
             padding: 15px 20px;
             background-color: white;
             color: #FE8760;
             border-radius: 15px;
             font-size: 20px;
+        }
+        .question_back{
+            margin-left: 30px;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+
+
+            &:hover{
+                background-color: #fb9c7d;
+            }
         }
     }
 
@@ -56,9 +72,20 @@
             display: flex;
             align-items: center;
             margin-top: 20px;  
-            
+            justify-content: space-between;
             span{
                 margin-right: 20px;
+            }
+            select{
+                width: auto;
+            }
+            .delete_footer{
+                font-size: 40px;
+                margin-right: 10px;
+                &:hover{
+                    color: red;
+                 
+                }
             }
         }
 

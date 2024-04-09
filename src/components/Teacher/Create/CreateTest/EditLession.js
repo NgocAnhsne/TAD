@@ -11,23 +11,22 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const options = [
-    { value: '', label: '---Chọn thời gian---' },
     { value: '15', label: '15p' },
     { value: '30', label: '30p' },
     { value: '45', label: '45p' }
 ]
 const optionType = [
-    { value: '', label: '---Chọn kiểu---' },
     { value: 'text', label: 'Chữ' },
     { value: 'image', label: 'Ảnh' },
     { value: 'listen', label: 'Nghe' }
 ]
 
-export const CreatTest = () => {
+export const EditLession = () => {
 
     const { id } = useParams()
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
+
 
     const [lessionField, setlessionField] = useState({
         name: "",
@@ -36,28 +35,36 @@ export const CreatTest = () => {
         type: "",
     });
 
-    const changeLessionFieldHandler = (e) => {
+    useEffect(() => {
+        fetchUser();
+    }, [id])
+
+    const fetchUser = async () => {
+        try {
+            const result = await axios.get("http://127.0.0.1:8000/api/lession/" + id);
+            setlessionField(result.data.data)
+        } catch (err) {
+            console.log("Something Wrong");
+        }
+    }
+
+    const changelessionFieldHandler = (e) => {
         setlessionField({
             ...lessionField,
             [e.target.name]: e.target.value
         });
-        // console.log(lessionField);
+        //console.log(lessionField);
 
     }
 
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/lession/create", lessionField);
-            setLoading(true);
+            await axios.put("http://127.0.0.1:8000/api/lession/update/" + id, lessionField);
+            navigate('/admin/users')
         } catch (err) {
             console.log("Something Wrong");
         }
-    }
-    if (loading) {
-        return (
-            navigate(`/teacher/lession/`)
-        )
     }
 
 
@@ -70,36 +77,39 @@ export const CreatTest = () => {
                         <div className='top_text'>
                             <span
                             >Tên bài test (bắt buộc)</span>
-                            <input name="name"
-                                onChange={e => changeLessionFieldHandler(e)}></input>
+                            <input name="name" required
+                                value={lessionField.name}
+                                onChange={e => changelessionFieldHandler(e)}
+                            ></input>
                         </div>
                     </div>
                     <div className='left_bottom'>
                         <span >Tạo loại câu hỏi</span>
-                        <select onChange={e => changeLessionFieldHandler(e)} name="type">
+                        <select name="type">
                             {optionType.map(options => (
-                                    <option value={options.value} >{options.label}</option>
-                                ))}
+                                <option value={options.value} >{options.label}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
                 <div className='container_right'>
                     <div className='right_time'>
                         <span >Thời gian</span>
-                        <select onChange={e => changeLessionFieldHandler(e)} name="time">
+                        <select name="time">
                             {options.map(options => (
-                                    <option value={options.value} >{options.label}</option>
-                                ))}
+                                <option value={options.value} >{options.label}</option>
+                            ))}
                         </select>
                     </div>
                     <div className='right_des'>
                         <span >Mô tả</span>
-                        <textarea onChange={e => changeLessionFieldHandler(e)} name="description"></textarea>
+                        <textarea name="description" value={lessionField.description}
+                                onChange={e => changelessionFieldHandler(e)}></textarea>
                     </div>
                 </div>
             </div>
             <div className='btn_end' onClick={e => onSubmitChange(e)}>
-                <button>Tạo</button>
+                <button>Lưu các thay đổi</button>
             </div>
         </div>
     )
