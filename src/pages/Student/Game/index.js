@@ -87,9 +87,8 @@ function Game() {
             <div className="App">
                 <div className='game_reset'><button onClick={shuffleCards}>New Game</button></div>
 
-        <
-        div className = 'card_grid' > {
-            cards.map(card => ( <
+        <div className = 'card_grid'> 
+            {cards.map(card => ( <
                 SingleCard key = { card.id }
                 card = { card }
                 handleChoice = { handleChoice }
@@ -97,10 +96,10 @@ function Game() {
                 disabled = { disabled }
                 />
             ))
-        } <
-        /div> <
-        /div> <
-        /div>
+        }
+        </div>
+        </div> 
+        </div>
     );
 }
 
