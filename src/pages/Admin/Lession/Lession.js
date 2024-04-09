@@ -97,7 +97,7 @@ export default function AdminLession() {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={7}>
+                            <td colSpan={8}>
                                 <h4 className="text-danger text-center">
                                     Không tìm thấy bài học nào
                                 </h4>
