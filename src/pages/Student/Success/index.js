@@ -4,9 +4,6 @@ import successImg from '~/components/asset/img/image 27.png'
     function SuccessStudent() {
         return (
             <div className="successStudent">
-                <div className="successStudent__background">
-
-                </div>
                 <div className="successStudent__content">
                     <div className="successStudent__content--img">
                     <img src={successImg} />

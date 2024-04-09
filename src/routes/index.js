@@ -1,6 +1,5 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
-
 import rolechooser from '../pages/RoleChooser/rolechoosen.js';
 // import Profile from '../pages/Profile/index.js';
 
