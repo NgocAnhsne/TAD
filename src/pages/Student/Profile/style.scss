@@ -122,5 +122,44 @@
   }
   &__right {
     width: 30%;
+    margin-left: 20px;
+    &--content{
+      padding: 20px;
+      border: 2px solid var(--color-text-19);
+      border-radius: var(--border-radius-size-4);
+      font-size: var(--size-text-14);
+      &__week{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        &--left{
+          color: var(--color-text-4);
+          font-weight: 600;
+        }
+        &--right{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &__ord{
+            margin-right: 10px;
+            font-weight: 600;
+          }
+          &__img{
+
+          }
+        }
+      }
+      &__socre{
+        color: var(--color-text-4);
+          font-weight: 600;
+        &--title{
+
+        }
+        &--content{
+
+        }
+      }
+    }
   }
 }

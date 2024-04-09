@@ -92,6 +92,13 @@ function ProfileStudent() {
             </div>
             </div>
           </div>
+        <div className="profileStudent__right--content__socre">
+        <div className="profileStudent__right--content__socre--title">
+          Điểm tuần này
+        </div>
+        <div className="profileStudent__right--content__socre--content">
+        </div>
+        </div>
         </div>
       </div>
     </div>
