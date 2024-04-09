@@ -21,9 +21,6 @@ function Header() {
         </div>
         {/* <!-- wrapper button --> */}
         <div class="header_btn-wrapper">
-          <Button onClick={() => setOpenPopup(true)}>
-            Đăng nhập
-          </Button>
           <button
             class="header_btn header_login-btn"
             onClick={() => setOpenPopup(true)}>

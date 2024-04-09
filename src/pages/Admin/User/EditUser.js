@@ -37,7 +37,6 @@ export default function EditUser() {
             [e.target.name]: e.target.value
         });
         //console.log(userField);
- 
     }
     
     const onSubmitChange = async (e) => {
