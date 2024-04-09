@@ -3,40 +3,35 @@ import Header from "~/components/Layout/DefaultLayout/Header";
 import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const RoleChooser = () => {
-    // Khởi tạo state userField
     const [userField, setUserField] = useState({
         role: '' 
     });
 
     const navigate = useNavigate();
-    // Hàm xử lý sự kiện khi nhấn nút "Khám phá ngay"
+    const [loading, setLoading] = useState(false);
+
+    // Hàm xử lý sự kiện khi nhấn nút "Khám phá ngay" cho vai trò Giáo viên
     const handleRoleSelection = () => {
-        // Gán giá trị role = 1 khi nhấn nút
+       
         setUserField({
             ...userField,
             role: 1
         });
+        onSubmitChange();
+       
     };
-    const [loading,setLoading]=useState()
-    const onSubmitChange = async (e) => {
-        e.handleRoleSelection();
+    const onSubmitChange = async () => {
         try {
-           await axios.post("http://127.0.0.1:8000/api/register", userField);
+            await axios.post("http://127.0.0.1:8000/api/register", userField);
             setLoading(true);
         } catch (err) {
             console.log("Something Wrong");
         }
     }
-    if(loading){
-        return (
-            navigate('/admin')
-        )
-    }
-
     return (
         <div>
             <Header />
@@ -55,7 +50,7 @@ const RoleChooser = () => {
                                 <span>
                                     <button className="roleChooser_container-wrapper_banner-box_button
                                         roleChooser_container-wrapper_banner-box_button-left"
-                                        onClick={onSubmitChange}>
+                                        onClick={handleRoleSelection}>
                                         Khám phá ngay
                                     </button>
                                 </span>
