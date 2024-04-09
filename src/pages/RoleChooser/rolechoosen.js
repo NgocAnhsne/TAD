@@ -4,6 +4,8 @@ import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 
 const RoleChooser = () => {
     const [userField, setUserField] = useState({
@@ -26,16 +28,19 @@ const RoleChooser = () => {
     };
 
     const onSubmitChange = async () => {
-        setLoading(true);
-        if (userField.role === '1') {
-            console.log(userField)
-            navigate('/teacher'); // Chuyển hướng nếu là giáo viên
-        } else if (userField.role === '0') {
-            console.log(userField)
-            navigate('/student/profile'); // Chuyển hướng nếu là học sinh
-        } else if (userField.role === '2') {
-            console.log(userField)
-            navigate('/admin'); // Chuyển hướng nếu là admin
+        try {
+            const userData = { role: userField.role };
+            await axios.post("http://127.0.0.1:8000/api/update", userData);
+            setLoading(true);
+            if (userField.role === '1') {
+                navigate('/teacher'); // Chuyển hướng nếu là giáo viên
+            } else if (userField.role === '0') {
+                navigate('/student/profile'); // Chuyển hướng nếu là học sinh
+            } else if (userField.role === '2') {
+                navigate('/admin'); // Chuyển hướng nếu là admin
+            }
+        } catch (err) {
+            console.log("Something Wrong");
         }
     }
     

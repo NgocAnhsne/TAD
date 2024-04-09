@@ -18,7 +18,7 @@ function Home() {
         <div className="home_container">
           {/* banner 1 */}
           <div className="home_first-banner">
-            <img src={imgBanner1}></img>
+            <img src={imgBanner2}></img>
           </div>
           <div className="home_first-banner_content">
             <div className="home_first-banner_content-title">
@@ -47,14 +47,14 @@ function Home() {
             </div>
           </div>
           <div className="home_first-banner">
-            <img src={imgBanner2}></img>
+            <img src={imgBanner1}></img>
           </div>
         </div>
         {/* banner 3 */}
         <div className="home_container">
-          <div className="home_first-banner">
+          {/* <div className="home_first-banner">
             <img src={imgBanner3}></img>
-          </div>
+          </div> */}
           <div className="home_first-banner_content">
             <div className="home_first-banner_content-title">
               Tạo thêm động lực
