@@ -4,34 +4,41 @@ import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 
 const RoleChooser = () => {
     const [userField, setUserField] = useState({
-        role: '' 
+        name: "",
+        email: "",
+        password: "",
+        role: "",
     });
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
-    // Hàm xử lý sự kiện khi nhấn nút "Khám phá ngay" cho vai trò Giáo viên
-    const handleRoleSelection = () => {
-       
+    // Hàm xử lý sự kiện khi nhấn nút "Khám phá ngay" cho vai trò Giáo viên hoặc Học sinh hoặc Admin
+    const handleRoleSelection = async (role) => {
         setUserField({
             ...userField,
-            role: 1
+            role: role.toString() // Chuyển giá trị sang chuỗi
         });
         onSubmitChange();
-       
     };
+
     const onSubmitChange = async () => {
-        try {
-            await axios.post("http://127.0.0.1:8000/api/register", userField);
-            setLoading(true);
-        } catch (err) {
-            console.log("Something Wrong");
+        setLoading(true);
+        if (userField.role === '1') {
+            console.log(userField)
+            navigate('/teacher'); // Chuyển hướng nếu là giáo viên
+        } else if (userField.role === '0') {
+            console.log(userField)
+            navigate('/student/profile'); // Chuyển hướng nếu là học sinh
+        } else if (userField.role === '2') {
+            console.log(userField)
+            navigate('/admin'); // Chuyển hướng nếu là admin
         }
     }
+    
     return (
         <div>
             <Header />
@@ -50,7 +57,7 @@ const RoleChooser = () => {
                                 <span>
                                     <button className="roleChooser_container-wrapper_banner-box_button
                                         roleChooser_container-wrapper_banner-box_button-left"
-                                        onClick={handleRoleSelection}>
+                                        onClick={() => handleRoleSelection('1')}>
                                         Khám phá ngay
                                     </button>
                                 </span>
@@ -67,7 +74,7 @@ const RoleChooser = () => {
                                 <span>
                                     <button className="roleChooser_container-wrapper_banner-box_button
                                         roleChooser_container-wrapper_banner-box_button-right"
-                                        onClick={() => navigate('/admin')}>
+                                        onClick={() => handleRoleSelection('0')}>
                                         Khám phá ngay
                                     </button>
                                 </span>
@@ -79,5 +86,6 @@ const RoleChooser = () => {
             </div>
         </div>
     );
- }
- export default RoleChooser;
+}
+
+export default RoleChooser;

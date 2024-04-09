@@ -31,7 +31,7 @@ function Login() {
         setToken(res.data.user, res.data.access_token);
       })
       .catch((error) => {
-        setError("Đăng nhập thất bại");
+        setError("Tên tài khoản/ mật khẩu không hợp lệ");
       });
   }
 

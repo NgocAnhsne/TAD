@@ -26,7 +26,7 @@ export default function AuthUser() {
 
     setToken(token);
     setUser(user);
-    navigate('/student');
+    navigate('/student/profile');
   };
 
   const http = axios.create({
