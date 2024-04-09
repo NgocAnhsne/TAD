@@ -76,6 +76,62 @@ function Home() {
             </button>
           </div>
         </div>
+        {/* banner user  rate*/}
+        <div className="user_rating-container">
+          <div className="user_rating">
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
+            <div className="user_rating-wrapper">
+              <div className="user_rating-header">
+                <div className="user_rating-title">anna bella
+                </div>
+              </div>
+              <div className="user_rating-body">
+                asdasdasdasdasdasdasdasdasasdasd
+                asdasdasdasdasdasdasdasdasdasdsa
+                gsdfasdfgdsfgdfgsdfgdfgdfgdgdfdf
+              </div>
+              <div
+                className=" 
+                   user_rating-body_content"
+              >
+                ***************
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <svg
         width="1900"

@@ -1,69 +1,64 @@
 import React, { useState } from 'react';
 import "./style.scss";
-import Popup from "../../components/Popup/Popup";
-import image_login from"~/components/asset/img/login_banner.JPG";
-function Login() {
-  // Tạo state để lưu trữ giá trị của input
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import image_login from"~/components/asset/img/login.png";
+import AuthUser from "./AuthUser"
 
-  const handleLogin = async(event) => {
-    event.preventDefault();
-  }
-  // Hàm xử lý sự kiện khi giá trị của input email thay đổi
+function Login() {
+  const { http, setToken } = AuthUser();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    setError(null); // Xóa lỗi khi email thay đổi
   };
 
-  // Hàm xử lý sự kiện khi giá trị của input password thay đổi
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setError(null); // Xóa lỗi khi mật khẩu thay đổi
   };
 
-  // Hàm xử lý sự kiện khi form được gửi
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Thực hiện xử lý đăng nhập ở đây, ví dụ:
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Đặt lại các trường đầu vào sau khi form được gửi
-    setEmail('');
-    setPassword('');
-  };
+  const submitForm = () => {
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
+
+    http.post('/login', { email, password })
+      .then((res) => {
+        console.log(res.data);
+        setToken(res.data.user, res.data.access_token);
+      })
+      .catch((error) => {
+        setError("Đăng nhập thất bại");
+      });
+  }
 
   return (
     <div className="login_wrapper">
-      <form onSubmit={handleLogin}>
-      <div className="login_container">
-      <img src={image_login}></img>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-           
-            <input
-              type="text"
-              id="email"
+      <div className='login_wrapper-container'>
+        <div className='login_wrapper-container_wrap'>
+        <img src={image_login}></img>
+          <div className='login_wrapper-container_wrap-group'>
+    
+            <label>Email:</label>
+            <input type="email" className="form-control" placeholder='Nhập email...'
               value={email}
               onChange={handleEmailChange}
-              placeholder="Email"
-            />
+              id="email"/>
           </div>
-          <div className="form-group">
-        
-            <input
-              type="password"
-              id="password"
+          <div className='login_wrapper-container_wrap-group'>
+            <label>Mật khẩu:</label>
+            <input type="password" className="form-control" placeholder='Điền mật khẩu'
               value={password}
               onChange={handlePasswordChange}
-              placeholder="Mật khẩu"
-            />
+              id="pwd"/>
           </div>
-          <div>
-              <a className='changePass_link' ></a>
-          </div>
-          <button type="submit" className="login-button">Đăng nhập</button>
-        </form>
+          {error && <div className="error-message">{error}</div>}
+          <button type="button" onClick={submitForm} className='login-button'>Login</button>
+        </div>
       </div>
-      </form>
     </div>
   );
 }

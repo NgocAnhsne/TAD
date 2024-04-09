@@ -1,7 +1,7 @@
 import "./style.scss";
 import React from "react";
 import Login from "~/pages/Login/index";
-import Signup from "~/pages/SignUp/Signup";
+import Register from "~/pages/Register/register" 
 export default function Popup(props) {
   const { openPopup, setOpenPopup, openSignUp, setOpenSignUp } = props;
   return (
@@ -15,7 +15,7 @@ export default function Popup(props) {
           X
         </button>
         <div className="banner">
-          <Signup></Signup>
+          <Register></Register>
         </div>
       </dialog>
 
@@ -27,7 +27,7 @@ export default function Popup(props) {
           }}> X
         </button>
         <div className="banner">
-          <Login></Login>{" "}
+          <Login></Login>
         </div>
       </dialog>
     </div>

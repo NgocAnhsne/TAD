@@ -128,7 +128,44 @@
             }
     
         }
+       
     }
+    .user_rating-container{
+        margin: 20px 0 20px;
+        padding-top: 20px;
+        
+        .user_rating{
+            display: flex;
+            justify-content: space-between;
+            .user_rating-wrapper{
+                min-height: 300px;
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 2px 10px rgb(193, 193, 193);
+                width: 30%;
+                position: relative;
+                .user_rating-header{
+                    margin-bottom: 10px;
+                    .user_rating-title{
+                        font-size: 28px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                    }
+                }
+                .user_rating-body{
+                font-size: 17px;   
+                margin-bottom: 10px;             
+                }
+                .user_rating-body_content{
+                    position: absolute;
+                    bottom: 0;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+   
+    
 }
 
 
