@@ -14,7 +14,6 @@ function Home() {
     <div className="home_cover">
       <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}></Popup>
       <Header />
-
       <div className="home_wrapper">
         <div className="home_container">
           {/* banner 1 */}
