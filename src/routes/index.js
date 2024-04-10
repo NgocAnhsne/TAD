@@ -17,7 +17,7 @@ import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
 
-import Game from '~/pages/Student/Game/index.js';
+import Game from '~/pages/Student/Game/LatBike.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
 import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
 import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
@@ -57,7 +57,7 @@ const publicRoutes = [
     {path: '/student/profile', component: ProfileStudent },
 
 //role
-    {path: '/rolechooser', component: rolechooser, layout: null},
+    {path: '/rolechooser/:id', component: rolechooser, layout: null},
 
 
     {path: '/game', component: Game, layout: null},

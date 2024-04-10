@@ -1,105 +1,149 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Header from "~/components/Layout/DefaultLayout/Header";
 import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 
+export default function RoleChooser() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [userField, setUserField] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "",
+  });
 
-const RoleChooser = () => {
-    const [userField, setUserField] = useState({
-        name: "",
-        email: "",
-        password: "",
-        role: "",
-    });
+  useEffect(() => {
+    fetchUser();
+  }, [id]);
 
-    const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
-
-    // Hàm xử lý sự kiện khi nhấn nút "Khám phá ngay" cho vai trò Giáo viên hoặc Học sinh hoặc Admin
-    const handleRoleSelection = async (role) => {
-        setUserField({
-            ...userField,
-            role: role.toString() // Chuyển giá trị sang chuỗi
-        });
-        onSubmitChange();
-    };
-
-    const onSubmitChange = async () => {
-        try {
-            const userData = { role: userField.role };
-            await axios.post("http://127.0.0.1:8000/api/index", userData);
-            setLoading(true);
-            if (userField.role === '1') {
-                navigate('/teacher');
-            } else if (userField.role === '0') {
-                navigate('/student/profile');
-            } else if (userField.role === '2') {
-                navigate('/admin');
-            }
-        } catch (err) {
-            console.log("Something Wrong");
-        }
+  const fetchUser = async () => {
+    try {
+      const result = await axios.get("http://127.0.0.1:8000/api/user/" + id);
+      setUserField(result.data.data);
+      console.log(userField)
+    } catch (err) {
+      console.log("Something Wrong");
     }
-    
-    // Thêm hàm này để cập nhật giá trị role
-    const handleChangeRole = (newRole) => {
-        setUserField(prevState => ({
-            ...prevState,
-            role: newRole
-        }));
+  };
+
+
+  const handleStudentRoleChange = async () => {
+
+    try {
+        setUserField({ ...userField, role: "0" });
+        await axios.put(`http://127.0.0.1:8000/api/user/update/${id}`, { ...userField, role: "0" });
+        // Update role locally after successful request
+        console.log("Role updated successfully!");
+      console.log(userField);
+    } catch (err) {
+      console.log("Something Wrong");
     }
+  };
+
+  const handleTeacherRoleChange = async () => {
     
-    
-    return (
-        <div>
-            <Header />
-            <div className="roleChooser">
-                <div className="roleChooser_container">
-                    <div className="roleChooser_container-wrapper">
-                        <div className="roleChooser_container-wrapper_banner ">
-                            <img src={teacher_image} alt="Teacher"></img>
-                            <div className="roleChooser_container-wrapper_banner-box roleChooser_container-wrapper_banner-left">
-                                <div className="roleChooser_container-wrapper_banner-box_title">
-                                    Giáo viên
-                                </div>
-                                <div className="roleChooser_container-wrapper_banner-box_desc">
-                                    Mở lớp học, quản lý các bài học đa dạng và các học sinh của mình
-                                </div>
-                                <span>
-                                    <button className="roleChooser_container-wrapper_banner-box_button
-                                        roleChooser_container-wrapper_banner-box_button-left"
-                                        onClick={() => handleChangeRole('1')}>
-                                        Khám phá ngay
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="roleChooser_container-wrapper_banner">
-                            <div className="roleChooser_container-wrapper_banner-box roleChooser_container-wrapper_banner-right">
-                                <div className="roleChooser_container-wrapper_banner-box_title">
-                                    Học sinh
-                                </div>
-                                <div className="roleChooser_container-wrapper_banner-box_desc">
-                                    Tham gia các trò chơi thú vị cùng bạn bè, khám phá bài học mới mẻ
-                                </div>
-                                <span>
-                                    <button className="roleChooser_container-wrapper_banner-box_button
-                                        roleChooser_container-wrapper_banner-box_button-right"
-                                        onClick={() => handleRoleSelection('0')}>
-                                        Khám phá ngay
-                                    </button>
-                                </span>
-                            </div>
-                            <img className="right_img" src={student_image} alt="Student"></img>
-                        </div>
-                    </div>
-                </div>
+    // try {
+    //   await axios.put(`http://127.0.0.1:8000/api/user/update/${id}`, {
+    //     ...userField,
+    //     role: "1",
+    //   });
+    //   console.log("Role updated successfully!");
+    try {
+        setUserField({ ...userField, role: "1" });
+        await axios.put(`http://127.0.0.1:8000/api/user/update/${id}`, { ...userField, role: "1" });
+        // Update role locally after successful request
+        console.log("Role updated successfully!");
+      console.log(userField);
+    } catch (err) {
+      console.log("Something Wrong");
+    }
+  };
+  return (
+    <div>
+      <Header />
+      <div className="roleChooser">
+        <div className="roleChooser_container">
+            <div className="roleChooser_container-welc">
+                Chào mừng người dùng:
+            
+          {userField && (
+            <div className="user-info">
+              <div className="user-info-row">
+                <div className="user-info-label">Name:</div>
+                <div className="user-info-value">{userField.name}</div>
+              </div>
+              <div className="user-info-row">
+                <div className="user-info-label">Email:</div>
+                <div className="user-info-value">{userField.email}</div>
+              </div>
+              <div className="user-info-row">
+                <div className="user-info-label">Role:</div>
+                <div className="user-info-value">{userField.role}</div>
+              </div>
             </div>
+          )}
+          </div>
+            <button onClick={fetchUser}>check</button>
+          <div className="roleChooser_container-wrapper">
+            <div className="roleChooser_container-wrapper_banner ">
+              <img src={teacher_image} alt="Teacher"></img>
+              <div className="roleChooser_container-wrapper_banner-box roleChooser_container-wrapper_banner-left">
+                <div className="roleChooser_container-wrapper_banner-box_title">
+                  Giáo viên
+                </div>
+                <div className="roleChooser_container-wrapper_banner-box_desc">
+                  Mở lớp học, quản lý các bài học đa dạng và các học sinh của
+                  mình
+                </div>
+                <span>
+                  <button
+                    className="roleChooser_container-wrapper_banner-box_button
+                                        roleChooser_container-wrapper_banner-box_button-left"
+                    onClick={handleTeacherRoleChange}
+                  >
+                    Khám phá ngay
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div className="roleChooser_container-wrapper_banner">
+              <div className="roleChooser_container-wrapper_banner-box roleChooser_container-wrapper_banner-right">
+                <div className="roleChooser_container-wrapper_banner-box_title">
+                  Học sinh
+                </div>
+                <div className="roleChooser_container-wrapper_banner-box_desc">
+                  Tham gia các trò chơi thú vị cùng bạn bè, khám phá bài học mới
+                  mẻ
+                </div>
+                <span>
+                  <button
+                    className="roleChooser_container-wrapper_banner-box_button
+                                        roleChooser_container-wrapper_banner-box_button-right"
+                                        onClick={handleStudentRoleChange}
+                                        
+                  >
+                    Khám phá ngay
+                  </button>
+                </span>
+              </div>
+              <img
+                className="right_img"
+                src={student_image}
+                alt="Student"
+              ></img>
+            </div>
+          </div>
         </div>
-    );
-}
+      </div>
+    </div>
+    // <div>
 
-export default RoleChooser;
+    //     <button onClick={handleRoleChange}>Change Role</button>
+    // </div>
+  );
+}

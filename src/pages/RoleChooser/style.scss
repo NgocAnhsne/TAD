@@ -13,6 +13,24 @@
         display: flex;
          flex-direction: column;  
          justify-content: center;
+         &-welc{
+            margin-top: 50px;
+         }
+         .user-info{
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            margin-bottom: 5px;
+            .user-info-row{
+                display: flex;
+                .user-info-label{
+                    margin-right: 10px;
+                }
+                .user-info-value{
+                    color: red;
+                }
+            }
+         }
         &-wrapper {
             height:  550px;
             justify-content: space-between;
