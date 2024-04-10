@@ -68,6 +68,7 @@ export default function AdminLession() {
                         <th scope="col-20">Thời gian</th>
                         <th scope="col-20">Loại câu hỏi</th>
                         <th scope="col-20">Số lượng câu hỏi</th>
+                        <th scope="col">Xem số câu hỏi</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xoá</th>
                     </tr>
@@ -81,10 +82,16 @@ export default function AdminLession() {
                                 <td>{lession.description}</td>
                                 <td>{lession.time}</td>
                                 <td>{lession.type}</td>
-                                <td>{questionData.length}</td>
+                                <td>{lesionData.length}</td>
 
+                                
                                 <td className='icon'>
                                     <Link to={`/admin/lession/edit/${lession.id}`}>
+                                        <FaRegEdit color='blue' />
+                                    </Link>
+                                </td>
+                                <td className='icon'>
+                                    <Link to={`/admin/lession/view/${lession.id}`}>
                                         <FaRegEdit color='blue' />
                                     </Link>
                                 </td>
@@ -97,7 +104,7 @@ export default function AdminLession() {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={8}>
+                            <td colSpan={9}>
                                 <h4 className="text-danger text-center">
                                     Không tìm thấy bài học nào
                                 </h4>

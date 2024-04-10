@@ -1,57 +1,117 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import './style.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
 
-export default function AddQuestionAdmin() {
+export default function EditQuestionAdmin() {
     const options = [
-        { value: 'A', label: 'A' },
-        { value: 'B', label: 'B' },
-        { value: 'C', label: 'C' },
-        { value: 'D', label: 'D' }
-      ]
-  return (
+        { value: '', label: '---Chọn đáp án---' },
+        { value: 'a', label: 'A' },
+        { value: 'b', label: 'B' },
+        { value: 'c', label: 'C' },
+        { value: 'd', label: 'D' }
+    ]
+    const {id}=useParams()
+    const navigate = useNavigate();
+    const [loading,setLoading]=useState()
+ 
+    const [lessionData, setLessionData] = useState({
+        id_lesstion: "",
+        question_text: "",
+        answer_a: "",
+        answer_b: "",
+        answer_c: "",
+        answer_d: "",
+        answer: "",
+    });
+ 
+    const changelessionDataHandler = (e) => {
+        setLessionData({
+            ...lessionData,
+            [e.target.name]: e.target.value
+        });
+        //console.log(lessionData);
+ 
+    }
     
-    <div className='admin'>
-        <div className='header'>
+    const onSubmitChange = async (e) => {
+        e.preventDefault();
+        try {
+           await axios.post("http://127.0.0.1:8000/api/question/create", lessionData);
+            setLoading(true);
+        } catch (err) {
+            console.log("Something Wrong");
+        }
+    }
+    if(loading){
+        return (
+            navigate('/admin/lession')
+        )
+    }
+    return (
+
+        <div className='admin'>
+            <div className='header'>
                 <div><h1>Thêm câu hỏi</h1></div>
                 <div>
-                <Link to='/admin/question' className='header_cancel'>
-                    <span>Hủy và quay lại</span>
-                </Link>
-                <Link className='header_save'>
-                    <span>Lưu các thay đổi</span>
-                </Link>
+                    <Link to='/admin/question' className='header_cancel'>
+                        <span>Hủy và quay lại</span>
+                    </Link>
+                    <Link className='header_save'  onClick={e => onSubmitChange(e)}>
+                        <span>Lưu các thay đổi</span>
+                    </Link>
                 </div>
             </div>
-        <div className="content_section">
-                    <div className="content_header">
-                        <span>Question 1</span>
-                        <input placeholder='Question?'></input>
+            <div className="content_section">
+                <div className="content_header">
+                    <span>Question 1:</span>
+                    <input placeholder='Question?' name='question_text'
+                        value={lessionData.question_text || ""} onChange={e => changelessionDataHandler(e)}></input>
+                </div>
+                <div className="content_body">
+                    <div className="body_a" style={{ backgroundColor: '#B0D8E6' }}>
+                        <span>A.</span>
+                        <input placeholder='Answer' value={lessionData.answer_a} onChange={e => changelessionDataHandler(e)}
+                            name='answer_a'></input>
                     </div>
-                    <div className="content_body">
-                        <div className="body_a" style={{ backgroundColor: '#B0D8E6'}}>
-                            <span>A.</span>
-                            <input placeholder='Answer'></input>
-                        </div>
-                        <div className="body_b" style={{ backgroundColor: '#EADDB5'}}>
-                            <span>B.</span>
-                            <input placeholder='Answer'></input>
-                        </div>
-                        <div className="body_c" style={{ backgroundColor: '#81ABDF'}}>
-                            <span>C.</span>
-                            <input placeholder='Answer'></input>
-                        </div>
-                        <div className="body_d" style={{ backgroundColor: '#FE8760'}}>
-                            <span>D.</span>
-                            <input placeholder='Answer'></input>
-                        </div>
+                    <div className="body_b" style={{ backgroundColor: '#EADDB5' }}>
+                        <span>B.</span>
+                        <input placeholder='Answer' value={lessionData.answer_b} onChange={e => changelessionDataHandler(e)}
+                            name='answer_b'></input>
                     </div>
-                    <div className='content_footer'>
-                        <span>True Answer</span>
-                        <Select options={options} />
+                    <div className="body_c" style={{ backgroundColor: '#81ABDF' }}>
+                        <span>C.</span>
+                        <input placeholder='Answer' value={lessionData.answer_c} onChange={e => changelessionDataHandler(e)}
+                            name='answer_c'></input>
+                    </div>
+                    <div className="body_d" style={{ backgroundColor: '#FE8760' }}>
+                        <span>D.</span>
+                        <input placeholder='Answer' value={lessionData.answer_d} onChange={e => changelessionDataHandler(e)}
+                            name='answer_d'></input>
                     </div>
                 </div>
-    </div>
-  )
+                <div className='content_footer'>
+                    <div>
+                    <span>True Answer</span>
+                    <select value={lessionData.answer} name='answer' onChange={e => changelessionDataHandler(e)}>
+                        {options.map(options => (
+                            <option value={options.value} >{options.label}</option>
+                        ))}
+                    </select>
+                    </div>
+                    <div>
+                    <span>Lession</span>
+                    {/* <select value={lessionData.id_lesstion} name='answer' onChange={e => changelessionDataHandler(e)}>
+                        {options.map(options => (
+                            <option value={options.value} >{options.label}</option>
+                        ))}
+                    </select> */}
+                    <input placeholder='Nhập bài học' value={lessionData.id_lesstion} onChange={e => changelessionDataHandler(e)}
+                            name='id_lesstion'></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
