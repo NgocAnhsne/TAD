@@ -2,7 +2,7 @@
 
 .home_cover{
     overflow: hidden;
-    background-image: url(../../components/asset/img/5138916_anhlich14.png);
+   
     
     background-size:cover; 
     background-repeat: no-repeat;
@@ -42,10 +42,17 @@
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+
         .home_first-banner {
             width: 72%;
+
             img{
                 width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+            .banner_2{
+                width: 100%;    
                 height: auto;
                 object-fit: cover;
             }
@@ -76,8 +83,9 @@
                 font-size: 24px;
                 &_btn {
                     padding: 20px;
-                    background-color: #62c7f3;
-                    color: white;
+                    background-color:white;
+                    //  #62c7f3
+                    color: #62c7f3;
                     font-family: "Coiny", system-ui;
                     font-weight: 400;
                     font-style: normal;
@@ -90,7 +98,10 @@
             }
         }
         
-       
+        .banner_3{
+            width: 50%;
+            margin: 0 auto;
+        }
         
         
         .box_shadow {

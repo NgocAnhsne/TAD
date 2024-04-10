@@ -22,7 +22,7 @@ function Home() {
           </div>
           <div className="home_first-banner_content">
             <div className="home_first-banner_content-title">
-              Nâng cao kỹ năng tiếng Anh với các trò chơi dân gian
+              Nâng cao kỹ năng tiếng Anh với các trò chơi 
             </div>
             <div className="home_first-banner_content-desc">
               <button
@@ -43,7 +43,7 @@ function Home() {
               Vui chơi cùng bạn bè
             </div>
             <div className="home_first-banner_content-desc">
-              Tham gia các trò chơi và tận hưởng cùng những người bạn
+              Tham gia các trò chơi và học tập cùng những người bạn
             </div>
           </div>
           <div className="home_first-banner">
@@ -55,13 +55,13 @@ function Home() {
           {/* <div className="home_first-banner">
             <img src={imgBanner3}></img>
           </div> */}
-          <div className="home_first-banner_content">
+          <div className="home_first-banner_content banner_3">
             <div className="home_first-banner_content-title">
               Tạo thêm động lực
             </div>
             <div className="home_first-banner_content_desc">
               Theo dõi lộ trình, xây dựng thói quen học tập, qua những tính năng
-              mô phỏng trò chơi, các thử thách vui vẻ, và nhắc nhở mỗi ngày
+              mô phỏng trò chơi, các thử thách vui vẻ
             </div>
           </div>
         </div>

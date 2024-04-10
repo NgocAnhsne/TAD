@@ -52,7 +52,7 @@ export default function Register() {
               name="name"
               title="name"
               required
-              onChange={e => changeUserFieldHandler(e)} 
+           
               
               id="email"/>
           </div>
@@ -63,7 +63,7 @@ export default function Register() {
               name="email"
               title="Email"
               required
-              onChange={e => changeUserFieldHandler(e)} />
+               />
           </div>
           <div className='login_wrapper-container_wrap-group'>
             <label>Mật khẩu:</label>
@@ -71,17 +71,10 @@ export default function Register() {
               name="password"
               title="password"
               required
-              onChange={e => changeUserFieldHandler(e)} />
+             />
           </div>
-          {/* <div className='login_wrapper-container_wrap-group'>
-            <label></label>
-            <input type="password" className="form-control" placeholder='Nhập lại mật khẩu'
-              value={password}
-              onChange={handlePasswordChange}
-              id="pwd"/>
-          </div>
-          {error && <div className="error-message">{error}</div>} */}
-          <button type="button" onClick={e => onSubmitChange(e)} className='login-button'>Đăng ký</button>
+          
+          <button type="button"  className='login-button'>Đăng ký</button>
         </div>
       </div>
     </div>

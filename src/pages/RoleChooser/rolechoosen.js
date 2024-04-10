@@ -30,19 +30,28 @@ const RoleChooser = () => {
     const onSubmitChange = async () => {
         try {
             const userData = { role: userField.role };
-            await axios.post("http://127.0.0.1:8000/api/update", userData);
+            await axios.post("http://127.0.0.1:8000/api/index", userData);
             setLoading(true);
             if (userField.role === '1') {
-                navigate('/teacher'); // Chuyển hướng nếu là giáo viên
+                navigate('/teacher');
             } else if (userField.role === '0') {
-                navigate('/student/profile'); // Chuyển hướng nếu là học sinh
+                navigate('/student/profile');
             } else if (userField.role === '2') {
-                navigate('/admin'); // Chuyển hướng nếu là admin
+                navigate('/admin');
             }
         } catch (err) {
             console.log("Something Wrong");
         }
     }
+    
+    // Thêm hàm này để cập nhật giá trị role
+    const handleChangeRole = (newRole) => {
+        setUserField(prevState => ({
+            ...prevState,
+            role: newRole
+        }));
+    }
+    
     
     return (
         <div>
@@ -62,7 +71,7 @@ const RoleChooser = () => {
                                 <span>
                                     <button className="roleChooser_container-wrapper_banner-box_button
                                         roleChooser_container-wrapper_banner-box_button-left"
-                                        onClick={() => handleRoleSelection('1')}>
+                                        onClick={() => handleChangeRole('1')}>
                                         Khám phá ngay
                                     </button>
                                 </span>
