@@ -7,6 +7,7 @@ import { TbAdjustmentsQuestion } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import caydua from '~/components/asset/img/CayDua.jpg'
 import axios from 'axios';
+import { TbEye } from "react-icons/tb";
 import Moment from 'moment';
 export default function ListTest() {
 
@@ -69,8 +70,8 @@ export default function ListTest() {
                         <div onClick={()=>handleDelete(lession.id)}>
                             <RiDeleteBinLine className='icon' />
                         </div>
-                        <Link to={`/teacher/questiontext/edit/${lession.id}`}>
-                            <TbAdjustmentsQuestion className='icon' />
+                        <Link to={`/teacher/questiontext/view/${lession.id}`}>
+                            <TbEye className='icon' />
                         </Link>
                     </div>
                 </div>
