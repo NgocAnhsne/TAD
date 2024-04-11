@@ -1,0 +1,72 @@
+.lessonStudent {
+  background-color: var(--color-background-14);
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 50px 0 50px;
+  z-index: 1;
+  position: sticky;
+  &__title {
+    padding: 20px 30px;
+    h1 {
+      color: var(--color-text-4);
+    }
+  }
+  &__content {
+    padding: 0 30px;
+
+    &--list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 2%;
+      &__item {
+        background-color: var(--color-background-20);
+        border-radius: var(--border-radius-size-5);
+        min-height: 150px;
+        width: 400px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 20px;
+
+        &--left {
+          font-size: var(--size-text-6);
+          color: var(--color-text-1);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          &__title {
+            font-family: "Alike", system-ui;
+            margin-bottom: 20px;
+          }
+          &__btn {
+            background-color: var(--color-background-1);
+            color: var(--color-text-5);
+            width: 50%;
+            padding: 8px 12px;
+            text-align: center;
+            border-radius: var(--border-radius-size-5);
+            margin-top: 10px;
+          }
+        }
+        &--right {
+          width: 40%;
+          padding: 20px 0;
+          float: inline-end;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.lesson2 {
+  background-color: var(--color-background-3);
+}
+.lesson3 {
+  background-color: var(--color-background-21);
+}

@@ -9,7 +9,7 @@ import { CiLogout } from "react-icons/ci";
 import logoSidebar from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 function SidebarStudent() {
-    return ( 
+    return (
         <div className="sidebar">
             <div className="top">
                 <Link to="/" style={{textDecoration:"none"}}>
@@ -21,8 +21,10 @@ function SidebarStudent() {
             </div>
             <hr />
             <div className="user">
+                <Link to='/student/profile'>
                 <img src={avatar} className="logo"></img>
                 <span>Student</span>
+                </Link>
             </div>
             <div className="center">
                 <ul>
@@ -41,16 +43,16 @@ function SidebarStudent() {
                     <Link to="/" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
-                            <span>Chơi 2 người</span>
+                            <span>Lộ trình</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/student/rank" style={{textDecoration:"none"}}>
                         <li>
                             <FaRankingStar  className="icon"/>
                             <span>Xếp hạng</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/student/history" style={{textDecoration:"none"}}>
                         <li>
                             <FaHistory  className="icon"/>
                             <span>Lịch sử</span>

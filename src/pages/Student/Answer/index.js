@@ -20,35 +20,36 @@ function AnswerStudent() {
         </div>
       </div>
       <div className="answerStudent__content">
-        <div className="answerStudent__content--img">
+      <div className="answerStudent__content--top">
+        <div className="answerStudent__content--top__img">
           <img src={AnswerStudentImg} />
         </div>
-        <div className="answerStudent__content--question">
-          <div className="answerStudent__content--question__box">
+        <div className="answerStudent__content--top__question">
+          <div className="answerStudent__content--top__question--box">
             {/* <div className="answerStudent__content--question__box--fill">
             </div> */}
-            <div className="answerStudent__content--question__box--text">
+            <div className="answerStudent__content--qtop__question--box__text">
             ______ going to have to work hard to achieve your goals.
             </div>
           </div>
         </div>
       </div>
-      <div className="answerStudent__answer">
-            <div className="answerStudent__answer--list">
-              <div className="answerStudent__answer--list__item">
+      <div className="answerStudent__content--bottom">
+            <div className="answerStudent__content--bottom__list">
+              <div className="answerStudent__content--bottom__list--item">
                 <button>Youre</button>
               </div>
-              <div className="answerStudent__answer--list__item">
+              <div className="answerStudent__content--bottom__list--item">
                 <button>Yours</button>
               </div>
-              <div className="answerStudent__answer--list__item">
+              <div className="answerStudent__content--bottom__list--item">
                 <button>Your</button>
               </div>
-              <div className="answerStudent__answer--list__item">
+              <div className="answerStudent__content--bottom__list--item">
                 <button>You're</button>
               </div>
-            
             </div>
+      </div>
       </div>
     </div>
   );
