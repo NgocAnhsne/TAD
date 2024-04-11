@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../style.scss'
+
 import { FaPlus } from "react-icons/fa";
 import axios from 'axios';
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
-export default function ViewQuestion() {
+export default function ViewQuestionText() {
 
 
 
@@ -60,8 +61,7 @@ export default function ViewQuestion() {
 
 
     return (
-        <div className='admin'>
-                    <div className='teacher_component'>
+        <div className='teacher_component'>
             <div className="question_header">
                 <div><h1>Tạo câu hỏi chữ</h1></div>
                 <div className='header_right'>
@@ -69,13 +69,12 @@ export default function ViewQuestion() {
                         <span>Số lượng hiện tại</span> <b>{questionData.length}</b>
                     </div>
                     <div>
-                        <Link to='/admin/lession'><span className='question_back'>Quay Lại</span></Link>
+                        <Link to='/teacher/lession'><span className='question_back'>Quay Lại</span></Link>
                     </div>
                 </div>
             </div>
             <div className="question_content">
-                {questionData.length > 0 ? (
-                questionData.map((question) => (
+                {questionData.map((question) => (
                     <div className="content_section" name="id" value={question.id}>
                         <div className="content_header">
                             <span>Question 1</span>
@@ -129,15 +128,8 @@ export default function ViewQuestion() {
                         </div>
                     </div>
                 ))
-            ):(
-                <h2 className="text-danger text-center">
-                    Không tìm thấy câu hỏi nào
-                </h2>
-            )
                 }
             </div>
         </div>
-        </div>
-
     )
 }

@@ -41,6 +41,9 @@ import AdminLession from '~/pages/Admin/Lession/Lession.js';
 import EditLession from '~/pages/Admin/Lession/EditLession.js';
 import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
+import ViewQuestionText from '~/components/Teacher/Create/CreatQuestion/Text/ViewQuestionText.js';
+import CreatQuestionText from '~/components/Teacher/Create/CreatQuestion/Text/index.js';
+import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
 
 
 
@@ -73,7 +76,7 @@ const publicRoutes = [
     {path: '/teacher/profile/edit', component: EditProfileTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
-    {path: '/teacher/questiontext/edit/:id', component: QuestionTextTeacher, layout: SidebarTeacher },
+    {path: '/teacher/questiontext/view/:id', component: ViewQuestionTextTeacher, layout: SidebarTeacher },
 
 
     {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
@@ -98,8 +101,8 @@ const publicRoutes = [
 
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   
-    {path: '/admin/lession/edit/:id', component: ViewQuestion, layout: SidebarAdmin },   
-    {path: '/admin/lession/view/:id', component: EditLession, layout: SidebarAdmin },   
+    {path: '/admin/lession/view/:id', component: ViewQuestion, layout: SidebarAdmin },   
+    {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },   
     
     {path: '/*', component: NotFound,layout: null },  
 
