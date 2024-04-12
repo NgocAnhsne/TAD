@@ -1,5 +1,6 @@
-import '../../../Teacher/style.scss'
 import CreatQuestionText from '~/components/Teacher/Create/CreatQuestion/Text';
+import '../../../Teacher/style.scss'
+
 
 
 

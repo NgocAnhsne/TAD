@@ -33,10 +33,10 @@ function SidebarTeacher() {
                             <span>Trang chủ</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/teacher/questiontext" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
-                            <span>Chơi 2 người</span>
+                            <span>Tạo câu hỏi</span>
                         </li>
                     </Link>
                     <Link to="/teacher" style={{textDecoration:"none"}}>

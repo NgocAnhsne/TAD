@@ -4,6 +4,8 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { FaRegEdit } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Upload from '~/pages/Upload'
+import { TbEye } from "react-icons/tb";
+
 
 export default function AdminLession() {
     const [isVisibleLoading, setIsVisibleLoading] = useState(false)
@@ -86,12 +88,12 @@ export default function AdminLession() {
 
                                 
                                 <td className='icon'>
-                                    <Link to={`/admin/lession/edit/${lession.id}`}>
-                                        <FaRegEdit color='blue' />
+                                    <Link to={`/admin/lession/view/${lession.id}`}>
+                                        <TbEye  color='blue' />
                                     </Link>
                                 </td>
                                 <td className='icon'>
-                                    <Link to={`/admin/lession/view/${lession.id}`}>
+                                    <Link to={`/admin/lession/edit/${lession.id}`}>
                                         <FaRegEdit color='blue' />
                                     </Link>
                                 </td>
