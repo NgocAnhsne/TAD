@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "./style.scss";
 import image_login from"~/components/asset/img/login.png";
-import AuthUser from "~/pages/Login/AuthUser"
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 

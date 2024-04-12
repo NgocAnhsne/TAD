@@ -13,7 +13,6 @@ export default function RoleChooser() {
   const [userField, setUserField] = useState({
     name: "",
     email: "",
-    password: "",
     role: "",
   });
 
@@ -40,6 +39,7 @@ export default function RoleChooser() {
         // Update role locally after successful request
         console.log("Role updated successfully!");
       console.log(userField);
+      navigate(`/student/profile`)
     } catch (err) {
       console.log("Something Wrong");
     }
@@ -59,18 +59,17 @@ export default function RoleChooser() {
         // Update role locally after successful request
         console.log("Role updated successfully!");
       console.log(userField);
+      navigate(`/teacher/`)
     } catch (err) {
       console.log("Something Wrong");
     }
   };
   return (
     <div>
-      <Header />
       <div className="roleChooser">
         <div className="roleChooser_container">
             <div className="roleChooser_container-welc">
                 Chào mừng người dùng:
-            
           {userField && (
             <div className="user-info">
               <div className="user-info-row">
@@ -88,7 +87,7 @@ export default function RoleChooser() {
             </div>
           )}
           </div>
-            <button onClick={fetchUser}>check</button>
+            <button className="check_btn" onClick={fetchUser}>check</button>
           <div className="roleChooser_container-wrapper">
             <div className="roleChooser_container-wrapper_banner ">
               <img src={teacher_image} alt="Teacher"></img>
@@ -105,6 +104,7 @@ export default function RoleChooser() {
                     className="roleChooser_container-wrapper_banner-box_button
                                         roleChooser_container-wrapper_banner-box_button-left"
                     onClick={handleTeacherRoleChange}
+                    
                   >
                     Khám phá ngay
                   </button>

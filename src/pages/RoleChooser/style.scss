@@ -31,6 +31,14 @@
                 }
             }
          }
+         .check_btn{
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            border: 2px solid pink;
+            max-width: 250px;
+            margin: 0 auto;
+         }
         &-wrapper {
             height:  550px;
             justify-content: space-between;
