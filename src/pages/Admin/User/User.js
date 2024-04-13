@@ -10,7 +10,7 @@ import Upload from '~/pages/Upload';
 
 export default function AdminUser() {
 
-    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
+    const [isVisibleLoading, setIsVisibleLoading] = useState(true)
 
     const [userData, setUserData] = useState([]);
     useEffect(() => {
@@ -25,18 +25,26 @@ export default function AdminUser() {
         } catch (err) {
             console.log("somthing Wrong");
         }
+        setIsVisibleLoading(false);
     }
 
     const handleDelete=async(id)=>{
-        console.log(id);
-        await axios.delete("http://127.0.0.1:8000/api/user/delete/"+id);
-        const newUserData=userData.filter((item)=>{
+
+       const response = await axios.delete("http://127.0.0.1:8000/api/user/delete/"+id);
+        if (window.confirm("Bạn có muốn xoá danh mục này")){
+            const newUserData=userData.filter((item)=>{
+            if (response){
             alert("Đã xoá danh mục");
             return(
                 item.id !==id
             )
+            
+        }else alert("Đã xảy ra lỗi xoá danh mục này");
         })
+        
         setUserData(newUserData);
+
+    }
     }
 
     return (

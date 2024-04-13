@@ -41,8 +41,6 @@ import AdminLession from '~/pages/Admin/Lession/Lession.js';
 import EditLession from '~/pages/Admin/Lession/EditLession.js';
 import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
-import ViewQuestionText from '~/components/Teacher/Create/CreatQuestion/Text/ViewQuestionText.js';
-import CreatQuestionText from '~/components/Teacher/Create/CreatQuestion/Text/index.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
 
 

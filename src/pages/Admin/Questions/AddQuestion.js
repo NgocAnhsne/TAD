@@ -4,7 +4,7 @@ import './style.scss'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function EditQuestionAdmin() {
+export default function AddQuestionAdmin() {
     const options = [
         { value: '', label: '---Chọn đáp án---' },
         { value: 'a', label: 'A' },
@@ -14,9 +14,9 @@ export default function EditQuestionAdmin() {
     ]
     const {id}=useParams()
     const navigate = useNavigate();
-    const [loading,setLoading]=useState()
+    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
  
-    const [lessionData, setLessionData] = useState({
+    const [questionData, setquestionData] = useState({
         id_lesstion: "",
         question_text: "",
         answer_a: "",
@@ -26,27 +26,27 @@ export default function EditQuestionAdmin() {
         answer: "",
     });
  
-    const changelessionDataHandler = (e) => {
-        setLessionData({
-            ...lessionData,
+    const changequestionDataHandler = (e) => {
+        setquestionData({
+            ...questionData,
             [e.target.name]: e.target.value
         });
-        //console.log(lessionData);
+        //console.log(questionData);
  
     }
     
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-           await axios.post("http://127.0.0.1:8000/api/question/create", lessionData);
-            setLoading(true);
+           await axios.post("http://127.0.0.1:8000/api/question/create", questionData);
+           setIsVisibleLoading(true);
         } catch (err) {
             console.log("Something Wrong");
         }
     }
-    if(loading){
+    if(isVisibleLoading){
         return (
-            navigate('/admin/lession')
+            navigate('/admin/question')
         )
     }
     return (
@@ -67,34 +67,34 @@ export default function EditQuestionAdmin() {
                 <div className="content_header">
                     <span>Question 1:</span>
                     <input placeholder='Question?' name='question_text'
-                        value={lessionData.question_text || ""} onChange={e => changelessionDataHandler(e)}></input>
+                        value={questionData.question_text || ""} onChange={e => changequestionDataHandler(e)}></input>
                 </div>
                 <div className="content_body">
                     <div className="body_a" style={{ backgroundColor: '#B0D8E6' }}>
                         <span>A.</span>
-                        <input placeholder='Answer' value={lessionData.answer_a} onChange={e => changelessionDataHandler(e)}
+                        <input placeholder='Answer' value={questionData.answer_a} onChange={e => changequestionDataHandler(e)}
                             name='answer_a'></input>
                     </div>
                     <div className="body_b" style={{ backgroundColor: '#EADDB5' }}>
                         <span>B.</span>
-                        <input placeholder='Answer' value={lessionData.answer_b} onChange={e => changelessionDataHandler(e)}
+                        <input placeholder='Answer' value={questionData.answer_b} onChange={e => changequestionDataHandler(e)}
                             name='answer_b'></input>
                     </div>
                     <div className="body_c" style={{ backgroundColor: '#81ABDF' }}>
                         <span>C.</span>
-                        <input placeholder='Answer' value={lessionData.answer_c} onChange={e => changelessionDataHandler(e)}
+                        <input placeholder='Answer' value={questionData.answer_c} onChange={e => changequestionDataHandler(e)}
                             name='answer_c'></input>
                     </div>
                     <div className="body_d" style={{ backgroundColor: '#FE8760' }}>
                         <span>D.</span>
-                        <input placeholder='Answer' value={lessionData.answer_d} onChange={e => changelessionDataHandler(e)}
+                        <input placeholder='Answer' value={questionData.answer_d} onChange={e => changequestionDataHandler(e)}
                             name='answer_d'></input>
                     </div>
                 </div>
                 <div className='content_footer'>
                     <div>
                     <span>True Answer</span>
-                    <select value={lessionData.answer} name='answer' onChange={e => changelessionDataHandler(e)}>
+                    <select value={questionData.answer} name='answer' onChange={e => changequestionDataHandler(e)}>
                         {options.map(options => (
                             <option value={options.value} >{options.label}</option>
                         ))}
@@ -102,12 +102,12 @@ export default function EditQuestionAdmin() {
                     </div>
                     <div>
                     <span>Lession</span>
-                    {/* <select value={lessionData.id_lesstion} name='answer' onChange={e => changelessionDataHandler(e)}>
+                    {/* <select value={questionData.id_lesstion} name='answer' onChange={e => changequestionDataHandler(e)}>
                         {options.map(options => (
                             <option value={options.value} >{options.label}</option>
                         ))}
                     </select> */}
-                    <input placeholder='Nhập bài học' value={lessionData.id_lesstion} onChange={e => changelessionDataHandler(e)}
+                    <input placeholder='Nhập bài học' value={questionData.id_lesstion} onChange={e => changequestionDataHandler(e)}
                             name='id_lesstion'></input>
                     </div>
                 </div>

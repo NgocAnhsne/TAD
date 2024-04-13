@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Upload from '~/pages/Upload'
 
 export default function AdminQuestions() {
-    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
+    const [isVisibleLoading, setIsVisibleLoading] = useState(true)
 
     const [questionData, setQuestionData] = useState([]);
     useEffect(() => {
@@ -21,10 +21,10 @@ export default function AdminQuestions() {
         } catch (err) {
             console.log("somthing Wrong");
         }
+        setIsVisibleLoading(false)
     }
 
     const handleDelete=async(id)=>{
-        console.log(id);
         await axios.delete("http://127.0.0.1:8000/api/question/delete/"+id);
         const newQuestionData=questionData.filter((item)=>{
             alert("Đã xoá danh mục");
