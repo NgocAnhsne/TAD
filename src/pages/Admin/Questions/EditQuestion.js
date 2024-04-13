@@ -110,11 +110,13 @@ export default function EditQuestionAdmin() {
                     </div>
                     <div>
                     <span>Lession</span>
-                    <select value={questionField.answer} name='answer' onChange={e => changeQuestionFieldHandler(e)}>
+                    <input placeholder='Nhập bài học' value={questionField.id_lesstion} onChange={e => changeQuestionFieldHandler(e)}
+                            name='id_lesstion'></input>
+                    {/* <select value={questionField.answer} name='answer' onChange={e => changeQuestionFieldHandler(e)}>
                         {options.map(options => (
                             <option value={options.value} >{options.label}</option>
                         ))}
-                    </select>
+                    </select> */}
                     </div>
                 </div>
             </div>

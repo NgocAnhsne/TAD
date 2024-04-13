@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Upload from '~/pages/Upload'
 
 export default function AdminGame() {
-    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
+    const [isVisibleLoading, setIsVisibleLoading] = useState(true)
 
     const [gameData, setGameData] = useState([]);
     useEffect(() => {
@@ -21,10 +21,10 @@ export default function AdminGame() {
         } catch (err) {
             console.log("somthing Wrong");
         }
+        setIsVisibleLoading(false)
     }
 
     const handleDelete=async(id)=>{
-        console.log(id);
         await axios.delete("http://127.0.0.1:8000/api/game/delete/"+id);
         const newGameData=gameData.filter((item)=>{
             alert("Đã xoá danh mục");
