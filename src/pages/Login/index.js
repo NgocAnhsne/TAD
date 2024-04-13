@@ -25,10 +25,10 @@ function Login() {
       return;
     }
 
-    http.post('/login', { email, password })
+    http.post('/login',{email:email,password:password })
       .then((res) => {
         console.log(res.data);
-        setToken(res.data.user, res.data.access_token);
+        setToken(res.data.user,res.data.access_token);
       })
       .catch((error) => {
         setError("Tên tài khoản/ mật khẩu không hợp lệ");
