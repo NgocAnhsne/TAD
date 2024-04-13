@@ -12,13 +12,13 @@ export default function AuthUser() {
   };
 
   const getUser = () => {
-    const tokenString = sessionStorage.getItem('user');
-    const user_detail = JSON.parse(tokenString);
+    const userString = sessionStorage.getItem('user');
+    const user_detail = JSON.parse(userString);
     return user_detail;
   };
 
-  const [token, setToken] = useState();
-  const [user, setUser] = useState();
+  const [token, setToken] = useState(getToken());
+  const [user, setUser] = useState(getUser());
 
   const saveToken = (user, token) => {
     sessionStorage.setItem('token', JSON.stringify(token));

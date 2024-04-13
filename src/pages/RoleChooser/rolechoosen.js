@@ -14,6 +14,7 @@ export default function RoleChooser() {
     name: "",
     email: "",
     role: "",
+    password:"",
   });
 
   useEffect(() => {
