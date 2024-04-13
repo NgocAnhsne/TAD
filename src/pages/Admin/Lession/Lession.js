@@ -8,13 +8,13 @@ import { TbEye } from "react-icons/tb";
 
 
 export default function AdminLession() {
-    const [isVisibleLoading, setIsVisibleLoading] = useState(false)
+    const [isVisibleLoading, setIsVisibleLoading] = useState(true)
 
     const [lesionData, setLesionData] = useState([]);
     const [questionData, setQuestionData] = useState([]);
     useEffect(() => {
         fetchData();
-        fetchData1();
+
     }, [])
 
     const fetchData = async () => {
@@ -22,23 +22,17 @@ export default function AdminLession() {
             const result = await axios("http://127.0.0.1:8000/api/lession/all");
             
             setLesionData(result.data.data)
-        } catch (err) {
-            console.log("somthing Wrong");
-        }
-    }
-    const fetchData1 = async (id) => {
-        try {
-            const result = await axios("http://127.0.0.1:8000/api/question-by-lession/"+id);
             
-            setQuestionData(result.data.data)
         } catch (err) {
             console.log("somthing Wrong");
         }
+        setIsVisibleLoading(false)
+        
     }
+
     
 
     const handleDelete=async(id)=>{
-        console.log(id);
         await axios.delete("http://127.0.0.1:8000/api/lession/delete/"+id);
         const newLesionData=lesionData.filter((item)=>{
             alert("Đã xoá danh mục");
@@ -69,8 +63,7 @@ export default function AdminLession() {
                         <th scope="col-20">Mô tả</th>
                         <th scope="col-20">Thời gian</th>
                         <th scope="col-20">Loại câu hỏi</th>
-                        <th scope="col-20">Số lượng câu hỏi</th>
-                        <th scope="col">Xem số câu hỏi</th>
+                        <th scope="col">Xem câu hỏi</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xoá</th>
                     </tr>
@@ -84,7 +77,7 @@ export default function AdminLession() {
                                 <td>{lession.description}</td>
                                 <td>{lession.time}</td>
                                 <td>{lession.type}</td>
-                                <td>{lesionData.length}</td>
+                      
 
                                 
                                 <td className='icon'>
