@@ -70,8 +70,8 @@ const publicRoutes = [
     {path: '/teacher/lession', component: ListTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/lession/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
 
-    {path: '/teacher/profile', component: ProfileTeacher, layout: SidebarTeacher },
-    {path: '/teacher/profile/edit', component: EditProfileTeacher, layout: SidebarTeacher },
+    {path: '/teacher/profile/:id', component: ProfileTeacher, layout: SidebarTeacher },
+    {path: '/teacher/profile/edit/:id', component: EditProfileTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
     {path: '/teacher/questiontext/view/:id', component: ViewQuestionTextTeacher, layout: SidebarTeacher },

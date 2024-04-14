@@ -5,6 +5,37 @@
     padding: 30px 50px 0 50px;
     z-index: 1;
     position: sticky;
+    .header{
+        display: flex;
+        justify-content: space-between;
+
+        .header_add,.header_cancel,.header_save{
+            background: #F9F9F9;
+            border-radius: 30px;
+            padding:  15px 20px;
+            height: fit-content;
+            cursor: pointer;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            
+            &:hover{
+                background: #62C7F3;
+
+            }
+        }
+        .header_cancel{
+            margin-right: 10px;
+
+            &:hover{
+                background-color: rgb(249, 87, 87);
+            }
+        }
+        .header_save{
+            background: #62C7F3;
+             &:hover{
+                opacity: 0.9;
+             }
+        }
+    }
     img{
         width: 900px;
         height: 900px;
