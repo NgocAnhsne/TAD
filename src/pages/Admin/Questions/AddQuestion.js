@@ -65,7 +65,7 @@ export default function AddQuestionAdmin() {
             </div>
             <div className="content_section">
                 <div className="content_header">
-                    <span>Question 1:</span>
+                    <span>Thêm câu hỏi:</span>
                     <input placeholder='Question?' name='question_text'
                         value={questionData.question_text || ""} onChange={e => changequestionDataHandler(e)}></input>
                 </div>

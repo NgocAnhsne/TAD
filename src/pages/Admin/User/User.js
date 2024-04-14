@@ -22,10 +22,11 @@ export default function AdminUser() {
             const result = await axios("http://127.0.0.1:8000/api/alluser");
             
             setUserData(result.data.data)
+            setIsVisibleLoading(false);
         } catch (err) {
             console.log("somthing Wrong");
         }
-        setIsVisibleLoading(false);
+        
     }
 
     const handleDelete=async(id)=>{

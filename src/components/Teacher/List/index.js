@@ -43,7 +43,7 @@ export default function ListTest() {
         <div className='teacher_component'>
             <div className='list_container'>
             {lessionData.length > 0 ? (
-                        lessionData.map((lession, i) => (
+                lessionData.map((lession, i) => (
 
                 <div className='list_content'>
                     <div className='list_header'>
@@ -77,7 +77,11 @@ export default function ListTest() {
                 </div>
                         ))
             ) : (
-                <div></div>
+                <div>
+                    <h1 className="text-danger text-center">
+                                    Không tìm thấy bộ đề nào
+                                </h1>
+                </div>
             )}
             </div>
     

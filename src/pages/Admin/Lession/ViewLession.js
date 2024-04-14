@@ -23,6 +23,11 @@ export default function ViewQuestion() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
     const [questionData, setQuestionData] = useState([]);
+    const numberOfQuestions = 40;
+
+    const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
+
+
 
     const [questionField, setQuestionField] = useState({
         question_text: "",
@@ -75,10 +80,10 @@ export default function ViewQuestion() {
             </div>
             <div className="question_content">
                 {questionData.length > 0 ? (
-                questionData.map((question) => (
+                questionData.map((question, index) => (
                     <div className="content_section" name="id" value={question.id}>
                         <div className="content_header">
-                            <span>Question 1</span>
+                            <span>Question {index + 1}</span>
                             <input placeholder='Question?'
 
                                 name='question_text'
