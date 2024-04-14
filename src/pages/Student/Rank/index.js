@@ -2,145 +2,93 @@ import "./style.scss";
 import bgRank from "~/components/asset/img/bgRank.png";
 import rankImg from "~/components/asset/img/quality_restoration_20240229152.jpg";
 import medal from "~/components/asset/img/medal1.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Rank() {
+  const [isVisibleLoading, setIsVisibleLoading] = useState(false);
+
+  const [lessionData, setLessionData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios("http://127.0.0.1:8000/api/rank");
+      setLessionData(result.data.data);
+      console.log(result.data.data);
+    } catch (err) {
+      console.log("somthing Wrong");
+    }
+  };
+  var moment = require("moment");
+
+  const listRank = [ {
+    name: '', 
+  }];
+
+  const arrayOrd = [1];
   return (
     <div className="rank">
-
-        <div className="rank__title">
-          <h1>Bảng xếp hàng</h1>
-        </div>
-        <div className="rank__content">
-          <div className="rank__content--box">
-            <div className="rank__content--box--list">
-              <div className="rank__content--box--list__item">
-                <div className="rank__content--box--list__item--left">
-                  <div className="rank__content--box--list__item--left__ord">
-                    <div className="rank__content--box--list__item--left__ord--number">
-                      1
+      <div className="rank__title">
+        <h1>Bảng xếp hàng</h1>
+      </div>
+      <div className="rank__content">
+        <div className="rank__content--box">
+          <div className="rank__content--box--list">
+            {/* <div className=""> */}
+              {lessionData.length > 0 ? (
+                lessionData.map((item, i) =>
+                  arrayOrd.map((itemIcon, i) => (
+                    <div className="rank__content--box--list__item">
+                      <div className="rank__content--box--list__item--left">
+                        <div className="rank__content--box--list__item--left__ord">
+                          <div className="rank__content--box--list__item--left__ord--number">
+                            {arrayOrd}
+                          </div>
+                        </div>
+                        <div className="rank__content--box--list__item--left__name">
+                          <div className="rank__content--box--list__item--left__name--text">
+                            {item.name}
+                          </div>
+                        </div>
+                      </div>
+                      <hr></hr>
+                      <div className="rankServe__container--content__right">
+                        <div className="rank__content--box--list__item--right__score">
+                          {item.score}
+                        </div>
+                        <div className="rank__content--box--list__item--right__medal">
+                          {/* {arrayIcon} */}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="rank__content--box--list__item--left__name">
-                    <div className="rank__content--box--list__item--left__name--text">
-                      Karina
-                    </div>
-                  </div>
-                </div>
-                <div className="rank__content--box--list__item--right">
-                  <div className="rank__content--box--list__item--right__score">
-                    129
-                  </div>
-                  <div className="rank__content--box--list__item--right__medal">
-                    <img src={medal} />
-                  </div>
-                </div>
-              </div>
-              <div className="rank__content--box--list__item">
-                <div className="rank__content--box--list__item--left">
-                  <div className="rank__content--box--list__item--left__ord">
-                    <div className="rank__content--box--list__item--left__ord--number">
-                      2
-                    </div>
-                  </div>
-                  <div className="rank__content--box--list__item--left__name">
-                    <div className="rank__content--box--list__item--left__name--text">
-                      Winter
-                    </div>
-                  </div>
-                </div>
-                <div className="rank__content--box--list__item--right">
-                  <div className="rank__content--box--list__item--right__score">
-                    120
-                  </div>
-                  <div className="rank__content--box--list__item--right__medal">
-                    <img src={medal} />
-                  </div>
-                </div>
-              </div>
-              <div className="rank__content--box--list__item">
-                <div className="rank__content--box--list__item--left">
-                  <div className="rank__content--box--list__item--left__ord">
-                    <div className="rank__content--box--list__item--left__ord--number">
-                      3
-                    </div>
-                  </div>
-                  <div className="rank__content--box--list__item--left__name">
-                    <div className="rank__content--box--list__item--left__name--text">
-                      Giselle
-                    </div>
-                  </div>
-                </div>
-                <div className="rank__content--box--list__item--right">
-                  <div className="rank__content--box--list__item--right__score">
-                    90
-                  </div>
-                  <div className="rank__content--box--list__item--right__medal">
-                    <img src={medal} />
-                  </div>
-                </div>
-              </div>
-              <div className="rank__content--box--list__item">
-                <div className="rank__content--box--list__item--left">
-                  <div className="rank__content--box--list__item--left__ord">
-                    <div className="rank__content--box--list__item--left__ord--number">
-                      4
-                    </div>
-                  </div>
-                  <div className="rank__content--box--list__item--left__name">
-                    <div className="rank__content--box--list__item--left__name--text">
-                      MinCheon
-                    </div>
-                  </div>
-                </div>
-                <div className="rank__content--box--list__item--right">
-                  <div className="rank__content--box--list__item--right__score">
-                    88
-                  </div>
-                  {/* <div className="rank__content--box--list__item--right__medal">
-                  <img src={medal}/>
-                </div> */}
-                </div>
-              </div>
-              <div className="rank__content--box--list__item">
-                <div className="rank__content--box--list__item--left">
-                  <div className="rank__content--box--list__item--left__ord">
-                    <div className="rank__content--box--list__item--left__ord--number">
-                      5
-                    </div>
-                  </div>
-                  <div className="rank__content--box--list__item--left__name">
-                    <div className="rank__content--box--list__item--left__name--text">
-                      Baekhyun
-                    </div>
-                  </div>
-                </div>
-                <div className="rank__content--box--list__item--right">
-                  <div className="rank__content--box--list__item--right__score">
-                    80
-                  </div>
-                  {/* <div className="rank__content--box--list__item--right__medal">
-                  <img src={medal}/>
-                </div> */}
-                </div>
-              </div>
-            </div>
+                  ))
+                )
+              ) : (
+                <div></div>
+              )}
+            {/* </div> */}
           </div>
-          <div className="rank__content--level">
-            <div className="rank__content--level__announce">
-              <div className="rank__content--level__announce--title">
-                Học tập. Kiếm KN. Thi đua.
-              </div>
-              <div className="rank__content--level__announce--text">
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học
-                khác trên bảng xếp hạng hằng tuần.
-              </div>
-              <div className="rank__content--level__announce--img">
-                <img src={rankImg} />
-              </div>
+        </div>
+
+        <div className="rank__content--level">
+          <div className="rank__content--level__announce">
+            <div className="rank__content--level__announce--title">
+              Học tập. Kiếm KN. Thi đua.
+            </div>
+            <div className="rank__content--level__announce--text">
+              Kiếm thật nhiều KN từ các bài học để thi đua với những người học
+              khác trên bảng xếp hạng hằng tuần.
+            </div>
+            <div className="rank__content--level__announce--img">
+              <img src={rankImg} />
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 }
 
