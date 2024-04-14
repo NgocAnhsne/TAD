@@ -56,7 +56,7 @@ export default function EditProfileTeacher() {
       <div className='header'>
                 <div><h1>Thêm/cập nhật bài học</h1></div>
                 <div>
-                <Link to={`/teacher/profile/${userField.id}`} className='header_cancel'>
+                <Link to={`/teacher/profile/`} className='header_cancel'>
                     <span>Hủy và quay lại</span>
                 </Link>
                 <Link className='header_save' onClick={e => onSubmitChange(e)} onSubmitChange={e => onSubmitChange(e)}>
