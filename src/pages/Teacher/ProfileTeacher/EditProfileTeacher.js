@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export default function EditProfileTeacher() {
 
@@ -43,7 +43,7 @@ export default function EditProfileTeacher() {
         e.preventDefault();
         try {
             await axios.put("http://127.0.0.1:8000/api/user/update/"+id, userField);
-            navigate('/admin/users')
+            navigate(`/teacher/profile/${userField.id}`)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -53,7 +53,17 @@ export default function EditProfileTeacher() {
 
   return (
     <div className='teacher'>
-      <h1>Chỉnh sửa trang cá nhân</h1>
+      <div className='header'>
+                <div><h1>Thêm/cập nhật bài học</h1></div>
+                <div>
+                <Link to={`/teacher/profile/${userField.id}`} className='header_cancel'>
+                    <span>Hủy và quay lại</span>
+                </Link>
+                <Link className='header_save' onClick={e => onSubmitChange(e)} onSubmitChange={e => onSubmitChange(e)}>
+                    <span>Lưu các thay đổi</span>
+                </Link>
+                </div>
+            </div>
       <Form
             method="post"
             encType=""
@@ -68,7 +78,7 @@ export default function EditProfileTeacher() {
                   name="name"
                   title="name"
                   required
-                  // value={userField.name}
+                  value={userField.name}
                   onChange={e => changeUserFieldHandler(e)}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -87,7 +97,7 @@ export default function EditProfileTeacher() {
                   name="email"
                   title="Email"
                   required
-                  // value={userField.email}
+                  value={userField.email}
                   onChange={e => changeUserFieldHandler(e)}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -107,7 +117,7 @@ export default function EditProfileTeacher() {
                   name="password"
                   title="Password"
                   required
-                  // value={userField.password} 
+                  value={userField.password} 
                   onChange={e => changeUserFieldHandler(e)}
                 />
                 <Form.Control.Feedback type="invalid">
