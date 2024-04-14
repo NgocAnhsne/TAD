@@ -47,12 +47,12 @@ export default function Profiles() {
                     </div>
                     <div className='left_content'>
                         <div className='left_name'>
-                            <div><span className='meidum'>Teacher</span></div>
-                            <div><span className='opacity'>nguyenvana</span></div>
+                            <div><span className='meidum'>{userField.name}</span></div>
+                            {/* <div><span className='opacity'>nguyenvana</span></div> */}
                         </div>
-                        <div className='left_email'><span>Email: <span>nguyenvana@gmail.com</span></span></div>
-                        <div className='left_role'><span>Role: <span>Teacher</span></span></div>
-                        <div className='left_join'><span>Đã tham gia vào Tháng Ba 2023</span></div>
+                        <div className='left_email'><span>Email: <span>{userField.email}</span></span></div>
+                        <div className='left_role'><span>Role: <span>{userField.role}</span></span></div>
+                        <div className='left_join'><span>{userField.create_add}</span></div>
                     </div>
                     <div className='left_edit'>
                         <Link to='/teacher/profile/edit'>
