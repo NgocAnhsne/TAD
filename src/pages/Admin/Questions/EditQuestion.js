@@ -7,10 +7,10 @@ import axios from 'axios'
 export default function EditQuestionAdmin() {
     const options = [
         { value: '', label: '---Chọn đáp án---' },
-        { value: 'a', label: 'A' },
-        { value: 'b', label: 'B' },
-        { value: 'c', label: 'C' },
-        { value: 'd', label: 'D' }
+        { value: 'answer a', label: 'A' },
+        { value: 'answer b', label: 'B' },
+        { value: 'answer c', label: 'C' },
+        { value: 'answer d', label: 'D' }
     ]
     const { id } = useParams()
     const navigate = useNavigate();

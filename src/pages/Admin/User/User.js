@@ -37,7 +37,6 @@ export default function AdminUser() {
             await axios.delete("http://127.0.0.1:8000/api/user/delete/"+id);
             const newUserData = userData.filter((item) => item.id !== id);
             setUserData(newUserData);
-            alert("Đã xoá danh mục thành công.");
           } catch (error) {
             console.error('Error deleting item:', error);
             alert("Đã có lỗi xảy ra khi xoá danh mục.");

@@ -28,8 +28,9 @@ export const CreatTest = () => {
     const { id } = useParams()
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
-
+    const user = JSON.parse(localStorage.getItem('user'));
     const [lessionField, setlessionField] = useState({
+        id_user: user.id,
         name: "",
         description: "",
         time: "",
@@ -48,7 +49,7 @@ export const CreatTest = () => {
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/lession/create", lessionField);
+            await axios.post("http://127.0.0.1:8000/api/test/create", lessionField);
             setLoading(true);
         } catch (err) {
             console.log("Something Wrong");
