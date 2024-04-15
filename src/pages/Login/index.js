@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import image_login from"~/components/asset/img/login.png";
 import AuthUser from "./AuthUser"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const [userData, setUserData] = useState([]);
+  useEffect(() => {
+      fetchData();
+  }, [])
+  
+  const fetchData = async () => {
+      try {
+          const result = await axios("http://127.0.0.1:8000/api/alluser");
+          
+          setUserData(result.data.data)
+      
+      } catch (err) {
+          console.log("somthing Wrong");
+      }
+      
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,13 +46,12 @@ function Login() {
 
       const data = await response.json();
 
-      console.log(data.data.role)
       if (data.data.role === '2') {
         navigate('/admin')
       } else if (data.data.role === '0') {
         navigate('/student/history');
       } else if (data.data.role === '1') {
-        navigate('/teacher');
+        navigate(`/teacher`);
       }
     } catch (error) {
       setError('Đăng nhập thất bại. Vui lòng thử lại.');
@@ -71,15 +88,3 @@ return (
 }
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
-

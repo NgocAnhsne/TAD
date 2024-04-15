@@ -40,7 +40,7 @@ function SidebarStudent() {
                             <span>Chơi</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/student/lesson" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
                             <span>Lộ trình</span>

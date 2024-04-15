@@ -16,27 +16,22 @@ export default function Profiles() {
     const [loading,setLoading]=useState()
     
  
-    const [userField, setUserField] = useState({
-        name: "",
-        email: "",
-        password: "",
-        role: "",
-    });
+    const [userField, setUserField] = useState([]);
     
     useEffect(()=>{
-        fetchUser();
+        fetchUser(id);
     },[id])
     
-    const fetchUser=async()=>{
+    const fetchUser=async(id)=>{
         try{
-            const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
+            const result=await axios.get("http://127.0.0.1:8000/api/user/"+ id);
             setUserField(result.data.data)
             console.log(result.data.data)
         }catch(err){
             console.log("Something Wrong");
         }
     }
-
+    var moment = require('moment')
   return (
     <div className='teacher_component'>
         <div className='teacher_content'>
@@ -52,10 +47,10 @@ export default function Profiles() {
                         </div>
                         <div className='left_email'><span>Email: <span>{userField.email}</span></span></div>
                         <div className='left_role'><span>Role: <span>{userField.role}</span></span></div>
-                        <div className='left_join'><span>{userField.create_add}</span></div>
+                        <div className='left_join'><span format='YYYY MMMM dddd' className='body_opacity opacity'>Đã tham gia vào {moment(userField.created_at).format('L')}</span></div>
                     </div>
                     <div className='left_edit'>
-                        <Link to='/teacher/profile/edit'>
+                        <Link to={`/teacher/profile/edit/${userField.id}`}>
                             <FaRegEdit className='icon'/>
                         </Link>
                     </div>

@@ -25,16 +25,21 @@ export default function AdminQuestions() {
         
     }
 
-    const handleDelete=async(id)=>{
-        await axios.delete("http://127.0.0.1:8000/api/question/delete/"+id);
-        const newQuestionData=questionData.filter((item)=>{
-            alert("Đã xoá danh mục");
-            return(
-                item.id !==id
-            )
-        })
-        setQuestionData(newQuestionData);
-    }
+    
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Bạn có chắc chắn muốn xoá danh mục này?");
+        if (confirmDelete) {
+          try {
+            await axios.delete("http://127.0.0.1:8000/api/question/delete/"+id);
+            const newQuestionData = questionData.filter((item) => item.id !== id);
+            setQuestionData(newQuestionData);
+            alert("Đã xoá danh mục thành công.");
+          } catch (error) {
+            console.error('Error deleting item:', error);
+            alert("Đã có lỗi xảy ra khi xoá danh mục.");
+          }
+        }
+      };
   return (
     <div className='admin'>
         <div className='header'>
