@@ -50,16 +50,16 @@ export const AuthProvider = ({ children }) => {
         password
       });
       const data = response.data;
-  
-      if (!data.data) {
+     
+      if (!data) {
         throw new Error('Registration failed');
       }
       
   
       
-      localStorage.setItem('user', JSON.stringify(data.data));
-  
-      setUser(data.data);
+      localStorage.setItem('user', JSON.stringify(data));
+      
+      setUser(data);
       setError(null);
         
     } catch (error) {

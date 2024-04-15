@@ -16,14 +16,13 @@ export default function Register() {
     e.preventDefault();
     try {
       await register(name, email, password);
-      // Kiểm tra người dùng mới đăng ký sau khi đăng ký thành công
+      
       const newUser = JSON.parse(localStorage.getItem('user'));
       if (newUser) {
-        // Nếu người dùng mới đăng ký tồn tại trong localStorage, chuyển hướng đến trang rolechooser
+       
         navigate('/rolechooser');
         console.log(newUser)
       } else {
-        // Nếu không, hiển thị thông báo lỗi
         setError('Đăng ký thất bại. Vui lòng thử lại.');
       }
     } catch (error) {
