@@ -49,6 +49,11 @@ function AnswerStudent() {
                 <button>You're</button>
               </div>
             </div>
+            <div className="answerStudent__content--bottom__btnNext">
+           <button>
+           Next
+           </button>
+            </div>
       </div>
       </div>
     </div>

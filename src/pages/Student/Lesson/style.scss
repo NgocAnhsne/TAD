@@ -8,7 +8,9 @@
   &__title {
     padding: 20px 30px;
     h1 {
+      font-family: "Coiny", system-ui;
       color: var(--color-text-4);
+      font-size: var(--size-text-16);
     }
   }
   &__content {
@@ -28,41 +30,69 @@
         margin-bottom: 30px;
         display: flex;
         align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
         padding: 20px;
-
-        &--left {
-          font-size: var(--size-text-6);
-          color: var(--color-text-1);
+        &--top{
           display: flex;
-          flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+          &__left {
+            color: var(--color-text-1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            &--title {
+              font-family: "Alike", system-ui;
+              margin-bottom: 10px;
+              font-weight: 600;
+              font-size: var(--size-text-7);
+            }
+            &--body{
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              span{
+  
+              }
+            }
+          }
+          &__right {
+            width: 40%;
+            padding: 20px 0;
+            float: inline-end;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        &--bottom {
+          display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          &__title {
-            font-family: "Alike", system-ui;
-            margin-bottom: 20px;
+          width: 100%;
+          margin-top: 10px;
+          &__btnPlay{
+            margin-right: 5px;
           }
-          &__btn {
-            background-color: var(--color-background-1);
+          &__btnDel{
+            margin-left: 5px;
+          }
+        }
+        
+      }
+    }
+  }
+}
+.lessonBtn{
+  background-color: var(--color-background-1);
             color: var(--color-text-5);
             width: 50%;
             padding: 8px 12px;
             text-align: center;
             border-radius: var(--border-radius-size-5);
-            margin-top: 10px;
-          }
-        }
-        &--right {
-          width: 40%;
-          padding: 20px 0;
-          float: inline-end;
-          img {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
+            font-weight: 600;
 }
 .lesson2 {
   background-color: var(--color-background-3);
