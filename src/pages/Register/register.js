@@ -12,7 +12,6 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
   const onSubmitChange = async (e) => {
     e.preventDefault();
     try {
@@ -38,7 +37,6 @@ export default function Register() {
         <div className="login_wrapper-container_wrap">
           <img src={image_login} alt="login" />
           <div className="login_wrapper-container_wrap-group">
-
             <label>Tên người dùng:</label>
             <input
               type="text"
@@ -49,6 +47,7 @@ export default function Register() {
             />
           </div>
           <div className="login_wrapper-container_wrap-group">
+
             <label>Email:</label>
             <input
               type="email"
@@ -69,14 +68,13 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
           <button type="button" onClick={onSubmitChange} className="login-button">
             Đăng ký
           </button>
           {error && <div>{error}</div>}
-
         </div>
       </div>
     </div>
-  );
-}
+     );
+    }
+    
