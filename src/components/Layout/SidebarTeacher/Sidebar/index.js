@@ -9,22 +9,19 @@ import logo from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 import { useState } from "react";
 import axios from "axios";
+import { useAuth } from "~/pages/Login/AuthContext";
 function SidebarTeacher() {
-    const [isLoggedOut, setIsLoggedOut] = useState(false);
-    const navigate = useNavigate();
-  const handleLogout = async () => {
-    const confirmLogout = window.confirm("Bạn muốn đăng xuất?");
-    if (confirmLogout) {
-      try {
-        await axios.post('http://127.0.0.1:8000/api/user/logout');
-        setIsLoggedOut(true);
-       
-      } catch (error) {
-        console.error('Logout failed', error);
-      }
-      navigate('/')
-    }
-  };
+    const { logout } = useAuth();
+    const navigate  = useNavigate()
+    const handleLogout = async () => {
+        try {
+          await logout();
+          window.alert('Bạn muốn đăng xuất');
+          navigate('/');
+        } catch (error) {
+          console.error('Đã xảy ra lỗi khi đăng xuất:', error);
+        }
+      };
     return ( 
         <div className="sidebar">
             <div className="top">
@@ -36,7 +33,7 @@ function SidebarTeacher() {
                 </Link>
             </div>
             <hr />
-            <Link to="/teacher/profile">
+            <Link to={`/teacher/profile/`}>
                 <div className="user">
                     <img src={avatar} className="logo"></img>
                     <span>Teacher</span>
@@ -68,7 +65,7 @@ function SidebarTeacher() {
                             <span>Danh sách đề</span>
                         </li>
                     </Link>
-                    <Link style={{textDecoration:"none"}} onClick={handleLogout} disabled={isLoggedOut}>
+                    <Link  style={{textDecoration:"none"}} onClick={handleLogout}>
                         <li>
                             <CiLogout  className="icon"/>
                             <span>Đăng xuất</span>

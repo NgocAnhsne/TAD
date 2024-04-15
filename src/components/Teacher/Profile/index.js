@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ListTest from '../List'
 import '../style.scss'
 import './style.scss'
@@ -9,31 +9,23 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 
-export default function Profiles() {
 
-    const {id}=useParams()
-    const navigate = useNavigate();
-    const [loading,setLoading]=useState()
+
+
+export default function Profiles() {
     
+    const {id}=useParams()
+    const [loading,setLoading]=useState()
+    const user = JSON.parse(localStorage.getItem('user'));
  
     const [userField, setUserField] = useState([]);
     
-    useEffect(()=>{
-        fetchUser(id);
-    },[id])
-    
-    const fetchUser=async(id)=>{
-        try{
-            const result=await axios.get("http://127.0.0.1:8000/api/user/"+ id);
-            setUserField(result.data.data)
-            console.log(result.data.data)
-        }catch(err){
-            console.log("Something Wrong");
-        }
-    }
+
     var moment = require('moment')
+   
   return (
     <div className='teacher_component'>
+        
         <div className='teacher_content'>
             <div className='content_left'>
                 <div className='left_top'>
@@ -42,15 +34,15 @@ export default function Profiles() {
                     </div>
                     <div className='left_content'>
                         <div className='left_name'>
-                            <div><span className='meidum'>{userField.name}</span></div>
+                            <div><span className='meidum'>{user.name}</span></div>
                             {/* <div><span className='opacity'>nguyenvana</span></div> */}
                         </div>
-                        <div className='left_email'><span>Email: <span>{userField.email}</span></span></div>
-                        <div className='left_role'><span>Role: <span>{userField.role}</span></span></div>
-                        <div className='left_join'><span format='YYYY MMMM dddd' className='body_opacity opacity'>Đã tham gia vào {moment(userField.created_at).format('L')}</span></div>
+                        <div className='left_email'><span>Email: <span>{user.email}</span></span></div>
+                        <div className='left_role'><span>Role: <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></span></div>
+                        <div className='left_join'><span format='YYYY MMMM dddd' className='body_opacity opacity'>Đã tham gia vào {moment(user.created_at).format('L')}</span></div>
                     </div>
                     <div className='left_edit'>
-                        <Link to={`/teacher/profile/edit/${userField.id}`}>
+                        <Link to={`/teacher/profile/edit/${user.id}`}>
                             <FaRegEdit className='icon'/>
                         </Link>
                     </div>
@@ -60,6 +52,7 @@ export default function Profiles() {
                     <ListTest/>
                 </div>
             </div>
+         
             <div className='content_right'>
                 <h3>Tính năng</h3>
                 <p>Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
@@ -84,7 +77,9 @@ export default function Profiles() {
                 
                 </p>
             </div>
+   
         </div>
+             
     </div>
   )
 }

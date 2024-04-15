@@ -1,9 +1,11 @@
 import "./style.scss";
+
 import React from "react";
 import Login from "~/pages/Login/index";
-import Register from "~/pages/Register/register" 
+import Register from "~/pages/Register/register";
+import openForgotpwd from "~/pages/Forgotpwd/forgotpwd" 
 export default function Popup(props) {
-  const { openPopup, setOpenPopup, openSignUp, setOpenSignUp } = props;
+  const { openPopup, setOpenPopup, openSignUp, setOpenSignUp,openForgotpwd,setOpenForgotpwd } = props;
   return (
     <div>
       <dialog open={openSignUp} className="popup">
@@ -28,6 +30,19 @@ export default function Popup(props) {
         </button>
         <div className="banner">
           <Login></Login>
+        </div>
+      </dialog>
+
+      <dialog open={openForgotpwd} className="popup">
+        <button
+          className="banner_btn"
+          onClick={() => {
+            setOpenForgotpwd(false);
+          }}>
+          X
+        </button>
+        <div className="banner">
+          <openForgotpwd></openForgotpwd>
         </div>
       </dialog>
     </div>

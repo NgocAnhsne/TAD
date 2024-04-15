@@ -11,13 +11,14 @@
                 position: relative;
         }
         .banner_btn{
-                background: none;
+                border-radius: 13px;
+                width: 44px;
+                background-color: rgb(251 251 251);
                 position: absolute;
-                top: 3%;
-                right: 35%;
-                padding: 10px;
-                font-size: 30px;
-        }
+                top: 8%;
+                right: 33%;
+                font-size: 22px;
+            }
         
 }
 .close-Popup{
