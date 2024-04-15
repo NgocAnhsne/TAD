@@ -59,7 +59,7 @@ const publicRoutes = [
     {path: '/student/lesson', component: LessonStudent },
 
 //role
-    {path: '/rolechooser/:id', component: rolechooser, layout: null},
+    {path: '/rolechooser', component: rolechooser, layout: null},
 
 
     {path: '/game', component: Game, layout: null},
@@ -70,7 +70,7 @@ const publicRoutes = [
     {path: '/teacher/lession', component: ListTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/lession/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
 
-    {path: '/teacher/profile/:id', component: ProfileTeacher, layout: SidebarTeacher },
+    {path: '/teacher/profile/', component: ProfileTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile/edit/:id', component: EditProfileTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },

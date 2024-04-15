@@ -2,10 +2,13 @@ import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "~/routes/index";
 import DefaultLayout from "~/components/Layout/DefaultLayout/index";
+import { AuthProvider } from "./pages/Login/AuthContext";
+
 
 function App() {
   return (
     <Router>
+       <AuthProvider>
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
@@ -33,6 +36,7 @@ function App() {
           })}
         </Routes>
       </div>
+      </AuthProvider>
     </Router>
   );
 }
