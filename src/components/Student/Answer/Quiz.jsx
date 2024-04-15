@@ -2,30 +2,17 @@ import { useState } from "react";
 import "./style.scss";
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
-function AnswerStudent() {
-  const data = [
-  {question: "Question1", 
-  option1: "Index Page",
-  option2: "Answer1",
-  option3: "Answer2",
-  option3: "Answer3",
-  answer: 3,
-},
-{question: "Question2", 
-  option1: "Index Page",
-  option2: "Answer1",
-  option3: "Answer2",
-  option3: "Answer3",
-  answer: 3,
-}
-];
 
-  let [index, setIndex] = useState(0);
+const Quiz = () => {
+    let [index, setIndex] = useState(0);
   let [question,setQuestion] = useState(data[index]);
 
   const checkAns = (e,ans) => {
     if(question.ans===ans){
-      e.target.classList.add("correct")
+      e.target.classList.add("correct");
+    }
+    else{
+      e.target.classList.add("wrong");
     }
   }
   return (
@@ -63,16 +50,16 @@ function AnswerStudent() {
       <div className="answerStudent__content--bottom">
             <div className="answerStudent__content--bottom__list">
               <div className="answerStudent__content--bottom__list--item">
-                <button>Youre</button>
+                <button onClick={(e)=>{checkAns(e,1)}}>Youre</button>
               </div>
               <div className="answerStudent__content--bottom__list--item">
-                <button>Yours</button>
+                <button onClick={(e)=>{checkAns(e,2)}}>Yours</button>
               </div>
               <div className="answerStudent__content--bottom__list--item">
-                <button>Your</button>
+                <button onClick={(e)=>{checkAns(e,3)}}>Your</button>
               </div>
               <div className="answerStudent__content--bottom__list--item">
-                <button>You're</button>
+                <button onClick={(e)=>{checkAns(e,4)}}>You're</button>
               </div>
             </div>
             <div className="answerStudent__content--bottom__btnNext">
@@ -85,5 +72,3 @@ function AnswerStudent() {
     </div>
   );
 }
-
-export default AnswerStudent;
