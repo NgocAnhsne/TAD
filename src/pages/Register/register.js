@@ -36,7 +36,7 @@ export default function Register() {
         <div className="login_wrapper-container_wrap">
           <img src={image_login} alt="login" />
           <div className="login_wrapper-container_wrap-group">
-            <label>Tên người dùng:</label>
+           
             <input
               type="text"
               className="form-control"
@@ -47,7 +47,7 @@ export default function Register() {
           </div>
           <div className="login_wrapper-container_wrap-group">
 
-            <label>Email:</label>
+     
             <input
               type="email"
               className="form-control"
@@ -58,7 +58,7 @@ export default function Register() {
             />
           </div>
           <div className="login_wrapper-container_wrap-group">
-            <label>Mật khẩu:</label>
+
             <input
               type="password"
               className="form-control"

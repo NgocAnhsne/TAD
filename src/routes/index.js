@@ -18,6 +18,7 @@ import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 
+
 import Game from '~/pages/Student/Game/LatBike.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
 import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
@@ -42,6 +43,7 @@ import EditLession from '~/pages/Admin/Lession/EditLession.js';
 import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
+import game_chooser from '~/pages/gameChooser/game_chooser.js';
 
 
 
@@ -57,6 +59,7 @@ const publicRoutes = [
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
+    {path:'/student/game',component:game_chooser},
 
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},

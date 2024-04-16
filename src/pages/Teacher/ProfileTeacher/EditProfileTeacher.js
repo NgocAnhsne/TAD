@@ -16,7 +16,6 @@ export default function EditProfileTeacher() {
         password: "",
         role: "",
     });
- 
     useEffect(()=>{
         fetchUser();
     },[id])
