@@ -8,6 +8,8 @@ import { FaRankingStar } from "react-icons/fa6";
 import rankProfileImg from "~/components/asset/img/rank 1.png";
 
 function ProfileStudent() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  var moment = require('moment')
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
@@ -22,19 +24,22 @@ function ProfileStudent() {
           </div>
           <div className="profileStudent__left--personal__info">
             <div className="profileStudent__left--personal__info--name">
-              Trần Thị Ngọc Ánh
+            {user.name}
             </div>
-            <div className="profileStudent__left--personal__info--nickname">
-              ngocanhisme
+            <div className="profileStudent__left--personal__info--email">
+            Email: {user.email}
             </div>
+            <div className='profileStudent__left--personal__info--role'>
+              <span>Vai trò: <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></span></div>
+
             <div className="profileStudent__left--personal__info--level">
               {/* background level */}
               <div className="profileStudent__left--personal__info--level__content">
-                Cấp 6
+                {user.score / 10}
               </div>
             </div>
             <div className="profileStudent__left--personal__info--date">
-              Đã tham gia vào tháng 3 năm 2023
+            Đã tham gia vào {moment(user.created_at).format('L')}
             </div>
           </div>
           <div className="profileStudent__left--personal__edit">
