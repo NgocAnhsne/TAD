@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Upload from '~/pages/Upload'
 import { TbEye } from "react-icons/tb";
 
-export default function TopicGameAdmin() {
+export default function TopictopicAdmin() {
     const [isVisibleLoading, setIsVisibleLoading] = useState(true)
 
     const [topicData, setTopicData] = useState([]);
@@ -39,6 +39,7 @@ export default function TopicGameAdmin() {
           }
         }
       };
+
   return (
     <div className='admin'>
         <div className='header'>
@@ -65,23 +66,23 @@ export default function TopicGameAdmin() {
                 </thead>
                 <tbody>
                     {topicData.length > 0 ? (
-                        topicData.map((game, i) => (
+                        topicData.map((topic, i) => (
                             <tr key={i}>
-                                <td>{game.id}</td>
-                                <td>{game.name}</td>
-                                <td>{game.description}</td>
+                                <td>{topic.id}</td>
+                                <td>{topic.name}</td>
+                                <td>{topic.description}</td>
                                 <td className='icon'>
-                                    <Link to={`/admin/topic/wordl/${game.id}`}>
+                                    <Link to={`/admin/topic/wordl/${topic.id}`}>
                                         <TbEye  color='blue' />
                                     </Link>
                                 </td>
                                 <td className='icon'>
-                                    <Link to={`/admin/topic/edit/${game.id}`}>
+                                    <Link to={`/admin/topic/edit/${topic.id}`}>
                                         <FaRegEdit color='blue' />
                                     </Link>
                                 </td>
                                 <td className='icon'>
-                                    <div onClick={()=>handleDelete(game.id)}>
+                                    <div onClick={()=>handleDelete(topic.id)}>
                                         <AiOutlineDelete color='red' />
                                     </div>
                                 </td>

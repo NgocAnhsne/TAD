@@ -19,7 +19,10 @@ export default function EditWordlTopicAdmin() {
         pronounce: "",
         description: "",
     });
- 
+        
+    const goBack = () => {
+      navigate(-1)
+    };
     useEffect(()=>{
         fetchUser();
     },[id])
@@ -47,7 +50,7 @@ export default function EditWordlTopicAdmin() {
         e.preventDefault();
         try {
             await axios.put("http://127.0.0.1:8000/api/wordl/update/"+id, topicField);
-            navigate(`/admin/topic/wordl/${topicField.id}`)
+            navigate(-1);
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -59,7 +62,7 @@ export default function EditWordlTopicAdmin() {
         <div className='header'>
                 <div><h1>Cập nhập/sửa đáp án</h1></div>
                 <div>
-                <Link to={`/admin/topic/wordl/${topicField.id}`}className='header_cancel'>
+                <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>
                 </Link>
                 <Link className='header_save' onClick={e => onSubmitChange(e)}>

@@ -18,7 +18,9 @@ export default function AddWordlTopicAdmin() {
       pronounce: "",
       description: "",
     });
- 
+    const goBack = () => {
+      navigate(-1)
+    };
     const changetopicFieldHandler = (e) => {
         setTopicField({
             ...topicField,
@@ -45,22 +47,20 @@ export default function AddWordlTopicAdmin() {
         try {
            await axios.post("http://127.0.0.1:8000/api/wordl/create", topicField);
             setLoading(true);
+            navigate(-1)
         } catch (err) {
             console.log("Something Wrong");
         }
     }
-    if(loading){
-        return (
-            navigate(`/admin/topic/wordl/${topicField.id}`)
-        )
-    }
+    
+    
 
   return (
     <div className='admin'>
         <div className='header'>
                 <div><h1>Cập nhật trò chơi</h1></div>
                 <div>
-                <Link to={`/admin/topic/${topicField.id}`} className='header_cancel'>
+                <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>
                 </Link>
                 <Link className='header_save' onClick={e => onSubmitChange(e)}>

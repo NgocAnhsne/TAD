@@ -10,7 +10,12 @@ export default function EditTopicAdmin() {
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
     
- 
+    
+      const goBack = () => {
+        navigate(-1)
+      };
+    
+    
     const [topicField, setTopicField] = useState({
         name: "",
         description: "",
@@ -42,7 +47,7 @@ export default function EditTopicAdmin() {
         e.preventDefault();
         try {
             await axios.put("http://127.0.0.1:8000/api/wordle/"+id, topicField);
-            navigate('/admin/game')
+            navigate(-1)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -54,7 +59,7 @@ export default function EditTopicAdmin() {
         <div className='header'>
                 <div><h1>Cập nhập/sửa chủ để</h1></div>
                 <div>
-                <Link to={`/admin/topic/${topicField.id}`}className='header_cancel'>
+                <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>
                 </Link>
                 <Link className='header_save' onClick={e => onSubmitChange(e)}>
