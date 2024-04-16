@@ -13,6 +13,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
+        .loading_screen{
+            position: absolute;
+            top: 40%;
+            right: 50%;
+        }
         &_item{
             min-width: 360px;
             &:hover{

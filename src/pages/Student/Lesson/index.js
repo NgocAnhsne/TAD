@@ -1,12 +1,12 @@
 import "./style.scss";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Upload from '~/pages/Upload';
 import lessonImg from "~/components/asset/img/quality_restoration_20240229152.jpg";
 import { Link } from "react-router-dom";
 
 export default function LessonStudent() {
-  const [isVisibleLoading, setIsVisibleLoading] = useState(false);
+  const [isVisibleLoading, setIsVisibleLoading] = useState(true);
 
   const [lessionData, setLessionData] = useState([]);
   useEffect(() => {
@@ -17,6 +17,7 @@ export default function LessonStudent() {
     try {
       const result = await axios("http://127.0.0.1:8000/api/lession/all");
       setLessionData(result.data.data);
+      setIsVisibleLoading(false)
     } catch (err) {
       console.log("somthing Wrong");
     }
@@ -39,7 +40,13 @@ export default function LessonStudent() {
       </div>
       <div className="lessonStudent__content">
         <div className="lessonStudent__content--list">
-          {lessionData.length > 0 ? (
+          
+           {isVisibleLoading ? (
+            <div className='loading_screen'>
+                <Upload/>
+            </div> 
+            ) : (
+               lessionData.length > 0 ? (
             lessionData.map((lession, i) => (
               <div className="lessonStudent__content--list__item">
                 <div className="lessonStudent__content--list__item--top">
@@ -71,55 +78,13 @@ export default function LessonStudent() {
               </div>
             ))
           ) : (
-            <div>
               <h1 className="text-danger text-center">
                 Không tìm thấy bộ đề nào
               </h1>
-            </div>
-          )}
+          )
+        )}
         </div>
       </div>
-      {/* <div className="lessonStudent__content">
-        <div className="lessonStudent__content--list">
-          <div className="lessonStudent__content--list__item">
-            <div className="lessonStudent__content--list__item--left">
-              <div className="lessonStudent__content--list__item--left__title">
-                Bài học cơ bản cho người mất gốc
-              </div>
-              
-            </div>
-            <div className="lessonStudent__content--list__item--right">
-              <img src={lessonImg}/>
-            </div>
-          </div>
-          <div className="lessonStudent__content--list__item lesson2">
-            <div className="lessonStudent__content--list__item--left">
-              <div className="lessonStudent__content--list__item--left__title">
-                Bài học cơ bản cho người mất gốc
-              </div>
-              <div className="lessonStudent__content--list__item--left__btn">
-                Xem thêm
-              </div>
-            </div>
-            <div className="lessonStudent__content--list__item--right">
-              <img src={lessonImg}/>
-            </div>
-          </div>
-          <div className="lessonStudent__content--list__item lesson3">
-            <div className="lessonStudent__content--list__item--left">
-              <div className="lessonStudent__content--list__item--left__title">
-                Bài học cơ bản cho người mất gốc
-              </div>
-              <div className="lessonStudent__content--list__item--left__btn">
-                Xem thêm
-              </div>
-            </div>
-            <div className="lessonStudent__content--list__item--right">
-              <img src={lessonImg}/>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

@@ -1,54 +1,78 @@
 .teacher_component {
+    padding: 0;
     .teacher_content {
         display: flex;
-
         .content_left {
             flex: 8;
             margin-right: 20px;
             .left_top {
+
                 background: #FFFFFF;
                 box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.5);
                 border-radius: 20px;
-                padding: 23px 50px;
+                padding: 23px 25px;
                 display: flex;
                 justify-content: space-around;
-                margin-bottom: 70px;
+                margin-bottom: 24px;
 
                 .left_avatar {
+                    height: 226px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 20px;
+                    position: relative;
+                    background: linear-gradient(180deg, rgba(255,255,255,1) 52%, rgba(143,237,249,1) 58%, rgba(61,97,148,1) 100%);
 
+                    min-width: 30%;
+                    text-align: center;
                     img {
-                        width: 300px;
-                        height: 300px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        max-width: 200px;
+                        max-height: 200px;
                         position: static;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 6px;
                     }
                 }
 
                 .left_content {
+                    margin-left: 10px;
+                    .left_name,.left_email,.left_role {
 
-                    div {
-                        margin-bottom: 20px;
-                    }
-
-                    .left_name {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        margin-bottom: 10px;
+                    }
+                    .left_join{
+                        margin-top: 30px;
                     }
                 }
 
                 .left_edit {
-
+                    align-items: center;
+                    height: 45px;
+                    width: 45px;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 50%;
+                    
+                    &:hover {
+                        color: #5C7DAC;
+                        cursor: pointer;
+                        background-color: #e7e7e7;
+                    }
                     .icon {
-                        font-size: 60px;
+                        font-size: 35px;
 
-                        &:hover {
-                            color: #5C7DAC;
-                            cursor: pointer;
-                        }
                     }
                 }
             }
-
+            .left_bottom{
+                font-size: 35px;
+                margin-bottom: 20px;
+            }
         }
 
         .content_right {

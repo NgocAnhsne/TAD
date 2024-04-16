@@ -6,7 +6,7 @@ import anhGame1 from '~/components/asset/img/gamechooser2.png';
 import anhGame2 from '~/components/asset/img/gamechooser3.png';
 import anhGame3 from '~/components/asset/img/gamechooser.png';
 import anhGame4 from '~/components/asset/img/rand_game1.jpg';
-
+import Upload from '~/pages/Upload';
 export default function GameChooser() {
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [gameData, setGameData] = useState([]);
@@ -18,8 +18,8 @@ export default function GameChooser() {
 
     useEffect(() => {
         if (gameData.length > 0) {
-            // Tạo mảng chứa các chỉ số ngẫu nhiên
-            const indexes = gameData.map(() => Math.floor(Math.random() * 4)); // 2 là số lượng hình ảnh
+          
+            const indexes = gameData.map(() => Math.floor(Math.random() * 4)); 
             setRandomImageIndexes(indexes);
         }
     }, [gameData]);
@@ -52,7 +52,10 @@ export default function GameChooser() {
                 {/* items */}
                 
                 {isVisibleLoading ? (
-                    <p>Loading...</p>
+                    <div className='loading_screen'>
+                        <Upload/>
+                    </div>
+                   
                 ) : (
                     gameData.length > 0 ? (
                         gameData.map((game, i) => (
