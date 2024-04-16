@@ -79,7 +79,7 @@ export default function EditLession() {
           >
             <Form.Control type="hidden" name="id" value={id} />
             <div className="row mb-3">
-              <Form.Label className="col-sm-2 col-form-label">Tên trò chơi</Form.Label>
+              <Form.Label className="col-sm-2 col-form-label">Tên bài học</Form.Label>
               <div className="col-sm-10">
                 <Form.Control
                   type="text"
