@@ -85,6 +85,7 @@
             font-size: var(--size-text-6);
             font-weight: 600;
           }
+          
         }
       }
       &__btnNext{
@@ -104,3 +105,11 @@
     }
   }
 }
+.corrext{
+  background-color: #dffff2;
+  border-color:#00d397;
+ }
+ .wrong{
+  background-color: #ffebeb;
+  border-color:#ff4a4a;
+ }
