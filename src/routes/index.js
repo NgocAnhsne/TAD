@@ -44,7 +44,7 @@ import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
 import game_chooser from '~/pages/gameChooser/game_chooser.js';
-
+import topic_chooser from '~/pages/gameChooser/topicChooser.js';
 
 
 const publicRoutes = [
@@ -60,6 +60,7 @@ const publicRoutes = [
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
+    {path:'/student/game/topic/:id',component:topic_chooser},
 
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},
