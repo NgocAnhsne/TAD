@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
 
-export default function TopicChooser() { // Changed function name to start with uppercase
+export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
 

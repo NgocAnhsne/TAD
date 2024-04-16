@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
-import { AiOutlineDelete } from 'react-icons/ai';
-import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Upload from '~/pages/Upload';
-import anhconbo from '~/components/asset/img/CayDua.jpg';
+import anhGame1 from '~/components/asset/img/gamechooser2.png';
+import anhGame2 from '~/components/asset/img/gamechooser3.png';
+import anhGame3 from '~/components/asset/img/gamechooser.png';
+import anhGame4 from '~/components/asset/img/rand_game1.jpg';
 
 export default function GameChooser() {
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [gameData, setGameData] = useState([]);
+    const [randomImageIndexes, setRandomImageIndexes] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (gameData.length > 0) {
+            // Tạo mảng chứa các chỉ số ngẫu nhiên
+            const indexes = gameData.map(() => Math.floor(Math.random() * 4)); // 2 là số lượng hình ảnh
+            setRandomImageIndexes(indexes);
+        }
+    }, [gameData]);
 
     const fetchData = async () => {
         try {
@@ -25,6 +34,15 @@ export default function GameChooser() {
         }
     };
 
+    const getRandomImage = (index) => {
+        // Mảng chứa các hình ảnh
+        const images = [anhGame1, anhGame2,anhGame3,anhGame4];
+        // Lấy chỉ số ngẫu nhiên tương ứng với phần tử index
+        const randomIndex = randomImageIndexes[index];
+        // Trả về hình ảnh tương ứng
+        return images[randomIndex];
+    };
+
     return (
         <div className='Chooser'>
             <div className='Chooser_header'>
@@ -33,33 +51,31 @@ export default function GameChooser() {
             <div className='Chooser_body'>
                 {/* items */}
                 
-                {gameData.length > 0 ? (
+                {isVisibleLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    gameData.length > 0 ? (
                         gameData.map((game, i) => (
-                          <Link to ={ `/student/game/topic/${game.id}`} >
-                            <div className='Chooser_body_item'>
-                    <div className='Chooser_body_item_img'>
-                        <img src={anhconbo} alt="Game Image" />
-                    </div>
-                    <div className='Chooser_body_item_info'>
-                        <div className='Chooser_body_item_info_title'>
-                            {game.name}
-                        </div>
-                        <div className='Chooser_body_item_info_desc'>
-                        {game.description}
-                        </div>
-                    </div>
-                </div>
-                          </Link>
+                            <Link to={`/student/game/topic/${game.id}`} key={game.id}>
+                                <div className='Chooser_body_item'>
+                                    <div className='Chooser_body_item_img'>
+                                        <img src={getRandomImage(i)} alt={`Game Image ${i}`} />
+                                    </div>
+                                    <div className='Chooser_body_item_info'>
+                                        <div className='Chooser_body_item_info_title'>
+                                            {game.name}
+                                        </div>
+                                        <div className='Chooser_body_item_info_desc'>
+                                            {game.description}
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
                         ))
                     ) : (
-                        <tr>
-                            <td colSpan={7}>
-                                <h4 className="text-danger text-center">
-                                    Không tìm thấy trò chơi nào
-                                </h4>
-                            </td>
-                        </tr>
-                    )}
+                        <p className="text-danger text-center">Không tìm thấy trò chơi nào</p>
+                    )
+                )}
             </div>
         </div>
     );
