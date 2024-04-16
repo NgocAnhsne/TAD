@@ -12,10 +12,10 @@ export default function ViewQuestion() {
 
     const options = [
         { value: '', label: '---Chọn đáp án---' },
-        { value: 'a', label: 'A' },
-        { value: 'b', label: 'B' },
-        { value: 'c', label: 'C' },
-        { value: 'd', label: 'D' }
+        { value: 'answer a', label: 'A' },
+        { value: 'answer b', label: 'B' },
+        { value: 'answer c', label: 'C' },
+        { value: 'answer d', label: 'D' }
     ]
 
 
@@ -27,17 +27,6 @@ export default function ViewQuestion() {
 
     const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
 
-
-
-    const [questionField, setQuestionField] = useState({
-        question_text: "",
-        answer_a: "",
-        answer_b: "",
-        answer_c: "",
-        answer_d: "",
-        answer: "",
-    });
-
     useEffect(() => {
         fetchUser();
     }, [id])
@@ -46,6 +35,7 @@ export default function ViewQuestion() {
         try {
             const result = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestionData(result.data.data)
+            console.log(result.data.data)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -71,6 +61,9 @@ export default function ViewQuestion() {
                 <div><h1>Tạo câu hỏi chữ</h1></div>
                 <div className='header_right'>
                     <div>
+                        <span>Bài học</span> <b>{questionData.question_text}</b>
+                    </div>
+                    <div>
                         <span>Số lượng hiện tại</span> <b>{questionData.length}</b>
                     </div>
                     <div>
@@ -87,7 +80,7 @@ export default function ViewQuestion() {
                             <input placeholder='Question?'
 
                                 name='question_text'
-                                value={question.question_text || ""}
+                                value={question.question_text}
                             ></input>
                         </div>
                         <div className="content_body">

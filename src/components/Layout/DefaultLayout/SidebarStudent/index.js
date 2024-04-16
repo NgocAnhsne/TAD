@@ -34,10 +34,11 @@ function SidebarStudent() {
                             <span>Trang chủ</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/student/game" style={{textDecoration:"none"}}>
                         <li>
                             <FaPlay  className="icon"/>
                             <span>Chơi</span>
+                            
                         </li>
                     </Link>
                     <Link to="/student/lesson" style={{textDecoration:"none"}}>

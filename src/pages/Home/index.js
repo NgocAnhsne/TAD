@@ -41,7 +41,8 @@ function Home() {
       <div className="home_wrapper">
         <div className="home_container home_container_1">
           {/* banner 1 */}
-          <div className="home_first-banner">
+        <div className="home_first">
+        <div className="home_first-banner">
             <img src={imgBanner2}></img>
           </div>
           <div className="home_first-banner_content">
@@ -61,9 +62,10 @@ function Home() {
             </div>
           </div>
         </div>
+        </div>
         <div className="home_container home_container_2">
           {/* banner 2 */}
-
+          <div className="home_first">
           <div className="home_first-banner_content">
             <div className="home_first-banner_content-title">
               Vui chơi cùng bạn bè
@@ -72,16 +74,12 @@ function Home() {
               Tham gia các trò chơi và học tập cùng những người bạn
             </div>
           </div>
-          <div className="home_first-banner">
             <img src={imgBanner1}></img>
           </div>
         </div>
         {/* banner 3 */}
         <div className="home_container home_container_3" >
-          {/* <div className="home_first-banner">
-            <img src={imgBanner3}></img>
-          </div> */}
-        
+          <div className="home_first">
           <div className="home_first-banner_content banner_3">
             <div className="home_first-banner_content-title">
               Tạo thêm động lực
@@ -99,6 +97,7 @@ function Home() {
                 Bắt đầu ngay !
               </button>
               </div>
+          </div>
           </div>
         </div>
       </div>

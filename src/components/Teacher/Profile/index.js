@@ -3,6 +3,7 @@ import ListTest from '../List'
 import '../style.scss'
 import './style.scss'
 import avatarProfile from '~/components/asset/img/image 26.png'
+import background from '~/components/asset/img/_11.jpg'
 import { FaRegEdit } from "react-icons/fa";
 import EditProfileTeacher from '../../../pages/Teacher/ProfileTeacher/EditProfileTeacher'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -24,8 +25,7 @@ export default function Profiles() {
     var moment = require('moment')
    
   return (
-    <div className='teacher_component'>
-        
+    <div className='teacher_component'>      
         <div className='teacher_content'>
             <div className='content_left'>
                 <div className='left_top'>
@@ -54,28 +54,10 @@ export default function Profiles() {
             </div>
          
             <div className='content_right'>
-                <h3>Tính năng</h3>
-                <p>Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                v
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                vàovv
-                v
-                v
-                v
-                v
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                Kiếm thật nhiều KN từ các bài học để thi đua với những người học khác trên bảng xếp hạng hằng tuần
-                
-                </p>
+                <img className='content_right_background' src={background}></img>
+                <div className='img__right1'></div>
+                <div className='img__right1'></div>
+                <div className='img__right1'></div>
             </div>
    
         </div>
