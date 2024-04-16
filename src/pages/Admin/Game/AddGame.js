@@ -4,31 +4,17 @@ import { Button, Form } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
-export default function EditGame() {
+export default function AddGameAdmin() {
 
     const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
-    
  
     const [gameField, setGameField] = useState({
         name: "",
         description: "",
     });
  
-    useEffect(()=>{
-        fetchUser();
-    },[id])
-    
-    const fetchUser=async()=>{
-        try{
-            const result=await axios.get("http://127.0.0.1:8000/api/game/"+id);
-            setGameField(result.data.data)
-        }catch(err){
-            console.log("Something Wrong");
-        }
-    }
-    
     const changegameFieldHandler = (e) => {
         setGameField({
             ...gameField,
@@ -41,13 +27,17 @@ export default function EditGame() {
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.put("http://127.0.0.1:8000/api/game/update/"+id, gameField);
-            navigate('/admin/game')
+           await axios.post("http://127.0.0.1:8000/api/games", gameField);
+            setLoading(true);
         } catch (err) {
             console.log("Something Wrong");
         }
     }
-
+    if(loading){
+        return (
+            navigate('/admin/game')
+        )
+    }
 
   return (
     <div className='admin'>

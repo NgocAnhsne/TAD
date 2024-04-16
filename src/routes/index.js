@@ -44,7 +44,18 @@ import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
 import game_chooser from '~/pages/gameChooser/game_chooser.js';
+
+import TopicGameAdmin from '~/pages/Admin/Game/TopicGame/TopicGame.js';
+import EditTopicAdmin from '~/pages/Admin/Game/TopicGame/EditTopic.js';
+import AddGameAdmin from '~/pages/Admin/Game/AddGame.js';
+import AddTopicAdmin from '~/pages/Admin/Game/TopicGame/AddTopic.js';
+import WordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/WordlTopic.js';
+import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWordlTopic.js';
+import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
+
+
 import topic_chooser from '~/pages/gameChooser/topicChooser.js';
+
 
 
 const publicRoutes = [
@@ -100,6 +111,17 @@ const publicRoutes = [
     
     {path: '/admin/game', component: AdminGame, layout: SidebarAdmin }, 
     {path: '/admin/game/edit/:id', component: EditGame, layout: SidebarAdmin },   
+    {path: '/admin/game/add', component: AddGameAdmin, layout: SidebarAdmin },   
+
+    {path: '/admin/topic/:id', component: TopicGameAdmin, layout: SidebarAdmin },   
+    {path: '/admin/topic/edit/:id', component: EditTopicAdmin, layout: SidebarAdmin },   
+    {path: '/admin/topic/add', component: AddTopicAdmin, layout: SidebarAdmin }, 
+    
+    
+    {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
+    {path: '/admin/topic/wordl/edit/:id', component: EditWordlTopicAdmin, layout: SidebarAdmin },
+    {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
+    {path: '/admin/topic/wordl/add/', component: AddWordlTopicAdmin, layout: SidebarAdmin },
 
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   

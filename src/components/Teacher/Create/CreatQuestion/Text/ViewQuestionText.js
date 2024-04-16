@@ -9,8 +9,6 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 
 export default function ViewQuestionText() {
 
-
-
     const options = [
         { value: '', label: '---Chọn đáp án---' },
         { value: 'a', label: 'A' },
@@ -19,13 +17,12 @@ export default function ViewQuestionText() {
         { value: 'd', label: 'D' }
     ]
 
-
     const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
     const [questionData, setQuestionData] = useState([]);
 
-    const [questionField, setQuestionField] = useState({
+    const [questionField, setQstionField] = useState({
         question_text: "",
         answer_a: "",
         answer_b: "",
@@ -58,7 +55,6 @@ export default function ViewQuestionText() {
         })
         setQuestionData(newQuestionData);
     }
-
 
     return (
         <div className='teacher_component'>

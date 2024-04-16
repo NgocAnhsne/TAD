@@ -1,28 +1,38 @@
-.card{
+.card {
     position: relative;
-
-    img{
+    border-radius: 40px !important;
+    border: none !important;
+    img {
         width: 100%;
         display: block;
-        border: 2px solid white;
         border-radius: 6px;
     }
+
     .front {
         transform: rotateY(90deg);
         transition: all ease-in 0.2s;
         position: absolute;
-    }
-    .flipped .front{
-        transform: rotateY(0deg);
-        transition-delay: 0.2s;
+        top: 50%;
+        left: 50%;
+        color: var(--color-text-4);
+        font-size: 25px;
+        font-weight: 600px;
+        font-family: "Coiny", system-ui;
+        text-transform: uppercase;
     }
 
-    .back{
+    .flipped .front {
+        transform: rotateY(0deg);
+        transition-delay: 0.2s;
+        transform: translate(-50% , -50%);
+    }
+
+    .back {
         transition: all ease-in 0.2s;
         transition-delay: 0.2s;
     }
 
-    .flipped .back{
+    .flipped .back {
         transform: rotateY(90deg);
         transition-delay: 0s;
     }

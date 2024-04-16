@@ -41,12 +41,12 @@ function SidebarTeacher() {
             </Link>
             <div className="center">
                 <ul>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    {/* <Link to="/" style={{textDecoration:"none"}}>
                         <li>
                             <FaHome  className="icon"/>
                             <span>Trang chủ</span>
                         </li>
-                    </Link>
+                    </Link> */}
                     <Link to="/teacher/questiontext" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
@@ -65,9 +65,9 @@ function SidebarTeacher() {
                             <span>Danh sách đề</span>
                         </li>
                     </Link>
-                    <Link  style={{textDecoration:"none"}} onClick={handleLogout}>
+                    <Link style={{textDecoration:"none"}} onClick={handleLogout} to="/">
                         <li>
-                            <CiLogout  className="icon"/>
+                            <CiLogout className="icon"/>
                             <span>Đăng xuất</span>
                         </li>
                     </Link>
