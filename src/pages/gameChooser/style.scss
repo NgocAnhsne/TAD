@@ -1,4 +1,4 @@
-.gameChooser{
+.Chooser{
     background-color: var(--color-background-14);
     width: 100%;
     min-height: 100vh;
@@ -6,7 +6,7 @@
     z-index: 1;
     position: sticky;
     &_header h2{
-        color: Blue;
+        color: rgb(105, 105, 255);
         margin-bottom: 50px;
     }
     &_body{
@@ -15,9 +15,10 @@
         gap: 30px;
 
         &_item{
+            min-width: 360px;
             &:hover{
-           
-                
+           margin-top: -5px;
+           transition: .5s;
             }
             border-radius: 20px;
             background-color: white;
@@ -25,9 +26,12 @@
             box-shadow: 0px 0px 10px rgb(196, 196, 196);
             &_img img{
                 border-right: 1px solid rgb(234, 234, 234);
-                width: 150px;
-                height: 150px;
+                min-width: 150px;
+                max-width: 150px;
+                max-height: 150px;
+                min-height: 150px;
                 border-radius: 20px 0 0 20px;
+                
             }
             &_info{
                 padding: 10px 15px;

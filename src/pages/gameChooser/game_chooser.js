@@ -26,28 +26,30 @@ export default function GameChooser() {
     };
 
     return (
-        <div className='gameChooser'>
-            <div className='gameChooser_header'>
+        <div className='Chooser'>
+            <div className='Chooser_header'>
                 <h2>Chọn game ngay! </h2>
             </div>
-            <div className='gameChooser_body'>
+            <div className='Chooser_body'>
                 {/* items */}
                 
                 {gameData.length > 0 ? (
                         gameData.map((game, i) => (
-                            <div className='gameChooser_body_item'>
-                    <div className='gameChooser_body_item_img'>
+                          <Link to ={ `/student/game/topic/${game.id}`} >
+                            <div className='Chooser_body_item'>
+                    <div className='Chooser_body_item_img'>
                         <img src={anhconbo} alt="Game Image" />
                     </div>
-                    <div className='gameChooser_body_item_info'>
-                        <div className='gameChooser_body_item_info_title'>
+                    <div className='Chooser_body_item_info'>
+                        <div className='Chooser_body_item_info_title'>
                             {game.name}
                         </div>
-                        <div className='gameChooser_body_item_info_desc'>
+                        <div className='Chooser_body_item_info_desc'>
                         {game.description}
                         </div>
                     </div>
                 </div>
+                          </Link>
                         ))
                     ) : (
                         <tr>

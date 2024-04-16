@@ -44,6 +44,7 @@ import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
 import game_chooser from '~/pages/gameChooser/game_chooser.js';
+
 import TopicGameAdmin from '~/pages/Admin/Game/TopicGame/TopicGame.js';
 import EditTopicAdmin from '~/pages/Admin/Game/TopicGame/EditTopic.js';
 import AddGameAdmin from '~/pages/Admin/Game/AddGame.js';
@@ -52,6 +53,8 @@ import WordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/WordlTopic.
 import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWordlTopic.js';
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 
+
+import topic_chooser from '~/pages/gameChooser/topicChooser.js';
 
 
 
@@ -68,6 +71,7 @@ const publicRoutes = [
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
+    {path:'/student/game/topic/:id',component:topic_chooser},
 
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},
