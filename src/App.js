@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "~/routes/index";
 import DefaultLayout from "~/components/Layout/DefaultLayout/index";
 import { AuthProvider } from "./pages/Login/AuthContext";
-
+import AdminUser from "./pages/Admin/User/User";
+import privateRoutes from "./routes/privateRoutes";
 
 function App() {
   return (
@@ -34,6 +35,17 @@ function App() {
               />
             );
           })}
+          <Route
+            path="/admin"
+            element={
+              
+              <privateRoutes>
+                <AdminUser/>
+              </privateRoutes>
+            }
+            
+          />
+          
         </Routes>
       </div>
       </AuthProvider>
