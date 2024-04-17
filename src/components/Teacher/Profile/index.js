@@ -3,7 +3,7 @@ import ListTest from "../List";
 import "../style.scss";
 import "./style.scss";
 import avatarProfile from "~/components/asset/img/teacher_avt.png";
-import background from "~/components/asset/img/_11.jpg";
+
 import { FaRegEdit } from "react-icons/fa";
 import EditProfileTeacher from "../../../pages/Teacher/ProfileTeacher/EditProfileTeacher";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -60,7 +60,31 @@ export default function Profiles() {
 
         <div className="content_right">
           <div className="content_right-content">
+            <div className="content_right-content_items">
+                Quản lý lớp học
+            </div>
+            <div>
+                
+            </div>
+            <div className="content_right-content_items">
+                Thống kê điểm số
+            </div>
+            <div>
+                
+            </div>
             
+            <div className="content_right-content_items">
+                Xem danh sách lớp học
+            </div>
+            <div>
+                
+            </div>
+            <div className="content_right-content_items">
+                Cài đặt thông tin
+            </div>
+            <div>
+                
+            </div>
           </div>
         </div>
       </div>

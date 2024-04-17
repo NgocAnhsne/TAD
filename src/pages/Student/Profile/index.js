@@ -1,5 +1,4 @@
 import "./style.scss";
-import ProfilesImg from "~/components/asset/img/profile.png";
 import avaBtn from "~/components/asset/img/Group 90.png";
 import avaImg from "~/components/asset/img/student_avatar.png";
 import { FaRegEdit } from "react-icons/fa";
@@ -16,10 +15,10 @@ function ProfileStudent() {
         <div className="profileStudent__left--personal shadow">
           <div className="profileStudent__left--personal__ava">
             <div className="profileStudent__left--personal__ava--img">
-              <img src={avaImg} />
+              <img src={avaImg}/>
             </div>
             <div className="profileStudent__left--personal__ava--button">
-              <img src={avaBtn} />
+              <img src={avaBtn}/>
             </div>
           </div>
           <div className="profileStudent__left--personal__info">

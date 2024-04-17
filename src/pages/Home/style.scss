@@ -214,6 +214,7 @@
     bottom: 0;
     left: 0;
     object-fit: cover;
+  
 }
 
 
@@ -321,3 +322,29 @@
 }
 
 
+.movingX{
+    filter: drop-shadow(0 14px 2px rgb(158, 158, 158));
+    animation-name: transitionX;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+    
+}
+.movingY{
+    filter: drop-shadow(0 14px 2px rgb(158, 158, 158));
+    animation-name: transitionY;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+}
+
+  @keyframes transitionY {
+    0% {  transform: translateY(0); }
+    50% { transform: translateY(15px); }
+    100%{ transform: translateY(0); }
+  }
+  @keyframes transitionX {
+    0% {  transform: translateX(0); }
+    50% { transform: translateX(15px); }
+    100%{ transform: translateX(0); }
+  }

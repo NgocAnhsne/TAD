@@ -43,7 +43,7 @@ function Home() {
           {/* banner 1 */}
         <div className="home_first">
         <div className="home_first-banner">
-            <img src={imgBanner2}></img>
+            <img  className="movingY" src={imgBanner2}></img>
           </div>
           <div className="home_first-banner_content">
             <div className="home_first-banner_content-title">
@@ -74,7 +74,7 @@ function Home() {
               Tham gia các trò chơi và học tập cùng những người bạn
             </div>
           </div>
-            <img src={imgBanner1}></img>
+            <img className="movingX" src={imgBanner1}></img>
           </div>
         </div>
         {/* banner 3 */}

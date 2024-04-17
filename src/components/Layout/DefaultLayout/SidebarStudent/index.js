@@ -1,6 +1,5 @@
 import "../style.scss"
 import {Link} from "react-router-dom";
-import { FaHome } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 import { GiTabletopPlayers } from "react-icons/gi";
 import { FaRankingStar } from "react-icons/fa6";
@@ -28,12 +27,7 @@ function SidebarStudent() {
             </div>
             <div className="center">
                 <ul>
-                    <Link to="/" style={{textDecoration:"none"}}>
-                        <li>
-                            <FaHome  className="icon"/>
-                            <span>Trang chủ</span>
-                        </li>
-                    </Link>
+                   
                     <Link to="/student/game" style={{textDecoration:"none"}}>
                         <li>
                             <FaPlay  className="icon"/>
