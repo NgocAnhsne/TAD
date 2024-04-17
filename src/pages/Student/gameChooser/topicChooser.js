@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
 import Upload from '~/pages/Upload';
+import { Link } from 'react-router-dom';
 export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
@@ -35,9 +36,10 @@ export default function TopicChooser() {
                 ) : (   
                 topicData.length > 0 ? (
                     topicData.map((topic, i) => (
-                        <div className='Chooser_body_item' key={i}> {/* Added key prop */}
+                      <Link to={`/student/game/topic/game/${topic.id}`}>
+                        <div className='Chooser_body_item' key={i}> 
                             <div className='Chooser_body_item_img'>
-                                <img src={topic.image} alt="Game Image" /> {/* Assuming there's an image property in your game data */}
+                                <img src={topic.image} alt="Game Image" /> 
                             </div>
                             <div className='Chooser_body_item_info'>
                                 <div className='Chooser_body_item_info_title'>
@@ -48,6 +50,7 @@ export default function TopicChooser() {
                                 </div>
                             </div>
                         </div>
+                        </Link>
                     ))
                 ) : (
                     <div className='Chooser_body_item'>

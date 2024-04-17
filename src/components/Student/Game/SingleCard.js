@@ -4,11 +4,14 @@ import cover from '~/components/asset/img/latBai.png';
 
 export default function SingleCard({ card, handleChoice, flipped, disabled }) {
   const [displayLanguage, setDisplayLanguage] = useState(null);
-  const [isOpened, setIsOpened] = useState(false); // Biến trạng thái cho biết thẻ đã được mở hay chưa
+  const [isOpened, setIsOpened] = useState(false);
+
 
   useEffect(() => {
     setIsOpened(flipped);
   }, [flipped]);
+
+
 
   const handleClick = () => {
     if (!disabled && !isOpened) {
@@ -38,3 +41,4 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
     </div>
   );
 }
+
