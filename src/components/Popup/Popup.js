@@ -1,5 +1,5 @@
 import "./style.scss";
-
+import { AiOutlineClose } from "react-icons/ai";
 import React from "react";
 import Login from "~/pages/Login/index";
 import Register from "~/pages/Register/register";
@@ -14,7 +14,7 @@ export default function Popup(props) {
           onClick={() => {
             setOpenSignUp(false);
           }}>
-          X
+          <AiOutlineClose />
         </button>
         <div className="banner">
           <Register></Register>
@@ -26,7 +26,7 @@ export default function Popup(props) {
           className="banner_btn"
           onClick={() => {
             setOpenPopup(false);
-          }}> X
+          }}> <AiOutlineClose />
         </button>
         <div className="banner">
           <Login></Login>
@@ -39,7 +39,7 @@ export default function Popup(props) {
           onClick={() => {
             setOpenForgotpwd(false);
           }}>
-          X
+         <AiOutlineClose />
         </button>
         <div className="banner">
           <openForgotpwd></openForgotpwd>

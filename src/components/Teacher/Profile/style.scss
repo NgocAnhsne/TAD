@@ -78,14 +78,29 @@
         .content_right {
             width: 30%;
             margin-left: 20px;
-   
+            height: 90vh;
             &-content{
+                height: 80%;
                 padding: 20px 25px;
                 border: 2px solid var(--color-text-19);
                 border-radius: var(--border-radius-size-4);
-                font-size: var(--size-text-14);
+                font-size: 24px;
                 background-color: white;
+                &_items{
+                    margin-top: 10px;
+                    padding: 10px 15px;
+                    text-transform: capitalize;
+                    border-radius: 10px;  
+                    border: #e7e7e7 1px;
+                &:hover{
+                        border:  1px solid rgba(61,97,148,1);
+                        background-color: #e7e7e7;
+                        
+                    }
+                }
+                
             }
+            
         }
     }
 }

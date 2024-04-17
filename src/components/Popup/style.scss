@@ -3,7 +3,7 @@
         left: 0;
         position: fixed;
         z-index: 6;
-        background-color: #21212121;
+        background-color: rgba(0, 0, 0, 0.5);
         width: 100%;
         height: 100vh;
         border: 0;
@@ -11,13 +11,14 @@
                 position: relative;
         }
         .banner_btn{
+                background: none;
                 border-radius: 13px;
                 width: 44px;
-                background-color: rgb(251 251 251);
+                color: #fff;
                 position: absolute;
                 top: 8%;
                 right: 33%;
-                font-size: 22px;
+                font-size: 35px;
             }
         
 }
