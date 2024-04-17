@@ -7,6 +7,7 @@ import { FaHistory } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import logoSidebar from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
+import { SiTestcafe } from "react-icons/si";
 function SidebarStudent() {
     return (
         <div className="sidebar">
@@ -39,6 +40,12 @@ function SidebarStudent() {
                         <li>
                             <GiTabletopPlayers  className="icon"/>
                             <span>Lộ trình</span>
+                        </li>
+                    </Link>
+                    <Link to="/student/test" style={{textDecoration:"none"}}>
+                        <li>
+                            <SiTestcafe  className="icon"/>
+                            <span>Bài kiểm tra</span>
                         </li>
                     </Link>
                     <Link to="/student/rank" style={{textDecoration:"none"}}>

@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import SingleCard from "~/components/Student/Game/SingleCard";
 import { IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 import background from "~/components/asset/img/AnswerStudent.png";
 import cogai26 from "~/components/asset/img/image 26.png";
 
 function Game() {
+  const { id } = useParams();
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
@@ -17,17 +18,25 @@ function Game() {
   const [cardData, setCardData] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState(0);
   const [gameComplete, setGameComplete] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupData, setPopupData] = useState({
+    english: "",
+    vietnamese: "",
+    description: "",
+    pronounce: "",
+    type: "",
+  });
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const fetchData = async () => {
     try {
-      const result = await axios("http://127.0.0.1:8000/api/wordl/all");
+      const result = await axios.get("http://127.0.0.1:8000/api/wordl-by-wordle/" + id);
       setCardData(result.data.data);
     } catch (err) {
-      console.log("something went wrong");
+      console.log("Something went wrong");
     }
   };
 
@@ -43,11 +52,12 @@ function Game() {
     }
   }, [matchedPairs, cardData.length]);
 
+  const MAX_CARDS = 16;
   const shuffleCards = () => {
     const shuffleCards = [...cardData, ...cardData]
       .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: card.id + '_1', matched: false }))
-      .map((card) => ({ ...card, id: card.id + '_2', matched: false }));
+      .map((card) => ({ ...card, id: card.id + "_1", matched: false }))
+      .map((card) => ({ ...card, id: card.id + "_2", matched: false }));
 
     setChoiceOne(null);
     setChoiceTwo(null);
@@ -70,7 +80,15 @@ function Game() {
         setCards((prevCards) => {
           return prevCards.map((card) => {
             if (card.id === choiceOne.id) {
-              return { ...card, matched: true };
+              return {
+                ...card,
+                matched: true,
+                english: card.english,
+                vietnamese: card.vietnamese,
+                description: card.description,
+                pronounce: card.pronounce,
+                type: card.type,
+              };
             } else {
               return card;
             }
@@ -78,6 +96,14 @@ function Game() {
         });
         setMatchedPairs((prevPairs) => prevPairs + 1);
         resetTurn();
+        setShowPopup(true);
+        setPopupData({
+          english: choiceOne.english,
+          vietnamese: choiceOne.vietnamese,
+          description: choiceOne.description,
+          pronounce: choiceOne.pronounce,
+          type: choiceOne.type,
+        });
       } else {
         setTimeout(() => resetTurn(), 1000);
       }
@@ -89,6 +115,10 @@ function Game() {
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
     setDisabled(false);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -107,7 +137,11 @@ function Game() {
         <div className="game_score">
           Score: <b>{matchedPairs}</b>
         </div>
-        {gameComplete && <Link to='/'><div className="game_message">Sang trang tiếp</div></Link>}
+        {gameComplete && (
+          <Link to="/">
+            <div className="game_message">Sang trang tiếp</div>
+          </Link>
+        )}
       </div>
       <div className="App">
         <div className="game_reset">
@@ -122,10 +156,28 @@ function Game() {
               handleChoice={handleChoice}
               flipped={card === choiceOne || card === choiceTwo || card.matched}
               disabled={disabled}
+              choiceOne={choiceOne}
+              choiceTwo={choiceTwo}
             />
           ))}
         </div>
       </div>
+      {showPopup && (
+        <div>
+          <div className="overlay" onClick={closePopup}></div>
+          <div className="popup">
+            <div className="popup_inner">
+              <h4>Thông tin đáp án</h4>
+              <p>Tên English: {popupData.english}</p>
+              <p>Tên VietNamese: {popupData.vietnamese}</p>
+              <p>Description: {popupData.description}</p>
+              <p>Type: {popupData.type}</p>
+              <p>Pronunciation: {popupData.pronounce}</p>
+              <button onClick={closePopup}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
