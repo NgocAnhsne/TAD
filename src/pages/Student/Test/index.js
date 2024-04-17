@@ -1,38 +1,31 @@
-import "./style.scss";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Upload from '~/pages/Upload';
-import lessonImg from "~/components/asset/img/quality_restoration_20240229152.jpg";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Upload from "~/pages/Upload";
 
-export default function LessonStudent() {
-  const [isVisibleLoading, setIsVisibleLoading] = useState(true);
+import lessonImg from "~/components/asset/img/quality_restoration_20240229152.jpg";
 
-  const [lessionData, setLessionData] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, []);
 
-  const fetchData = async () => {
-    try {
-      const result = await axios("http://127.0.0.1:8000/api/lession/all");
-      setLessionData(result.data.data);
-      setIsVisibleLoading(false)
-    } catch (err) {
-      console.log("somthing Wrong");
-    }
-  };
+function Test() {
+    const [isVisibleLoading, setIsVisibleLoading] = useState(true);
 
-  const handleDelete = async (id) => {
-    console.log(id);
-    await axios.delete("http://127.0.0.1:8000/api/lession/delete/" + id);
-    const newListData = lessionData.filter((item) => {
-      alert("Đã xoá danh mục");
-      return item.id !== id;
-    });
-    setLessionData(newListData);
-  };
+    const [lessionData, setLessionData] = useState([]);
+    useEffect(() => {
+      fetchData();
+    }, []);
+  
+    const fetchData = async () => {
+      try {
+        const result = await axios("http://127.0.0.1:8000/api/question/all");
+        setLessionData(result.data.data);
+        setIsVisibleLoading(false)
+      } catch (err) {
+        console.log("somthing Wrong");
+      }
+    };
+
   var moment = require("moment");
+
   return (
     <div className="lessonStudent">
       <div className="lessonStudent__title">
@@ -85,3 +78,5 @@ export default function LessonStudent() {
     </div>
   );
 }
+
+export default Test;

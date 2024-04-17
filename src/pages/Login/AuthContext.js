@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
 
       // Chuyển hướng dựa trên vai trò của người dùng
       if (data.data.role === '2') {
-        navigate('/admin');
+        navigate('/admin');                                                                                                                                                                                                                                                                                                                                                                                                                           
       } else if (data.data.role === '0') {
         navigate('/student/profile');
       } else if (data.data.role === '1') {
@@ -54,8 +54,6 @@ export const AuthProvider = ({ children }) => {
       if (!data) {
         throw new Error('Registration failed');
       }
-      
-  
       
       localStorage.setItem('user', JSON.stringify(data));
       

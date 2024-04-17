@@ -15,14 +15,13 @@
   }
   &__content {
     padding: 0 30px;
-   
-    &--list{
+    &--list {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       flex-wrap: wrap;
       gap: 2%;
-      .loading_screen{
+      .loading_screen {
         position: absolute;
         top: 40%;
         right: 50%;
@@ -40,10 +39,10 @@
         justify-content: space-between;
         flex-direction: column;
         padding: 20px;
-        &--top{
+        &--top {
           display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
+          align-items: flex-start;
+          justify-content: space-between;
           &__left {
             color: var(--color-text-1);
             display: flex;
@@ -56,12 +55,11 @@
               font-weight: 600;
               font-size: var(--size-text-7);
             }
-            &--body{
+            &--body {
               display: flex;
               flex-direction: column;
               align-items: flex-start;
-              span{
-  
+              span {
               }
             }
           }
@@ -80,26 +78,21 @@
           justify-content: space-between;
           width: 100%;
           margin-top: 10px;
-          &__btnPlay{
-            margin-right: 5px;
-          }
-          &__btnDel{
-            margin-left: 5px;
+          &__btnPlay {
           }
         }
-        
       }
     }
   }
 }
-.lessonBtn{
+.lessonBtn {
   background-color: var(--color-background-1);
-            color: var(--color-text-5);
-            width: 50%;
-            padding: 8px 12px;
-            text-align: center;
-            border-radius: var(--border-radius-size-5);
-            font-weight: 600;
+  color: var(--color-text-5);
+  width: 50%;
+  padding: 8px 12px;
+  text-align: center;
+  border-radius: var(--border-radius-size-5);
+  font-weight: 600;
 }
 .lesson2 {
   background-color: var(--color-background-3);

@@ -104,4 +104,11 @@
       }
     }
   }
-  
+  .answerStudent__content--bottom__list--item .correct{
+    background-color: #dffff2;
+    border-color:#00d397;
+   }
+  .answerStudent__content--bottom__list--item .wrong{
+    background-color: #ffebeb;
+    border-color:#ff4a4a;
+   }
