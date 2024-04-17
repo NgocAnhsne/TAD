@@ -5,10 +5,12 @@ import { FaRegEdit } from "react-icons/fa";
 import scoreImg from "~/components/asset/img/score.svg";
 import { FaRankingStar } from "react-icons/fa6";
 import rankProfileImg from "~/components/asset/img/rank 1.png";
+import { Link } from "react-router-dom";
 
 function ProfileStudent() {
   const user = JSON.parse(localStorage.getItem('user'));
-  var moment = require('moment')
+  var moment = require('moment');
+
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
@@ -26,10 +28,11 @@ function ProfileStudent() {
             {user.name}
             </div>
             <div className="profileStudent__left--personal__info--email">
-            <div>Email:</div> <div> {user.email}</div>
+            <div>Email: </div> <div className="profileStudent__left--personal__info--email__item"> {user.email}</div>
             </div>
             <div className='profileStudent__left--personal__info--role'>
-              <span>Vai trò:</span> <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></div>
+              <div>Vai trò: </div>
+              <div className="profileStudent__left--personal__info--role__item">{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</div></div>
 
             <div className="profileStudent__left--personal__info--level">
               {/* background level */}
@@ -43,7 +46,9 @@ function ProfileStudent() {
           </div>
           <div className="profileStudent__left--personal__edit">
             <div className="profileStudent__left--personal__edit--btn">
-              <FaRegEdit />
+            <Link to={`/student/profile/edit/${user.id}`}>
+                <FaRegEdit className="icon" />
+              </Link>
             </div>
           </div>
         </div>
@@ -62,19 +67,6 @@ function ProfileStudent() {
                 </div>
                 <div className="profileStudent__left--statistical__list--item__content--bottom">
                   Xếp hạng
-                </div>
-              </div>
-            </div>
-            <div className="profileStudent__left--statistical__list--item">
-              <div className="profileStudent__left--statistical__list--item__img">
-                <img src={scoreImg} />
-              </div>
-              <div className="profileStudent__left--statistical__list--item__content">
-                <div className="profileStudent__left--statistical__list--item__content--top">
-                  20
-                </div>
-                <div className="profileStudent__left--statistical__list--item__content--bottom">
-                  Tổng điểm KN
                 </div>
               </div>
             </div>

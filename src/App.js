@@ -5,6 +5,8 @@ import DefaultLayout from "~/components/Layout/DefaultLayout/index";
 import { AuthProvider } from "./pages/Login/AuthContext";
 import AdminUser from "./pages/Admin/User/User";
 import privateRoutes from "./routes/privateRoutes";
+import ProfileStudent from "./pages/Student/Profile";
+import ProfileTeacher from "./pages/Teacher/ProfileTeacher";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
               
               <privateRoutes>
                 <AdminUser/>
+                {/* <ProfileStudent/> */}
+                {/* <ProfileTeacher/> */}
               </privateRoutes>
             }
             
