@@ -45,10 +45,16 @@
           font-weight: 900;
           margin-bottom: 5px;
         }
-        &--nickname {
+        &--email {
           color: var(--color-text-4);
           font-weight: 600;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
+          font-size: var(--size-text-6);
+        }
+        &--role{
+          color: var(--color-text-4);
+          font-weight: 600;
+          margin-bottom: 10px;
           font-size: var(--size-text-6);
         }
         &--level {
