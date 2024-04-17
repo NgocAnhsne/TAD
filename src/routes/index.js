@@ -1,7 +1,9 @@
 import Home from '../pages/Home/index.js';
 import Login from '../pages/Login/index.js';
+import privateRoutes from './privateRoutes.js';
+
+
 import rolechooser from '../pages/RoleChooser/rolechoosen.js';
-// import Profile from '../pages/Profile/index.js';
 
 import Upload from '../pages/Upload/index.js';
 
@@ -132,8 +134,5 @@ const publicRoutes = [
 
 ]
 
-const privateRoutes = [
 
-]
-
-export { publicRoutes, privateRoutes }
+export { publicRoutes }
