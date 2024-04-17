@@ -11,7 +11,6 @@ function ListTestTeacher() {
     return (
         <div className="teacher">
             <h1>Danh sách bộ đề</h1>
-            <img src={caydua}></img>
             <ListTest/>
         </div>
     );

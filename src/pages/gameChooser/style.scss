@@ -13,7 +13,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
-
+        .loading_screen{
+            position: absolute;
+            top: 40%;
+            right: 50%;
+        }
         &_item{
             min-width: 360px;
             &:hover{
@@ -34,11 +38,15 @@
                 
             }
             &_info{
+                width: 100%;
+                border-radius: 0px 20px 20px 0 ;
+               
                 padding: 10px 15px;
                 &_title{
                     font-weight: bolder;
                     font-size: 32px;
-                    color: blue;
+                    color: #6d6d6d;
+                    font-family: "Coiny", system-ui;
                 }
                 &_desc{
                     

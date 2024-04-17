@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import ListTest from '../List'
 import '../style.scss'
 import './style.scss'
-import avatarProfile from '~/components/asset/img/image 26.png'
+import avatarProfile from '~/components/asset/img/teacher_avt.png'
 import background from '~/components/asset/img/_11.jpg'
 import { FaRegEdit } from "react-icons/fa";
 import EditProfileTeacher from '../../../pages/Teacher/ProfileTeacher/EditProfileTeacher'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-
-
 
 
 
@@ -37,8 +35,8 @@ export default function Profiles() {
                             <div><span className='meidum'>{user.name}</span></div>
                             {/* <div><span className='opacity'>nguyenvana</span></div> */}
                         </div>
-                        <div className='left_email'><span>Email: <span>{user.email}</span></span></div>
-                        <div className='left_role'><span>Role: <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></span></div>
+                        <div className='left_email'><span>Email:</span> <span>{user.email}</span></div>
+                        <div className='left_role'><span>Role:</span> <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></div>
                         <div className='left_join'><span format='YYYY MMMM dddd' className='body_opacity opacity'>Đã tham gia vào {moment(user.created_at).format('L')}</span></div>
                     </div>
                     <div className='left_edit'>
@@ -54,10 +52,15 @@ export default function Profiles() {
             </div>
          
             <div className='content_right'>
-                <img className='content_right_background' src={background}></img>
-                <div className='img__right1'></div>
-                <div className='img__right1'></div>
-                <div className='img__right1'></div>
+               <div>
+                Danh sách học sinh:
+               </div>
+               <div>
+                Danh sách điểm:
+               </div>
+               <div>
+                
+               </div>
             </div>
    
         </div>

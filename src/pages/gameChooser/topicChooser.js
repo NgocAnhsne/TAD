@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
-
-export default function TopicChooser() { // Changed function name to start with uppercase
+import Upload from '~/pages/Upload';
+export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
 
@@ -26,7 +26,14 @@ export default function TopicChooser() { // Changed function name to start with 
                 <h2>Chọn chủ đề </h2>
             </div>
             <div className='Chooser_body'>
-                {topicData.length > 0 ? (
+
+          {isVisibleLoading ? (
+                    <div className='loading_screen'>
+                        <Upload/>
+                    </div>
+                
+                ) : (   
+                topicData.length > 0 ? (
                     topicData.map((topic, i) => (
                         <div className='Chooser_body_item' key={i}> {/* Added key prop */}
                             <div className='Chooser_body_item_img'>
@@ -48,7 +55,8 @@ export default function TopicChooser() { // Changed function name to start with 
                             Không tìm thấy chủ đề nào
                         </h4>
                     </div>
-                )}
+                )
+            )}
             </div>
         </div>
     );

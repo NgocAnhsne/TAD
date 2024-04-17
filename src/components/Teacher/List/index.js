@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { TbAdjustmentsQuestion } from "react-icons/tb";
 import { Link, useParams } from 'react-router-dom';
-import caydua from '~/components/asset/img/CayDua.jpg'
+
 import axios from 'axios';
 import { TbEye } from "react-icons/tb";
 export default function ListTest() {
@@ -78,9 +78,9 @@ export default function ListTest() {
                         ))
             ) : (
                 <div>
-                    <h1 className="text-danger text-center">
-                                    Không tìm thấy bộ đề nào
-                                </h1>
+                    <h2 className="text-danger text-center">
+                        Bạn chưa tạo bộ đề nào
+                    </h2>
                 </div>
             )}
             </div>

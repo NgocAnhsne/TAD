@@ -36,16 +36,9 @@
              }
         }
     }
-    img{
-        width: 900px;
-        height: 900px;
-        position: fixed;
-        bottom: -100px;
-        right: -300px;
-        z-index: -1;
-    }
+   
     h1{
-        margin-bottom: 70px;
+        margin-bottom: 40px;
         font-size: 50px;
         color: var(--color-text-4);
     }
