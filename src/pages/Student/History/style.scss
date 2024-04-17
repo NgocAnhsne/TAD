@@ -2,12 +2,17 @@
   position: relative;
   top: 0;
   &__background {
-    position: absolute;
+    
     height: 100%;
     z-index: -100;
     width: 100%;
-    img{
-      width: 100%;
+    background-color: #c7eefc;
+    position: fixed;
+    &_item{
+      position: absolute;
+      width: 33%;
+      bottom: -78px;
+      right: 126px;
     }
   }
   &__title {

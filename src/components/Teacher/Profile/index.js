@@ -31,13 +31,12 @@ export default function Profiles() {
                 <div>
                   <span className="meidum">{user.name}</span>
                 </div>
-                {/* <div><span className='opacity'>nguyenvana</span></div> */}
               </div>
               <div className="left_email">
                 <span>Email:</span> <span>{user.email}</span>
               </div>
               <div className="left_role">
-                <span>Role:</span>{" "}
+                <span>Vai trò:</span>{" "}
                 <span>{user.role == 0 ? "Học Sinh" : "Giáo Viên"}</span>
               </div>
               <div className="left_join">
@@ -53,7 +52,7 @@ export default function Profiles() {
             </div>
           </div>
           <div className="left_bottom">
-            <h2>Danh Sách đề</h2>
+            <h2>Danh sách đề</h2>
             <ListTest />
           </div>
         </div>

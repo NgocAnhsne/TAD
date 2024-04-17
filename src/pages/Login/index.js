@@ -20,7 +20,7 @@ function Login() {
       try {
           const result = await axios.get("http://127.0.0.1:8000/api/alluser");
           setUserData(result.data.data)
-      } catch (error) {
+      } catch (err) {
           console.log("something went wrong");
       }
   }

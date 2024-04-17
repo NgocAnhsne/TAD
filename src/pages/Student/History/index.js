@@ -1,12 +1,11 @@
 import "./style.scss";
-
-import bgHistory from "~/components/asset/img/HistoryStudent.png";
+import background_image from"~/components/asset/img/CayDua.jpg";
 
 function HistoryStudent() {
   return (
     <div className="historyStudent">
       <div className="historyStudent__background">
-        <img src={bgHistory} />
+       <img className="historyStudent__background_item" src={background_image}/>
       </div>
       <div className="historyStudent__title">
         <h1>Lịch sử</h1>
