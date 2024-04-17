@@ -73,13 +73,15 @@ const publicRoutes = [
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
+
     {path:'/student/game/topic/:id',component:topic_chooser},
+    {path: '/student/game/topic/game/:id', component: Game, layout: null},
 
 //role
     {path: '/rolechooser', component: rolechooser, layout: null},
 
 
-    {path: '/game', component: Game, layout: null},
+  
     
 
 //teacher
