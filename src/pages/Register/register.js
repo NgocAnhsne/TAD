@@ -27,6 +27,7 @@ export default function Register() {
       }
     } catch (error) {
       setError('Đăng ký thất bại. Vui lòng thử lại.');
+      console.log(error);
     }
   };
 
