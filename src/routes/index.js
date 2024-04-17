@@ -45,7 +45,7 @@ import EditLession from '~/pages/Admin/Lession/EditLession.js';
 import AddLessionAdmin from '~/pages/Admin/Lession/AddLession.js';
 import ViewQuestion from '~/pages/Admin/Lession/ViewLession.js';
 import ViewQuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/ViewQuestion.js';
-import game_chooser from '~/pages/gameChooser/game_chooser.js';
+import game_chooser from '~/pages/Student/gameChooser/game_chooser.js';
 
 import TopicGameAdmin from '~/pages/Admin/Game/TopicGame/TopicGame.js';
 import EditTopicAdmin from '~/pages/Admin/Game/TopicGame/EditTopic.js';
@@ -56,7 +56,7 @@ import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWor
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 
 
-import topic_chooser from '~/pages/gameChooser/topicChooser.js';
+import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
 
 
 

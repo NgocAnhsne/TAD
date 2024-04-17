@@ -1,7 +1,7 @@
 import "./style.scss";
 import ProfilesImg from "~/components/asset/img/profile.png";
 import avaBtn from "~/components/asset/img/Group 90.png";
-import avaImg from "~/components/asset/img/image 32.png";
+import avaImg from "~/components/asset/img/student_avatar.png";
 import { FaRegEdit } from "react-icons/fa";
 import scoreImg from "~/components/asset/img/score.svg";
 import { FaRankingStar } from "react-icons/fa6";
@@ -13,8 +13,8 @@ function ProfileStudent() {
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
-        <div className="profileStudent__left--personal">
-          <div className="profileStudent__left--personal__ava shadow">
+        <div className="profileStudent__left--personal shadow">
+          <div className="profileStudent__left--personal__ava">
             <div className="profileStudent__left--personal__ava--img">
               <img src={avaImg} />
             </div>
@@ -27,10 +27,10 @@ function ProfileStudent() {
             {user.name}
             </div>
             <div className="profileStudent__left--personal__info--email">
-            Email: {user.email}
+            <div>Email:</div> <div> {user.email}</div>
             </div>
             <div className='profileStudent__left--personal__info--role'>
-              <span>Vai trò: <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></span></div>
+              <span>Vai trò:</span> <span>{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</span></div>
 
             <div className="profileStudent__left--personal__info--level">
               {/* background level */}
@@ -63,6 +63,19 @@ function ProfileStudent() {
                 </div>
                 <div className="profileStudent__left--statistical__list--item__content--bottom">
                   Xếp hạng
+                </div>
+              </div>
+            </div>
+            <div className="profileStudent__left--statistical__list--item">
+              <div className="profileStudent__left--statistical__list--item__img">
+                <img src={scoreImg} />
+              </div>
+              <div className="profileStudent__left--statistical__list--item__content">
+                <div className="profileStudent__left--statistical__list--item__content--top">
+                  20
+                </div>
+                <div className="profileStudent__left--statistical__list--item__content--bottom">
+                  Tổng điểm KN
                 </div>
               </div>
             </div>
