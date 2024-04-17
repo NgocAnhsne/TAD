@@ -19,7 +19,7 @@ import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
-
+import Test from '~/pages/Student/Test/index.js';
 
 import Game from '~/pages/Student/Game/LatBike.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
@@ -76,15 +76,17 @@ const publicRoutes = [
 
     {path:'/student/game/topic/:id',component:topic_chooser},
     {path: '/student/game/topic/game/:id', component: Game, layout: null},
+    {path:'/student/test',component:Test},
 
-//role
+
+    //role
     {path: '/rolechooser', component: rolechooser, layout: null},
 
 
   
     
 
-//teacher
+    //teacher
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/lession', component: ListTestTeacher, layout: SidebarTeacher },
     {path: '/teacher/lession/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
@@ -102,7 +104,7 @@ const publicRoutes = [
     {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
     {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
   
-//admin
+    //admin
     {path: '/admin', component: AdminHome, layout: SidebarAdmin },  
 
     {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
