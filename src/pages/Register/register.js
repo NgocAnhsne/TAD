@@ -4,7 +4,6 @@ import image_login from '~/components/asset/img/login.png';
 import { useAuth } from '../Login/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Register() {
   const { register } = useAuth();
   const [name, setName] = useState('');
@@ -12,16 +11,18 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
   const onSubmitChange = async (e) => {
     e.preventDefault();
     try {
       await register(name, email, password);
       
+      // Check if user exists in localStorage after registration
       const newUser = JSON.parse(localStorage.getItem('user'));
       if (newUser) {
-       
+        // Navigate to the desired page after successful registration
         navigate('/rolechooser');
-        console.log(newUser)
+        console.log(newUser);
       } else {
         setError('Đăng ký thất bại. Vui lòng thử lại.');
       }
@@ -36,7 +37,6 @@ export default function Register() {
         <div className="login_wrapper-container_wrap">
           <img src={image_login} alt="login" />
           <div className="login_wrapper-container_wrap-group">
-           
             <input
               type="text"
               className="form-control"
@@ -46,8 +46,6 @@ export default function Register() {
             />
           </div>
           <div className="login_wrapper-container_wrap-group">
-
-     
             <input
               type="email"
               className="form-control"
@@ -58,7 +56,6 @@ export default function Register() {
             />
           </div>
           <div className="login_wrapper-container_wrap-group">
-
             <input
               type="password"
               className="form-control"
@@ -74,6 +71,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-     );
-    }
-    
+  );
+}

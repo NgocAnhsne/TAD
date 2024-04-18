@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import SingleCard from "~/components/Student/Game/SingleCard";
 import { IoIosArrowBack } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import background from "~/components/asset/img/AnswerStudent.png";
@@ -19,6 +19,7 @@ function Game() {
   const [matchedPairs, setMatchedPairs] = useState(0);
   const [gameComplete, setGameComplete] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
   const [popupData, setPopupData] = useState({
     english: "",
     vietnamese: "",
@@ -120,17 +121,19 @@ function Game() {
   const closePopup = () => {
     setShowPopup(false);
   };
-
+  const goBack = () => {
+    navigate(-1)
+  };
   return (
     <div className="game">
       <img className="background" src={background} alt="background"></img>
       <img className="background2" src={cogai26} alt="cogai26"></img>
       <div className="game_header">
-        <Link to="/">
-          <div className="game_icon">
+       
+          <div className="game_icon" onClick={goBack}>
             <IoIosArrowBack />
           </div>
-        </Link>
+       
         <div className="game_score">
           Turn: <b>{turns}</b>
         </div>
@@ -145,7 +148,7 @@ function Game() {
       </div>
       <div className="App">
         <div className="game_reset">
-          <button onClick={shuffleCards}>New Game</button>
+          <button onClick={shuffleCards}>Reset Game</button>
         </div>
 
         <div className="card_grid">
@@ -168,8 +171,8 @@ function Game() {
           <div className="popup">
             <div className="popup_inner">
               <h4>Thông tin đáp án</h4>
-              <p>Tên English: {popupData.english}</p>
-              <p>Tên VietNamese: {popupData.vietnamese}</p>
+              <p>English: {popupData.english}</p>
+              <p>VietNamese: {popupData.vietnamese}</p>
               <p>Description: {popupData.description}</p>
               <p>Type: {popupData.type}</p>
               <p>Pronunciation: {popupData.pronounce}</p>

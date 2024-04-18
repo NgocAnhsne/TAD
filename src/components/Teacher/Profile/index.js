@@ -47,9 +47,7 @@ export default function Profiles() {
               </div>
             </div>
             <div className="left_edit">
-              <Link to={`/teacher/profile/edit/${user.id}`}>
-                <FaRegEdit className="icon" />
-              </Link>
+              
             </div>
           </div>
           <div className="left_bottom">
@@ -80,7 +78,9 @@ export default function Profiles() {
                 
             </div>
             <div className="content_right-content_items">
+            <Link to={`/teacher/profile/edit/${user.id}`}>
                 Cài đặt thông tin
+              </Link>
             </div>
             <div>
                 

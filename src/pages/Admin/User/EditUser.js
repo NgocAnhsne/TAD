@@ -26,6 +26,7 @@ export default function EditUser() {
         try{
             const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
             setUserField(result.data.data)
+            console.log(result.data.data)
         }catch(err){
             console.log("Something Wrong");
         }

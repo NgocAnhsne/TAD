@@ -2,16 +2,15 @@ import React, { createContext, useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-// Tạo một Context
+
 const AuthContext = createContext();
 
-// Tạo một Provider Component
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Hàm để gọi API và đăng nhập
   const login = async (email, password) => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/login', {
@@ -30,7 +29,6 @@ export const AuthProvider = ({ children }) => {
       setUser(data.data);
       setError(null);
 
-      // Chuyển hướng dựa trên vai trò của người dùng
       if (data.data.role === '2') {
         navigate('/admin');
       } else if (data.data.role === '0') {
@@ -54,9 +52,7 @@ export const AuthProvider = ({ children }) => {
       if (!data) {
         throw new Error('Registration failed');
       }
-      
-  
-      
+
       localStorage.setItem('user', JSON.stringify(data));
       
       setUser(data);
@@ -71,25 +67,14 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
   };
   
-  
-  
-    // Kiểm tra nếu người dùng không có quyền truy cập vào trang
-    const checkRoleAndNavigate = (role, path) => {
-      if (user && user.role !== role) {
-        navigate('/unauthorized');
-        return false;
-      }
-      return true;
-    };
-  
   return (
     
-    <AuthContext.Provider value={{ user, error, login , register, logout, checkRoleAndNavigate }}>
+    <AuthContext.Provider value={{ user, error, login , register, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 
-// Hook để sử dụng Context trong các thành phần con
+
 export const useAuth = () => useContext(AuthContext);
