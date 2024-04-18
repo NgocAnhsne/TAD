@@ -53,7 +53,7 @@ export default function CreatQuestionText() {
   return (
     <div className='teacher_component'>
       <div className="question_header">
-        <div><h1>Tạo câu hỏi chữ</h1></div>
+        <div><h1>Tạo câu hỏi</h1></div>
         <div className='header_right'>
           <Link className='header_save' onClick={e => onSubmitChange(e)}>
             <span className='question_back'>Lưu các thay đổi</span>

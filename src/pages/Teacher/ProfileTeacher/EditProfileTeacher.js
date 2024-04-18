@@ -53,7 +53,7 @@ export default function EditProfileStudent() {
   return (
     <div className='teacher'>
       <div className='header'>
-                <div><h1>Thêm/cập nhật bài học</h1></div>
+                <div><h1>Sửa thông tin giáo viên</h1></div>
                 <div>
                 <Link to={`/teacher/profile/`} className='header_cancel'>
                     <span>Hủy và quay lại</span>

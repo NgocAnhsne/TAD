@@ -21,7 +21,7 @@ function Login() {
           const result = await axios.get("http://127.0.0.1:8000/api/alluser");
           setUserData(result.data.data)
       } catch (err) {
-          console.log("something went wrong");
+          setError('Đăng nhập thất bại. Vui lòng thử lại.');
       }
   }
   const handleLogin = async (e) => {

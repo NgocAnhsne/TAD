@@ -1,5 +1,5 @@
 import "../style.scss"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import { GiTabletopPlayers } from "react-icons/gi";
 import { FaRankingStar } from "react-icons/fa6";
@@ -8,7 +8,21 @@ import { CiLogout } from "react-icons/ci";
 import logoSidebar from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 import { SiTestcafe } from "react-icons/si";
+
+import { useAuth } from "~/pages/Login/AuthContext";
+
 function SidebarStudent() {
+    const { logout } = useAuth();
+    const navigate  = useNavigate()
+    const handleLogout = async () => {
+        try {
+          await logout();
+          window.alert('Bạn muốn đăng xuất');
+          navigate('/');
+        } catch (error) {
+          console.error('Đã xảy ra lỗi khi đăng xuất:', error);
+        }
+      };
     return (
         <div className="sidebar">
             <div className="top">
@@ -60,7 +74,7 @@ function SidebarStudent() {
                             <span>Lịch sử</span>
                         </li>
                     </Link>
-                    <Link to="/" style={{textDecoration:"none"}}>
+                    <Link to="/" style={{textDecoration:"none"}} onClick={handleLogout} >
                         <li>
                             <CiLogout  className="icon"/>
                             <span>Đăng xuất</span>
