@@ -63,7 +63,8 @@ export default function AdminUser() {
                         <th scope="col">ID</th>
                         <th scope="col">Tên</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Vai trò</th>
+                        <th scope="col">Điểm số</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xoá</th>
                     </tr>
@@ -76,6 +77,7 @@ export default function AdminUser() {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{(user.role == 0) ? 'Học Sinh' : ((user.role == 1) ? 'Giáo Viên' : 'Admin')}</td>
+                                <td>{user.score}</td>
                                 <td className='icon'>
                                     <Link to={`/admin/users/edit/${user.id}`}>
                                         <FaRegEdit color='blue' />

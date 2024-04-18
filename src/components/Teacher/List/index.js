@@ -19,9 +19,9 @@ export default function ListTest() {
     console.log(user.id)
     const fetchData = async (id) => {
         try {
-            const result = await axios("http://127.0.0.1:8000/api/test-by-user"+ user.id);
-            setLessionData(result.data)
-            console.log(result.data)
+            const result = await axios("http://127.0.0.1:8000/api/test-by-user/"+ user.id);
+            setLessionData(result.data.data)
+            console.log(result.data.data)
         } catch (err) {
             console.log("somthing Wrong");
         }

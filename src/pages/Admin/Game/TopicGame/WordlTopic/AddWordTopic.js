@@ -12,6 +12,7 @@ export default function AddWordlTopicAdmin() {
     const [topicData,setTopicData]=useState()
  
     const [topicField, setTopicField] = useState({
+      id_wordle: id,
       english: "",
       vietnamese: "",
       type: "",
@@ -47,6 +48,7 @@ export default function AddWordlTopicAdmin() {
         try {
            await axios.post("http://127.0.0.1:8000/api/wordl/create", topicField);
             setLoading(true);
+            
             navigate(-1)
         } catch (err) {
             console.log("Something Wrong");
@@ -74,22 +76,7 @@ export default function AddWordlTopicAdmin() {
             noValidate
           >
             <Form.Control type="hidden" name="id" value={id} />
-            <div className="row mb-3">
-              <Form.Label className="col-sm-2 col-form-label">Tên Topic</Form.Label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  name="id_wordle"
-                  title="name"
-                  required
-                  value={topicField.id_wordle}
-                  onChange={e => changetopicFieldHandler(e)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Không được bỏ trống.
-                </Form.Control.Feedback>
-              </div>
-            </div>
+          
             <div className="row mb-3">
               <Form.Label className="col-sm-2 col-form-label">Tên tiếng anh</Form.Label>
               <div className="col-sm-10">

@@ -18,13 +18,13 @@ export default function WordlTopicAdmin() {
         try {
             const result = await axios("http://127.0.0.1:8000/api/wordl-by-wordle/"+ id);
             setTopicData(result.data.data)
-
             setIsVisibleLoading(false)
         } catch (err) {
             console.log("somthing Wrong");
         }
         
     }
+   
 
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm("Bạn có chắc chắn muốn xoá danh mục này?");
@@ -43,7 +43,7 @@ export default function WordlTopicAdmin() {
     <div className='admin'>
         <div className='header'>
                 <div><h1>Quản lý đáp án</h1></div>
-                <Link to={`/admin/topic/wordl/add`}>
+                <Link to={`/admin/topic/wordl/add/${id}`}>
                 <div className='header_add'>
                     <span>Thêm đáp án cho trò chơi</span>
                 </div>

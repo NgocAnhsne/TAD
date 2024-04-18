@@ -121,7 +121,7 @@ const publicRoutes = [
     {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
     {path: '/admin/topic/wordl/edit/:id', component: EditWordlTopicAdmin, layout: SidebarAdmin },
     {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
-    {path: '/admin/topic/wordl/add/', component: AddWordlTopicAdmin, layout: SidebarAdmin },
+    {path: '/admin/topic/wordl/add/:id', component: AddWordlTopicAdmin, layout: SidebarAdmin },
 
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   

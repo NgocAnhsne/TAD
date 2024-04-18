@@ -41,7 +41,7 @@ export const EditLession = () => {
 
     const fetchUser = async () => {
         try {
-            const result = await axios.get("http://127.0.0.1:8000/api/lession/" + id);
+            const result = await axios.get("http://127.0.0.1:8000/api/test/" + id);
             setlessionField(result.data.data)
         } catch (err) {
             console.log("Something Wrong");
@@ -60,7 +60,7 @@ export const EditLession = () => {
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.put("http://127.0.0.1:8000/api/lession/update/" + id, lessionField);
+            await axios.put("http://127.0.0.1:8000/api/test/update/" + id, lessionField);
             navigate('/admin/users')
         } catch (err) {
             console.log("Something Wrong");
