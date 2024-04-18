@@ -25,7 +25,6 @@ import Test from '~/pages/Student/Test/index.js';
 
 import Game from '~/pages/Student/Game/LatBike.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
-import QuestionTextTeacher from '~/pages/Teacher/CreateQuestion/QuestionText/index.js';
 import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
 import QuestionImgTeacher from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
 import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
@@ -88,7 +87,6 @@ const publicRoutes = [
     {path: '/teacher/profile/', component: ProfileTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile/edit/:id', component: EditProfileTeacher, layout: SidebarTeacher },
 
-    {path: '/teacher/questiontext', component: QuestionTextTeacher, layout: SidebarTeacher },
     {path: '/teacher/questiontext/view/:id', component: ViewQuestionTextTeacher, layout: SidebarTeacher },
 
 

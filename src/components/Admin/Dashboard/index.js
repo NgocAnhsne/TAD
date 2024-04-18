@@ -5,10 +5,12 @@ export default function Dashboard() {
     const [userData, setUserData] = useState([]);
     const [gameData, setGameData] = useState([]);
     const [lessionData, setLessionData] = useState([]);
+    const [rankData, setRanknData] = useState([]);
     useEffect(() => {
         fetchData();
         fetchData1();
         fetchData2();
+        fetchDataRank();
     }, [])
 
     const fetchData = async () => {
@@ -35,6 +37,16 @@ export default function Dashboard() {
             console.log("somthing Wrong");
         }
     }
+    const fetchDataRank = async () => {
+        try {
+            const result = await axios("http://127.0.0.1:8000/api/rank");
+            const topThreeUsers = result.data.data.slice(0, 3);
+            setRanknData(topThreeUsers);
+        } catch (err) {
+            console.log("Something Wrong");
+        }
+    }
+    
   return (
     <div className='db_container'>
         <div className='db_content'>
@@ -51,11 +63,12 @@ export default function Dashboard() {
         </div>
         <div className='db_content'>
             <h3>Xếp hạng</h3>
-            <div>
-                <span>Giáo viên: <b>2</b> </span>
-                <span>Học sinh: <b>2</b> </span>
-                <span>Học sinh: <b>2</b> </span>
-            </div>
+            {rankData.map((item, i) => 
+                <div>
+                    <span>{item.name} <b>{item.score}</b> </span>
+                </div>
+            )}
+            
         </div>
         <div className='db_content-type'>
             <h3>Số lượng bài học</h3>

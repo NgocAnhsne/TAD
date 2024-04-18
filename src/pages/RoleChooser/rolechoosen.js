@@ -10,16 +10,17 @@ export default function RoleChooser() {
   const { id } = useParams();
   const navigate = useNavigate();
   const newUser = JSON.parse(localStorage.getItem('user'));
- 
+
   const handleRoleChange = async (newRole) => {
     try {
-      await axios.put(`http://127.0.0.1:8000/api/user/update/${newUser.id}`, { ...newUser, role: newRole });
-      console.log("Role updated successfully!");
-      navigate(newRole === "0" ? `/student/profile` : `/teacher/`);
+        await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
+        console.log("Role updated successfully!");
+        navigate(newRole === "0" ? `/student/profile` : `/teacher/`);
     } catch (err) {
-      console.log("Something went wrong:", err);
+        console.log("Something went wrong:", err);
     }
-  };
+};
+
 
   return (
     <div className="roleChooser">
