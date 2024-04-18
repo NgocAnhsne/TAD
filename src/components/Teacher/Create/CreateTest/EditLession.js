@@ -28,7 +28,7 @@ export const EditLession = () => {
     const [loading, setLoading] = useState()
 
 
-    const [lessionField, setlessionField] = useState({
+    const [testField, setTestField] = useState({
         name: "",
         description: "",
         time: "",
@@ -42,25 +42,25 @@ export const EditLession = () => {
     const fetchUser = async () => {
         try {
             const result = await axios.get("http://127.0.0.1:8000/api/test/" + id);
-            setlessionField(result.data.data)
+            setTestField(result.data.data)
         } catch (err) {
             console.log("Something Wrong");
         }
     }
 
-    const changelessionFieldHandler = (e) => {
-        setlessionField({
-            ...lessionField,
+    const changeTestFieldHandler = (e) => {
+        setTestField({
+            ...testField,
             [e.target.name]: e.target.value
         });
-        //console.log(lessionField);
+        //console.log(testField);
 
     }
 
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.put("http://127.0.0.1:8000/api/test/update/" + id, lessionField);
+            await axios.put("http://127.0.0.1:8000/api/test/update/" + id, testField);
             navigate('/admin/users')
         } catch (err) {
             console.log("Something Wrong");
@@ -78,8 +78,8 @@ export const EditLession = () => {
                             <span
                             >Tên bài test (bắt buộc)</span>
                             <input name="name" required
-                                value={lessionField.name}
-                                onChange={e => changelessionFieldHandler(e)}
+                                value={testField.name}
+                                onChange={e => changeTestFieldHandler(e)}
                             ></input>
                         </div>
                     </div>
@@ -103,8 +103,8 @@ export const EditLession = () => {
                     </div>
                     <div className='right_des'>
                         <span >Mô tả</span>
-                        <textarea name="description" value={lessionField.description}
-                                onChange={e => changelessionFieldHandler(e)}></textarea>
+                        <textarea name="description" value={testField.description}
+                                onChange={e => changeTestFieldHandler(e)}></textarea>
                     </div>
                 </div>
             </div>

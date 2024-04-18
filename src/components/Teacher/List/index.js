@@ -12,7 +12,7 @@ export default function ListTest() {
     const { id } = useParams()
     const [isVisibleLoading, setIsVisibleLoading] = useState(false)
     const user = JSON.parse(localStorage.getItem('user'));
-    const [lessionData, setLessionData] = useState([]);
+    const [testData, setTestData] = useState([]);
     useEffect(() => {
         fetchData();
     }, [id])
@@ -20,7 +20,7 @@ export default function ListTest() {
     const fetchData = async (id) => {
         try {
             const result = await axios("http://127.0.0.1:8000/api/test-by-user/"+ user.id);
-            setLessionData(result.data.data)
+            setTestData(result.data.data)
             console.log(result.data.data)
         } catch (err) {
             console.log("somthing Wrong");
@@ -30,47 +30,47 @@ export default function ListTest() {
     const handleDelete=async(id)=>{
         console.log(id);
         await axios.delete("http://127.0.0.1:8000/api/test/delete/"+user.id);
-        const newListData=lessionData.filter((item)=>{
+        const newListData=testData.filter((item)=>{
             alert("Đã xoá danh mục");
             return(
                 item.id !==id
             )
         })
-        setLessionData(newListData);
+        setTestData(newListData);
     }
     var moment = require('moment')
     return (
         <div className='teacher_component'>
             <div className='list_container'>
-            {lessionData.length > 0 ? (
-                lessionData.map((lession, i) => (
+            {testData.length > 0 ? (
+                testData.map((test, i) => (
 
                 <div className='list_content'>
                     <div className='list_header'>
-                        <span>{lession.name}</span>
+                        <span>{test.name}</span>
                     </div>
                     <hr></hr>
                     <div className='list_body'>
                         <div className='body_top'>
                             {/* <div><span>45 questions</span></div>
                             <div><span>6 plays</span></div> */}
-                            <span>Description: {lession.description}</span>
+                            <span>Description: {test.description}</span>
                         </div>
-                        <div><span>{lession.time} minutes</span></div>
-                        <div><span>Type :<span> {lession.type}</span>
+                        <div><span>{test.time} minutes</span></div>
+                        <div><span>Type :<span> {test.type}</span>
                         </span>
                         </div>
-                        <div><span format='YYYY dddd MMMM' className='body_opacity opacity'>{moment(lession.created_at).format('L')}</span></div>
+                        <div><span format='YYYY dddd MMMM' className='body_opacity opacity'>{moment(test.created_at).format('L')}</span></div>
                     </div>
                     <hr></hr>
                     <div className='list_footer'>
-                        <Link to={`/teacher/lession/edit/${lession.id}`}>
+                        <Link to={`/teacher/test/edit/${test.id}`}>
                             <FaRegEdit className='icon' />
                         </Link>
-                        <div onClick={()=>handleDelete(lession.id)}>
+                        <div onClick={()=>handleDelete(test.id)}>
                             <RiDeleteBinLine className='icon' />
                         </div>
-                        <Link to={`/teacher/questiontext/view/${lession.id}`}>
+                        <Link to={`/teacher/questiontext/view/${test.id}`}>
                             <TbEye className='icon' />
                         </Link>
                     </div>
