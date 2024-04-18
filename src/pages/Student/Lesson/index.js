@@ -40,7 +40,6 @@ export default function LessonStudent() {
       </div>
       <div className="lessonStudent__content">
         <div className="lessonStudent__content--list">
-          
            {isVisibleLoading ? (
             <div className='loading_screen'>
                 <Upload/>

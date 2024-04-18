@@ -6,22 +6,19 @@ import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
 
 const Quiz = () => {
+
     let [index, setIndex] = useState(0);
     let [question, setQuestion] = useState(data[index]);
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
     let [result, setResult] = useState(false);
-    
+
     let Option1 = useRef(null);
     let Option2 = useRef(null);
     let Option3 = useRef(null);
     let Option4 = useRef(null);
-    
+
     let option_array = [Option1, Option2, Option3, Option4];
-    
-    const percent = () =>{
-        Math((score/question)*100);
-    }
 
     const checkAns = (e, ans) => {
         if (lock === false) {
@@ -137,7 +134,7 @@ const Quiz = () => {
                                 Chính xác
                                 </h2>
                                 <div className="successStudent__content--info__box--accuracy__content">
-                                    {percent}%
+                                    {(score / data.length)* 100}%
                                 </div>
                             </div>
                         </div>

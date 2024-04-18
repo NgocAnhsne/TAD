@@ -8,16 +8,18 @@ import rolechooser from '../pages/RoleChooser/rolechoosen.js';
 import Upload from '../pages/Upload/index.js';
 
 //layout
-
 import SidebarTeacher from '~/components/Layout/SidebarTeacher';
-
 import CreateTestTeacher from '~/pages/Teacher/CreateTestTeacher/index.js';
+import { SidebarAdmin } from '~/components/Layout/index.js';
+
+
 // student
 import AnswerStudent from '~/pages/Student/Answer/index.js';
 import Rank from '~/pages/Student/Rank/index.js';
 import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
+import EditProfileStudent from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 import Test from '~/pages/Student/Test/index.js';
 
@@ -28,7 +30,6 @@ import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen
 import QuestionImgTeacher from '~/pages/Teacher/CreateQuestion/QuestionImg/index.js';
 import ProfileTeacher from '~/pages/Teacher/ProfileTeacher/index.js';
 import AdminUser from '~/pages/Admin/User/User.js';
-import { SidebarAdmin } from '~/components/Layout/index.js';
 import EditUser from '~/pages/Admin/User/EditUser.js';
 import AddUser from '~/pages/Admin/User/AddUser.js';
 import AdminHome from '~/pages/Admin/Dashboard/index.js';
@@ -55,10 +56,7 @@ import WordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/WordlTopic.
 import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWordlTopic.js';
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 
-
 import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
-
-
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
@@ -71,6 +69,7 @@ const publicRoutes = [
     {path: '/student/history', component: HistoryStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
+    {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
 
@@ -78,13 +77,8 @@ const publicRoutes = [
     {path: '/student/game/topic/game/:id', component: Game, layout: null},
     {path:'/student/test',component:Test},
 
-
     //role
     {path: '/rolechooser', component: rolechooser, layout: null},
-
-
-  
-    
 
     //teacher
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
