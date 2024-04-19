@@ -23,6 +23,7 @@ import EditProfileStudent from '~/pages/Teacher/ProfileTeacher/EditProfileTeache
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 import Test from '~/pages/Student/Test/index.js';
 
+
 import Game from '~/pages/Student/Game/LatBike.js';
 import ListTestTeacher from '~/pages/Teacher/ListTestTeacher/index.js';
 import QuestionListenTeacher from '~/pages/Teacher/CreateQuestion/QuestionListen/index.js';
@@ -71,6 +72,7 @@ const publicRoutes = [
     {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
+  
 
     {path:'/student/game/topic/:id',component:topic_chooser},
     {path: '/student/game/topic/game/:id', component: Game, layout: null},
