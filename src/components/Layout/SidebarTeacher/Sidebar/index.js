@@ -47,12 +47,12 @@ function SidebarTeacher() {
                             <span>Trang chủ</span>
                         </li>
                     </Link> */}
-                    <Link to="/teacher/questiontext" style={{textDecoration:"none"}}>
+                    {/* <Link to="/teacher/questiontext" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>
                             <span>Tạo câu hỏi</span>
                         </li>
-                    </Link>
+                    </Link> */}
                     <Link to="/teacher" style={{textDecoration:"none"}}>
                         <li>
                             <IoIosCreate  className="icon"/>

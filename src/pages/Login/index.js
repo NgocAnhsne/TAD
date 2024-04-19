@@ -16,18 +16,25 @@ function Login() {
       fetchData();
   }, [])
   
+  
   const fetchData = async () => {
       try {
           const result = await axios.get("http://127.0.0.1:8000/api/alluser");
           setUserData(result.data.data)
       } catch (err) {
-          setError('Đăng nhập thất bại. Vui lòng thử lại.');
+          setError('Lỗi, hãy thử lại');
       }
   }
   const handleLogin = async (e) => {
     e.preventDefault();
-    await login(email, password);
-  };
+    try {
+        await login(email, password);
+        setError('Đăng nhập thất bại. Vui lòng thử lại.');
+    } catch (error) {
+        setError('Đăng nhập thất bại. Vui lòng thử lại.');
+    }
+};
+
   return (
     <div className="login_wrapper">
       <div className='login_wrapper-container'>

@@ -29,7 +29,7 @@ export default function ViewQuestionText() {
     };
 
     const [testField, setTestField] = useState({
-        id_lesstion: id,
+        id_test: id,
         question_text: "",
         answer_a: "",
         answer_b: "",
@@ -47,6 +47,7 @@ export default function ViewQuestionText() {
         try {
             const result = await axios.get("http://127.0.0.1:8000/api/question-by-test/" + id);
             setTestData(result.data.data)
+            console.log(result.data.data)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -56,7 +57,7 @@ export default function ViewQuestionText() {
         const confirmDelete = window.confirm("Bạn có chắc chắn muốn xoá danh mục này?");
         if (confirmDelete) {
           try {
-            await axios.delete("http://127.0.0.1:8000/api/question/delete/"+id);
+            await axios.delete("http://127.0.0.1:8000/api/questiontest/delete/"+id);
             const newtestData = testData.filter((item) => item.id !== id);
             setTestData(newtestData);
           } catch (error) {
@@ -74,10 +75,11 @@ export default function ViewQuestionText() {
     }
     const numberOfQuestions = 40;
     const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
+
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/question/create", testField);
+            await axios.post("http://127.0.0.1:8000/api/questiontest/create", testField);
             setLoading(true);
             setShowPopup(false);
             navigate(`/teacher/questiontext/view/${id}`);

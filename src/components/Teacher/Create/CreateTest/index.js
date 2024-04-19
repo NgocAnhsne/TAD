@@ -29,7 +29,7 @@ export const CreatTest = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
     const user = JSON.parse(localStorage.getItem('user'));
-    const [lessionField, setlessionField] = useState({
+    const [testField, setTestField] = useState({
         id_user: user.id,
         name: "",
         description: "",
@@ -37,19 +37,19 @@ export const CreatTest = () => {
         type: "",
     });
 
-    const changeLessionFieldHandler = (e) => {
-        setlessionField({
-            ...lessionField,
+    const changeTestFieldHandler = (e) => {
+        setTestField({
+            ...testField,
             [e.target.name]: e.target.value
         });
-        // console.log(lessionField);
+        // console.log(testField);
 
     }
 
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/test/create", lessionField);
+            await axios.post("http://127.0.0.1:8000/api/test/create", testField);
             setLoading(true);
         } catch (err) {
             console.log("Something Wrong");
@@ -72,12 +72,12 @@ export const CreatTest = () => {
                             <span
                             >Tên bài test (bắt buộc)</span>
                             <input name="name"
-                                onChange={e => changeLessionFieldHandler(e)}></input>
+                                onChange={e => changeTestFieldHandler(e)}></input>
                         </div>
                     </div>
                     <div className='left_bottom'>
                         <span >Tạo loại câu hỏi</span>
-                        <select onChange={e => changeLessionFieldHandler(e)} name="type">
+                        <select onChange={e => changeTestFieldHandler(e)} name="type">
                             {optionType.map(options => (
                                     <option value={options.value} >{options.label}</option>
                                 ))}
@@ -87,7 +87,7 @@ export const CreatTest = () => {
                 <div className='container_right'>
                     <div className='right_time'>
                         <span >Thời gian</span>
-                        <select onChange={e => changeLessionFieldHandler(e)} name="time">
+                        <select onChange={e => changeTestFieldHandler(e)} name="time">
                             {options.map(options => (
                                     <option value={options.value} >{options.label}</option>
                                 ))}
@@ -95,7 +95,7 @@ export const CreatTest = () => {
                     </div>
                     <div className='right_des'>
                         <span >Mô tả</span>
-                        <textarea onChange={e => changeLessionFieldHandler(e)} name="description"></textarea>
+                        <textarea onChange={e => changeTestFieldHandler(e)} name="description"></textarea>
                     </div>
                 </div>
             </div>

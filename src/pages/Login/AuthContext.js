@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         password
       });
       const data = response.data;
-      console.log(error)
+   
       if (!data.data) {
         throw new Error('Login failed');
       }
