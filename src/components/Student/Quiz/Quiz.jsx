@@ -1,9 +1,11 @@
-import React, { Children, createContext, useContext, useRef, useState } from "react";
+import React, { Children, createContext, useContext, useEffect, useRef, useState } from "react";
 import './style.scss';
 import { data } from "./data";
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Quiz = () => {
 
@@ -52,6 +54,28 @@ const Quiz = () => {
         }
     }
 
+//data
+    const { id } = useParams();
+    const user = JSON.parse(localStorage.getItem('user'));
+    // useEffect(() => {
+    //     fetchData();
+    // }, [id])
+    // console.log(user.id)
+
+    const [quizData, setQuizData] = useState([]);
+
+    const fetchUser = async () => {
+        try {
+            const result = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
+            // setQuestionData(result.data.data)
+        } catch (err) {
+            console.log("Something Wrong");
+        }
+    }
+
+    var moment = require('moment')
+
+
     return (
         <><div className="answerStudent">
             {result ? <></> : <>
@@ -88,16 +112,16 @@ const Quiz = () => {
                     <div className="answerStudent__content--bottom">
                         <div className="answerStudent__content--bottom__list">
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option1} onClick={(e) => { checkAns(e, 1); } }>{question.option1}</button>
+                                <button ref={Option1} onClick={(e) => { checkAns(e, 1); } }>A. {question.option1}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option2} onClick={(e) => { checkAns(e, 2); } }>{question.option2}</button>
+                                <button ref={Option2} onClick={(e) => { checkAns(e, 2); } }>B. {question.option2}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option3} onClick={(e) => { checkAns(e, 3); } }>{question.option3}</button>
+                                <button ref={Option3} onClick={(e) => { checkAns(e, 3); } }>C. {question.option3}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option4} onClick={(e) => { checkAns(e, 4); } }>{question.option4}</button>
+                                <button ref={Option4} onClick={(e) => { checkAns(e, 4); } }>D. {question.option4}</button>
                             </div>
                         </div>
                         <div className="answerStudent__content--bottom__btnNext">
