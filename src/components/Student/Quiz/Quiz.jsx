@@ -9,7 +9,7 @@ import axios from "axios";
 const Quiz = () => {
 
     let [index, setIndex] = useState(0);
-    let [question, setQuestion] = useState([index]);//data
+    let [question, setQuestion] = useState([]);//data
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
     let [result, setResult] = useState(false);
@@ -21,19 +21,19 @@ const Quiz = () => {
 
     let option_array = [Option1, Option2, Option3, Option4];
 
-    const numberOfQuestions = 5;
-    const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
+    // const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
 
     const checkAns = (e, answer) => {
         if (lock === false) {
             if (question.answer == answer) {
                 e.target.classList.add("correct");
                 setLock(true);
-                setScore(prev => prev + 1);
-            } else {
-                e.target.classList.add("wrong");
-                setLock(true);
-                option_array[question.answer - 1].current.classList.add("correct");
+                console.log(answer)
+            //     setScore(prev => prev + 1);
+            // } else {
+            //     e.target.classList.add("wrong");
+            //     setLock(true);
+            //     option_array[question.answer - 1].current.classList.add("correct");
             }
 
         }
@@ -66,8 +66,8 @@ const Quiz = () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestion(res.data.data)
-            console.log(res.data.data)
-            console.log(res.length);
+           
+      
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -76,6 +76,7 @@ const Quiz = () => {
     var moment = require('moment')
 
 
+    const questionLength = question.length;
     return (
         <><div className="answerStudent">
             <div className="answerStudent__header">
@@ -85,7 +86,7 @@ const Quiz = () => {
                     </div>
                     <div className="answerStudent__header--number">
                         <span className="answerStudent__header--number__item">{index + 1}</span>/
-                        {/* <span className="answerStudent__header--number__total">{data.length}</span> */}
+                        <span className="answerStudent__header--number__total">{questionLength}</span>
                     </div>
                     <div className="answerStudent__header--score">
                         <span className="answerStudent__header--score__text">Score: </span>
