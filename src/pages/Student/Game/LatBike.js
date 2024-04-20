@@ -20,6 +20,8 @@ function Game() {
   const [gameComplete, setGameComplete] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const [popupData, setPopupData] = useState({
     english: "",
     vietnamese: "",
@@ -50,19 +52,21 @@ function Game() {
   useEffect(() => {
     if (matchedPairs === cardData.length) {
       setGameComplete(true);
+      updateScore();
     }
   }, [matchedPairs, cardData.length]);
 
-  const MAX_CARDS = 16;
   const shuffleCards = () => {
-    const shuffleCards = [...cardData, ...cardData]
+    const shuffledCards = [...cardData, ...cardData]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: card.id + "_1", matched: false }))
       .map((card) => ({ ...card, id: card.id + "_2", matched: false }));
 
+    const limitedCards = shuffledCards.slice(0, 8);
+    setCards(limitedCards);
+
     setChoiceOne(null);
     setChoiceTwo(null);
-    setCards(shuffleCards);
     setTurns(0);
     setMatchedPairs(0);
     setGameComplete(false);
@@ -71,6 +75,25 @@ function Game() {
   const handleChoice = (card) => {
     if (!disabled && !card.matched) {
       choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+      if (choiceOne && choiceTwo) {
+        setDisabled(true);
+        if (choiceOne.id === choiceTwo.id) {
+          setCards((prevCards) => {
+            return prevCards.map((prevCard) => {
+              if (prevCard.id === choiceOne.id || prevCard.id === choiceTwo.id) {
+                return { ...prevCard, matched: true };
+              }
+              return prevCard;
+            });
+          });
+          setMatchedPairs((prevPairs) => prevPairs + 1);
+          if (matchedPairs + 1 === cardData.length) {
+            updateScore();
+          }
+        } else {
+          setTimeout(resetTurn, 1000);
+        }
+      }
     }
   };
 
@@ -121,19 +144,29 @@ function Game() {
   const closePopup = () => {
     setShowPopup(false);
   };
+
   const goBack = () => {
-    navigate(-1)
+    navigate(-1);
   };
+
+  const updateScore = async () => {
+    try {
+      const updatedUser = { ...user, score: matchedPairs };
+      await axios.put("http://127.0.0.1:8000/api/addscore/" + user.id, updatedUser); 
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.log("Error updating score:", error);
+    }
+  };
+
   return (
     <div className="game">
       <img className="background" src={background} alt="background"></img>
       <img className="background2" src={cogai26} alt="cogai26"></img>
       <div className="game_header">
-       
-          <div className="game_icon" onClick={goBack}>
-            <IoIosArrowBack />
-          </div>
-       
+        <div className="game_icon" onClick={goBack}>
+          <IoIosArrowBack />
+        </div>
         <div className="game_score">
           Turn: <b>{turns}</b>
         </div>
@@ -141,8 +174,8 @@ function Game() {
           Score: <b>{matchedPairs}</b>
         </div>
         {gameComplete && (
-          <Link to="/">
-            <div className="game_message">Sang trang tiếp</div>
+          <Link to="/student/game">
+            <div className="game_message">Chơi tiếp</div>
           </Link>
         )}
       </div>

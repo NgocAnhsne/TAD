@@ -15,6 +15,7 @@ export default function EditUser() {
         name: "",
         email: "",
         password: "",
+        socre: "",
         role: "",
     });
  
@@ -118,6 +119,25 @@ export default function EditUser() {
                   title="Password"
                   required
                   value={userField.password} 
+                  onChange={e => changeUserFieldHandler(e)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Không được bỏ trống
+                </Form.Control.Feedback>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <Form.Label className="col-sm-2 col-form-label">
+                Điểm
+              </Form.Label>
+              <div className="col-sm-10">
+                <Form.Control
+                 id="password"
+                  type="text"
+                  name="score"
+                  title="score"
+                  required
+                  value={userField.score} 
                   onChange={e => changeUserFieldHandler(e)}
                 />
                 <Form.Control.Feedback type="invalid">

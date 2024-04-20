@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
@@ -59,7 +60,9 @@ export default function GameChooser() {
                 ) : (
                     gameData.length > 0 ? (
                         gameData.map((game, i) => (
-                            <Link to={`/student/game/topic/${game.id}`} key={game.id}>
+
+                            <Link to={`/student/game/${game.id}/topic`} key={game.id}>
+
                                 <div className='Chooser_body_item'>
                                     <div className='Chooser_body_item_img'>
                                         <img src={getRandomImage(i)} alt={`Game Image ${i}`} />

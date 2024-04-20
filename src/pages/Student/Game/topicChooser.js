@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
 import Upload from '~/pages/Upload';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
-
+    const [gameData, setGameData] = useState([]);
+    const { id } = useParams()
     useEffect(() => {
         fetchData();
+        fetchDataGame();
     }, []);
-
     const fetchData = async () => {
         try {
             const result = await axios("http://127.0.0.1:8000/api/wordle/all");
@@ -20,7 +21,15 @@ export default function TopicChooser() {
             console.log("something went wrong");
         }
     };
-
+    const fetchDataGame = async () => {
+        try {
+            const result = await axios("http://127.0.0.1:8000/api/allgame");
+            setGameData(result.data.data);
+            setIsVisibleLoading(false);
+        } catch (err) {
+            console.log("something went wrong");
+        }
+    };
     return (
         <div className='Chooser'>
             <div className='Chooser_header'>
@@ -36,7 +45,7 @@ export default function TopicChooser() {
                 ) : (   
                 topicData.length > 0 ? (
                     topicData.map((topic, i) => (
-                      <Link to={`/student/game/topic/game/${topic.id}`}>
+                      <Link to={`/student/game/${id}/topic/${topic.id}`}>
                         <div className='Chooser_body_item' key={i}> 
                             <div className='Chooser_body_item_img'>
                                 <img src={topic.image} alt="Game Image" /> 

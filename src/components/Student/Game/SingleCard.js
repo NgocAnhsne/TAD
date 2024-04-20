@@ -15,15 +15,24 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
 
   const handleClick = () => {
     if (!disabled && !isOpened) {
+      setIsOpened(true); // Đặt trạng thái đã mở trước khi xử lý
       handleChoice(card);
-      if (displayLanguage === 'english') {
-        setDisplayLanguage('vietnamese');
-      } else {
-        setDisplayLanguage('english');
-      }
-      setIsOpened(true);
+      const nextLanguage = displayLanguage === 'english' ? 'vietnamese' : 'english';
+      setDisplayLanguage(nextLanguage);
     }
   };
+
+  useEffect(() => {
+    let timer;
+    if (isOpened) {
+      timer = setTimeout(() => {
+        setIsOpened(false);
+      }, 1000); // Thời gian mở lại sau 1 giây
+    }
+    return () => clearTimeout(timer);
+  }, [isOpened]);
+  
+  
 
   return (
     <div className="card" onClick={handleClick}>

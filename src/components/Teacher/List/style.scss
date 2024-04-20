@@ -8,14 +8,27 @@
             background: #FFFFFF;
             box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.5);
             border-radius: 20px;
-            min-width: 320px;
+            max-width: 420px;
+            width: 100%;
             .list_header{
                 padding: 20px;
-
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 span{
                     font-size: 35px;
                     font-weight: 800;
                 }
+                .icon{
+                    font-size: 25px;
+                    &:hover{
+                        color: #5C7DAC;
+                        cursor: pointer;
+                    }
+                    
+                }
+              
+                
             }
 
             .list_body{

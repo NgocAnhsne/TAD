@@ -4,7 +4,8 @@ import imgBanner1 from "~/components/asset/img/home_banner1.png";
 import imgBanner2 from "~/components/asset/img/home_banner2.png";
 import imgFooter from "~/components/asset/img/img_footer.png";
 import Popup from "../../components/Popup/Popup";
-
+import imgBanner3 from "~/components/asset/img/homebanner_3_bottom.png";
+import imgBanner4 from "~/components/asset/img/homebanner_3_.png";
 import { useState,useEffect } from "react";
 
 // import SidebarStudent from "~/components/Layout/DefaultLayout/Sidebar/SidebarStudent";
@@ -80,16 +81,16 @@ function Home() {
         {/* banner 3 */}
         <div className="home_container home_container_3" >
           <div className="home_first">
+          
           <div className="home_first-banner_content banner_3">
             <div className="home_first-banner_content-title">
               Tạo thêm động lực
             </div>
             <div className="home_first-banner_content_desc">
-              Theo dõi lộ trình, xây dựng thói quen học tập, qua những tính năng
-              mô phỏng trò chơi, các thử thách vui vẻ
+              Theo dõi lộ trình, xây dựng thói quen học tập qua những thử thách vui vẻ, thi đua bảng xếp hạng
             </div>
 
-            <div className="home_first-banner_content-desc_btn" style={{marginTop:60}}>
+            <div className="home_first-banner_content-desc_btn" style={{marginTop:30}}>
               <button
                 className="home_first-banner_content-desc_btn-inner box_shadow"
                 onClick={() => setOpenPopup(true)}
@@ -98,6 +99,11 @@ function Home() {
               </button>
               </div>
           </div>
+          
+          </div>
+          <div className="home_first_last_banner_wrapper">
+          <img  className="movingY home_first_last_banner" src={imgBanner3}></img>
+          <img  className="movingY home_first_last_banner" src={imgBanner4}></img>
           </div>
         </div>
       </div>
@@ -119,13 +125,13 @@ function Home() {
                 </div>
                 <div class="footer__banner">
                     <div class="footer__banner--title">
-                        Dịch vụ
+                        Chức năng
                     </div>
                     <div class="footer__banner--content">
                         <ul class="footer__listUnit">
-                            <li><a href="">Làm kiểm tra</a></li>
-                            <li><a href="">Trò chơi</a></li>
-                            <li><a href="">Cài đặt tài khoản</a></li>
+                            <a href=""><li>Làm kiểm tra</li></a>
+                            <a href=""><li>Trò chơi</li></a>
+                            <a href=""><li>Cài đặt tài khoản</li></a>
                         </ul>
                     </div>
                 </div>

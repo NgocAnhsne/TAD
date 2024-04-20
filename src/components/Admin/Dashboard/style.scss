@@ -30,6 +30,13 @@
     }
     .db_content{
         background-color: #5CCBFF;
+
+        div{
+            span{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
     .db_content-type {
         background-color: #ff64c158;
