@@ -1,11 +1,42 @@
+import { useEffect, useState } from "react";
 import "./style.scss";
-import background_image from"~/components/asset/img/CayDua.jpg";
-
+import background_image from "~/components/asset/img/CayDua.jpg";
+import moment from "moment";
+import Upload from "~/pages/Upload";
+import axios from "axios";
 function HistoryStudent() {
+  const [isVisibleLoading, setIsVisibleLoading] = useState(true);
+  const [historyData, sethistoryData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(
+        "http://127.0.0.1:8000/api/history/lesson-history-user/"
+      );
+      sethistoryData(result.data.data);
+      setIsVisibleLoading(false);
+    } catch (err) {
+      console.log("something went wrong");
+    }
+    
+  };
+
+
+  const historyLength = historyData.length;
+
+
   return (
+    
     <div className="historyStudent">
       <div className="historyStudent__background">
-       <img className="historyStudent__background_item" src={background_image}/>
+        <img
+          className="historyStudent__background_item"
+          src={background_image}
+        />
       </div>
       <div className="historyStudent__title">
         <h1>Lịch sử</h1>
@@ -13,150 +44,64 @@ function HistoryStudent() {
       <div className="historyStudent__content">
         <div className="historyStudent__content--list">
           {/* course 1 */}
-          <div className="historyStudent__content--list__item shadow">
-            <div className="historyStudent__content--list__item--title">
-              Homeworks
-            </div>
-            <div className="historyStudent__content--list__item--body">
-              <div className="historyStudent__content--list__item--body__row">
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__left">
-                  <div className="historyStudent__content--list__item--body__row--col__left--ques">30 questions</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--time">Time</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--score">Score</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--playdate">Play date</div>
+
+          {isVisibleLoading ? (
+      
+            <></>
+          ) : historyData.length > 0 ? (
+            historyData.map((history) => (
+
+              <div className="historyStudent__content--list__item shadow">
+                <div className="historyStudent__content--list__item--title">
+                  {history.id_lesson_test}
                 </div>
+                <div className="historyStudent__content--list__item--body">
+                  <div className="historyStudent__content--list__item--body__row">
+                    <div className="historyStudent__content--list__item--body__row--col">
+                      <div className="historyStudent__content--list__item--body__row--col__left">
+                        <div className="historyStudent__content--list__item--body__row--col__left--ques">
+                         question: {historyLength}
+                        </div>
+                        <div className="historyStudent__content--list__item--body__row--col__left--time">
+                          Time:{" "}
+                          {moment(history.update_at).format("DD/MM/YYYY")}
+                        </div>
+                        <div className="historyStudent__content--list__item--body__row--col__left--score">
+                          Score
+                        </div>
+                        <div>{history.score}</div>
+                        <div className="historyStudent__content--list__item--body__row--col__left--playdate">
+                          Play date
+                        </div>
+                        <div className="historyStudent__content--list__item--body__row--col__left--time">
+                          Time:{" "}
+                          {moment(history.create_at).format("DD/MM/YYYY")}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="historyStudent__content--list__item--body__row--col">
+                      <div className="historyStudent__content--list__item--body__row--col__right">
+                    
+                        <div className="historyStudent__content--list__item--body__row--col__right--time">
+                          Type of test:
+                        </div>
+                        <div>{history.type}</div>
+                   
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__right">
-                  <div className="historyStudent__content--list__item--body__row--col__right--player">6 plays</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--time">15 minutes</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--score">70</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--playdate">1 week ago</div>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div className="historyStudent__content--list__item--btn">
-                <button className="shadow">View</button>
-            </div>
-          </div>
-          {/* course 2 */}
-          <div className="historyStudent__content--list__item shadow">
-            <div className="historyStudent__content--list__item--title">
-            Practice
-            </div>
-            <div className="historyStudent__content--list__item--body">
-              <div className="historyStudent__content--list__item--body__row">
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__left">
-                  <div className="historyStudent__content--list__item--body__row--col__left--ques">45 questions</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--time">Time</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--score">Score</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--playdate">Play date</div>
-                </div>
-                </div>
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__right">
-                  <div className="historyStudent__content--list__item--body__row--col__right--player">8 plays</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--time">45 minutes</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--score">150</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--playdate">8 days ago</div>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div className="historyStudent__content--list__item--btn">
-                <button className="shadow">View</button>
-            </div>
-          </div>
-          {/* course 3 */}
-          <div className="historyStudent__content--list__item shadow">
-            <div className="historyStudent__content--list__item--title">
-            Funny game
-            </div>
-            <div className="historyStudent__content--list__item--body">
-              <div className="historyStudent__content--list__item--body__row">
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__left">
-                  <div className="historyStudent__content--list__item--body__row--col__left--ques">100 questions</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--time">Time</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--score">Score</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--playdate">Play date</div>
-                </div>
-                </div>
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__right">
-                  <div className="historyStudent__content--list__item--body__row--col__right--player">24 plays</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--time">90 minutes</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--score">200</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--playdate">1 month ago</div>
-                </div>
+                <div className="historyStudent__content--list__item--btn">
+                  <button className="shadow">View</button>
                 </div>
               </div>
-            </div>
-            <div className="historyStudent__content--list__item--btn">
-                <button className="shadow">View</button>
-            </div>
-          </div>
-          {/* course 4 */}
-          <div className="historyStudent__content--list__item shadow">
-            <div className="historyStudent__content--list__item--title">
-            Spring Test
-            </div>
-            <div className="historyStudent__content--list__item--body">
-              <div className="historyStudent__content--list__item--body__row">
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__left">
-                  <div className="historyStudent__content--list__item--body__row--col__left--ques">70 questions</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--time">Time</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--score">Score</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--playdate">Play date</div>
-                </div>
-                </div>
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__right">
-                  <div className="historyStudent__content--list__item--body__row--col__right--player">4 plays</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--time">30 minutes</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--score">98</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--playdate">3 weeks ago</div>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div className="historyStudent__content--list__item--btn">
-                <button className="shadow">View</button>
-            </div>
-          </div>
-          {/* course 5 */}
-          <div className="historyStudent__content--list__item shadow">
-            <div className="historyStudent__content--list__item--title">
-            Spring Test
-            </div>
-            <div className="historyStudent__content--list__item--body">
-              <div className="historyStudent__content--list__item--body__row">
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__left">
-                  <div className="historyStudent__content--list__item--body__row--col__left--ques">70 questions</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--time">Time</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--score">Score</div>
-                  <div className="historyStudent__content--list__item--body__row--col__left--playdate">Play date</div>
-                </div>
-                </div>
-                <div className="historyStudent__content--list__item--body__row--col">
-                <div className="historyStudent__content--list__item--body__row--col__right">
-                  <div className="historyStudent__content--list__item--body__row--col__right--player">4 plays</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--time">30 minutes</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--score">98</div>
-                  <div className="historyStudent__content--list__item--body__row--col__right--playdate">3 weeks ago</div>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div className="historyStudent__content--list__item--btn">
-                <button className="shadow">View</button>
-            </div>
-          </div>
+             
+            ))
+          ) : (
+            <p className="text-danger text-center">
+              Không tìm thấy trò chơi nào
+            </p>
+          )}
         </div>
       </div>
     </div>

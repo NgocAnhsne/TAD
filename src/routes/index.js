@@ -73,12 +73,18 @@ const publicRoutes = [
     //student
     {path: '/student/lesson/:id', component: AnswerStudent, layout: null},
     {path: '/student/rank', component: Rank},
+
     {path: '/student/quiz', component: Quiz},
     {path: '/student/history', component: HistoryStudent},
+
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
+    
+
+    // Xem lịch sử:
+    {path: '/student/lesson', component: History },
     {path:'/student/game',component:game_chooser},
     // {path:'/student/GuessWordGame',component:GuessWord},
     {path: '/student/game/1/topic/:id', component: Game, layout: null},
@@ -116,25 +122,19 @@ const publicRoutes = [
     {path: '/admin/users', component: AdminUser, layout: SidebarAdmin },  
     {path: '/admin/users/add', component: AddUser, layout: SidebarAdmin }, 
     {path: '/admin/users/edit/:id', component: EditUser, layout: SidebarAdmin }, 
-
     {path: '/admin/question', component: AdminQuestions, layout: SidebarAdmin },  
     {path: '/admin/question/add', component: AddQuestionAdmin, layout: SidebarAdmin },  
     {path: '/admin/question/edit/:id', component: EditQuestionAdmin, layout: SidebarAdmin },  
-    
     {path: '/admin/game', component: AdminGame, layout: SidebarAdmin }, 
     {path: '/admin/game/edit/:id', component: EditGame, layout: SidebarAdmin },   
     {path: '/admin/game/add', component: AddGameAdmin, layout: SidebarAdmin },   
-
     {path: '/admin/topic/:id', component: TopicGameAdmin, layout: SidebarAdmin },   
     {path: '/admin/topic/edit/:id', component: EditTopicAdmin, layout: SidebarAdmin },   
     {path: '/admin/topic/add', component: AddTopicAdmin, layout: SidebarAdmin }, 
-    
-    
     {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
     {path: '/admin/topic/wordl/edit/:id', component: EditWordlTopicAdmin, layout: SidebarAdmin },
     {path: '/admin/topic/wordl/:id', component: WordlTopicAdmin, layout: SidebarAdmin },
     {path: '/admin/topic/wordl/add/:id', component: AddWordlTopicAdmin, layout: SidebarAdmin },
-
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   
     {path: '/admin/lession/view/:id', component: ViewQuestion, layout: SidebarAdmin },   
