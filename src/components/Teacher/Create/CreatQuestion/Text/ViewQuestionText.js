@@ -99,7 +99,7 @@ export default function ViewQuestionText() {
                         <span>Số lượng hiện tại</span> <b>{testData.length}</b>
                     </div>
                     <div>
-                        <Link to='/teacher/lession'><span className='question_back'>Quay Lại</span></Link>
+                        <Link to='/teacher/test'><span className='question_back'>Quay Lại</span></Link>
                     </div>
                     <div>
                         <span className='question_add' onClick={() => setShowPopup(true)}>Thêm câu hỏi</span>

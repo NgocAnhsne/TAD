@@ -57,6 +57,9 @@ import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWor
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 import topic_chooser from '~/pages/Student/Game/topicChooser.js';
 import GuessWord from '~/pages/GuessWordsGame/GuessWord.js';
+// import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
+import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
+
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
@@ -82,8 +85,9 @@ const publicRoutes = [
 
     //teacher
     {path: '/teacher', component: CreateTestTeacher, layout: SidebarTeacher },
-    {path: '/teacher/lession', component: ListTestTeacher, layout: SidebarTeacher },
-    {path: '/teacher/lession/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
+    {path: '/teacher/test', component: ListTestTeacher, layout: SidebarTeacher },
+    {path: '/teacher/test/edit/:id', component: EditLessionTeacher, layout: SidebarTeacher },
+    {path: '/teacher/test/history/:id', component: HistoryTestTeacher, layout: SidebarTeacher },
 
     {path: '/teacher/profile/', component: ProfileTeacher, layout: SidebarTeacher },
     {path: '/teacher/profile/edit/:id', component: EditProfileTeacher, layout: SidebarTeacher },
@@ -91,11 +95,11 @@ const publicRoutes = [
     {path: '/teacher/questiontext/view/:id', component: ViewQuestionTextTeacher, layout: SidebarTeacher },
 
 
-    {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
-    {path: '/teacher/questionlisten/:id', component: QuestionListenTeacher, layout: SidebarTeacher },
+    // {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
+    // {path: '/teacher/questionlisten/:id', component: QuestionListenTeacher, layout: SidebarTeacher },
     
-    {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
-    {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
+    // {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
+    // {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
   
     //admin
     {path: '/admin', component: AdminHome, layout: SidebarAdmin },  

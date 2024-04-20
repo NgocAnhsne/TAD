@@ -5,6 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { TbAdjustmentsQuestion } from "react-icons/tb";
 import { Link, useParams } from 'react-router-dom';
+import { FaHistory } from "react-icons/fa";
 
 import axios from 'axios';
 import { TbEye } from "react-icons/tb";
@@ -38,16 +39,19 @@ export default function ListTest() {
         })
         setTestData(newListData);
     }
+    
     var moment = require('moment')
     return (
         <div className='teacher_component'>
             <div className='list_container'>
             {testData.length > 0 ? (
                 testData.map((test, i) => (
-
                 <div className='list_content'>
                     <div className='list_header'>
                         <span>{test.name}</span>
+                        <Link to={`/teacher/test/history/${test.id}`}>
+                            <FaHistory className='icon'/>
+                        </Link>
                     </div>
                     <hr></hr>
                     <div className='list_body'>
@@ -67,12 +71,12 @@ export default function ListTest() {
                         <Link to={`/teacher/test/edit/${test.id}`}>
                             <FaRegEdit className='icon' />
                         </Link>
-                        <div onClick={()=>handleDelete(test.id)}>
-                            <RiDeleteBinLine className='icon' />
-                        </div>
                         <Link to={`/teacher/questiontext/view/${test.id}`}>
                             <TbEye className='icon' />
                         </Link>
+                        <div onClick={()=>handleDelete(test.id)}>
+                            <RiDeleteBinLine className='icon' />
+                        </div>
                     </div>
                 </div>
                         ))
