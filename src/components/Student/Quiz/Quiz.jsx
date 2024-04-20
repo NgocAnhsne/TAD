@@ -9,33 +9,49 @@ import axios from "axios";
 const Quiz = () => {
 
     let [index, setIndex] = useState(0);
-    let [question, setQuestion] = useState([]);//data
+    const [question, setQuestion] = useState([]);//data
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
     let [result, setResult] = useState(false);
-
+    const [ans, setAns] = useState([]);
     let Option1 = useRef(null);
     let Option2 = useRef(null);
     let Option3 = useRef(null);
     let Option4 = useRef(null);
 
     let option_array = [Option1, Option2, Option3, Option4];
-
     // const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
 
-    const checkAns = (e, answer) => {
-        if (lock === false) {
-            if (question.answer == answer) {
-                e.target.classList.add("correct");
-                setLock(true);
-                console.log(answer)
+    //data
+    const { id } = useParams();
+    useEffect(() => {
+        fetchData();
+    }, [id])
+
+    const fetchData = async () => {
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
+            setQuestion(res.data.data);
+            setAns(res.data.data);
+            console.log(ans)
+        } catch (err) {
+            console.log("Something Wrong");
+        }
+    }
+    const checkAns = (answer) => {
+        if (lock === false && question.length > 0) {
+            const newAnsData = question.filter((item) => item.answer == ans);
+            console.log(newAnsData);
+            // if (question.answer == newAnsData) {
+            //     e.target.classList.add("correct");
+            //     setLock(true);
             //     setScore(prev => prev + 1);
+            //     console.log(currentQuestion.answer);
             // } else {
             //     e.target.classList.add("wrong");
             //     setLock(true);
-            //     option_array[question.answer - 1].current.classList.add("correct");
-            }
-
+            //     option_array[currentQuestion.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
+            // }
         }
     }
 
@@ -56,24 +72,9 @@ const Quiz = () => {
         }
     }
 
-    //data
-    const { id } = useParams();
-    useEffect(() => {
-        fetchData();
-    }, [id])
 
-    const fetchData = async () => {
-        try {
-            const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
-            setQuestion(res.data.data)
-           
-      
-        } catch (err) {
-            console.log("Something Wrong");
-        }
-    }
 
-    var moment = require('moment')
+    // var moment = require('moment');
 
 
     const questionLength = question.length;
