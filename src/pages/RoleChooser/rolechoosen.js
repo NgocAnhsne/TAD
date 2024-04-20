@@ -5,12 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
-
 export default function RoleChooser() {
   const { id } = useParams();
   const navigate = useNavigate();
   const newUser = JSON.parse(localStorage.getItem('user'));
-
   const handleRoleChange = async (newRole) => {
     try {
         await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
@@ -20,8 +18,6 @@ export default function RoleChooser() {
         console.log("Something went wrong:", err);
     }
 };
-
-
   return (
     <div className="roleChooser">
       <div className="roleChooser_container">

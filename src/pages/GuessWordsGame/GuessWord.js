@@ -10,7 +10,7 @@ const GuessWord = () => {
   const [suggestion, setSuggestion] = useState("");
   const [rankPoint, setRankPoint] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [victory, setVictory] = useState(false); // Thêm state để kiểm tra chiến thắng
+  const [victory, setVictory] = useState(false); // 
 
   useEffect(() => {
     fetchWord();
@@ -21,11 +21,11 @@ const GuessWord = () => {
       fetch("http://127.0.0.1:8000/api/wordl/all")
         .then((response) => response.json())
         .then((data) => {
-          const randomIndex = Math.floor(Math.random() * data.data.length);
-          const randomWord = data.data[randomIndex].english;
-          const randomSuggestion = data.data[randomIndex].description;
-          setWord(randomWord);
-          setSuggestion(randomSuggestion);
+        const randomIndex = Math.floor(Math.random() * data.data.length);
+        const randomWord = data.data[randomIndex].english;
+        const randomSuggestion = data.data[randomIndex].description;
+        setWord(randomWord);
+        setSuggestion(randomSuggestion);
         })
         .catch((error) => console.error("Error fetching data:", error));
     }

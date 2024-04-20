@@ -75,8 +75,7 @@ const publicRoutes = [
     {path: '/student/rank', component: Rank},
 
     {path: '/student/quiz', component: Quiz},
-    {path: '/student/history', component: HistoryStudent},
-
+    {path: '/student/history/', component: HistoryStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/profile/edit', component: EditProfileStudent },
@@ -89,9 +88,6 @@ const publicRoutes = [
     // {path:'/student/GuessWordGame',component:GuessWord},
     {path: '/student/game/1/topic/:id', component: Game, layout: null},
     {path: '/student/game/2/topic/:id', component: GuessWord, layout: null},
-
-      
-
     {path:'/student/game/:id/topic/',component:topic_chooser},
     {path:'/student/test',component:Test},
 
