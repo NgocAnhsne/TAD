@@ -24,7 +24,7 @@ function Login() {
           const result = await axios.get("http://127.0.0.1:8000/api/alluser");
           setUserData(result.data.data)
       } catch (err) {
-          setError('Lỗi, hãy thử lại');
+          setError('Đang cập nhập dữ liệu');
       }
   }
   const handleLogin = async (e) => {
@@ -49,7 +49,7 @@ function Upload() {
                   size="sm"
                   role='status'
                   aria-hidden='true' />
-              &nbsp;
+              &nbsp;Đang đăng nhập . . .
           </Button>
       </div>
   )
@@ -75,9 +75,11 @@ return (
             onChange={(e) => setPassword(e.target.value)}/>
         </div>
         {error && <div className="error-message">{error}</div>}
-        {isLoading ? <Upload animation="border" size="sm" /> : "loading. . ."}
+        {isLoading ? <Upload animation="border" size="sm" />:""}
+  
         <button type="button" onClick={handleLogin} className='login-button'>
-         Login {/* Hiển thị Spinner nếu đang xử lý, hoặc 'Login' nếu không */}
+         Login
+         
         </button>
       </div>
     </div>
