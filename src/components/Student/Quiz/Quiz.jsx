@@ -1,6 +1,5 @@
 import React, { Children, createContext, useContext, useEffect, useRef, useState } from "react";
 import './style.scss';
-import { data } from "./data";
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
@@ -10,7 +9,7 @@ import axios from "axios";
 const Quiz = () => {
 
     let [index, setIndex] = useState(0);
-    let [question, setQuestion] = useState(data[index]);
+    let [question, setQuestion] = useState([index]);//data
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
     let [result, setResult] = useState(false);
@@ -22,16 +21,19 @@ const Quiz = () => {
 
     let option_array = [Option1, Option2, Option3, Option4];
 
-    const checkAns = (e, ans) => {
+    const numberOfQuestions = 5;
+    const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
+
+    const checkAns = (e, answer) => {
         if (lock === false) {
-            if (question.ans == ans) {
+            if (question.answer == answer) {
                 e.target.classList.add("correct");
                 setLock(true);
                 setScore(prev => prev + 1);
             } else {
                 e.target.classList.add("wrong");
                 setLock(true);
-                option_array[question.ans - 1].current.classList.add("correct");
+                option_array[question.answer - 1].current.classList.add("correct");
             }
 
         }
@@ -39,12 +41,12 @@ const Quiz = () => {
 
     const next = () => {
         if (lock === true) {
-            if (index === data.length - 1) {
+            if (index === question.length - 1) {
                 setResult(true);
                 return 0;
             }
             setIndex(++index);
-            setQuestion(data[index]);
+            setQuestion();
             setLock(false);
             option_array.map((option) => {
                 option.current.classList.remove("wrong");
@@ -54,20 +56,18 @@ const Quiz = () => {
         }
     }
 
-//data
+    //data
     const { id } = useParams();
-    const user = JSON.parse(localStorage.getItem('user'));
-    // useEffect(() => {
-    //     fetchData();
-    // }, [id])
-    // console.log(user.id)
+    useEffect(() => {
+        fetchData();
+    }, [id])
 
-    const [quizData, setQuizData] = useState([]);
-
-    const fetchUser = async () => {
+    const fetchData = async () => {
         try {
-            const result = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
-            // setQuestionData(result.data.data)
+            const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
+            setQuestion(res.data.data)
+            console.log(res.data.data)
+            console.log(res.length);
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -78,22 +78,23 @@ const Quiz = () => {
 
     return (
         <><div className="answerStudent">
-            {result ? <></> : <>
-                <div className="answerStudent__header">
-                    <div className="answerStudent__header--wrap row-max-width">
-                        <div className="backBtn">
-                            <IoIosArrowBack />
-                        </div>
-                        <div className="answerStudent__header--number">
-                            <span className="answerStudent__header--number__item">{index + 1}</span>/
-                            <span className="answerStudent__header--number__total">{data.length}</span>
-                        </div>
-                        <div className="answerStudent__header--score">
-                            <span className="answerStudent__header--score__text">Score: </span>
-                            <span className="answerStudent__header--score__number">{score}</span>
-                        </div>
+            <div className="answerStudent__header">
+                <div className="answerStudent__header--wrap row-max-width">
+                    <div className="backBtn">
+                        <IoIosArrowBack />
+                    </div>
+                    <div className="answerStudent__header--number">
+                        <span className="answerStudent__header--number__item">{index + 1}</span>/
+                        {/* <span className="answerStudent__header--number__total">{data.length}</span> */}
+                    </div>
+                    <div className="answerStudent__header--score">
+                        <span className="answerStudent__header--score__text">Score: </span>
+                        <span className="answerStudent__header--score__number">{score}</span>
                     </div>
                 </div>
+            </div>
+            {question.map((question) =>
+            (
                 <div className="answerStudent__content">
                     <div className="answerStudent__content--top">
                         <div className="answerStudent__content--top__img">
@@ -104,24 +105,25 @@ const Quiz = () => {
 
                                 <div className="answerStudent__content--qtop__question--box__text">
                                     {/* ______ going to have to work hard to achieve your goals. */}
-                                    {index + 1}. {question.question}
+                                    {index + 1}. {question.question_text}
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div className="answerStudent__content--bottom">
                         <div className="answerStudent__content--bottom__list">
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option1} onClick={(e) => { checkAns(e, 1); } }>A. {question.option1}</button>
+                                <button ref={Option1} onClick={(e) => { checkAns(e, 1); }}>A. {question.answer_a}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option2} onClick={(e) => { checkAns(e, 2); } }>B. {question.option2}</button>
+                                <button ref={Option2} onClick={(e) => { checkAns(e, 2); }}>B. {question.answer_b}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option3} onClick={(e) => { checkAns(e, 3); } }>C. {question.option3}</button>
+                                <button ref={Option3} onClick={(e) => { checkAns(e, 3); }}>C. {question.answer_c}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option4} onClick={(e) => { checkAns(e, 4); } }>D. {question.option4}</button>
+                                <button ref={Option4} onClick={(e) => { checkAns(e, 4); }}>D. {question.answer_d}</button>
                             </div>
                         </div>
                         <div className="answerStudent__content--bottom__btnNext">
@@ -132,42 +134,9 @@ const Quiz = () => {
                     </div>
 
                 </div>
-            </>}
-            {result ? <>
-                <div>
-                <div className="successStudent">
-                <div className="successStudent__content">
-                    <div className="successStudent__content--img">
-                    <img src={successImg} />
-                    </div>
-                    <div className="successStudent__content--info">
-                        <div className="successStudent__content--info__title">
-                        Hoàn thành bài học!
-                        </div>
-                        <div className="successStudent__content--info__box">
-                            <div className="successStudent__content--info__box--score">
-                                <h2>
-                                Tổng điểm
-                                </h2>
-                                <div className="successStudent__content--info__box--score__content">
-                                    {score}
-                                </div>
-                            </div>
-                            <div className="successStudent__content--info__box--accuracy">
-                                <h2>
-                                Chính xác
-                                </h2>
-                                <div className="successStudent__content--info__box--accuracy__content">
-                                    {(score / data.length)* 100}%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            ))}
 
-            </div>
-                </div>
-            </> : <></>}
+
         </div><div>
 
             </div></>
