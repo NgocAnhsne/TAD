@@ -75,7 +75,7 @@ const publicRoutes = [
     {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
-    {path:'/student/GuessWordGame/topic/:id',component:GuessWord},
+    {path:'/student/GuessWordGame',component:GuessWord},
     {path: '/student/game/topic/:id', component: Game, layout: null},
     {path:'/student/game/topic/',component:topic_chooser},
     {path:'/student/test',component:Test},
