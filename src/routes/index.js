@@ -55,8 +55,8 @@ import AddTopicAdmin from '~/pages/Admin/Game/TopicGame/AddTopic.js';
 import WordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/WordlTopic.js';
 import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWordlTopic.js';
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
-
-import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
+import topic_chooser from '~/pages/Student/Game/topicChooser.js';
+import GuessWord from '~/pages/GuessWordsGame/GuessWord.js';
 
 const publicRoutes = [
     {path: '/', component: Home, layout: null},
@@ -72,10 +72,9 @@ const publicRoutes = [
     {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
-  
-
-    {path:'/student/game/topic/:id',component:topic_chooser},
-    {path: '/student/game/topic/game/:id', component: Game, layout: null},
+    {path:'/student/GuessWordGame/topic/:id',component:GuessWord},
+    {path: '/student/game/topic/:id', component: Game, layout: null},
+    {path:'/student/game/topic/',component:topic_chooser},
     {path:'/student/test',component:Test},
 
     //role

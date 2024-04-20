@@ -1,0 +1,82 @@
+input {
+  border: 1px solid pink;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.miniGame_wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+
+  &_container {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+
+    &_box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: lightblue;
+      border-radius: 20px;
+      padding: 50px;
+
+      &_header {
+        font-family: coiny;
+      }
+
+      &_item {
+        padding: 10px;
+      }
+
+      &_score {
+        position: absolute;
+        top: 2%;
+        right: 5%;
+        font-size: 25px;
+        font-weight: 800;
+        color: #FE8760;
+      }
+
+      &_btn {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          padding: 10px 15px;
+          border-radius: 10px;
+          margin: 20px;
+        }
+      }
+
+      input {
+        width: 50%;
+      }
+
+      &_quitbtn {
+        bottom: 2%;
+        right: 2%;
+        position: absolute;
+        padding: 10px 15px;
+        border-radius: 10px;
+        margin: 20px;
+      }
+
+      .game-over-overlay {
+        z-index: 1;
+        background-color: white;
+        position: absolute;
+        top: 34%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 13px;
+        box-shadow: 0px 0px 5px lightgrey;
+      }
+    }
+
+  }
+}
