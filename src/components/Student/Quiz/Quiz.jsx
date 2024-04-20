@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Quiz = () => {
-
     let [index, setIndex] = useState(0);
     const [question, setQuestion] = useState([]);//data
     let [lock, setLock] = useState(false);
@@ -136,6 +135,7 @@ const Quiz = () => {
                     </div>
 
                 </div>
+
             ))}
 
 
