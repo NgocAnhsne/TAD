@@ -60,7 +60,7 @@ export default function GameChooser() {
                 ) : (
                     gameData.length > 0 ? (
                         gameData.map((game, i) => (
-                            <Link to={`/student/game/topic/${game.id}`} key={game.id}>
+                            <Link to={`/student/game/topic`} key={game.id}>
                                 <div className='Chooser_body_item'>
                                     <div className='Chooser_body_item_img'>
                                         <img src={getRandomImage(i)} alt={`Game Image ${i}`} />
