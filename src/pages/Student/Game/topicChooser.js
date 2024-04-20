@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
 import Upload from '~/pages/Upload';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
     const [gameData, setGameData] = useState([]);
+    const { id } = useParams()
     useEffect(() => {
         fetchData();
         fetchDataGame();
@@ -44,7 +45,7 @@ export default function TopicChooser() {
                 ) : (   
                 topicData.length > 0 ? (
                     topicData.map((topic, i) => (
-                      <Link to={`/student/game/topic/${topic.id}`}>
+                      <Link to={`/student/game/${id}/topic/${topic.id}`}>
                         <div className='Chooser_body_item' key={i}> 
                             <div className='Chooser_body_item_img'>
                                 <img src={topic.image} alt="Game Image" /> 

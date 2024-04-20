@@ -59,6 +59,9 @@ import topic_chooser from '~/pages/Student/Game/topicChooser.js';
 import GuessWord from '~/pages/GuessWordsGame/GuessWord.js';
 // import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
 import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 
 const publicRoutes = [
@@ -75,9 +78,13 @@ const publicRoutes = [
     {path: '/student/profile/edit', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     {path:'/student/game',component:game_chooser},
-    {path:'/student/GuessWordGame',component:GuessWord},
-    {path: '/student/game/topic/:id', component: Game, layout: null},
-    {path:'/student/game/topic/',component:topic_chooser},
+    // {path:'/student/GuessWordGame',component:GuessWord},
+    {path: '/student/game/1/topic/:id', component: Game, layout: null},
+    {path: '/student/game/2/topic/:id', component: GuessWord, layout: null},
+
+      
+
+    {path:'/student/game/:id/topic/',component:topic_chooser},
     {path:'/student/test',component:Test},
 
     //role
