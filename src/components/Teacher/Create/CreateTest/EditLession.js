@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import './style.scss'
-
-
-import { BsFillQuestionCircleFill } from "react-icons/bs";
-import Select from 'react-select'
-import { FaRegImage } from "react-icons/fa";
-import { HiSpeakerWave } from "react-icons/hi2";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 

@@ -174,8 +174,8 @@ function Game() {
           Score: <b>{matchedPairs}</b>
         </div>
         {gameComplete && (
-          <Link to="/">
-            <div className="game_message">Sang trang tiếp</div>
+          <Link to="/student/game">
+            <div className="game_message">Chơi tiếp</div>
           </Link>
         )}
       </div>
