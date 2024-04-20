@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./GuessWord.scss";
 
-const Game = () => {
+const GuessWord = () => {
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(0);
@@ -122,4 +122,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default GuessWord;
