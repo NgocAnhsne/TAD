@@ -22,6 +22,7 @@ import ProfileStudent from '~/pages/Student/Profile/index.js';
 import EditProfileStudent from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 import Test from '~/pages/Student/Test/index.js';
+import Quiz from '~/components/Student/Quiz/Quiz.jsx';
 
 
 import Game from '~/pages/Student/Game/LatBike.js';
@@ -70,9 +71,12 @@ const publicRoutes = [
     {path: '/upload', component: Upload},
 
     //student
-    {path: '/student/answer', component: AnswerStudent, layout: null},
+    {path: '/student/lesson/:id', component: AnswerStudent, layout: null},
     {path: '/student/rank', component: Rank},
-    {path: '/student/history/:id', component: HistoryStudent},
+
+    {path: '/student/quiz', component: Quiz},
+    {path: '/student/history', component: HistoryStudent},
+
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/profile/edit', component: EditProfileStudent },

@@ -70,7 +70,6 @@ export default function ViewQuestionText() {
             ...questionField,
             [e.target.name]: e.target.value
         });
-
     }
     const numberOfQuestions = 40;
     const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
