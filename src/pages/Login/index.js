@@ -76,15 +76,12 @@ return (
         </div>
         {error && <div className="error-message">{error}</div>}
         {isLoading ? <Upload animation="border" size="sm" />:""}
-  
         <button type="button" onClick={handleLogin} className='login-button'>
          Login
-         
         </button>
       </div>
     </div>
   </div>
 );
 }
-
 export default Login;

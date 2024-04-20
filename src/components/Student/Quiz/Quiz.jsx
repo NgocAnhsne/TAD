@@ -6,7 +6,6 @@ import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
 
 const Quiz = () => {
-
     let [index, setIndex] = useState(0);
     let [question, setQuestion] = useState(data[index]);
     let [lock, setLock] = useState(false);
@@ -109,7 +108,7 @@ const Quiz = () => {
 
                 </div>
             </>}
-            {result ? <>
+            {/* {result ? <>
                 <div>
                 <div className="successStudent">
                 <div className="successStudent__content">
@@ -143,7 +142,7 @@ const Quiz = () => {
 
             </div>
                 </div>
-            </> : <></>}
+            </> : <></>} */}
         </div><div>
 
             </div></>
