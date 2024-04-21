@@ -15,7 +15,7 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
 
   const handleClick = () => {
     if (!disabled && !isOpened) {
-      setIsOpened(true); // Đặt trạng thái đã mở trước khi xử lý
+      setIsOpened(true); 
       handleChoice(card);
       const nextLanguage = displayLanguage === 'english' ? 'vietnamese' : 'english';
       setDisplayLanguage(nextLanguage);
@@ -27,7 +27,7 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
     if (isOpened) {
       timer = setTimeout(() => {
         setIsOpened(false);
-      }, 1000); // Thời gian mở lại sau 1 giây
+      }, 1000); 
     }
     return () => clearTimeout(timer);
   }, [isOpened]);
