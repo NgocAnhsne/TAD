@@ -3,7 +3,7 @@ import './style.scss';
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Quiz = () => {
@@ -32,6 +32,7 @@ const Quiz = () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestion(res.data.data)
+            console.log(res.data.data)
             
             if(res.data.data){
                 setQuestion(res.data.data);
@@ -58,17 +59,17 @@ const Quiz = () => {
                 setLock(true)
                 // option_array[question.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
             return ;
-            // console.log(newAnsData);
-            // if (question.answer == newAnsData) {
-            //     e.target.classList.add("correct");
-            //     setLock(true);
-            //     setScore(prev => prev + 1);
-            //     console.log(currentQuestion.answer);
-            // } else {
-            //     e.target.classList.add("wrong");
-            //     setLock(true);
-            //     option_array[currentQuestion.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
-            // }
+        //     // console.log(newAnsData);
+        //     // if (question.answer == newAnsData) {
+        //     //     e.target.classList.add("correct");
+        //     //     setLock(true);
+        //     //     setScore(prev => prev + 1);
+        //     //     console.log(currentQuestion.answer);
+        //     // } else {
+        //     //     e.target.classList.add("wrong");
+        //     //     setLock(true);
+        //     //     option_array[currentQuestion.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
+        //     // }
         }
     }
 
@@ -109,6 +110,7 @@ const Quiz = () => {
                     <div className="answerStudent__header--number">
                         <span className="answerStudent__header--number__item">{index + 1}</span>/
                         <span className="answerStudent__header--number__total">{questionLength}</span>
+                        {/* dap an : {currentQuestion.answer} */}
                     </div>
                     <div className="answerStudent__header--score">
                         <span className="answerStudent__header--score__text">Score: </span>
@@ -135,7 +137,7 @@ const Quiz = () => {
                     <div className="answerStudent__content--bottom">
                         <div className="answerStudent__content--bottom__list">
                             <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option1} onClick={(e) => checkAns(e, "a")}>A. {currentQuestion?.answer_a}</button>
+                                <button ref={Option1} onClick={(e) => {checkAns(e, "a")}}>A. {currentQuestion?.answer_a}</button>
                             </div>
                             <div className="answerStudent__content--bottom__list--item">
                                 <button ref={Option2} onClick={(e) => { checkAns(e, "b"); }}>B. {currentQuestion?.answer_b}</button>
@@ -148,17 +150,18 @@ const Quiz = () => {
                             </div>
                         </div>
                         <div className="answerStudent__content--bottom__btnNext">
-                            {
-                            index !== question.length - 1
-                            ?
-                            <button onClick={next}>
+                            <button className="answerStudent__content--bottom__btnNext--btn" onClick={next}>
                                 Next
                             </button>
+                            {/* {
+                            index !== question.length - 1
+                            ?
                             :
-                            <button onClick={handleSendResult}>
-                                Send result
-                            </button>
-                            }
+                            
+                            <Link className="answerStudent__content--bottom__btnNext--btn" onClick={handleSendResult} to={'/student/success'}>
+                                Xem kết quả
+                            </Link>
+                            } */}
                         </div>
                     </div>
                 </div>
