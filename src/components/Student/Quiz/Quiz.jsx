@@ -37,11 +37,11 @@ const Quiz = () => {
             setQuestion(res.data.data)
             console.log(res.data.data)
 
-            // if (res.data.data) {
-            //     setQuestion(res.data.data);
-            //     setCurrentQuestion(res.data.data[index])
-            //     setQuestionLength(res.data.data.length);
-            // }
+                // if (res.data.data) {
+                //     setQuestion(res.data.data);
+                //     setCurrentQuestion(res.data.data[index])
+                //     setQuestionLength(res.data.data.length);
+                // }
 
         } catch (err) {
             console.log("Something Wrong");

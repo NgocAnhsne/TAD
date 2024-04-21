@@ -19,37 +19,42 @@
             right: 50%;
         }
         &_item{
-            min-width: 360px;
+            width: 265px;
+            height: 392px;
             &:hover{
            margin-top: -5px;
            transition: .5s;
             }
-            border-radius: 20px;
+            border-radius: 7px;
             background-color: white;
-            display: flex;
             box-shadow: 0px 0px 10px rgb(196, 196, 196);
             &_img img{
+                box-shadow: inset 0px -6px 28px 7px rgba(0,0,0,0.1);
+                max-height: 180px;
                 border-right: 1px solid rgb(234, 234, 234);
-                min-width: 150px;
-                max-width: 150px;
-                max-height: 150px;
-                min-height: 150px;
-                border-radius: 20px 0 0 20px;
+                width: 100%;
+                border-radius: 7px 7px 0 0 ;
                 
             }
             &_info{
                 width: 100%;
-                border-radius: 0px 20px 20px 0 ;
-               
+                height: 50%;
                 padding: 10px 15px;
                 &_title{
                     font-weight: bolder;
-                    font-size: 32px;
+                    font-size: 25px;
                     color: #6d6d6d;
                     font-family: "Coiny", system-ui;
                 }
                 &_desc{
-                    
+                    display: -webkit-box;
+  width: 100%;
+
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
                 }
             }
 
