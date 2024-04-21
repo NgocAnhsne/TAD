@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./GuessWord.scss";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const GuessWord = () => {
   const [word, setWord] = useState("");
@@ -10,11 +12,14 @@ const GuessWord = () => {
   const [suggestion, setSuggestion] = useState("");
   const [rankPoint, setRankPoint] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [victory, setVictory] = useState(false); // 
-
+  const [victory, setVictory] = useState(false); 
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { id } = useParams();
   useEffect(() => {
-    fetchWord();
-  }, []);
+  fetchWord();
+}, [id]);
+
+
 
   const fetchWord = () => {
     if (!victory) {
@@ -28,6 +33,16 @@ const GuessWord = () => {
         setSuggestion(randomSuggestion);
         })
         .catch((error) => console.error("Error fetching data:", error));
+    }
+  };
+
+  const updateRank = async () => {
+    try {
+      const updatedUser = { ...user, rank: rankPoint };
+      await axios.put("http://127.0.0.1:8000/api/addrank/" + user.id, updatedUser); 
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.log("Error updating score:", error);
     }
   };
 
