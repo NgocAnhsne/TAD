@@ -57,7 +57,7 @@ import WordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/WordlTopic.
 import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWordlTopic.js';
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 import topic_chooser from '~/pages/Student/Game/topicChooser.js';
-import GuessWord from '~/pages/GuessWordsGame/GuessWord.js';
+import GuessWord from '~/pages/Student/Game/GuessWordsGame/GuessWord.js';
 // import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
 import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
 import { useEffect, useState } from 'react';
