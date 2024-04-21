@@ -108,7 +108,11 @@
             margin-bottom: 50px;
             .content_header{
                 margin-bottom: 20px;
-                
+                display: flex;
+
+                span{
+                    width: 140px;
+                }
             }
             input{
                 font-size: 20px;
@@ -116,6 +120,7 @@
                 border: none;
                 width: auto;
                 padding: 0;
+                width: 100%;
             }
             .css-13cymwt-control,.css-t3ipsp-control{
                 padding: 5px;
@@ -130,6 +135,7 @@
             div{
                 padding: 10px;
                 border-radius: 20px;
+                display: flex;
                 input{
                     background-color: transparent;
                 }

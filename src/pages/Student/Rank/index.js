@@ -63,7 +63,7 @@ function Rank() {
                       <hr></hr>
                       <div className="rankServe__container--content__right">
                         <div className="rank__content--box--list__item--right__score">
-                          {item.score}
+                          {item.rank}
                         </div>
                         <div className="rank__content--box--list__item--right__medal">
                           {/* {arrayIcon} */}

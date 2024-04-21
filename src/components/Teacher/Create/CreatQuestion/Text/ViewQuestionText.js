@@ -149,10 +149,10 @@ export default function ViewQuestionText() {
                             <div>
                                 <span>True Answer</span>
                                 <select value={question.answer}>
-                                    <option value={question.answer_a}>A</option>
-                                    <option value={question.answer_b}>B</option>
-                                    <option value={question.answer_c}>C</option>
-                                    <option value={question.answer_d}>D</option>
+                                    <option value={question.answer_a} >A</option>
+                                    <option value={question.answer_b} >B</option>
+                                    <option value={question.answer_c} >C</option>
+                                    <option value={question.answer_d} >D</option>
                                 </select>
                             </div>
                             <div className='delete_footer' onClick={() => handleDelete(question.id)}>

@@ -21,7 +21,7 @@ function Game() {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-
+  const [numPairsToShow, setNumPairsToShow] = useState(8);
   const [popupData, setPopupData] = useState({
     english: "",
     vietnamese: "",
@@ -37,7 +37,8 @@ function Game() {
   const fetchData = async () => {
     try {
       const result = await axios.get("http://127.0.0.1:8000/api/wordl-by-wordle/" + id);
-      setCardData(result.data.data);
+      const limitedCardData = result.data.data.slice(0, numPairsToShow);
+      setCardData(limitedCardData);
     } catch (err) {
       console.log("Something went wrong");
     }
@@ -62,9 +63,7 @@ function Game() {
       .map((card) => ({ ...card, id: card.id + "_1", matched: false }))
       .map((card) => ({ ...card, id: card.id + "_2", matched: false }));
 
-    const limitedCards = shuffledCards.slice(0, 8);
-    setCards(limitedCards);
-
+    setCards(shuffledCards);
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns(0);

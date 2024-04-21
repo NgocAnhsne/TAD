@@ -11,15 +11,15 @@ function HistoryStudent() {
   const { id } = useParams();
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   const [historyData, setHistoryData] = useState([]);
-
+  const dataUser = JSON.parse(localStorage.getItem('user')); 
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     try {
-      const dataUser = JSON.parse(localStorage.getItem('user')); 
+     
       const result = await axios.get(
-        "http://127.0.0.1:8000/api/history/lesson-history-user/"+ dataUser.id // Sử dụng dataUser.id trong yêu cầu API
+        "http://127.0.0.1:8000/api/history/lesson-history-user/"+ dataUser.id 
       );
       setHistoryData(result.data.data);
       setIsVisibleLoading(false);
