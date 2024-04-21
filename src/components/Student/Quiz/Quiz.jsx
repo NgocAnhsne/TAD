@@ -35,8 +35,6 @@ const Quiz = () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestion(res.data.data)
-            console.log(res.data.data)
-
             if (res.data.data) {
                 setQuestion(res.data.data);
                 setCurrentQuestion(res.data.data[index])
@@ -59,7 +57,7 @@ const Quiz = () => {
         } else {
             event.target.classList.add("wrong");
             setLock(true)
-            option_array[newAnsData - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
+            // option_array[newAnsData - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
             return;
 
         }
