@@ -15,7 +15,7 @@ function Test() {
 
   const fetchData = async () => {
     try {
-      const result = await axios("http://127.0.0.1:8000/api/question/all");
+      const result = await axios("http://127.0.0.1:8000/api/test/all");
       setTestData(result.data.data);
       setIsVisibleLoading(false);
     } catch (err) {
@@ -28,7 +28,7 @@ function Test() {
   return (
     <div className="lessonStudent">
       <div className="lessonStudent__title">
-        <h1>Các bài học</h1>
+        <h1>Các bài kiểm tra</h1>
       </div>
       <div className="lessonStudent__content">
         <div className="lessonStudent__content--list">
@@ -37,18 +37,18 @@ function Test() {
               <Upload />
             </div>
           ) : testData.length > 0 ? (
-            testData.map((ques, i) => (
+            testData.map((test, i) => (
               <div className="lessonStudent__content--list__item">
                 <div className="lessonStudent__content--list__item--top">
                   <div className="lessonStudent__content--list__item--top__left">
                     <div className="lessonStudent__content--list__item--top__left--title">
-                      {ques.name}
-                    </div>z
+                      {test.name}
+                    </div>
                     <div className="lessonStudent__content--list__item--top__left--body">
-                      <span>Description: {ques.description}</span>
-                      <span>{ques.time} minutezs</span>
-                      <span>z
-                        Type :<span> {ques.type}</span>
+                      <span>Description: {test.description}</span>
+                      <span>{test.time} minutes</span>
+                      <span>
+                        Type :<span> {test.type}</span>
                       </span>
                     </div>
                   </div>
@@ -58,7 +58,7 @@ function Test() {
                 </div>
                 <div className="lessonStudent__content--list__item--bottom">
                   <Link
-                    className="lessonStudent__content--list__item--bottom__btnPlay lessonBtn">
+                    className="lessonStudent__content--list__item--bottom__btnPlay lessonBtn" to={`/student/test/${test.id}`}>
                     Bắt đầu!
                   </Link>
                 </div>
