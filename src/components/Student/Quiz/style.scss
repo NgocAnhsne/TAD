@@ -105,6 +105,13 @@
       }
     }
   }
+  .backBtn{
+    svg{
+      color: var(--color-text-4);
+      font-weight: 800;
+
+    }
+  }
   .answerStudent__content--bottom__list--item .correct{
     background-color: #dffff2;
     border-color:#00d397;
