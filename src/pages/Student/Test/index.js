@@ -47,9 +47,6 @@ function Test() {
                     <div className="lessonStudent__content--list__item--top__left--body">
                       <span>Description: {test.description}</span>
                       <span>{test.time} minutes</span>
-                      <span>
-                        Type :<span> {test.type}</span>
-                      </span>
                     </div>
                   </div>
                   <div className="lessonStudent__content--list__item--top__right">

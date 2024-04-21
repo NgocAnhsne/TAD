@@ -59,7 +59,7 @@ const Quiz = () => {
         } else {
             event.target.classList.add("wrong");
             setLock(true)
-            // option_array[question.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
+            option_array[newAnsData - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
             return;
 
         }

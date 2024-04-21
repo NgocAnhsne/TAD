@@ -31,7 +31,7 @@
       &__item {
         background-color: var(--color-background-20);
         border-radius: var(--border-radius-size-5);
-        min-height: 150px;
+        min-height: 270px;
         width: 400px;
         margin-bottom: 30px;
         display: flex;
@@ -49,6 +49,7 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
+            width: 70%;
             &--title {
               font-family: "Alike", system-ui;
               margin-bottom: 10px;
@@ -59,8 +60,6 @@
               display: flex;
               flex-direction: column;
               align-items: flex-start;
-              span {
-              }
             }
           }
           &__right {
@@ -99,4 +98,14 @@
 }
 .lesson3 {
   background-color: var(--color-background-21);
+}
+.text__overflow {
+  display: -webkit-box;
+  width: 100%;
+  margin-bottom: 8px;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
