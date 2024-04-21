@@ -3,6 +3,7 @@
     background-color: var(--color-background-2);
     position: sticky;
     z-index: 1;
+    
     &__header {
       background-color: var(--color-background-14);
       padding: 10px 0;
@@ -73,7 +74,7 @@
           flex-wrap: wrap;
           max-width: 1060px;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           &--item {
             margin: 20px;
             width: 40%;
@@ -86,21 +87,20 @@
               font-weight: 600;
             }
           }
-        }
-        &__btnNext{
-            width: 95%;
-            text-align: center;
-            margin-top: 20px;
-            &--btn {
-              padding: 20px 25px;
-              background-color: var(--color-background-3);
-              border-radius: var(--border-radius-size-5);
-              color: var(--color-text-4);
-              font-weight: 800;
-              font-size: var(--size-text-7);
-              width: 100%;
-            }
-            
+          &__btnNext{
+              width: 80%;
+              text-align: center;
+              margin-top: 20px;
+              &--btn {
+                padding: 20px 25px;
+                background-color: var(--color-background-3);
+                border-radius: var(--border-radius-size-5);
+                color: var(--color-text-4);
+                font-weight: 800;
+                font-size: var(--size-text-7);
+              }
+              
+          }
         }
       }
     }
@@ -119,4 +119,18 @@
   .answerStudent__content--bottom__list--item .wrong{
     background-color: #ffebeb;
     border-color:#ff4a4a;
+   }
+   .successStudent__content--btn{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    button{
+      padding: 20px 25px;
+                background-color: var(--color-background-3);
+                border-radius: var(--border-radius-size-5);
+                color: var(--color-text-4);
+                font-weight: 800;
+                font-size: var(--size-text-8);
+    }
    }
