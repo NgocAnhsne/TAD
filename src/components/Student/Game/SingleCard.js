@@ -15,13 +15,15 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
 
   const handleClick = () => {
     if (!disabled && !isOpened) {
-      setIsOpened(true); 
+      setIsOpened(true);
       handleChoice(card);
-      const nextLanguage = displayLanguage === 'english' ? 'vietnamese' : 'english';
+  
+      const nextLanguage = (displayLanguage === null || !card) ? 'english' : (displayLanguage === 'english' ? 'vietnamese' : 'english');
+  
       setDisplayLanguage(nextLanguage);
     }
   };
-
+  console.log(displayLanguage)
   useEffect(() => {
     let timer;
     if (isOpened) {
@@ -50,4 +52,5 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
     </div>
   );
 }
+
 
