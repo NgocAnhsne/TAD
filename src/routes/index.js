@@ -95,7 +95,7 @@ const publicRoutes = [
     {path: '/student/game/4/topic/:id', component: GuessWord, layout: null},
     {path:'/student/game/:id/topic/',component:topic_chooser},
 
-    {path:'/student/test',component: Test},
+
 
 
     //role
