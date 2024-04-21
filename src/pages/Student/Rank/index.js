@@ -8,14 +8,10 @@ import Upload from "~/pages/Upload";
 import firstRank from "~/components/asset/img/gold.png";
 import secondRank from "~/components/asset/img/silver_rank.png";
 import thirdRank from "~/components/asset/img/bronze.png";
-
+import star from "~/components/asset/img/star-rank-upd.gif"
 function Rank() {
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   const [lessionData, setLessionData] = useState([]);
-  const questions = Array.from(
-    { length: setLessionData },
-    (_, index) => index + 1
-  );
 
   useEffect(() => {
     fetchData();
@@ -28,17 +24,9 @@ function Rank() {
       setIsVisibleLoading(false);
       console.log(result.data.data);
     } catch (err) {
-      console.log("somthing Wrong");
+      console.log("Something Wrong");
     }
   };
-
-  const listRank = [
-    {
-      name: "",
-    },
-  ];
-
-  const arrayOrd = [1];
 
   return (
     <div className="rank">
@@ -48,14 +36,13 @@ function Rank() {
       <div className="rank__content">
         <div className="rank__content--box">
           <div className="rank__content--box--list">
-            {/* <div className=""> */}
             {isVisibleLoading ? (
               <div className="loading_screen">
                 <Upload />
               </div>
             ) : lessionData.length > 0 ? (
               lessionData.map((item, index) => (
-                <div className="rank__content--box--list__item">
+                <div className={`rank__content--box--list__item ${index === 0 ? 'toprank-bg' : ''}`}>
                   <div className="rank__content--box--list__item--left">
                     <div className="rank__content--box--list__item--left__ord">
                       <div className="rank__content--box--list__item--left__ord--number">
@@ -63,20 +50,22 @@ function Rank() {
                       </div>
                     </div>
                     <div className="rank__content--box--list__item--left__name">
-                      <div className="rank__content--box--list__item--left__name--text">
+                    <div className={`rank__content--box--list__item--left__name--text ${index === 0 ? 'toprank-bg' : ''}`}>
                         {item.name}
                       </div>
                     </div>
                   </div>
-                  <hr></hr>
+                  <hr />
                   {index === 0 && (
+                   
                     <div className="rank__content--box--list__item--left__medal">
+                      <img src={star} alt="Second Rank" />
                       <img src={firstRank} alt="First Rank" />
                     </div>
                   )}
-
                   {index === 1 && (
                     <div className="rank__content--box--list__item--left__medal">
+                      
                       <img src={secondRank} alt="Second Rank" />
                     </div>
                   )}
@@ -86,12 +75,10 @@ function Rank() {
                     </div>
                   )}
                   <div className="rankServe__container--content__right">
-                    <div className="rank__content--box--list__item--right__score">
+                  <div className={`rank__content--box--list__item--right__score ${index === 0 ? 'toprank-bg' : ''}`}>
                       {item.rank}
                     </div>
-                    <div className="rank__content--box--list__item--right__medal">
-             
-                    </div>
+                    <div className="rank__content--box--list__item--right__medal"></div>
                   </div>
                 </div>
               ))
@@ -102,10 +89,8 @@ function Rank() {
                 Vui lòng thử lại sau
               </div>
             )}
-            {/* </div> */}
           </div>
         </div>
-
         <div className="rank__content--level">
           <div className="rank__content--level__announce">
             <div className="rank__content--level__announce--title">
@@ -116,7 +101,7 @@ function Rank() {
               khác trên bảng xếp hạng hằng tuần.
             </div>
             <div className="rank__content--level__announce--img">
-              <img src={rankImg} />
+              <img src={rankImg} alt="Rank Img" />
             </div>
           </div>
         </div>
