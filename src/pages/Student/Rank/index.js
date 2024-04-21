@@ -7,8 +7,9 @@ import axios from "axios";
 import Upload from '~/pages/Upload';
 function Rank() {
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-
   const [lessionData, setLessionData] = useState([]);
+  const questions = Array.from({ length: setLessionData }, (_, index) => index + 1);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -23,7 +24,7 @@ function Rank() {
       console.log("somthing Wrong");
     }
   };
-  var moment = require("moment");
+
 
   const listRank = [ {
     name: '', 
@@ -45,13 +46,13 @@ function Rank() {
             </div> 
             ) : (
               lessionData.length > 0 ? (
-                lessionData.map((item, i) =>
-                  arrayOrd.map((itemIcon, i) => (
+                lessionData.map((item, index) =>
+             (
                     <div className="rank__content--box--list__item">
                       <div className="rank__content--box--list__item--left">
                         <div className="rank__content--box--list__item--left__ord">
                           <div className="rank__content--box--list__item--left__ord--number">
-                            {arrayOrd}
+                            {index+1}
                           </div>
                         </div>
                         <div className="rank__content--box--list__item--left__name">
@@ -63,7 +64,7 @@ function Rank() {
                       <hr></hr>
                       <div className="rankServe__container--content__right">
                         <div className="rank__content--box--list__item--right__score">
-                          {item.score}
+                          {item.rank}
                         </div>
                         <div className="rank__content--box--list__item--right__medal">
                           {/* {arrayIcon} */}
@@ -71,7 +72,7 @@ function Rank() {
                       </div>
                     </div>
                   ))
-                )
+                
               ) : (
                 <div className="rank__content--box--list__item--warn">
                   Bảng xếp hạng đang bảo trì... 
