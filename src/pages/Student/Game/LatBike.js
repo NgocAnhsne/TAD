@@ -129,7 +129,7 @@ function Game() {
             pronounce: choiceOne.pronounce,
             type: choiceOne.type,
           });
-        }, 7000);
+        }, 700);
       } else {
         setTimeout(() => resetTurn(), 1000);
       }
