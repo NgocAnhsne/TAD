@@ -20,7 +20,7 @@ import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
-import Test from '~/pages/Student/Test/index.js';
+
 import Quiz from '~/components/Student/Quiz/Quiz.jsx';
 import QuizTest from '~/components/Student/Test/index.js';
 
@@ -63,6 +63,7 @@ import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import EditProfileStudent from '~/pages/Student/Profile/editProfile.js';
+import Test from '~/pages/Student/Test/index.js';
 
 
 
@@ -93,6 +94,9 @@ const publicRoutes = [
     {path: '/student/game/1/topic/:id', component: Game, layout: null},
     {path: '/student/game/4/topic/:id', component: GuessWord, layout: null},
     {path:'/student/game/:id/topic/',component:topic_chooser},
+
+    {path:'/student/test',component: Test},
+
 
     //role
     {path: '/rolechooser', component: rolechooser, layout: null},
