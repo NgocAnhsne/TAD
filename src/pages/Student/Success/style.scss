@@ -6,13 +6,16 @@
     z-index: 1;
     position: sticky;
     &__content {
-      margin: auto;
-      max-width: 1200px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: "Montserrat", sans-serif;
-      height: 800px;
+    flex-direction: column;
+    // width: 50%;
+    margin: auto;
+  max-width: 1200px;
+
+      &--btn{
+        display: flex;
+        flex-direction: column;
+      }
       &--img {
         width: 20%;
         img {
@@ -81,4 +84,13 @@
       }
     }
   }
+}
+.successStudent__content--wrap{
+  // margin: auto;
+  // max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  height: 700px;
 }

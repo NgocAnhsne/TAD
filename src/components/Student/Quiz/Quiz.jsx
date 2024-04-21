@@ -152,7 +152,6 @@ const Quiz = () => {
                             <div className="answerStudent__content--bottom__list--item">
                                 <button ref={Option4} onClick={(e) => { checkAns(e, currentQuestion?.answer_d); }}>D. {currentQuestion?.answer_d}</button>
                             </div>
-                        </div>
                         <div className="answerStudent__content--bottom__btnNext">
                             <button className="answerStudent__content--bottom__btnNext--btn" onClick={next}>
                                 Next
@@ -167,12 +166,15 @@ const Quiz = () => {
                             </Link>
                             } */}
                         </div>
+                        </div>
                     </div>
                     </>}
                     {result ? <>
                         <div>
                             <div className="successStudent">
                                 <div className="successStudent__content">
+                                <div className="successStudent__content--wrap">
+
                                     <div className="successStudent__content--img">
                                         <img src={successImg} />
                                     </div>
@@ -199,6 +201,12 @@ const Quiz = () => {
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
+                                <div className="successStudent__content--btn">
+                                    <button onClick={handleBack}>
+                                        Quay về
+                                    </button>
+                                </div>
                                 </div>
 
                             </div>
