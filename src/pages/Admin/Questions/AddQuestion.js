@@ -15,7 +15,7 @@ export default function AddQuestionAdmin() {
     const {id}=useParams()
     const navigate = useNavigate();
     const [isVisibleLoading, setIsVisibleLoading] = useState(false)
- 
+    const [validated, setValidated] = useState(false);
     const [questionData, setquestionData] = useState({
         id_lesstion: "",
         question_text: "",
@@ -37,6 +37,7 @@ export default function AddQuestionAdmin() {
     
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true)
         try {
            await axios.post("http://127.0.0.1:8000/api/question/create", questionData);
            setIsVisibleLoading(true);
@@ -63,7 +64,7 @@ export default function AddQuestionAdmin() {
                     </Link>
                 </div>
             </div>
-            <div className="content_section">
+            <div className="content_section" validated={validated}>
                 <div className="content_header">
                     <span>Thêm câu hỏi:</span>
                     <input placeholder='Question?' name='question_text'

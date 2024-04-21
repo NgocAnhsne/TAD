@@ -9,7 +9,7 @@ export default function AddUser() {
     const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
- 
+    const [validated, setValidated] = useState(false);
     const [userField, setUserField] = useState({
         name: "",
         email: "",
@@ -28,6 +28,7 @@ export default function AddUser() {
     
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true);
         try {
            await axios.post("http://127.0.0.1:8000/api/register", userField);
             setLoading(true);
@@ -59,6 +60,7 @@ export default function AddUser() {
             method="post"
             encType=""
             noValidate
+            validated={validated}
           >
             <Form.Control type="hidden" name="id" value={id} />
             <div className="row mb-3">

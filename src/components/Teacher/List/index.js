@@ -17,29 +17,25 @@ export default function ListTest() {
     useEffect(() => {
         fetchData();
     }, [id])
-    console.log(user.id)
     const fetchData = async (id) => {
         try {
             const result = await axios("http://127.0.0.1:8000/api/test-by-user/"+ user.id);
             setTestData(result.data.data)
-            console.log(result.data.data)
         } catch (err) {
             console.log("somthing Wrong");
         }
     }
 
-    const handleDelete=async(id)=>{
-        console.log(id);
-        await axios.delete("http://127.0.0.1:8000/api/test/delete/"+user.id);
-        const newListData=testData.filter((item)=>{
-            alert("Đã xoá danh mục");
-            return(
-                item.id !==id
-            )
-        })
+    const handleDelete = async (id) => {
+        await axios.delete("http://127.0.0.1:8000/api/test/delete/" + id);
+        
+        alert("Đã xoá danh mục");
+    
+        const newListData = testData.filter((item) => item.id !== id);
         setTestData(newListData);
     }
     
+ 
     var moment = require('moment')
     return (
         <div className='teacher_component'>

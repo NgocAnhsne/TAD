@@ -8,7 +8,7 @@ export default function AddLessionAdmin() {
     const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
- 
+    const [validated, setValidated] = useState(false);
     const [lessionData, setLessionData] = useState({
         name: "",
         email: "",
@@ -27,6 +27,7 @@ export default function AddLessionAdmin() {
     
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true)
         try {
            await axios.post("http://127.0.0.1:8000/api/lession/create", lessionData);
             setLoading(true);
@@ -57,6 +58,7 @@ export default function AddLessionAdmin() {
             method="post"
             encType=""
             noValidate
+            validated={validated}
           >
             <Form.Control type="hidden" name="id" value={id} />
             <div className="row mb-3">

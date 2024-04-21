@@ -10,7 +10,7 @@ export default function AddWordlTopicAdmin() {
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
     const [topicData,setTopicData]=useState()
- 
+    const [validated, setValidated] = useState(false);
     const [topicField, setTopicField] = useState({
       id_wordle: id,
       english: "",
@@ -45,6 +45,7 @@ export default function AddWordlTopicAdmin() {
   }
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true)
         try {
            await axios.post("http://127.0.0.1:8000/api/wordl/create", topicField);
             setLoading(true);
@@ -74,6 +75,7 @@ export default function AddWordlTopicAdmin() {
             method="post"
             encType=""
             noValidate
+            validated={validated}
           >
             <Form.Control type="hidden" name="id" value={id} />
           
