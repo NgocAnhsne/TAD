@@ -55,7 +55,7 @@ export const EditLession = () => {
         e.preventDefault();
         try {
             await axios.put("http://127.0.0.1:8000/api/test/update/" + id, testField);
-            navigate('/admin/users')
+            navigate('/teacher/test')
         } catch (err) {
             console.log("Something Wrong");
         }

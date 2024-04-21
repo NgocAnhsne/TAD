@@ -23,12 +23,13 @@ export default function CreatQuestionImg() {
     });
 }
 
-    const options = [
-        { value: 'A', label: 'A' },
-        { value: 'B', label: 'B' },
-        { value: 'C', label: 'C' },
-        { value: 'C', label: 'D' }
-      ]
+const options = [
+    { value: '', label: '---Chọn đáp án---' },
+    { value: 'answer_a', label: 'A' },
+    { value: 'answer_b', label: 'B' },
+    { value: 'answer_c', label: 'C' },
+    { value: 'answer_d', label: 'D' }
+]
   return (
     <div className='teacher_component'>
                     <div className="question_header">

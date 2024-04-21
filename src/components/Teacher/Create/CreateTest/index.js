@@ -28,6 +28,7 @@ export const CreatTest = () => {
     const { id } = useParams()
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
+    const [validated, setValidated] = useState(false);
     const user = JSON.parse(localStorage.getItem('user'));
     const [testField, setTestField] = useState({
         id_user: user.id,
@@ -48,6 +49,7 @@ export const CreatTest = () => {
 
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true)
         try {
             await axios.post("http://127.0.0.1:8000/api/test/create", testField);
             setLoading(true);
@@ -57,7 +59,7 @@ export const CreatTest = () => {
     }
     if (loading) {
         return (
-            navigate(`/teacher/lession/`)
+            navigate(`/teacher/test/`)
         )
     }
 
@@ -68,7 +70,7 @@ export const CreatTest = () => {
             <div className='create_container' name='id' value={id}>
                 <div className='container_left'>
                     <div className='left_top'>
-                        <div className='top_text'>
+                        <div className='top_text' validated={validated}>
                             <span
                             >Tên bài test (bắt buộc)</span>
                             <input name="name"

@@ -9,7 +9,7 @@ export default function AddGameAdmin() {
     const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
- 
+    const [validated, setValidated] = useState(false);
     const [gameField, setGameField] = useState({
         name: "",
         description: "",
@@ -26,6 +26,7 @@ export default function AddGameAdmin() {
     
     const onSubmitChange = async (e) => {
         e.preventDefault();
+        setValidated(true)
         try {
            await axios.post("http://127.0.0.1:8000/api/games", gameField);
             setLoading(true);
@@ -56,6 +57,7 @@ export default function AddGameAdmin() {
             method="post"
             encType=""
             noValidate
+            validated={validated}
           >
             <Form.Control type="hidden" name="id" value={id} />
             <div className="row mb-3">

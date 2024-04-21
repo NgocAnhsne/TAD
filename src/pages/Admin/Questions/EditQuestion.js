@@ -5,13 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function EditQuestionAdmin() {
-    const options = [
-        { value: '', label: '---Chọn đáp án---' },
-        { value: 'answer a', label: 'A' },
-        { value: 'answer b', label: 'B' },
-        { value: 'answer c', label: 'C' },
-        { value: 'answer d', label: 'D' }
-    ]
+
     const { id } = useParams()
     const navigate = useNavigate();
     const [loading, setLoading] = useState()
@@ -57,6 +51,13 @@ export default function EditQuestionAdmin() {
             console.log("Something Wrong");
         }
     }
+    const options = [
+        { value: '', label: '---Chọn đáp án---' },
+        { value: questionField.answer_a, label: 'A' },
+        { value: questionField.answer_b, label: 'B' },
+        { value: questionField.answer_c, label: 'C' },
+        { value: questionField.answer_d, label: 'D' }
+    ]
     return (
 
         <div className='admin'>
@@ -73,7 +74,7 @@ export default function EditQuestionAdmin() {
             </div>
             <div className="content_section">
                 <div className="content_header">
-                    <span>Question 1:</span>
+                    <span>Question</span>
                     <input placeholder='Question?' name='question_text'
                         value={questionField.question_text || ""} onChange={e => changeQuestionFieldHandler(e)}></input>
                 </div>
