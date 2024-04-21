@@ -19,7 +19,6 @@ import Rank from '~/pages/Student/Rank/index.js';
 import HistoryStudent from '~/pages/Student/History/index.js';
 import SuccessStudent from '~/pages/Student/Success/index.js';
 import ProfileStudent from '~/pages/Student/Profile/index.js';
-import EditProfileStudent from '~/pages/Teacher/ProfileTeacher/EditProfileTeacher.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 import Test from '~/pages/Student/Test/index.js';
 import Quiz from '~/components/Student/Quiz/Quiz.jsx';
@@ -62,6 +61,7 @@ import GuessWord from '~/pages/Student/Game/GuessWordsGame/GuessWord.js';
 import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import EditProfileStudent from '~/pages/Student/Profile/editProfile.js';
 
 
 
@@ -78,7 +78,7 @@ const publicRoutes = [
     {path: '/student/history/', component: HistoryStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
-    {path: '/student/profile/edit', component: EditProfileStudent },
+    {path: '/student/profile/edit/:id', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
     
 

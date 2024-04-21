@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-export default function EditProfileTeacher() {
+export default function EditProfileStudent() {
 
   const {id}=useParams()
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ export default function EditProfileTeacher() {
         e.preventDefault();
         try {
             await axios.put("http://127.0.0.1:8000/api/user/update/"+id, userField);
-            navigate(`/student/profile/${userField.id}`)
+            navigate(`/student/profile`)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -53,7 +53,7 @@ export default function EditProfileTeacher() {
   return (
     <div className='teacher'>
       <div className='header'>
-                <div><h1>Thêm/cập nhật bài học</h1></div>
+                <div><h1>Thêm/cập nhật học sinh</h1></div>
                 <div>
                 <Link to={`/student/profile/`} className='header_cancel'>
                     <span>Hủy và quay lại</span>

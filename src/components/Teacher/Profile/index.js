@@ -18,7 +18,7 @@ export default function Profiles() {
   const [userField, setUserField] = useState([]);
 
   var moment = require("moment");
-
+  console.log(user)
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Bạn có chắc chắn muốn xoá tài khoản này?");
     if (confirmDelete) {

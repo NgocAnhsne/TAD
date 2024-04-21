@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-export default function EditProfileStudent() {
+export default function EditProfileTeacher() {
 
   const {id}=useParams()
     const navigate = useNavigate();
     const [loading,setLoading]=useState()
-    
+    const user = JSON.parse(localStorage.getItem("user"));
  
     const [userField, setUserField] = useState({
         name: "",
@@ -22,8 +22,9 @@ export default function EditProfileStudent() {
     
     const fetchUser=async()=>{
         try{
-            const result=await axios.get("http://127.0.0.1:8000/api/user/"+id);
+            const result=await axios.get("http://127.0.0.1:8000/api/user/"+user.id);
             setUserField(result.data.data)
+            console.log(result.data.data)
         }catch(err){
             console.log("Something Wrong");
         }
@@ -41,8 +42,8 @@ export default function EditProfileStudent() {
     const onSubmitChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.put("http://127.0.0.1:8000/api/user/update/"+id, userField);
-            navigate(`/teacher/profile/${userField.id}`)
+            await axios.put("http://127.0.0.1:8000/api/user/update/"+user.id, userField);
+            navigate(`/teacher/profile`)
         } catch (err) {
             console.log("Something Wrong");
         }

@@ -65,7 +65,7 @@ export default function Dashboard() {
             <h3>Xếp hạng</h3>
             {rankData.map((item, i) => 
                 <div>
-                    <span>{item.name} <b>{item.score}</b> </span>
+                    <span>{item.name} <b>{item.rank}</b> </span>
                 </div>
             )}
             

@@ -79,10 +79,10 @@ function HistoryStudent() {
             ))
           ) : (
        
-            <p className="text-danger text-center">
-              Không tìm thấy lịch sử
+            <h1 className="text-danger text-center">
+                    Không tìm thấy lịch sử
               <span>Có lẽ bạn chưa làm bài thi nào</span>
-            </p>
+            </h1>
          
           )}
         </div>
