@@ -4,31 +4,30 @@ import background_image from "~/components/asset/img/CayDua.jpg";
 import moment from "moment";
 import Upload from "~/pages/Upload";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 function HistoryStudent() {
+
+  const { id } = useParams();
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-  const [historyData, sethistoryData] = useState([]);
+  const [historyData, setHistoryData] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
-
   const fetchData = async () => {
     try {
-      const result = await axios(
-        "http://127.0.0.1:8000/api/history/lesson-history-user/"
+      const dataUser = JSON.parse(localStorage.getItem('user')); 
+      const result = await axios.get(
+        "http://127.0.0.1:8000/api/history/lesson-history-user/"+ dataUser.id // Sử dụng dataUser.id trong yêu cầu API
       );
-      sethistoryData(result.data.data);
+      setHistoryData(result.data.data);
       setIsVisibleLoading(false);
     } catch (err) {
       console.log("something went wrong");
     }
-    
   };
-
-
   const historyLength = historyData.length;
-
-
   return (
     
     <div className="historyStudent">
@@ -44,13 +43,10 @@ function HistoryStudent() {
       <div className="historyStudent__content">
         <div className="historyStudent__content--list">
           {/* course 1 */}
-
           {isVisibleLoading ? (
-      
             <></>
           ) : historyData.length > 0 ? (
             historyData.map((history) => (
-
               <div className="historyStudent__content--list__item shadow">
                 <div className="historyStudent__content--list__item--title">
                   {history.id_lesson_test}
@@ -81,12 +77,10 @@ function HistoryStudent() {
                     </div>
                     <div className="historyStudent__content--list__item--body__row--col">
                       <div className="historyStudent__content--list__item--body__row--col__right">
-                    
                         <div className="historyStudent__content--list__item--body__row--col__right--time">
                           Type of test:
                         </div>
                         <div>{history.type}</div>
-                   
                       </div>
                     </div>
                   </div>
@@ -95,12 +89,14 @@ function HistoryStudent() {
                   <button className="shadow">View</button>
                 </div>
               </div>
-             
             ))
           ) : (
+       
             <p className="text-danger text-center">
-              Không tìm thấy trò chơi nào
+              Không tìm thấy lịch sử
+              <span>Có lẽ bạn chưa làm bài thi nào</span>
             </p>
+         
           )}
         </div>
       </div>

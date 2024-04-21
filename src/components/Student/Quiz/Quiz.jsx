@@ -65,7 +65,7 @@ const Quiz = () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestion(res.data.data)
-           
+            
       
         } catch (err) {
             console.log("Something Wrong");
