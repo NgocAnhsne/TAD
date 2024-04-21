@@ -59,7 +59,7 @@ export const CreatTest = () => {
     }
     if (loading) {
         return (
-            navigate(`/teacher/lession/`)
+            navigate(`/teacher/test/`)
         )
     }
 

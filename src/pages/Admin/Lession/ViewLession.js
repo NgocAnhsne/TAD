@@ -12,10 +12,10 @@ export default function ViewQuestionText() {
 
     const options = [
         { value: '', label: '---Chọn đáp án---' },
-        { value: 'answer a', label: 'A' },
-        { value: 'answer b', label: 'B' },
-        { value: 'answer c', label: 'C' },
-        { value: 'answer d', label: 'D' }
+        { value: 'answer_a', label: 'A' },
+        { value: 'answer_b', label: 'B' },
+        { value: 'answer_c', label: 'C' },
+        { value: 'answer_d', label: 'D' }
     ]
 
     const { id } = useParams();

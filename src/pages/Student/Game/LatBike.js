@@ -52,7 +52,7 @@ function Game() {
   useEffect(() => {
     if (matchedPairs === cardData.length) {
       setGameComplete(true);
-      updateScore();
+      updateRank();
     }
   }, [matchedPairs, cardData.length]);
 
@@ -88,7 +88,7 @@ function Game() {
           });
           setMatchedPairs((prevPairs) => prevPairs + 1);
           if (matchedPairs + 1 === cardData.length) {
-            updateScore();
+            updateRank();
           }
         } else {
           setTimeout(resetTurn, 1000);
@@ -120,19 +120,22 @@ function Game() {
         });
         setMatchedPairs((prevPairs) => prevPairs + 1);
         resetTurn();
-        setShowPopup(true);
-        setPopupData({
-          english: choiceOne.english,
-          vietnamese: choiceOne.vietnamese,
-          description: choiceOne.description,
-          pronounce: choiceOne.pronounce,
-          type: choiceOne.type,
-        });
+        setTimeout(() => {
+          setShowPopup(true);
+          setPopupData({
+            english: choiceOne.english,
+            vietnamese: choiceOne.vietnamese,
+            description: choiceOne.description,
+            pronounce: choiceOne.pronounce,
+            type: choiceOne.type,
+          });
+        }, 7000);
       } else {
         setTimeout(() => resetTurn(), 1000);
       }
     }
   }, [choiceOne, choiceTwo, disabled]);
+  
 
   const resetTurn = () => {
     setChoiceOne(null);
@@ -149,10 +152,10 @@ function Game() {
     navigate(-1);
   };
 
-  const updateScore = async () => {
+  const updateRank = async () => {
     try {
-      const updatedUser = { ...user, score: matchedPairs };
-      await axios.put("http://127.0.0.1:8000/api/addscore/" + user.id, updatedUser); 
+      const updatedUser = { ...user, rank: matchedPairs };
+      await axios.put("http://127.0.0.1:8000/api/addrank/" + user.id, updatedUser); 
       localStorage.setItem("user", JSON.stringify(updatedUser));
     } catch (error) {
       console.log("Error updating score:", error);
