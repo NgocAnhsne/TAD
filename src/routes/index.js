@@ -22,7 +22,7 @@ import ProfileStudent from '~/pages/Student/Profile/index.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 
 import Quiz from '~/components/Student/Quiz/Quiz.jsx';
-import QuizTest from '~/components/Student/Test/index.js';
+import QuizTest from '~/components/Student/QuizTest/index.js';
 
 
 import Game from '~/pages/Student/Game/LatBike.js';
@@ -95,7 +95,7 @@ const publicRoutes = [
     {path: '/student/game/4/topic/:id', component: GuessWord, layout: null},
     {path:'/student/game/:id/topic/',component:topic_chooser},
 
-    {path:'/student/test',component: Test},
+
 
 
     //role
