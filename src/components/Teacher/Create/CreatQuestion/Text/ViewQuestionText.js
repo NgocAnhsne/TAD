@@ -85,10 +85,10 @@ export default function ViewQuestionText() {
     
     const options = [
         { value: '', label: '---Chọn đáp án---' },
-        { value: testData.answer_a, label: 'A' },
-        { value: testData.answer_b, label: 'B' },
-        { value: testData.answer_c, label: 'C' },
-        { value: testData.answer_d, label: 'D' }
+        { value: testField.answer_a, label: 'A' },
+        { value: testField.answer_b, label: 'B' },
+        { value: testField.answer_c, label: 'C' },
+        { value: testField.answer_d, label: 'D' }
     ]
     return (
         <div className='teacher_component'>
@@ -149,9 +149,10 @@ export default function ViewQuestionText() {
                             <div>
                                 <span>True Answer</span>
                                 <select value={question.answer}>
-                                    {options.map(option => (
-                                        <option key={option.value} value={option.value}>{option.label}</option>
-                                    ))}
+                                    <option value={question.answer_a}>A</option>
+                                    <option value={question.answer_b}>B</option>
+                                    <option value={question.answer_c}>C</option>
+                                    <option value={question.answer_d}>D</option>
                                 </select>
                             </div>
                             <div className='delete_footer' onClick={() => handleDelete(question.id)}>

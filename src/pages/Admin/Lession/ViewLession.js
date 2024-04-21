@@ -41,6 +41,7 @@ export default function ViewQuestionText() {
         try {
             const result = await axios.get("http://127.0.0.1:8000/api/question-by-lession/" + id);
             setQuestionData(result.data.data)
+            console.log(result.data.data)
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -83,10 +84,10 @@ export default function ViewQuestionText() {
     
     const options = [
         { value: '', label: '---Chọn đáp án---' },
-        { value: questionData.answer_a, label: 'A' },
-        { value: questionData.answer_b, label: 'B' },
-        { value: questionData.answer_c, label: 'C' },
-        { value: questionData.answer_d, label: 'D' }
+        { value: questionField.answer_a, label: 'A' },
+        { value: questionField.answer_b, label: 'B' },
+        { value: questionField.answer_c, label: 'C' },
+        { value: questionField.answer_d, label: 'D' }
     ]
     return (
        <div className='admin'>
@@ -148,9 +149,10 @@ export default function ViewQuestionText() {
                             <div>
                                 <span>True Answer</span>
                                 <select value={question.answer}>
-                                    {options.map(option => (
-                                        <option key={option.value} value={option.value}>{option.label}</option>
-                                    ))}
+                                    <option value={question.answer_a}>A</option>
+                                    <option value={question.answer_b}>B</option>
+                                    <option value={question.answer_c}>C</option>
+                                    <option value={question.answer_d}>D</option>
                                 </select>
                             </div>
                             <div className='delete_footer' onClick={() => handleDelete(question.id)}>
