@@ -43,6 +43,7 @@ const Quiz = () => {
                 setQuestionLength(res.data.data.length);
             }
 
+
         } catch (err) {
             console.log("Something Wrong");
         }
