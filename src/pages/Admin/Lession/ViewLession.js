@@ -10,13 +10,7 @@ import { IoClose } from "react-icons/io5";
 
 export default function ViewQuestionText() {
 
-    const options = [
-        { value: '', label: '---Chọn đáp án---' },
-        { value: 'answer_a', label: 'A' },
-        { value: 'answer_b', label: 'B' },
-        { value: 'answer_c', label: 'C' },
-        { value: 'answer_d', label: 'D' }
-    ]
+
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -87,7 +81,13 @@ export default function ViewQuestionText() {
         }
     }
     
-    
+    const options = [
+        { value: '', label: '---Chọn đáp án---' },
+        { value: questionData.answer_a, label: 'A' },
+        { value: questionData.answer_b, label: 'B' },
+        { value: questionData.answer_c, label: 'C' },
+        { value: questionData.answer_d, label: 'D' }
+    ]
     return (
        <div className='admin'>
              <div className='teacher_component'>

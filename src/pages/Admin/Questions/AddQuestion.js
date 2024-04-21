@@ -5,13 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function AddQuestionAdmin() {
-    const options = [
-        { value: '', label: '---Chọn đáp án---' },
-        { value: 'answer_a', label: 'A' },
-        { value: 'answer_b', label: 'B' },
-        { value: 'answer_c', label: 'C' },
-        { value: 'answer_d', label: 'D' }
-    ]
+
     const {id}=useParams()
     const navigate = useNavigate();
     const [isVisibleLoading, setIsVisibleLoading] = useState(false)
@@ -50,6 +44,13 @@ export default function AddQuestionAdmin() {
             navigate('/admin/question')
         )
     }
+    const options = [
+        { value: '', label: '---Chọn đáp án---' },
+        { value: questionData.answer_a, label: 'A' },
+        { value: questionData.answer_b, label: 'B' },
+        { value: questionData.answer_c, label: 'C' },
+        { value: questionData.answer_d, label: 'D' }
+    ]
     return (
 
         <div className='admin'>
