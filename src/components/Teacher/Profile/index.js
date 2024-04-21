@@ -72,7 +72,7 @@ export default function Profiles() {
 
         <div className="content_right">
           <div className="content_right-content">
-            <div className="content_right-content_items">
+            {/* <div className="content_right-content_items">
                 Quản lý lớp học
             </div>
             <div>
@@ -87,7 +87,7 @@ export default function Profiles() {
             
             <div className="content_right-content_items">
                 Xem danh sách lớp học
-            </div>
+            </div> */}
             <div>
                 
             </div>

@@ -59,28 +59,15 @@ function HistoryStudent() {
                          question: {historyLength}
                         </div>
                         <div className="historyStudent__content--list__item--body__row--col__left--time">
-                          Time:{" "}
-                          {moment(history.update_at).format("DD/MM/YYYY")}
+                          Time: {moment(history.create_at).format("DD/MM/YYYY")}
+                          
                         </div>
                         <div className="historyStudent__content--list__item--body__row--col__left--score">
-                          Score
+                          Score: {history.score}
                         </div>
-                        <div>{history.score}</div>
-                        <div className="historyStudent__content--list__item--body__row--col__left--playdate">
-                          Play date
+                        <div className="historyStudent__content--list__item--body__row--col__left--score">
+                          Type of test: {history.type}
                         </div>
-                        <div className="historyStudent__content--list__item--body__row--col__left--time">
-                          Time:{" "}
-                          {moment(history.create_at).format("DD/MM/YYYY")}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="historyStudent__content--list__item--body__row--col">
-                      <div className="historyStudent__content--list__item--body__row--col__right">
-                        <div className="historyStudent__content--list__item--body__row--col__right--time">
-                          Type of test:
-                        </div>
-                        <div>{history.type}</div>
                       </div>
                     </div>
                   </div>

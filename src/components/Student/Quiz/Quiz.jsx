@@ -3,7 +3,7 @@ import './style.scss';
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from '~/components/asset/img/image 27.png'
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Quiz = () => {
@@ -15,6 +15,9 @@ const Quiz = () => {
     const [ans, setAns] = useState([]);
     const [questionLength, setQuestionLength] = useState(0);
     const[currentQuestion,setCurrentQuestion] = useState();
+
+    const navigate = useNavigate();
+
     let Option1 = useRef(null);
     let Option2 = useRef(null);
     let Option3 = useRef(null);
@@ -91,10 +94,9 @@ const Quiz = () => {
         }
     }
 
-    const handleSendResult = () => {
-        // console.log({question});
-        
-        console.log("You have submitted your assignment successfully")
+    const handleBack = () => {
+        navigate(-1);
+
     }
 
 
@@ -104,9 +106,9 @@ const Quiz = () => {
         <><div className="answerStudent">
             <div className="answerStudent__header">
                 <div className="answerStudent__header--wrap row-max-width">
-                    <div className="backBtn">
+                    <Link onClick={handleBack} className="backBtn">
                         <IoIosArrowBack />
-                    </div>
+                    </Link>
                     <div className="answerStudent__header--number">
                         <span className="answerStudent__header--number__item">{index + 1}</span>/
                         <span className="answerStudent__header--number__total">{questionLength}</span>
