@@ -1,4 +1,3 @@
-"use client"
 import React, { useEffect, useState } from 'react';
 import "./style.scss";
 import axios from 'axios';
@@ -8,6 +7,7 @@ import anhGame2 from '~/components/asset/img/gamechooser3.png';
 import anhGame3 from '~/components/asset/img/gamechooser.png';
 import anhGame4 from '~/components/asset/img/rand_game1.jpg';
 import Upload from '~/pages/Upload';
+
 export default function GameChooser() {
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [gameData, setGameData] = useState([]);
@@ -19,50 +19,52 @@ export default function GameChooser() {
 
     useEffect(() => {
         if (gameData.length > 0) {
-          
-            const indexes = gameData.map(() => Math.floor(Math.random() * 4)); 
+            const indexes = gameData.map(() => Math.floor(Math.random() * 4));
             setRandomImageIndexes(indexes);
         }
     }, [gameData]);
 
     const fetchData = async () => {
         try {
-            const result = await axios("http://127.0.0.1:8000/api/allgame");
+            const result = await axios.get("http://127.0.0.1:8000/api/allgame");
             setGameData(result.data.data);
             setIsVisibleLoading(false);
-        } catch (err) {
-            console.log("something went wrong");
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            setIsVisibleLoading(false); // Stop loading even if there's an error
+            // You might want to display a user-friendly error message here
         }
     };
 
     const getRandomImage = (index) => {
-        // Mảng chứa các hình ảnh
-        const images = [anhGame1, anhGame2,anhGame3,anhGame4];
-        // Lấy chỉ số ngẫu nhiên tương ứng với phần tử index
+        // Array containing the images
+        const images = [anhGame1, anhGame2, anhGame3, anhGame4];
+        // Check if the index is within bounds of the images array
         const randomIndex = randomImageIndexes[index];
-        // Trả về hình ảnh tương ứng
-        return images[randomIndex];
+        if (randomIndex >= 0 && randomIndex < images.length) {
+            // Return the corresponding image
+            return images[randomIndex];
+        } else {
+            // Return a default image if index is out of bounds
+            return anhGame1;
+        }
     };
 
     return (
         <div className='Chooser'>
             <div className='Chooser_header'>
-                <h2>Chọn game ngay! </h2>
+                <h2>Chọn game ngay!</h2>
             </div>
             <div className='Chooser_body'>
                 {/* items */}
-                
                 {isVisibleLoading ? (
                     <div className='loading_screen'>
                         <Upload/>
                     </div>
-                   
                 ) : (
                     gameData.length > 0 ? (
                         gameData.map((game, i) => (
-
                             <Link to={`/student/game/${game.id}/topic`} key={game.id}>
-
                                 <div className='Chooser_body_item'>
                                     <div className='Chooser_body_item_img'>
                                         <img src={getRandomImage(i)} alt={`Game Image ${i}`} />

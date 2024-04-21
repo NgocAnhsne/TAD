@@ -55,12 +55,14 @@ const GuessWord = () => {
       fetchWord();
       if (rankPoint + 20 >= 100) {
         setVictory(true);
+        updateRank();
       }
     } else {
       setFeedback("Incorrect");
       setAttempts((prevAttempts) => prevAttempts + 1);
       if (attempts >= maxAttempts) {
         setGameOver(true);
+        updateRank();
       }
     }
   };
@@ -71,7 +73,7 @@ const GuessWord = () => {
     setFeedback("");
     setRankPoint(0);
     setGameOver(false);
-    setVictory(false); // Ẩn cửa sổ chiến thắng khi restart
+    setVictory(false); 
     fetchWord();
   };
   const handleKeyDown = (event) => {
@@ -91,7 +93,7 @@ const GuessWord = () => {
             Attempts times: {attempts}/{maxAttempts}
           </p>
           <p className="miniGame_wrapper_container_box_item">
-            Feedback : {feedback}
+            Your answer is : {feedback}
           </p>
           <p className="miniGame_wrapper_container_box_score">
             Rank Point : {rankPoint}
