@@ -16,8 +16,8 @@ export default function LessonStudent() {
   const fetchData = async () => {
     try {
       const result = await axios("http://127.0.0.1:8000/api/lession/all");
-      setLessionData(result.data.data);
       setIsVisibleLoading(false);
+      setLessionData(result.data.data);
     } catch (err) {
       console.log("somthing Wrong");
     }
