@@ -50,19 +50,19 @@ const Quiz = () => {
 
     const checkAns = async (event, answer) => {
         // if (lock === false && question.length > 0) {
-        const newAnsData = await question.find((item) => item.answer==answer);
-            if(!!newAnsData){
-                event.target.classList.add("correct");
-                setLock(true);
-                setScore(prev => prev + 1);
-                return;
-            } else{
-                event.target.classList.add("wrong");
-                setLock(true)
-                // option_array[question.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
-            return ;
+        const newAnsData = await question.find((item) => item.answer == answer);
+        if (!!newAnsData) {
+            event.target.classList.add("correct");
+            setLock(true);
+            setScore(prev => prev + 1);
+            return;
+        } else {
+            event.target.classList.add("wrong");
+            setLock(true)
+            // option_array[question.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
+            return;
 
-            }
+        }
         //      // console.log(newAnsData);
         //      // if (question.answer == newAnsData) {
         //      //     e.target.classList.add("correct");
@@ -138,20 +138,20 @@ const Quiz = () => {
                         </div>
                     </div>
                 </div>
-                    <div className="answerStudent__content--bottom">
-                        <div className="answerStudent__content--bottom__list">
-                            <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option1} onClick={(e) => { checkAns(e, currentQuestion?.answer_a) }}>A. {currentQuestion?.answer_a}</button>
-                            </div>
-                            <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option2} onClick={(e) => { checkAns(e, currentQuestion?.answer_b); }}>B. {currentQuestion?.answer_b}</button>
-                            </div>
-                            <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option3} onClick={(e) => { checkAns(e, currentQuestion?.answer_c); }}>C. {currentQuestion?.answer_c}</button>
-                            </div>
-                            <div className="answerStudent__content--bottom__list--item">
-                                <button ref={Option4} onClick={(e) => { checkAns(e, currentQuestion?.answer_d); }}>D. {currentQuestion?.answer_d}</button>
-                            </div>
+                <div className="answerStudent__content--bottom">
+                    <div className="answerStudent__content--bottom__list">
+                        <div className="answerStudent__content--bottom__list--item">
+                            <button ref={Option1} onClick={(e) => { checkAns(e, currentQuestion?.answer_a) }}>A. {currentQuestion?.answer_a}</button>
+                        </div>
+                        <div className="answerStudent__content--bottom__list--item">
+                            <button ref={Option2} onClick={(e) => { checkAns(e, currentQuestion?.answer_b); }}>B. {currentQuestion?.answer_b}</button>
+                        </div>
+                        <div className="answerStudent__content--bottom__list--item">
+                            <button ref={Option3} onClick={(e) => { checkAns(e, currentQuestion?.answer_c); }}>C. {currentQuestion?.answer_c}</button>
+                        </div>
+                        <div className="answerStudent__content--bottom__list--item">
+                            <button ref={Option4} onClick={(e) => { checkAns(e, currentQuestion?.answer_d); }}>D. {currentQuestion?.answer_d}</button>
+                        </div>
                         <div className="answerStudent__content--bottom__btnNext">
                             <button className="answerStudent__content--bottom__btnNext--btn" onClick={next}>
                                 Next
@@ -166,54 +166,53 @@ const Quiz = () => {
                             </Link>
                             } */}
                         </div>
+                    </div>
+                </div>
+            </>}
+            {result ? <>
+                <div>
+                    <div className="successStudent">
+                        <div className="successStudent__content">
+                            <div className="successStudent__content--wrap">
+                                <div className="successStudent__content--img">
+                                    <img src={successImg} />
+                                </div>
+                                <div className="successStudent__content--info">
+                                    <div className="successStudent__content--info__title">
+                                        Hoàn thành bài học!
+                                    </div>
+                                    <div className="successStudent__content--info__box">
+                                        <div className="successStudent__content--info__box--score">
+                                            <h2>
+                                                Tổng điểm
+                                            </h2>
+                                            <div className="successStudent__content--info__box--score__content">
+                                                {score}
+                                            </div>
+                                        </div>
+                                        <div className="successStudent__content--info__box--accuracy">
+                                            <h2>
+                                                Chính xác
+                                            </h2>
+                                            <div className="successStudent__content--info__box--accuracy__content">
+                                                {(score / question.length) * 100}%
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="successStudent__content--btn">
+                                        <button onClick={handleBack}>
+                                            Quay về
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    </>}
-                    {result ? <>
-                        <div>
-                            <div className="successStudent">
-                                <div className="successStudent__content">
-                                <div className="successStudent__content--wrap">
-
-                                    <div className="successStudent__content--img">
-                                        <img src={successImg} />
-                                    </div>
-                                    <div className="successStudent__content--info">
-                                        <div className="successStudent__content--info__title">
-                                            Hoàn thành bài học!
-                                        </div>
-                                        <div className="successStudent__content--info__box">
-                                            <div className="successStudent__content--info__box--score">
-                                                <h2>
-                                                    Tổng điểm
-                                                </h2>
-                                                <div className="successStudent__content--info__box--score__content">
-                                                    {score}
-                                                </div>
-                                            </div>
-                                            <div className="successStudent__content--info__box--accuracy">
-                                                <h2>
-                                                    Chính xác
-                                                </h2>
-                                                <div className="successStudent__content--info__box--accuracy__content">
-                                                    {(score / question.length) * 100}%
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                <div className="successStudent__content--btn">
-                                    <button onClick={handleBack}>
-                                        Quay về
-                                    </button>
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </> : <></>}
-                </div><div>
-                </div></>
+                </div>
+            </> : <></>}
+        </div><div>
+            </div></>
     )
 }
 export default Quiz;

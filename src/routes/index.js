@@ -22,6 +22,7 @@ import ProfileStudent from '~/pages/Student/Profile/index.js';
 import LessonStudent from '~/pages/Student/Lesson/index.js';
 import Test from '~/pages/Student/Test/index.js';
 import Quiz from '~/components/Student/Quiz/Quiz.jsx';
+import QuizTest from '~/components/Student/Test/index.js';
 
 
 import Game from '~/pages/Student/Game/LatBike.js';
@@ -80,7 +81,10 @@ const publicRoutes = [
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/profile/edit/:id', component: EditProfileStudent },
     {path: '/student/lesson', component: LessonStudent },
-    
+    //test
+    {path:'/student/test',component:Test},
+    {path:'/student/quiztest',component:QuizTest, layout: null},
+    {path: '/student/test/:id', component: QuizTest, layout: null},
 
     // Xem lịch sử:
     {path: '/student/lesson', component: History },
@@ -89,7 +93,6 @@ const publicRoutes = [
     {path: '/student/game/1/topic/:id', component: Game, layout: null},
     {path: '/student/game/2/topic/:id', component: GuessWord, layout: null},
     {path:'/student/game/:id/topic/',component:topic_chooser},
-    {path:'/student/test',component:Test},
 
     //role
     {path: '/rolechooser', component: rolechooser, layout: null},
