@@ -39,7 +39,6 @@ const GuessWord = () => {
       setGuess("");
       fetchWord();
       if (rankPoint + 20 >= 100) {
-        // Kiểm tra chiến thắng khi điểm >= 100
         setVictory(true);
       }
     } else {
