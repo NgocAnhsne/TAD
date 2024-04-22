@@ -37,7 +37,7 @@ function ProfileStudent() {
             <div className="profileStudent__left--personal__info--level">
               {/* background level */}
               <div className="profileStudent__left--personal__info--level__content">
-                {user.score / 10}
+              LV: {Math.floor(user.score / 10)}
               </div>
             </div>
             <div className="profileStudent__left--personal__info--date">

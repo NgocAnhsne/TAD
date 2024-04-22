@@ -115,7 +115,6 @@ const publicRoutes = [
 
     // {path: '/teacher/questionlisten', component: QuestionListenTeacher, layout: SidebarTeacher },
     // {path: '/teacher/questionlisten/:id', component: QuestionListenTeacher, layout: SidebarTeacher },
-    
     // {path: '/teacher/questionimg', component: QuestionImgTeacher, layout: SidebarTeacher },
     // {path: '/teacher/questionimg/:id', component: QuestionImgTeacher, layout: SidebarTeacher },
   
