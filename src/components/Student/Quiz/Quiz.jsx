@@ -1,7 +1,4 @@
 import React, {
-  Children,
-  createContext,
-  useContext,
   useEffect,
   useRef,
   useState,
@@ -15,7 +12,6 @@ import axios from "axios";
 
 const Quiz = () => {
   let [index, setIndex] = useState(0);
-  //thieu 'S'
   const [questions, setQuestions] = useState([]); //data
   let [isLock, setIsLock] = useState(false);
   let [score, setScore] = useState(0);
@@ -64,9 +60,7 @@ const Quiz = () => {
       option.current.classList.remove("correct");
     });
   };
-  // làm nốt đoạn này nhé send navigate sang page ods oke
 
-  // redirect to...
   const handleSendRedirect = () => {
     setResult(true);
   };
