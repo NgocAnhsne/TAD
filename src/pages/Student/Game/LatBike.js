@@ -22,6 +22,7 @@ function Game() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const [numPairsToShow, setNumPairsToShow] = useState(8);
+  
   const [popupData, setPopupData] = useState({
     english: "",
     vietnamese: "",
@@ -85,8 +86,8 @@ function Game() {
               return prevCard;
             });
           });
-          setMatchedPairs((prevPairs) => prevPairs + 1);
-          if (matchedPairs + 1 === cardData.length) {
+          setMatchedPairs((prevPairs) => prevPairs + 2);
+          if (matchedPairs + 2 === cardData.length) {
             updateRank();
           }
         } else {
@@ -117,7 +118,7 @@ function Game() {
             }
           });
         });
-        setMatchedPairs((prevPairs) => prevPairs + 1);
+        setMatchedPairs((prevPairs) => prevPairs + 2);
         resetTurn();
         setTimeout(() => {
           setShowPopup(true);

@@ -37,11 +37,12 @@ const Quiz = () => {
             setQuestion(res.data.data)
             console.log(res.data.data)
 
-                // if (res.data.data) {
-                //     setQuestion(res.data.data);
-                //     setCurrentQuestion(res.data.data[index])
-                //     setQuestionLength(res.data.data.length);
-                // }
+            if (res.data.data) {
+                setQuestion(res.data.data);
+                setCurrentQuestion(res.data.data[index])
+                setQuestionLength(res.data.data.length);
+            }
+
 
         } catch (err) {
             console.log("Something Wrong");
@@ -141,7 +142,7 @@ const Quiz = () => {
                 <div className="answerStudent__content--bottom">
                     <div className="answerStudent__content--bottom__list">
                         <div className="answerStudent__content--bottom__list--item">
-                            <button ref={Option1} onClick={(e) => { checkAns(e, currentQuestion?.answer_a) }}>A. {currentQuestion?.answer_a}</button>
+                            <button ref={Option1} onClick={(e) => { checkAns(e, currentQuestion?.answer_a);}}>A. {currentQuestion?.answer_a}</button>
                         </div>
                         <div className="answerStudent__content--bottom__list--item">
                             <button ref={Option2} onClick={(e) => { checkAns(e, currentQuestion?.answer_b); }}>B. {currentQuestion?.answer_b}</button>
