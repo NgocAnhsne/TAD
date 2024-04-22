@@ -23,6 +23,7 @@ function SidebarStudent() {
           console.error('Đã xảy ra lỗi khi đăng xuất:', error);
         }
       };
+      const user = JSON.parse(localStorage.getItem("user"));
     return (
         <div className="sidebar">
             <div className="top">
@@ -37,7 +38,7 @@ function SidebarStudent() {
             <div className="user">
                 <Link to='/student/profile'>
                 <img src={avatar} className="logo"></img>
-                <span>Student</span>
+                <span>{user.name}</span>
                 </Link>
             </div>
             <div className="center">
