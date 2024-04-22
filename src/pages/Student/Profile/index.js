@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function ProfileStudent() {
   const user = JSON.parse(localStorage.getItem('user'));
   var moment = require('moment');
-
+  const width = `${(user.score / 10) * 10}%`;
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
@@ -33,13 +33,14 @@ function ProfileStudent() {
             <div className='profileStudent__left--personal__info--role'>
               <div>Vai trò: </div>
               <div className="profileStudent__left--personal__info--role__item">{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</div></div>
-
-            <div className="profileStudent__left--personal__info--level">
-              {/* background level */}
-              <div className="profileStudent__left--personal__info--level__content">
-              LV: {Math.floor(user.score / 10)}
+              
+              <div style={{fontWeight:800,display:"flex", alignItems:"center"}} className="profileStudent__left--personal__info--role">
+                <div style={{width:"100%"}}>Cấp {Math.floor(user.score / 10)}:</div>
+              <div className="profileStudent__left--personal__info--level">
+              <div className="profileStudent__left--personal__info--level__content" style={{ width }}>
               </div>
             </div>
+              </div>
             <div className="profileStudent__left--personal__info--date">
             Đã tham gia vào {moment(user.created_at).format('L')}
             </div>
