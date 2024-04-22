@@ -37,7 +37,7 @@ const GuessWord = () => {
 
   const fetchWord = () => {
     if (!victory && supportCount !== 3) {
-      fetch("http://127.0.0.1:8000/api/wordl/all")
+      fetch("http://127.0.0.1:8000/api/wordl-by-wordle/" + id)
         .then((response) => response.json())
         .then((data) => {
           const randomIndex = Math.floor(Math.random() * data.data.length);
