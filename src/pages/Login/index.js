@@ -13,12 +13,13 @@ function Login() {
   const [userData, setUserData] = useState('');
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); 
+  
   const { login } = useAuth();
   useEffect(() => {
       fetchData();
   }, [])
   
-  
+ 
   const fetchData = async () => {
       try {
           const result = await axios.get("http://127.0.0.1:8000/api/alluser");
@@ -37,6 +38,12 @@ function Login() {
     } catch (error) {
         setError('Đăng nhập thất bại. Vui lòng thử lại.');
     }
+};
+
+const handleKeyDown = (event) => {
+  if (event.key === "Enter") {
+    handleLogin();
+  }
 };
 function Upload() {
   return (
@@ -72,7 +79,9 @@ return (
           <input type="password" className="form-control" placeholder='Điền mật khẩu'
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}/>
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
+            />
         </div>
         {error && <div className="error-message">{error}</div>}
         {isLoading ? <Upload animation="border" size="sm" />:""}
