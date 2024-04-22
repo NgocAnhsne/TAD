@@ -6,10 +6,8 @@
   position: sticky;
   font-family: "Montserrat", sans-serif;
   display: flex;
-
   &__left {
     flex: 8 1;
-
     &--personal {
       background-color: white;
       border-radius: var(--border-radius-size-5);
@@ -19,7 +17,6 @@
       box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.5);
       padding: 23px 25px;
       margin-bottom: 24px;
-
       &__ava {
         height: 226px;
         display: flex;

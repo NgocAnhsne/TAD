@@ -3,6 +3,9 @@ import "./GuessWord.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { BsSuitHeartFill } from "react-icons/bs";
+import animation from"~/components/asset/img/trueAnswer.gif";
+import trueAns from"~/components/asset/img/last_true.png";
+import falseAns from"~/components/asset/img/last_false.png";
 
 const GuessWord = () => {
   const [word, setWord] = useState("");
@@ -19,6 +22,7 @@ const GuessWord = () => {
   const [supportCount, setSupportCount] = useState(0);
   const [isSupportDisabled, setIsSupportDisabled] = useState(false);
   const { id } = useParams();
+  const [inputFocused, setInputFocused] = useState(false);
   useEffect(() => {
     fetchWord();
   }, [id]);
@@ -74,7 +78,7 @@ const GuessWord = () => {
         updateRank();
       }
     } else {
-      setFeedback(" Sai mất rồi");
+      setFeedback("Sai mất rồi");
       setAttempts((prevAttempts) => prevAttempts - 1);
       if (attempts <= 1) {
         setGameOver(true);
@@ -112,6 +116,13 @@ const GuessWord = () => {
       setSupportCount((prevCount) => prevCount + 1);
     }
   };
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setInputFocused(false);
+  };
 
   return (
     <div className="miniGame_wrapper">
@@ -146,6 +157,8 @@ const GuessWord = () => {
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
                 onKeyDown={handleKeyDown}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
               />
               <button
                 className="miniGame_wrapper_container_box_content_answer_btn"
@@ -183,9 +196,24 @@ const GuessWord = () => {
               </div>
             )}
           </div>
+
           <div className="miniGame_wrapper_container_box_suggest">
+          <div className="miniGame_wrapper_container_box_suggest_wrapper">
+            <div className="miniGame_wrapper_container_box_suggest_wrapper_top">
+
+            {!inputFocused && (
+                  <>
+                    {feedback === "Đúng rồi!" && (
+                      <img className="viewAns" src={trueAns} alt="True Answer" />
+                    )}
+                    {feedback === "Sai mất rồi" && (
+                      <img className="viewAns" src={falseAns} alt="False Answer" />
+                    )}
+                  </>
+                )}
+            </div>
+            <div className="miniGame_wrapper_container_box_suggest_wrapper_content">
             Gợi ý cho câu hỏi:
-            <div className="miniGame_wrapper_container_box_suggest_content">
               {attempts <= 3 && (
                 <p className="suggestion-char sugesst_last">
                   [ The first character of the answer: {word.charAt(0)} ]
@@ -201,7 +229,7 @@ const GuessWord = () => {
                  [ The first character of the answer: {word.charAt(2)} ]
                 </p>
               )}
-            ==========================
+                ==========================
 
               {supportCount > 2 && !isSupportDisabled && (
                 <p className="suggestion-char sugesst_first">
@@ -222,9 +250,9 @@ const GuessWord = () => {
                   {word.charAt(word.length - 1)}]
                 </p>
               )}
-             
               
             </div>
+          </div>
           </div>
         </div>
       </div>
