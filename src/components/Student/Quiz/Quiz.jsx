@@ -38,8 +38,6 @@ const Quiz = () => {
     isChoose: false,
     answer: "",
   });
-  // ans thừa
-  const [ans, setAns] = useState([]);
   // không cần cái này vì question.lenght đáp ứng rồi 
   const [questionLength, setQuestionLength] = useState(0);
 
@@ -55,7 +53,6 @@ const Quiz = () => {
 
   let option_array = [Option1, Option2, Option3, Option4];
   // const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
-  //data
   const { id } = useParams();
   useEffect(() => {
     fetchData();
@@ -77,7 +74,6 @@ const Quiz = () => {
     }
   };
 
-  console.log(!action.isChoose);
 
   const handleNextQuestion = () => {
      
@@ -248,15 +244,6 @@ const Quiz = () => {
                   >
                     Next
                   </button>
-                  {/* {
-                            index !== question.length - 1
-                            ?
-                            :
-                            
-                            <Link className="answerStudent__content--bottom__btnNext--btn" onClick={handleSendResult} to={'/student/success'}>
-                                Xem kết quả
-                            </Link>
-                            } */}
                 </div>
               </div>
             </div>

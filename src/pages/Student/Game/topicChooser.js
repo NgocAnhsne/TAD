@@ -3,11 +3,25 @@ import "./style.scss";
 import axios from 'axios';
 import Upload from '~/pages/Upload';
 import { Link, useParams } from 'react-router-dom';
+import anhGame1 from '~/components/asset/img/gamechooser2.png';
+import anhGame2 from '~/components/asset/img/gamechooser3.png';
+import anhGame3 from '~/components/asset/img/gamechooser.png';
+import anhGame4 from '~/components/asset/img/rand_game1.jpg';
+
 export default function TopicChooser() { 
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
     const [topicData, settopicData] = useState([]);
     const [gameData, setGameData] = useState([]);
     const { id } = useParams()
+    const [randomImageIndexes, setRandomImageIndexes] = useState([]);
+
+    useEffect(() => {
+        if (gameData.length > 0) {
+            const indexes = gameData.map(() => Math.floor(Math.random() * 4));
+            setRandomImageIndexes(indexes);
+        }
+    }, [gameData]);
+
     useEffect(() => {
         fetchData();
         fetchDataGame();
@@ -30,6 +44,17 @@ export default function TopicChooser() {
             console.log("something went wrong");
         }
     };
+
+    const getRandomImage = (index) => {
+        const images = [anhGame1, anhGame2, anhGame3, anhGame4];
+        const randomIndex = randomImageIndexes[index];
+        if (randomIndex >= 0 && randomIndex < images.length) {
+            return images[randomIndex];
+        } else {
+            return anhGame1;
+        }
+    };
+
     return (
         <div className='Chooser'>
             <div className='Chooser_header'>
@@ -48,7 +73,7 @@ export default function TopicChooser() {
                       <Link to={`/student/game/${id}/topic/${topic.id}`}>
                         <div className='Chooser_body_item' key={i}> 
                             <div className='Chooser_body_item_img'>
-                                <img src={topic.image} alt="Game Image" /> 
+                            <img src={getRandomImage(i)} alt={`Game Image ${i}`} />
                             </div>
                             <div className='Chooser_body_item_info'>
                                 <div className='Chooser_body_item_info_title'>

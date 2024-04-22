@@ -1,3 +1,4 @@
+
 .rank {
   background-color: var(--color-background-14);
     width: 100%;
@@ -35,6 +36,12 @@
           position: absolute;
           right: 50%;
         }
+        .toprank-bg {
+          background-color: rgb(255, 0, 43);
+          color: rgb(255, 255, 255);
+         
+        }
+        
         &__item {
           margin-bottom: 20px;
           display: flex;
@@ -45,10 +52,11 @@
           padding: 10px 25px;
           border-radius: var(--border-radius-size-2);
           &--left {
+            width: 100%;
             color: var(--color-text-1);
             display: flex;
             align-items: center;
-            width: 60%;
+    
             font-size: var(--size-text-6);
             font-weight: 400;
             &__ord {
@@ -68,6 +76,14 @@
                 font-weight: 600;
                 font-family: "Montserrat", sans-serif;
                 font-size: var(--size-text-6);
+              }
+            }
+            &__medal{
+              text-align: end;
+              img{
+                width: 20%;
+           
+                margin-right: 20px;
               }
             }
           }

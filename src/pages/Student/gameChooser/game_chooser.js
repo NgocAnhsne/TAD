@@ -31,25 +31,19 @@ export default function GameChooser() {
             setIsVisibleLoading(false);
         } catch (error) {
             console.error("Error fetching data:", error);
-            setIsVisibleLoading(false); // Stop loading even if there's an error
-            // You might want to display a user-friendly error message here
+            setIsVisibleLoading(false); 
         }
     };
 
     const getRandomImage = (index) => {
-        // Array containing the images
         const images = [anhGame1, anhGame2, anhGame3, anhGame4];
-        // Check if the index is within bounds of the images array
         const randomIndex = randomImageIndexes[index];
         if (randomIndex >= 0 && randomIndex < images.length) {
-            // Return the corresponding image
             return images[randomIndex];
         } else {
-            // Return a default image if index is out of bounds
             return anhGame1;
         }
     };
-
     return (
         <div className='Chooser'>
             <div className='Chooser_header'>

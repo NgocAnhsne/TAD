@@ -49,11 +49,11 @@ const GuessWord = () => {
   const handleGuess = () => {
     if (guess.toLowerCase() === word.toLowerCase()) {
       setFeedback("Correct!");
-      setRankPoint(rankPoint + 20);
+      setRankPoint(rankPoint + 2);
       setAttempts(0);
       setGuess("");
       fetchWord();
-      if (rankPoint + 20 >= 100) {
+      if (rankPoint + 2 >= 10) {
         setVictory(true);
         updateRank();
       }

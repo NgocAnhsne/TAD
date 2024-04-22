@@ -5,20 +5,17 @@ input {
 }
 
 .miniGame_wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
+
 
   &_container {
     position: relative;
-    max-width: 980px;
-    margin: 0 auto;
-
+  
     &_box {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: lightblue;
-      border-radius: 20px;
       padding: 50px;
 
       &_header {
