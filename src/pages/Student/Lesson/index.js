@@ -43,16 +43,12 @@ export default function LessonStudent() {
               <div className="lessonStudent__content--list__item">
                 <div className="lessonStudent__content--list__item--top">
                   <div className="lessonStudent__content--list__item--top__left">
-                    <div className="lessonStudent__content--list__item--top__left--title">
+                    <div className="lessonStudent__content--list__item--top__left--title text__overflow">
                       {lession.name} 
-                      {/* {lession.id} */}
                     </div>
                     <div className="lessonStudent__content--list__item--top__left--body">
-                      <span>Description: {lession.description}</span>
+                      <span className="lessonStudent__content--list__item--top__left--body__desc text__overflow">Description: {lession.description}</span>
                       <span>{lession.time} minutes</span>
-                      <span> {i + 1}
-                        Type :<span> {lession.type}</span>
-                      </span>
                     </div>
                   </div>
                   <div className="lessonStudent__content--list__item--top__right">
