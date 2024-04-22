@@ -52,7 +52,7 @@ function Game() {
   }, [cardData]);
 
   useEffect(() => {
-    if (matchedPairs === cardData.length) {
+    if (matchedPairs === cardData.length * 2) {
       setGameComplete(true);
       updateRank();
     }
@@ -195,8 +195,6 @@ function Game() {
               handleChoice={handleChoice}
               flipped={card === choiceOne || card === choiceTwo || card.matched}
               disabled={disabled}
-              choiceOne={choiceOne}
-              choiceTwo={choiceTwo}
             />
           ))}
         </div>
