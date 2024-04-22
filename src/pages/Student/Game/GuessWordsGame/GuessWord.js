@@ -5,7 +5,6 @@ import axios from "axios";
 import { BsSuitHeartFill } from "react-icons/bs";
 
 const GuessWord = () => {
-  
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(5);
@@ -19,7 +18,6 @@ const GuessWord = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [supportCount, setSupportCount] = useState(0);
   const [isSupportDisabled, setIsSupportDisabled] = useState(false);
-
   const { id } = useParams();
   useEffect(() => {
     fetchWord();
@@ -65,7 +63,7 @@ const GuessWord = () => {
 
   const handleGuess = () => {
     if (guess.toLowerCase() === word.toLowerCase()) {
-      setFeedback("Correct!");
+      setFeedback("Đúng rồi!");
       setRankPoint(rankPoint + 2);
       setAttempts(5);
       setGuess("");
@@ -76,7 +74,7 @@ const GuessWord = () => {
         updateRank();
       }
     } else {
-      setFeedback(" Incorrect");
+      setFeedback(" Sai mất rồi");
       setAttempts((prevAttempts) => prevAttempts - 1);
       if (attempts <= 1) {
         setGameOver(true);
@@ -88,6 +86,7 @@ const GuessWord = () => {
   const handleRestart = () => {
     setGuess("");
     setFeedback("");
+    setAttempts(5);
     setRankPoint(0);
     setGameOver(false);
     setVictory(false);
@@ -118,95 +117,114 @@ const GuessWord = () => {
     <div className="miniGame_wrapper">
       <div className="miniGame_wrapper_container">
         <div className="miniGame_wrapper_container_box">
-          <h1 className="miniGame_wrapper_container_box_header">Điền từ</h1>
-          <p className="miniGame_wrapper_container_box_item">
-            {attempts}/{maxAttempts}
-            <BsSuitHeartFill style={{ color: "#fa0000" }} />
-          </p>
-          <div className="miniGame_wrapper_container_box_item">
-            Câu hỏi: {suggestion}
-          </div>
-          <p className="miniGame_wrapper_container_box_item">
-            Câu trả lời của bạn: {feedback}
-          </p>
-          <p className="miniGame_wrapper_container_box_score">
-            <span> Số điểm : {rankPoint}</span> <br />
-            <span>Question: {answeredCount} / 5</span>
-          </p>
-          <div className="miniGame_wrapper_container_box_answer">
-            <input
-              className="miniGame_wrapper_container_box_answer_item"
-              type="text"
-              value={guess}
-              onChange={(e) => setGuess(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-            <button  className="miniGame_wrapper_container_box_answer_btn" onClick={handleGuess}>Kiểm tra</button>
-          </div>
-
-          <div className="miniGame_wrapper_container_box_btn">
-            <button onClick={handleSkip}>Skip this</button>
-            <button onClick={handleSupport} disabled={isSupportDisabled}>
-              Support
-            </button>
-            <button onClick={handleRestart}>Restart</button>
-          </div>
-          {gameOver && (
-            <div className="game-over-overlay">
-              <div className="game-over-modal">
-                <h2>Game Over</h2>
-                <p>Your score: {rankPoint}</p>
-                <button onClick={handleRestart}>New Game</button>
+          <div className="miniGame_wrapper_container_box_content">
+            <h1 className="miniGame_wrapper_container_box_content_header">
+              Đoán từ
+            </h1>
+            <p className="miniGame_wrapper_container_box_content_item">
+              {attempts}/{maxAttempts}
+              <BsSuitHeartFill style={{ color: "#fa0000" }} />
+            </p>
+            <div className="miniGame_wrapper_container_box_content_item">
+              <div className="miniGame_wrapper_container_box_content_item_header">
+                Câu hỏi:
               </div>
+              {suggestion}
             </div>
-          )}
-          {victory && (
-            <div className="victory-overlay">
-              <div className="victory-modal">
-                <h2>
-                  Congratulations, <br /> Bạn đã hoàn thành hết câu hỏi!
-                </h2>
-                <button onClick={handleRestart}>Restart</button>
+            <p className="miniGame_wrapper_container_box_content_item">
+              Câu trả lời của bạn:
+            </p>
+            <p className="miniGame_wrapper_container_box_content_score">
+              <span> Số điểm : {rankPoint}</span> <br />
+              <span>Question: {answeredCount} / 5</span>
+              <span>Trợ giúp: {4 - supportCount} </span>
+            </p>
+            <div className="miniGame_wrapper_container_box_content_answer">
+              <input
+                className="miniGame_wrapper_container_box_content_answer_item"
+                type="text"
+                value={guess}
+                onChange={(e) => setGuess(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <button
+                className="miniGame_wrapper_container_box_content_answer_btn"
+                onClick={handleGuess}
+              >
+                Kiểm tra
+              </button>
+            </div>
+
+            <div className="miniGame_wrapper_container_box_content_btn">
+              <button onClick={handleSkip}>Skip this</button>
+              <button onClick={handleSupport} disabled={isSupportDisabled}>
+                Support
+              </button>
+              <button onClick={handleRestart}>Restart</button>
+            </div>
+            <div>{feedback}</div>
+            {gameOver && (
+              <div className="game-over-overlay">
+                <div className="game-over-modal">
+                  <h2>Game Over</h2>
+                  <p>Your score: {rankPoint}</p>
+                  <button onClick={handleRestart}>New Game</button>
+                </div>
               </div>
+            )}
+            {victory && (
+              <div className="victory-overlay">
+                <div className="victory-modal">
+                  <h2>
+                    Congratulations, <br /> Bạn đã hoàn thành hết câu hỏi!
+                  </h2>
+                  <button onClick={handleRestart}>Restart</button>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="miniGame_wrapper_container_box_suggest">
+            Gợi ý cho câu hỏi:
+            <div className="miniGame_wrapper_container_box_suggest_content">
+              {attempts <= 3 && (
+                <p className="suggestion-char sugesst_last">
+                  [ The first character of the answer: {word.charAt(0)} ]
+                </p>
+              )}
+              {attempts <= 2 && (
+                <p className="suggestion-char sugesst_last">
+                 [ The first character of the answer: {word.charAt(1)} ]
+                </p>
+              )}
+              {attempts <= 1 && (
+                <p className="suggestion-char sugesst_last">
+                 [ The first character of the answer: {word.charAt(2)} ]
+                </p>
+              )}
+            ==========================
+
+              {supportCount > 2 && !isSupportDisabled && (
+                <p className="suggestion-char sugesst_first">
+                  The last three characters of the answer: [
+                  {word.charAt(word.length - 3)}]
+                </p>
+              )}
+                {supportCount > 1 && !isSupportDisabled && (
+                <p className="suggestion-char sugesst_first">
+                  The last two characters of the answer: [
+                  {word.charAt(word.length - 2)}
+                  ]
+                </p>
+              )}
+              {supportCount > 0 && !isSupportDisabled && (
+                <p className="suggestion-char sugesst_first">
+                  The last character of the answer: [
+                  {word.charAt(word.length - 1)}]
+                </p>
+              )}
+             
+              
             </div>
-          )}
-          {supportCount > 0 && !isSupportDisabled && (
-            <p className="suggestion-char">
-              The last character of the answer: {word.charAt(word.length - 1)}
-            </p>
-          )}
-          {supportCount > 1 && !isSupportDisabled && (
-            <p className="suggestion-char">
-              The last two characters of the answer:
-              {word.charAt(word.length - 2)},{word.charAt(word.length - 1)}
-            </p>
-          )}
-          {supportCount > 2 && !isSupportDisabled && (
-            <p className="suggestion-char">
-              The last three characters of the answer:
-              {word.charAt(word.length - 3)},{word.charAt(word.length - 2)},
-              {word.charAt(word.length - 1)}
-            </p>
-          )}
-
-          {attempts <= 3 && (
-            <p className="suggestion-char">
-              The first character of the answer: {word.charAt(0)}
-            </p>
-          )}
-          {attempts <= 2 && (
-            <p className="suggestion-char">
-              The Second character of the answer: {word.charAt(1)}
-            </p>
-          )}
-          {attempts <= 1 && (
-            <p className="suggestion-char">
-              The third character of the answer: {word.charAt(2)}
-            </p>
-          )}
-
-          <div className="miniGame_wrapper_container_box_area">
-            dasasasasasasasasasasasasasasas
           </div>
         </div>
       </div>
