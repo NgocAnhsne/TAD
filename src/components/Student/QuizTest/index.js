@@ -17,13 +17,15 @@ import React, {
 
 const QuizTest = () => {
   let [index, setIndex] = useState(0);
-  const [question, setQuestion] = useState([]); //data
-  let [lock, setLock] = useState(false);
+  const [questions, setQuestions] = useState([]); //data
+  let [isLock, setIsLock] = useState(false);
   let [score, setScore] = useState(0);
+
   let [result, setResult] = useState(false);
-  const [ans, setAns] = useState([]);
-  const [questionLength, setQuestionLength] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState();
+  let [action, setAction] = useState({
+    isChoose: false,
+    answer: "",
+  });
 
   const navigate = useNavigate();
 
@@ -33,79 +35,59 @@ const QuizTest = () => {
   let Option4 = useRef(null);
 
   let option_array = [Option1, Option2, Option3, Option4];
-  // const questions = Array.from({ length: numberOfQuestions }, (_, index) => index + 1);
-  //data
   const { id } = useParams();
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, []);
 
   const fetchData = async () => {
     try {
       const res = await axios.get(
         "http://127.0.0.1:8000/api/question-by-test/" + id
       );
-      setQuestion(res.data.data);
-      console.log(res.data.data);
-
+      setQuestions(res.data.data);
       if (res.data.data) {
-        setQuestion(res.data.data);
-        setCurrentQuestion(res.data.data[index]);
-        setQuestionLength(res.data.data.length);
+        setQuestions(res.data.data);
       }
     } catch (err) {
       console.log("Something Wrong");
     }
   };
 
-  const checkAns = async (event, answer) => {
-    // if (lock === false && question.length > 0) {
-    const newAnsData = await question.find((item) => item.answer == answer);
-    if (!!newAnsData) {
-      event.target.classList.add("correct");
-      setLock(true);
-      setScore((prev) => prev + 1);
-      return;
-    } else {
-      event.target.classList.add("wrong");
-      setLock(true);
-      // option_array[question.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
-      return;
-    }
-    //      // console.log(newAnsData);
-    //      // if (question.answer == newAnsData) {
-    //      //     e.target.classList.add("correct");
-    //      //     setLock(true);
-    //      //     setScore(prev => prev + 1);
-    //      //     console.log(currentQuestion.answer);
-    //      // } else {
-    //      //     e.target.classList.add("wrong");
-    //      //     setLock(true);
-    //      //     option_array[currentQuestion.answer - 1].current.classList.add("correct"); // Đánh dấu câu trả lời đúng
-    //      // }
-    // }
+  const handleNextQuestion = () => {
+    setIndex((prevIndex) => prevIndex + 1); //
+    setAction({
+      isChoose: false,
+      answer: "",
+    });
+    option_array.forEach((option) => {
+      option.current.classList.remove("wrong");
+      option.current.classList.remove("correct");
+    });
   };
 
-  const next = () => {
-    // console.log({question});
-    if (lock === true) {
-      if (index === question.length - 1) {
-        setResult(true);
-        return 0;
-      }
-      setIndex(++index);
-      setCurrentQuestion(question[index]);
-      setLock(false);
-      option_array.map((option) => {
-        option.current.classList.remove("wrong");
-        option.current.classList.remove("correct");
-        return null;
-      });
-    }
+  const handleSendRedirect = () => {
+    setResult(true);
   };
 
   const handleBack = () => {
     navigate(-1);
+  };
+
+  const handleCheckAns = async (event, index) => {
+    // if use choosing answer -> return
+    if (action.isChoose) return;
+
+    const answer = event.target.value;
+    const isRight = answer === questions[index].answer ? true : false;
+    setAction({ isChoose: true, answer });
+
+    if (isRight) {
+      setScore((prev) => prev + 1);
+      event.target.classList.add("correct");
+    } else {
+      event.target.classList.add("wrong");
+    }
   };
 
   // var moment = require('moment');
@@ -127,9 +109,8 @@ const QuizTest = () => {
                   </span>
                   /
                   <span className="answerStudent__header--number__total">
-                    {questionLength}
+                    {questions.length}
                   </span>
-                  {/* dap an : {currentQuestion.answer} */}
                 </div>
                 <div className="answerStudent__header--score">
                   <span className="answerStudent__header--score__text">
@@ -149,8 +130,7 @@ const QuizTest = () => {
                 <div className="answerStudent__content--top__question">
                   <div className="answerStudent__content--top__question--box">
                     <div className="answerStudent__content--qtop__question--box__text">
-                      {/* ______ going to have to work hard to achieve your goals. */}
-                      {index + 1}. {currentQuestion?.question_text}
+                      {index + 1}. {questions[index]?.question_text}
                     </div>
                   </div>
                 </div>
@@ -160,60 +140,89 @@ const QuizTest = () => {
               <div className="answerStudent__content--bottom__list">
                 <div className="answerStudent__content--bottom__list--item">
                   <button
+                    disabled={
+                      action.isChoose &&
+                      action.answer !== questions[index]?.answer_a
+                    }
                     ref={Option1}
+                    value={questions[index]?.answer_a}
                     onClick={(e) => {
-                      checkAns(e, currentQuestion?.answer_a);
+                      handleCheckAns(e, index);
                     }}
                   >
-                    A. {currentQuestion?.answer_a}
+                    A. {questions[index]?.answer_a}
                   </button>
                 </div>
                 <div className="answerStudent__content--bottom__list--item">
                   <button
+                    disabled={
+                      action.isChoose &&
+                      action.answer !== questions[index]?.answer_b
+                    }
                     ref={Option2}
+                    value={questions[index]?.answer_b}
                     onClick={(e) => {
-                      checkAns(e, currentQuestion?.answer_b);
+                      handleCheckAns(e, index);
                     }}
                   >
-                    B. {currentQuestion?.answer_b}
+                    B. {questions[index]?.answer_b}
                   </button>
                 </div>
                 <div className="answerStudent__content--bottom__list--item">
                   <button
+                    disabled={
+                      action.isChoose &&
+                      action.answer !== questions[index]?.answer_b
+                    }
                     ref={Option3}
+                    value={questions[index]?.answer_b}
                     onClick={(e) => {
-                      checkAns(e, currentQuestion?.answer_c);
+                      handleCheckAns(e, index);
                     }}
                   >
-                    C. {currentQuestion?.answer_c}
+                    C. {questions[index]?.answer_c}
                   </button>
                 </div>
                 <div className="answerStudent__content--bottom__list--item">
                   <button
+                    disabled={
+                      action.isChoose &&
+                      action.answer !== questions[index]?.answer_b
+                    }
                     ref={Option4}
+                    value={questions[index]?.answer_b}
                     onClick={(e) => {
-                      checkAns(e, currentQuestion?.answer_d);
+                      handleCheckAns(e, index);
                     }}
                   >
-                    D. {currentQuestion?.answer_d}
+                    D. {questions[index]?.answer_d}
                   </button>
                 </div>
-                <div className="answerStudent__content--bottom__btnNext">
+                <div
+                  className={`answerStudent__content--bottom__btnNext ${
+                    index == questions.length - 1 ? "hide" : ""
+                  }`}
+                >
                   <button
                     className="answerStudent__content--bottom__btnNext--btn"
-                    onClick={next}
+                    onClick={handleNextQuestion}
+                    disabled={!action.isChoose}
                   >
                     Next
                   </button>
-                  {/* {
-                            index !== question.length - 1
-                            ?
-                            :
-                            
-                            <Link className="answerStudent__content--bottom__btnNext--btn" onClick={handleSendResult} to={'/student/success'}>
-                                Xem kết quả
-                            </Link>
-                            } */}
+                </div>
+                <div
+                  className={`answerStudent__content--bottom__btnNext ${
+                    index !== questions.length - 1 ? "hide" : ""
+                  }`}
+                >
+                  <button
+                    className="answerStudent__content--bottom__btnNext--btn"
+                    disabled={!action.isChoose}
+                    onClick={handleSendRedirect}
+                  >
+                    Finish
+                  </button>
                 </div>
               </div>
             </div>
@@ -242,7 +251,7 @@ const QuizTest = () => {
                         <div className="successStudent__content--info__box--accuracy">
                           <h2>Chính xác</h2>
                           <div className="successStudent__content--info__box--accuracy__content">
-                            {(score / question.length) * 100}%
+                            {(score / questions.length) * 100}%
                           </div>
                         </div>
                       </div>

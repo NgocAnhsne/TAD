@@ -15,18 +15,6 @@
       font-family: "Coiny", system-ui;
       color: var(--color-text-4);
     }
-    // &--number {
-    //   &__item {
-    //   }
-    //   &__total {
-    //   }
-    // }
-    // &--score {
-    //   &__text {
-    //   }
-    //   &__number {
-    //   }
-    // }
   }
   &__content {
     display: flex;
@@ -75,6 +63,7 @@
         max-width: 1060px;
         align-items: center;
         justify-content: center;
+        
         &--item {
           margin: 20px;
           width: 40%;
@@ -91,14 +80,13 @@
           width: 80%;
           text-align: center;
           margin-top: 20px;
-          &--btn {
             padding: 20px 25px;
             background-color: var(--color-background-3);
             border-radius: var(--border-radius-size-5);
             color: var(--color-text-4);
             font-weight: 800;
             font-size: var(--size-text-7);
-          }
+          // }
         }
       }
     }
@@ -131,4 +119,8 @@
     font-weight: 800;
     font-size: var(--size-text-8);
   }
+}
+
+.hide {
+  display: none;
 }
