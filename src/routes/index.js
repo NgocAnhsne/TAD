@@ -64,6 +64,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import EditProfileStudent from '~/pages/Student/Profile/editProfile.js';
 import Test from '~/pages/Student/Test/index.js';
+import HistoryTestStudent from '~/pages/Student/History/historyTest.js';
 
 
 
@@ -78,6 +79,7 @@ const publicRoutes = [
 
     {path: '/student/quiz', component: Quiz},
     {path: '/student/history/', component: HistoryStudent},
+    {path: '/student/historytest/', component: HistoryTestStudent},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
     {path: '/student/profile/edit/:id', component: EditProfileStudent },

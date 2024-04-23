@@ -6,7 +6,7 @@ import Upload from "~/pages/Upload";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function HistoryStudent() {
+function HistoryTestStudent() {
 
   const { id } = useParams();
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
@@ -19,7 +19,7 @@ function HistoryStudent() {
     try {
      
       const result = await axios.get(
-        "http://127.0.0.1:8000/api/history/lesson-history-user/"+ dataUser.id 
+        "http://127.0.0.1:8000/api/history/test-history-user/" + dataUser.id
       );
       setHistoryData(result.data.data);
       setIsVisibleLoading(false);
@@ -27,7 +27,6 @@ function HistoryStudent() {
       console.log("something went wrong");
     }
   };
-  const historyLength = historyData.length;
   return (
     
     <div className="historyStudent">
@@ -38,7 +37,7 @@ function HistoryStudent() {
         />
       </div>
       <div className="historyStudent__title">
-        <h1>Lịch sử bài học</h1>
+        <h1>Lịch sử bài kiểm tra</h1>
       </div>
       <div className="historyStudent__content">
         <div className="historyStudent__content--list">
@@ -56,7 +55,7 @@ function HistoryStudent() {
                     <div className="historyStudent__content--list__item--body__row--col">
                       <div className="historyStudent__content--list__item--body__row--col__left">
                         <div className="historyStudent__content--list__item--body__row--col__left--ques">
-                         question: {historyLength}
+                         question: {historyData.length}
                         </div>
                         <div className="historyStudent__content--list__item--body__row--col__left--time">
                           Time: {moment(history.create_at).format("DD/MM/YYYY")}
@@ -88,4 +87,4 @@ function HistoryStudent() {
   );
 }
 
-export default HistoryStudent;
+export default HistoryTestStudent;

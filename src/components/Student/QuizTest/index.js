@@ -1,25 +1,21 @@
+import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
-import "~/pages/Student/Success/";
 import { IoIosArrowBack } from "react-icons/io";
 import AnswerStudentImg from "~/components/asset/img/AnswerStudent.png";
 import successImg from "~/components/asset/img/image 27.png";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import React, {
-  Children,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 
 const QuizTest = () => {
   let [index, setIndex] = useState(0);
   const [questions, setQuestions] = useState([]); //data
   let [isLock, setIsLock] = useState(false);
   let [score, setScore] = useState(0);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { id, id_test } = useParams();
+
+  const [test, setTest] = useState([]);
 
   let [result, setResult] = useState(false);
   let [action, setAction] = useState({
@@ -35,9 +31,10 @@ const QuizTest = () => {
   let Option4 = useRef(null);
 
   let option_array = [Option1, Option2, Option3, Option4];
-  const { id } = useParams();
+
   useEffect(() => {
     fetchData();
+    getDataTest();
   }, []);
 
   const fetchData = async () => {
@@ -54,8 +51,48 @@ const QuizTest = () => {
     }
   };
 
+  const getDataTest = async () => {
+    try {
+      const getIdTest = await axios.get(
+        "http://127.0.0.1:8000/api/test/" +id
+      );
+      setTest(getIdTest.data.data);
+    } catch (err) {
+      console.log("Something Wrong");
+    }
+  };
+  const updateScore = async () => {
+    try {
+      const updatedUser = { ...user, score: score };
+      await axios.put(
+        "http://127.0.0.1:8000/api/addscore/" + user.id,
+        updatedUser
+      );
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.log("Error updating score:", error);
+    }
+    navigate(-1);
+  };
+  const historyLesson = async () => {
+    
+    try {
+      let history = {
+        id_user: user.id,
+        id_create: test.id_user,
+        type: "test_type",
+        id_lesson_test: id,
+        score: score,
+      };
+      await axios.post("http://127.0.0.1:8000/api/history/create", history);
+      console.log(history)
+    } catch (error) {
+      console.log("Something Wrong");
+    }
+  };
+
   const handleNextQuestion = () => {
-    setIndex((prevIndex) => prevIndex + 1); //
+    setIndex((prevIndex) => prevIndex + 1);
     setAction({
       isChoose: false,
       answer: "",
@@ -69,13 +106,12 @@ const QuizTest = () => {
   const handleSendRedirect = () => {
     setResult(true);
   };
-
   const handleBack = () => {
-    navigate(-1);
+    updateScore();
+    historyLesson();
   };
 
   const handleCheckAns = async (event, index) => {
-    // if use choosing answer -> return
     if (action.isChoose) return;
 
     const answer = event.target.value;
@@ -90,7 +126,6 @@ const QuizTest = () => {
     }
   };
 
-  // var moment = require('moment');
   return (
     <>
       <div className="answerStudent">
@@ -172,10 +207,10 @@ const QuizTest = () => {
                   <button
                     disabled={
                       action.isChoose &&
-                      action.answer !== questions[index]?.answer_b
+                      action.answer !== questions[index]?.answer_c
                     }
                     ref={Option3}
-                    value={questions[index]?.answer_b}
+                    value={questions[index]?.answer_c}
                     onClick={(e) => {
                       handleCheckAns(e, index);
                     }}
@@ -187,10 +222,10 @@ const QuizTest = () => {
                   <button
                     disabled={
                       action.isChoose &&
-                      action.answer !== questions[index]?.answer_b
+                      action.answer !== questions[index]?.answer_d
                     }
                     ref={Option4}
-                    value={questions[index]?.answer_b}
+                    value={questions[index]?.answer_d}
                     onClick={(e) => {
                       handleCheckAns(e, index);
                     }}
@@ -198,32 +233,32 @@ const QuizTest = () => {
                     D. {questions[index]?.answer_d}
                   </button>
                 </div>
-                <div
-                  className={`answerStudent__content--bottom__btnNext ${
-                    index == questions.length - 1 ? "hide" : ""
-                  }`}
+              </div>
+              <div
+                className={`answerStudent__content--bottom__btnNext ${
+                  index == questions.length - 1 ? "hide" : ""
+                }`}
+              >
+                <button
+                  className="answerStudent__content--bottom__btnNext--btn"
+                  onClick={handleNextQuestion}
+                  disabled={!action.isChoose}
                 >
-                  <button
-                    className="answerStudent__content--bottom__btnNext--btn"
-                    onClick={handleNextQuestion}
-                    disabled={!action.isChoose}
-                  >
-                    Next
-                  </button>
-                </div>
-                <div
-                  className={`answerStudent__content--bottom__btnNext ${
-                    index !== questions.length - 1 ? "hide" : ""
-                  }`}
+                  Next
+                </button>
+              </div>
+              <div
+                className={`answerStudent__content--bottom__btnNext ${
+                  index !== questions.length - 1 ? "hide" : ""
+                }`}
+              >
+                <button
+                  className="answerStudent__content--bottom__btnNext--btn"
+                  disabled={!action.isChoose}
+                  onClick={handleSendRedirect}
                 >
-                  <button
-                    className="answerStudent__content--bottom__btnNext--btn"
-                    disabled={!action.isChoose}
-                    onClick={handleSendRedirect}
-                  >
-                    Finish
-                  </button>
-                </div>
+                  Finish
+                </button>
               </div>
             </div>
           </>

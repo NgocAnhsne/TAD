@@ -72,7 +72,13 @@ function SidebarStudent() {
                     <Link to="/student/history" style={{textDecoration:"none"}}>
                         <li>
                             <FaHistory  className="icon"/>
-                            <span>Lịch sử</span>
+                            <span>Lịch sử bài học</span>
+                        </li>
+                    </Link>
+                    <Link to="/student/historytest" style={{textDecoration:"none"}}>
+                        <li>
+                            <FaHistory  className="icon"/>
+                            <span>Lịch sử bài kiểm tra</span>
                         </li>
                     </Link>
                     <Link to="/" style={{textDecoration:"none"}} onClick={handleLogout} >

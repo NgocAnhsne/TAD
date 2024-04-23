@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Upload from "~/pages/Upload";
 
 import lessonImg from "~/components/asset/img/quality_restoration_20240229152.jpg";
 
 function Test() {
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
+
+  const {id_test} = useParams();
 
   const [testData, setTestData] = useState([]);
   useEffect(() => {
@@ -22,6 +24,8 @@ function Test() {
       console.log("somthing Wrong");
     }
   };
+
+
 
   var moment = require("moment");
 
@@ -55,7 +59,7 @@ function Test() {
                 </div>
                 <div className="lessonStudent__content--list__item--bottom">
                   <Link
-                    className="lessonStudent__content--list__item--bottom__btnPlay lessonBtn" to={`/student/test/${test.id}`}>
+                    className="lessonStudent__content--list__item--bottom__btnPlay lessonBtn"  to={`/student/test/${test.id}`}>
                     Bắt đầu!
                   </Link>
                 </div>
