@@ -1,4 +1,5 @@
 .profileStudent {
+  background-color: #c0edfc;
   width: 100%;
   min-height: 100vh;
   padding: 30px 50px 0 50px;
@@ -112,7 +113,7 @@
 
     &--statistical{
       margin-top: 50px;
-
+      height: 55%;
       &__title {
         h1 {
           font-weight: 600;
@@ -120,15 +121,15 @@
       }
 
       &__list {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
         margin-top: 20px;
-
+        height: 80%;
         &--item {
+          height: 90px;
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
           padding: 15px 24px;
           border: 2px solid var(--color-text-19);
           border-radius: var(--border-radius-size-4);
@@ -162,14 +163,15 @@
 
   &__right {
     width: 30%;
-    margin-left: 20px;
+    margin-left: 30px;
 
     &--content {
       padding: 20px;
       border: 2px solid var(--color-text-19);
       border-radius: var(--border-radius-size-4);
       font-size: var(--size-text-14);
-
+      height: 97%;
+      background-color: white;
       &__week {
         display: flex;
         align-items: start;

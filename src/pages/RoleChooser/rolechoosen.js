@@ -5,13 +5,21 @@ import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import teacher_image from "~/components/asset/img/teacher_role_img-.png";
 import student_image from "~/components/asset/img/student_role.png";
+import Upload from '~/pages/Upload';
+
 export default function RoleChooser() {
+  const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const newUser = JSON.parse(localStorage.getItem('user'));
+
+
   const handleRoleChange = async (newRole) => {
+    setIsLoading(true);
     try {
+ 
         await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
+        setIsLoading(false); 
         console.log("Role updated successfully!");
         navigate(newRole === "0" ? `/student/profile` : `/teacher/`);
     } catch (err) {
