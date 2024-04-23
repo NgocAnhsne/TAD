@@ -16,11 +16,17 @@ const Quiz = () => {
   let [isLock, setIsLock] = useState(false);
   let [score, setScore] = useState(0);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { id } = useParams();
+
+  
+
   let [result, setResult] = useState(false);
   let [action, setAction] = useState({
     isChoose: false,
     answer: "",
   });
+
 
   const navigate = useNavigate();
 
@@ -30,7 +36,7 @@ const Quiz = () => {
   let Option4 = useRef(null);
 
   let option_array = [Option1, Option2, Option3, Option4];
-  const { id } = useParams();
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -48,9 +54,44 @@ const Quiz = () => {
       console.log("Something Wrong");
     }
   };
+  
+
+  const updateScore = async () => {
+    try {
+      const updatedUser = { ...user, score: score };
+      await axios.put(
+        "http://127.0.0.1:8000/api/addscore/" + user.id, updatedUser
+      );
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      
+    } catch (error) {
+      console.log("Error updating score:", error);
+      
+    }
+    navigate(-1);
+  };
+
+  
+
+  const historyLesson = async () => {
+    try{
+      let history =({
+        id_user: user.id,
+        id_create:"0",
+        type:"lesson_type",
+        id_lesson_test: id,
+        score: score
+      })
+      console.log(score);
+     await axios.post("http://127.0.0.1:8000/api/history/create",history);
+
+    }catch(error){
+      console.log("Something Wrong");
+    }
+  }
 
   const handleNextQuestion = () => {
-    setIndex((prevIndex) => prevIndex + 1); //
+    setIndex((prevIndex) => prevIndex + 1); 
     setAction({
       isChoose: false,
       answer: "",
@@ -66,11 +107,11 @@ const Quiz = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    updateScore();
+    historyLesson();
   };
 
   const handleCheckAns = async (event, index) => {
-    // if use choosing answer -> return
     if (action.isChoose) return;
 
     const answer = event.target.value;
@@ -84,6 +125,8 @@ const Quiz = () => {
       event.target.classList.add("wrong");
     }
   };
+
+
 
   return (
     <>
@@ -105,7 +148,6 @@ const Quiz = () => {
                   <span className="answerStudent__header--number__total">
                     {questions.length}
                   </span>
-                  {/* dap an : {currentQuestion.answer} */}
                 </div>
                 <div className="answerStudent__header--score">
                   <span className="answerStudent__header--score__text">

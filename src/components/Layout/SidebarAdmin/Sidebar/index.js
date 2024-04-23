@@ -21,6 +21,7 @@ function SidebarAdmin() {
           console.error('Đã xảy ra lỗi khi đăng xuất:', error);
         }
       };
+      const user = JSON.parse(localStorage.getItem("user"));
     return ( 
         <div className="sidebar">
             <div className="top">
@@ -34,7 +35,7 @@ function SidebarAdmin() {
             <hr />
             <div className="user">
                 <img src={avatar} className="logo"></img>
-                <span>Admin</span>
+                <span>{user.name}</span>
             </div>
             <div className="center">
                 <ul>

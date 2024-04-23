@@ -48,7 +48,6 @@ export const AuthProvider = ({ children }) => {
         password
       });
       const data = response.data;
-     
       if (!data) {
         throw new Error('Registration failed');
       }

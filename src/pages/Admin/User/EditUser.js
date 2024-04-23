@@ -129,25 +129,6 @@ export default function EditUser() {
             </div>
             <div className="row mb-3">
               <Form.Label className="col-sm-2 col-form-label">
-                Điểm
-              </Form.Label>
-              <div className="col-sm-10">
-                <Form.Control
-                 id="password"
-                  type="text"
-                  name="score"
-                  title="score"
-                  required
-                  value={userField.score} 
-                  onChange={e => changeUserFieldHandler(e)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Không được bỏ trống
-                </Form.Control.Feedback>
-              </div>
-            </div>
-            <div className="row mb-3">
-              <Form.Label className="col-sm-2 col-form-label">
                 Vai trò
               </Form.Label>
               <div className="col-sm-10">
