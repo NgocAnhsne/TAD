@@ -35,7 +35,7 @@ function ProfileStudent() {
               <div className="profileStudent__left--personal__info--role__item">{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</div></div>
               
               <div style={{fontWeight:800,display:"flex", alignItems:"center"}} className="profileStudent__left--personal__info--role">
-                <div style={{width:"100%"}}>Cấp {Math.floor(user.score / 10)}:</div>
+                <div style={{width:"100%"}}>Cấp độ:{Math.floor(user.score / 10)}:</div>
               <div className="profileStudent__left--personal__info--level">
               <div className="profileStudent__left--personal__info--level__content" style={{ width }}>
               </div>
@@ -77,7 +77,7 @@ function ProfileStudent() {
               </div>
               <div className="profileStudent__left--statistical__list--item__content">
                 <div className="profileStudent__left--statistical__list--item__content--top">
-                  20
+                    {user.score}
                 </div>
                 <div className="profileStudent__left--statistical__list--item__content--bottom">
                   Tổng điểm KN
@@ -95,18 +95,18 @@ function ProfileStudent() {
             </div>
             <div className="profileStudent__right--content__week--right">
             <div className="profileStudent__right--content__week--right__ord">
-              12th
+            
             </div>
             <div className="profileStudent__right--content__week--right__img">
               <img src={rankProfileImg} />
             </div>
             </div>
           </div>
-        <div className="profileStudent__right--content__socre">
-        <div className="profileStudent__right--content__socre--title">
-          Điểm tuần này
+        <div className="profileStudent__right--content__score">
+        <div className="profileStudent__right--content__score--title">
+          Điểm tuần này: {user.rank}
         </div>
-        <div className="profileStudent__right--content__socre--content">
+        <div className="profileStudent__right--content__score--content">
         </div>
         </div>
         </div>
