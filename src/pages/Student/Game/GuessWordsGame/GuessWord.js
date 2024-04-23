@@ -8,11 +8,14 @@ import trueAns from"~/components/asset/img/last_true.png";
 import falseAns from"~/components/asset/img/last_false.png";
 import guessingAns from"~/components/asset/img/guessing.gif";
 import backgroundMusic from "~/components/asset/sound/guessWord-soundtrack.mp3";
+
+
 const GuessWord = () => {
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(5);
   const [maxAttempts] = useState(5);
+
   const [rankPoint, setRankPoint] = useState(0);
   const [answeredCount, setAnsweredCount] = useState(0);
   const [feedback, setFeedback] = useState("");
@@ -20,24 +23,34 @@ const GuessWord = () => {
   const [gameOver, setGameOver] = useState(false);
   const [victory, setVictory] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
-  const [supportCount, setSupportCount] = useState(0);
+
+  const [supportCount, setSupportCount] = useState(4);
   const [isSupportDisabled, setIsSupportDisabled] = useState(false);
+  const [showSupportSuggestion, setShowSupportSuggestion] = useState(false);
+
+
+  const [showTrueAns, setShowTrueAns] = useState(false);
+  const [showFalseAns, setShowFalseAns] = useState(false);
+
   const { id } = useParams();
   const [inputFocused, setInputFocused] = useState(false);
+
+
   useEffect(() => {
     fetchWord();
   }, [id]);
 
+
   useEffect(() => {
-    if (supportCount >= 4) {
+    if (supportCount <= 1) {
       setIsSupportDisabled(true);
     } else {
       setIsSupportDisabled(false);
     }
   }, [supportCount]);
-
   const fetchWord = () => {
-    if (!victory && supportCount !== 3) {
+    if (!victory ) {
+      setIsSupportDisabled(false); // Đảm bảo rằng nút Support không bị vô hiệu hóa
       fetch("http://127.0.0.1:8000/api/wordl-by-wordle/" + id)
         .then((response) => response.json())
         .then((data) => {
@@ -46,10 +59,14 @@ const GuessWord = () => {
           const randomSuggestion = data.data[randomIndex].description;
           setWord(randomWord);
           setSuggestion(randomSuggestion);
+          setShowSupportSuggestion(true);
         })
-        .catch((error) => console.error("Error fetching data:", error));
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     } else {
       setIsSupportDisabled(true);
+      setShowSupportSuggestion(false); 
     }
   };
 
@@ -72,11 +89,19 @@ const GuessWord = () => {
       setRankPoint(rankPoint + 2);
       setAttempts(5);
       setGuess("");
-      fetchWord();
       setAnsweredCount((prevCount) => prevCount + 1);
-      if (rankPoint + 2 == 10 || answeredCount >= 5) {
+      if (rankPoint + 2 === 10 || answeredCount >= 5) {
         setVictory(true);
         updateRank();
+      } else {
+        setShowTrueAns(true);
+        setTimeout(() => {
+          setShowTrueAns(false);
+          setFeedback("");
+          setShowSupportSuggestion(false);
+          fetchWord();
+        }, 2000);
+   
       }
     } else {
       setFeedback("Sai mất rồi");
@@ -84,10 +109,14 @@ const GuessWord = () => {
       if (attempts <= 1) {
         setGameOver(true);
         updateRank();
+      } else {
+        setShowFalseAns(true);
+        setTimeout(() => {
+          setShowFalseAns(false);
+        }, 2000);
       }
     }
   };
-
  
 
 
@@ -98,10 +127,11 @@ const GuessWord = () => {
     setRankPoint(0);
     setGameOver(false);
     setVictory(false);
-    setSupportCount(0);
+    setSupportCount(4);
     setIsSupportDisabled(false);
     fetchWord();
   };
+
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -113,19 +143,21 @@ const GuessWord = () => {
     fetchWord();
     setFeedback("");
     setGuess("");
+    setShowSupportSuggestion(false);
+    
   };
 
   const handleSupport = () => {
-    if (supportCount < 4) {
-      setSupportCount((prevCount) => prevCount + 1);
+    if (supportCount > 0) {
+      setSupportCount((prevCount) => prevCount - 1);
+      console.log(supportCount)
     }
   };
+
   const handleInputFocus = () => {
     setInputFocused(true);
     setFeedback("");
   };
-
-
 
   const handleInputBlur = () => {
     setInputFocused(false);
@@ -154,8 +186,8 @@ const GuessWord = () => {
             </p>
             <p className="miniGame_wrapper_container_box_content_score">
               <span> Số điểm : {rankPoint}</span> <br />
-              <span>Question: {answeredCount} / 5</span>
-              <span>Trợ giúp: {4 - supportCount} </span>
+              <span>Question: {answeredCount} / 5</span><br />
+              <span>Trợ giúp: {supportCount - 1} </span>
             </p>
             <div className="miniGame_wrapper_container_box_content_answer">
               <input
@@ -196,7 +228,7 @@ const GuessWord = () => {
               <div className="victory-overlay">
                 <div className="victory-modal">
                   <h2>
-                    Congratulations, <br /> Bạn đã hoàn thành hết câu hỏi!
+                    Congratulations, <br/> Bạn đã hoàn thành hết câu hỏi!
                   </h2>
                   <button onClick={handleRestart}>Restart</button>
                 </div>
@@ -208,35 +240,29 @@ const GuessWord = () => {
           <div className="miniGame_wrapper_container_box_suggest_wrapper">
             <div className="miniGame_wrapper_container_box_suggest_wrapper_top">
 
-            {!inputFocused ? (
-  <>
-    {feedback === "Đúng rồi!" && (
-      <img className="viewAns" src={trueAns} alt="True Answer" />
-    )}
-    {feedback === "Sai mất rồi" && (
-      <img className="viewAns" src={falseAns} alt="False Answer" />
-    )}
-    {inputFocused && (
-      <div>
-        <img className="viewAns" src={guessingAns} alt="Guessing Answer" />
-      </div>
-    )}
-  </>
-) : (
-  <>
-    {!feedback && (
-      <div>
-        <img className="viewAns" src={guessingAns} alt="Guessing Answer" />
-        <span>Guessing. . . </span>
-      </div>
-    )}
-  </>
-)}
+            {showTrueAns && (
+        <img className="viewAns" src={trueAns} alt="True Answer" />
+      )}
+      {/* Hiển thị ảnh falseAns nếu showFalseAns là true */}
+      {showFalseAns && (
+        <img className="viewAns" src={falseAns} alt="False Answer" />
+      )}
+            <>
+                {!feedback && (
+                  <div>
+                    <img className="viewAns" src={guessingAns} alt="Guessing Answer" />
+                    <span>Guessing. . . </span>
+                 </div>
+               )}
+             </>
+        
             </div>
+            ==========================
             <div className="miniGame_wrapper_container_box_suggest_wrapper_content">
-            Gợi ý cho câu hỏi:
+         
               {attempts <= 3 && (
                 <p className="suggestion-char sugesst_last">
+                    <span>Gợi ý cho câu hỏi:</span>
                   [ The first character of the answer: {word.charAt(0)} ]
                 </p>
               )}
@@ -251,34 +277,36 @@ const GuessWord = () => {
                 </p>
               )}
               <br/>
-                ==========================
-
-              {supportCount > 2 && !isSupportDisabled && (
-                <p className="suggestion-char sugesst_first">
-                  The last three characters of the answer: [
-                  {word.charAt(word.length - 3)}]
+            </div>
+            <div>
+              Support: 
+              {supportCount == 1 &&  showSupportSuggestion  && ( 
+                <p className="suggestion-char">
+                
+                  The last three characters of the answer:
+                   [
+                    {word.charAt(word.length - 3)}  {word.charAt(word.length - 2)} {word.charAt(word.length - 1)}]
                 </p>
               )}
-                {supportCount > 1 && !isSupportDisabled && (
-                <p className="suggestion-char sugesst_first">
+                {supportCount == 2 && showSupportSuggestion  &&(
+                <p className="suggestion-char ">
                   The last two characters of the answer: [
-                  {word.charAt(word.length - 2)}
+                    {word.charAt(word.length - 2)} {word.charAt(word.length - 1)}
                   ]
                 </p>
               )}
-              {supportCount > 0 && !isSupportDisabled && (
-                <p className="suggestion-char sugesst_first">
+              {supportCount == 3  && showSupportSuggestion  && (
+                <p className="suggestion-char">
                   The last character of the answer: [
                   {word.charAt(word.length - 1)}]
                 </p>
               )}
-              
             </div>
           </div>
           </div>
         </div>
       </div>
-      <audio src={backgroundMusic} autoPlay loop volume={0.5} />
+      <audio src={backgroundMusic} autoPlay loop volume={0.7} />
     </div>
   );
 };

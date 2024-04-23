@@ -3,7 +3,7 @@ import './style.scss';
 import image_login from '~/components/asset/img/login.png';
 import { useAuth } from '../Login/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import Upload from '~/pages/Upload';
 export default function Register() {
   const { register } = useAuth();
   const [name, setName] = useState('');
@@ -11,9 +11,13 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+ const [isLoading, setIsLoading] = useState(false); 
+
+
 
   const onSubmitChange = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await register(name, email, password);
       
@@ -25,6 +29,7 @@ export default function Register() {
         console.log(newUser);
       } else {
         setError('Đăng ký thất bại. Vui lòng thử lại.');
+        setIsLoading(false);
       }
     } catch (error) {
       setError('Đăng ký thất bại. Vui lòng thử lại.');
@@ -65,6 +70,7 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {isLoading ? <Upload animation="border" size="sm" />:""}
           <button type="button" onClick={onSubmitChange} className="login-button">
             Đăng ký
           </button>
