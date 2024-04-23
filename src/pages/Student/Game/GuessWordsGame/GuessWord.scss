@@ -121,14 +121,18 @@
         height: 80%;
         align-self: flex-end;
         &_wrapper{
+          height: 260px;
           &_top{
+            height: 100%;
+            width: 100%;
+            display: flex;
             img{
               max-height: 300px;
             }
           }
           &_content{
             .sugesst_first{
-                color: cadetblue;
+                color: rgb(50, 129, 182);
             }
             .sugesst_last{
                 color: #FE8760;

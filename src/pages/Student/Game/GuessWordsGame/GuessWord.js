@@ -6,7 +6,8 @@ import { BsSuitHeartFill } from "react-icons/bs";
 import animation from"~/components/asset/img/trueAnswer.gif";
 import trueAns from"~/components/asset/img/last_true.png";
 import falseAns from"~/components/asset/img/last_false.png";
-
+import guessingAns from"~/components/asset/img/guessing.gif";
+import backgroundMusic from "~/components/asset/sound/guessWord-soundtrack.mp3";
 const GuessWord = () => {
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
@@ -87,6 +88,9 @@ const GuessWord = () => {
     }
   };
 
+ 
+
+
   const handleRestart = () => {
     setGuess("");
     setFeedback("");
@@ -118,7 +122,10 @@ const GuessWord = () => {
   };
   const handleInputFocus = () => {
     setInputFocused(true);
+    setFeedback("");
   };
+
+
 
   const handleInputBlur = () => {
     setInputFocused(false);
@@ -201,16 +208,30 @@ const GuessWord = () => {
           <div className="miniGame_wrapper_container_box_suggest_wrapper">
             <div className="miniGame_wrapper_container_box_suggest_wrapper_top">
 
-            {!inputFocused && (
-                  <>
-                    {feedback === "Đúng rồi!" && (
-                      <img className="viewAns" src={trueAns} alt="True Answer" />
-                    )}
-                    {feedback === "Sai mất rồi" && (
-                      <img className="viewAns" src={falseAns} alt="False Answer" />
-                    )}
-                  </>
-                )}
+            {!inputFocused ? (
+  <>
+    {feedback === "Đúng rồi!" && (
+      <img className="viewAns" src={trueAns} alt="True Answer" />
+    )}
+    {feedback === "Sai mất rồi" && (
+      <img className="viewAns" src={falseAns} alt="False Answer" />
+    )}
+    {inputFocused && (
+      <div>
+        <img className="viewAns" src={guessingAns} alt="Guessing Answer" />
+      </div>
+    )}
+  </>
+) : (
+  <>
+    {!feedback && (
+      <div>
+        <img className="viewAns" src={guessingAns} alt="Guessing Answer" />
+        <span>Guessing. . . </span>
+      </div>
+    )}
+  </>
+)}
             </div>
             <div className="miniGame_wrapper_container_box_suggest_wrapper_content">
             Gợi ý cho câu hỏi:
@@ -229,6 +250,7 @@ const GuessWord = () => {
                  [ The first character of the answer: {word.charAt(2)} ]
                 </p>
               )}
+              <br/>
                 ==========================
 
               {supportCount > 2 && !isSupportDisabled && (
@@ -256,6 +278,7 @@ const GuessWord = () => {
           </div>
         </div>
       </div>
+      <audio src={backgroundMusic} autoPlay loop volume={0.5} />
     </div>
   );
 };
