@@ -1,0 +1,22 @@
+.pikachu-game {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card span {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

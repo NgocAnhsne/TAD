@@ -65,6 +65,8 @@ import axios from 'axios';
 import EditProfileStudent from '~/pages/Student/Profile/editProfile.js';
 import Test from '~/pages/Student/Test/index.js';
 import HistoryTestStudent from '~/pages/Student/History/historyTest.js';
+import WordsMystery from '~/pages/Student/Game/WordsMystery/wordsmystery.js';
+import PikachuGame from '~/pages/Student/Game/PikachuGame/index.js';
 
 
 
@@ -100,7 +102,8 @@ const publicRoutes = [
     {path:'/student/game/:id/topic/',component:topic_chooser},
 
     //game mystery
-    {path:'/student/game/',component:topic_chooser},
+    {path:'/student/game/mystery',component:WordsMystery},
+    {path:'/student/game/pikachu',component:PikachuGame},
 
 
     //role

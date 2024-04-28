@@ -1,0 +1,17 @@
+
+
+.game_board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .word_square {
+        width: 100px; /* Độ rộng của hình vuông */
+        height: 100px; /* Chiều cao của hình vuông */
+        background-color: #e0e0e0; /* Màu nền của hình vuông */
+        margin: 5px; /* Khoảng cách giữa các hình vuông */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+}
