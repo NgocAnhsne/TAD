@@ -51,6 +51,13 @@ function SidebarStudent() {
                             
                         </li>
                     </Link>
+                    <Link to="/student/shop" style={{textDecoration:"none"}}>
+                        <li>
+                            <FaPlay  className="icon"/>
+                            <span>Cửa hàng</span>
+                            
+                        </li>
+                    </Link>
                     <Link to="/student/lesson" style={{textDecoration:"none"}}>
                         <li>
                             <GiTabletopPlayers  className="icon"/>

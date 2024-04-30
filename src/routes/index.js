@@ -67,6 +67,7 @@ import Test from '~/pages/Student/Test/index.js';
 import HistoryTestStudent from '~/pages/Student/History/historyTest.js';
 import WordsMystery from '~/pages/Student/Game/WordsMystery/wordsmystery.js';
 import PikachuGame from '~/pages/Student/Game/PikachuGame/index.js';
+import Shop from '~/pages/Student/Pet/Shop/index.js';
 
 
 
@@ -88,6 +89,9 @@ const publicRoutes = [
     {path:'/student/test',component:Test},
     {path:'/student/quiztest',component:QuizTest, layout: null},
     {path: '/student/test/:id', component: QuizTest, layout: null},
+
+    //pet
+    {path:'/student/shop',component:Shop},
 
     // Xem lịch sử:
     {path: '/student/lesson', component: History },
