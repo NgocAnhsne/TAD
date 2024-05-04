@@ -68,6 +68,7 @@ import HistoryTestStudent from '~/pages/Student/History/historyTest.js';
 import WordsMystery from '~/pages/Student/Game/WordsMystery/wordsmystery.js';
 import PikachuGame from '~/pages/Student/Game/PikachuGame/index.js';
 import Shop from '~/pages/Student/Pet/Shop/index.js';
+import AdminShop from '~/pages/Admin/Shop/Shop.js';
 
 
 
@@ -152,7 +153,9 @@ const publicRoutes = [
     {path: '/admin/lession', component: AdminLession, layout: SidebarAdmin },   
     {path: '/admin/lession/add', component: AddLessionAdmin, layout: SidebarAdmin },   
     {path: '/admin/lession/view/:id', component: ViewQuestion, layout: SidebarAdmin },   
-    {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },   
+    {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },  
+
+    {path: '/admin/shop', component: AdminShop, layout: SidebarAdmin },   
     
     {path: '/*', component: NotFound,layout: null },  
 

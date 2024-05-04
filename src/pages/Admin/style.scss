@@ -6,6 +6,10 @@
     z-index: 1;
     position: sticky;
     height: 100%;
+    td img{
+        width: 50px;
+        height: 50px;
+    }
     .header{
         display: flex;
         justify-content: space-between;

@@ -9,6 +9,7 @@ import { LuPaintbrush } from "react-icons/lu";
 import logoSidebar from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 import { useAuth } from "~/pages/Login/AuthContext";
+import { FaBagShopping } from "react-icons/fa6";
 function SidebarAdmin() {
     const { logout } = useAuth();
     const navigate  = useNavigate()
@@ -67,6 +68,12 @@ function SidebarAdmin() {
                         <li>
                             <BsFillQuestionOctagonFill  className="icon"/>
                             <span>Quản lý câu hỏi</span>
+                        </li>
+                    </Link>
+                    <Link to="/admin/shop" style={{textDecoration:"none"}}>
+                        <li>
+                            <FaBagShopping  className="icon"/>
+                            <span>Cửa hàng</span>
                         </li>
                     </Link>
                     <Link to="/" style={{textDecoration:"none"}} onClick={handleLogout}>
