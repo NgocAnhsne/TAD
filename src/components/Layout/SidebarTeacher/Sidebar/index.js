@@ -36,7 +36,7 @@ function SidebarTeacher() {
             <hr />
             <Link to={`/teacher/profile/`}>
                 <div className="user">
-                    <img src={avatar} className="logo"></img>
+                    <img src={user.avatar} className="logo"></img>
                     <span>{user.name}</span>
                 </div>
             </Link>

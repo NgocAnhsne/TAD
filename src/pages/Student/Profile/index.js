@@ -17,7 +17,7 @@ function ProfileStudent() {
         <div className="profileStudent__left--personal shadow">
           <div className="profileStudent__left--personal__ava">
             <div className="profileStudent__left--personal__ava--img">
-              <img src={avaImg}/>
+              <img src={user.avatar}/>
             </div>
             <div className="profileStudent__left--personal__ava--button">
               <img src={avaBtn}/>

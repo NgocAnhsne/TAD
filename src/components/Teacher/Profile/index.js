@@ -39,7 +39,7 @@ export default function Profiles() {
         <div className="content_left">
           <div className="left_top">
             <div className="left_avatar">
-              <img src={avatarProfile} alt="Avatar"></img>
+              <img src={user.avatar} alt="Avatar"></img>
             </div>
             <div className="left_content">
               <div className="left_name">

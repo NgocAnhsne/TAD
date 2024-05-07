@@ -35,7 +35,7 @@ function SidebarAdmin() {
             </div>
             <hr />
             <div className="user">
-                <img src={avatar} className="logo"></img>
+                <img src={user.avatar} className="logo"></img>
                 <span>{user.name}</span>
             </div>
             <div className="center">

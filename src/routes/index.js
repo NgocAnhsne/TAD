@@ -69,6 +69,8 @@ import WordsMystery from '~/pages/Student/Game/WordsMystery/wordsmystery.js';
 import PikachuGame from '~/pages/Student/Game/PikachuGame/index.js';
 import Shop from '~/pages/Student/Pet/Shop/index.js';
 import AdminShop from '~/pages/Admin/Shop/Shop.js';
+import AddShopAdmin from '~/pages/Admin/Shop/AddShop.js';
+import EditShop from '~/pages/Admin/Shop/EditShop.js';
 
 
 
@@ -156,6 +158,8 @@ const publicRoutes = [
     {path: '/admin/lession/edit/:id', component: EditLession, layout: SidebarAdmin },  
 
     {path: '/admin/shop', component: AdminShop, layout: SidebarAdmin },   
+    {path: '/admin/shop/add', component: AddShopAdmin, layout: SidebarAdmin },   
+    {path: '/admin/shop/edit/:id', component: EditShop, layout: SidebarAdmin },  
     
     {path: '/*', component: NotFound,layout: null },  
 

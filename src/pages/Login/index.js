@@ -28,8 +28,8 @@ function Login() {
           setError('Đang cập nhập dữ liệu');
       }
   }
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
+
     setIsLoading(true);
     try {
         await login(email, password);

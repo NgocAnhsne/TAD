@@ -65,6 +65,7 @@ export default function AdminUser() {
                         <th scope="col">Email</th>
                         <th scope="col">Vai trò</th>
                         <th scope="col">Cấp độ</th>
+                        <th scope="col">Tiền</th>
                         <th scope="col">Xếp hạng</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xoá</th>
@@ -79,6 +80,7 @@ export default function AdminUser() {
                                 <td>{user.email}</td>
                                 <td>{(user.role == 0) ? 'Học Sinh' : ((user.role == 1) ? 'Giáo Viên' : 'Admin')}</td>
                                 <td>{Math.floor(user.score / 10)}</td>
+                                <td>{user.coin}</td>
                                 <td>{user.rank}</td>
                                 <td className='icon'>
                                     <Link to={`/admin/users/edit/${user.id}`}>

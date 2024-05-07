@@ -4,7 +4,6 @@ import { Table } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { FaRegEdit } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
 import axios from 'axios';
 import Upload from '~/pages/Upload';
 
@@ -53,6 +52,7 @@ export default function AdminShop() {
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Giá</th>
+                        <th scope="col">Exp</th>
                         <th scope="col">Sửa</th>
                         {/* <th scope="col">Xoá</th> */}
                     </tr>
@@ -67,6 +67,7 @@ export default function AdminShop() {
                                 <td><img src={item.image}></img></td>
                                 <td>{(item.status == "hidden") ? 'Ẩn' : 'Hoạt động'}</td>
                                 <td>{item.price}</td>
+                                <td>{item.value}</td>
                                 <td className='icon'>
                                     <Link to={`/admin/shop/edit/${item.id}`}>
                                         <FaRegEdit color='blue' />

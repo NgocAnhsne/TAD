@@ -8,7 +8,7 @@ import { CiLogout } from "react-icons/ci";
 import logoSidebar from '~/components/asset/img/logo.jpg'
 import avatar from '~/components/asset/img/—Pngtree—a girl wearing a hat_6046477.png'
 import { SiTestcafe } from "react-icons/si";
-
+import { FaBagShopping } from "react-icons/fa6";
 import { useAuth } from "~/pages/Login/AuthContext";
 
 function SidebarStudent() {
@@ -37,7 +37,7 @@ function SidebarStudent() {
             <hr />
             <div className="user">
                 <Link to='/student/profile'>
-                <img src={avatar} className="logo"></img>
+                <img src={user.avatar} className="logo"></img>
                 <span>{user.name}</span>
                 </Link>
             </div>
@@ -53,7 +53,7 @@ function SidebarStudent() {
                     </Link>
                     <Link to="/student/shop" style={{textDecoration:"none"}}>
                         <li>
-                            <FaPlay  className="icon"/>
+                            <FaBagShopping  className="icon"/>
                             <span>Cửa hàng</span>
                             
                         </li>
