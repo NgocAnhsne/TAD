@@ -58,6 +58,7 @@ import EditWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/EditWor
 import AddWordlTopicAdmin from '~/pages/Admin/Game/TopicGame/WordlTopic/AddWordTopic.js';
 import topic_chooser from '~/pages/Student/Game/topicChooser.js';
 import GuessWord from '~/pages/Student/Game/GuessWordsGame/GuessWord.js';
+import PetBag from '~/pages/Student/Pet/Bag/index.js';
 // import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
 import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
 import { useEffect, useState } from 'react';
@@ -82,7 +83,7 @@ const publicRoutes = [
     //student
     {path: '/student/lesson/:id', component: AnswerStudent, layout: null},
     {path: '/student/rank', component: Rank},
-
+    {path: '/student/bag', component: PetBag},
     {path: '/student/quiz', component: Quiz},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },

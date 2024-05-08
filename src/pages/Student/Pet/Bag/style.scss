@@ -1,0 +1,23 @@
+.pet{
+    background-color: var(--color-background-14);
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    padding: 30px 50px 0 50px;
+    z-index: 1;
+    position: sticky;
+    padding: 20px;
+    &_container{
+        background-color: white;
+        border-radius: 10px;
+        &_box{
+            padding-right: 30px ;
+            max-width: 350px;
+            margin: 0 auto;
+            border-radius: 10px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
