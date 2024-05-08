@@ -21,7 +21,7 @@ export default function RoleChooser() {
         await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
         setIsLoading(false); 
         console.log("Role updated successfully!");
-        navigate(newRole === "0" ? `/student/profile` : `/teacher/`);
+        navigate('/');
     } catch (err) {
         console.log("Something went wrong:", err);
     }

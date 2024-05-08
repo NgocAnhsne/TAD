@@ -32,7 +32,7 @@ function ProfileStudent() {
             </div>
             <div className='profileStudent__left--personal__info--role'>
               <div>Vai trò: </div>
-              <div className="profileStudent__left--personal__info--role__item">{(user.role == 0) ? 'Học Sinh': 'Giáo Viên'}</div></div>
+              <div className="profileStudent__left--personal__info--role__item">{user.role === "0" ? "Học Sinh" : "Giáo Viên"}</div></div>
               
               <div style={{fontWeight:800,display:"flex", alignItems:"center"}} className="profileStudent__left--personal__info--role">
                 <div style={{width:"100%"}}>Cấp độ:{Math.floor(user.score / 10)}:</div>
