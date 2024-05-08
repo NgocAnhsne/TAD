@@ -39,26 +39,26 @@ export const AuthProvider = ({ children }) => {
       setError('Đăng nhập thất bại. Vui lòng thử lại.');
     }
   };
-  const register = async (name, email, password) => {
+  const register = async (name, email, password, score) => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/register', {
         name,
         email,
-        password
+        password,
+        score 
       });
       const data = response.data;
       if (!data) {
         throw new Error('Registration failed');
       }
       localStorage.setItem('user', JSON.stringify(data));
-      
       setUser(data);
       setError(null);
-        
     } catch (error) {
       setError('Đăng ký thất bại. Vui lòng thử lại.');
     }
   };
+  
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');

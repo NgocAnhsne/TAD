@@ -21,10 +21,10 @@ export default function Register() {
     try {
       await register(name, email, password);
       
-      // Check if user exists in localStorage after registration
       const newUser = JSON.parse(localStorage.getItem('user'));
+      
       if (newUser) {
-        // Navigate to the desired page after successful registration
+        
         navigate('/rolechooser');
         console.log(newUser);
       } else {

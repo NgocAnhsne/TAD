@@ -52,7 +52,7 @@ export default function Profiles() {
               </div>
               <div className="left_role">
                 <span>Vai trò:</span>{" "}
-                <span>{user.role === 0 ? "Học Sinh" : "Giáo Viên"}</span>
+                <span>{user.role === "0" ? "Học Sinh" : "Giáo Viên"}</span>
               </div>
               <div className="left_join">
                 <span format="YYYY MMMM dddd" className="body_opacity opacity">
