@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -13,41 +13,21 @@ export default function RoleChooser() {
   const navigate = useNavigate();
   const newUser = JSON.parse(localStorage.getItem('user'));
 
-
   const handleRoleChange = async (newRole) => {
     setIsLoading(true);
     try {
- 
-        await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
-        setIsLoading(false); 
-        console.log("Role updated successfully!");
-        navigate('/');
+      await axios.patch(`http://127.0.0.1:8000/api/user/update-role/${newUser.id}`, { role: newRole });
+      setIsLoading(false); 
+      navigate('/');
+      alert("Chọn vai trò thành công");
     } catch (err) {
-        console.log("Something went wrong:", err);
+      console.log("Something went wrong:", err);
     }
-};
+  };
+
   return (
     <div className="roleChooser">
       <div className="roleChooser_container">
-        {/* <div className="roleChooser_container-welc">
-          Chào mừng người dùng:
-          {newUser && (
-            <div className="user-info">
-              <div className="user-info-row">
-                <div className="user-info-label">Name:</div>
-                <div className="user-info-value">{newUser.name}</div>
-              </div>
-              <div className="user-info-row">
-                <div className="user-info-label">Email:</div>
-                <div className="user-info-value">{newUser.email}</div>
-              </div>
-              <div className="user-info-row">
-                <div className="user-info-label">Role:</div>
-                <div className="user-info-value">{newUser.role}</div>
-              </div>
-            </div>
-          )}
-        </div> */}
         <div className="roleChooser_container-wrapper">
           <div className="roleChooser_container-wrapper_banner ">
             <img src={teacher_image} alt="Teacher"></img>
@@ -60,8 +40,7 @@ export default function RoleChooser() {
               </div>
               <span>
                 <button
-                  className="roleChooser_container-wrapper_banner-box_button
-                             roleChooser_container-wrapper_banner-box_button-left"
+                  className="roleChooser_container-wrapper_banner-box_button roleChooser_container-wrapper_banner-box_button-left"
                   onClick={() => handleRoleChange("1")}
                 >
                   Khám phá ngay
@@ -79,8 +58,7 @@ export default function RoleChooser() {
               </div>
               <span>
                 <button
-                  className="roleChooser_container-wrapper_banner-box_button
-                             roleChooser_container-wrapper_banner-box_button-right"
+                  className="roleChooser_container-wrapper_banner-box_button roleChooser_container-wrapper_banner-box_button-right"
                   onClick={() => handleRoleChange("0")}
                 >
                   Khám phá ngay
