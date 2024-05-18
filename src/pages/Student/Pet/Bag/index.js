@@ -3,34 +3,29 @@ import "./style.scss";
 import pet_img from "~/components/asset/img/catgrey.gif";
 import { IoMdAdd } from "react-icons/io";
 import feed_img from "~/components/asset/img/feed_img.jpg";
-import axios from 'axios';
+import axios from "axios";
 import { useParams } from "react-router-dom";
 const Shop = () => {
-
-
-
-
-
   const canvasRef = useRef(null);
 
-
-  
   const { id } = useParams();
   const [isVisibleLoading, setIsVisibleLoading] = useState(false);
   const [bagField, setBagField] = useState([]);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {});
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || {}
+  );
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, [id]);
-  
+
   const fetchData = async () => {
-      try {
-          const result = await axios("http://127.0.0.1:8000/api/shop/user");
-          setBagField(result.data.data);
-      } catch (err) {
-          console.log("something went wrong");
-      }
+    try {
+      const result = await axios("http://127.0.0.1:8000/api/shop/user");
+      setBagField(result.data.data);
+    } catch (err) {
+      console.log("something went wrong");
+    }
   };
 
   const buyProduct = async (product) => {
@@ -42,46 +37,52 @@ const Shop = () => {
         image: product.image,
         status: product.status,
         price: product.price,
-        value: product.value
+        value: product.value,
       });
-  
+
       const updatedCoin = user.coin - product.price;
       if (updatedCoin < 0) {
         alert("Không đủ tiền để mua sản phẩm này!");
         return;
       }
-  
+
       await axios.put(`http://127.0.0.1:8000/api/bag/update/coin/${user.id}`, {
-        newcoin: updatedCoin
+        newcoin: updatedCoin,
       });
-  
+
       const updatedUser = { ...user, coin: updatedCoin };
       setUser(updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-  
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
       const productElement = document.getElementById(`product-${product.id}`);
-      const shoppingCart = document.getElementById('shopping-cart');
-      
+      const shoppingCart = document.getElementById("shopping-cart");
+
       if (productElement && shoppingCart) {
         const productRect = productElement.getBoundingClientRect();
         const cartRect = shoppingCart.getBoundingClientRect();
-        
-        const deltaX = cartRect.left - productRect.left + cartRect.width / 2 - productRect.width / 2;
-        const deltaY = cartRect.top - productRect.top + cartRect.height / 2 - productRect.height / 2;
-  
-        productElement.style.transitionDuration = '0.8s';
+
+        const deltaX =
+          cartRect.left -
+          productRect.left +
+          cartRect.width / 2 -
+          productRect.width / 2;
+        const deltaY =
+          cartRect.top -
+          productRect.top +
+          cartRect.height / 2 -
+          productRect.height / 2;
+
+        productElement.style.transitionDuration = "0.8s";
         productElement.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0)`;
         setTimeout(() => {
-          productElement.style.transitionDuration = '0s';
-          productElement.style.transform = 'none';
-        }, 800); 
+          productElement.style.transitionDuration = "0s";
+          productElement.style.transform = "none";
+        }, 800);
       }
     } catch (error) {
-      console.error('Error while buying product:', error);
+      console.error("Error while buying product:", error);
     }
   };
-  
-
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -91,7 +92,7 @@ const Shop = () => {
     const points = [];
     let tick = 0;
     const opt = {
-      count: 5,         
+      count: 5,
       range: {
         x: 20,
         y: 80,
@@ -217,38 +218,43 @@ const Shop = () => {
       </div>
       <div className="pet_container_bottom">
         <ul className="pet_container_bottom_ul">
-{/*  */}
-{bagField.length > 0 ? (
-                bagField.map((item, i) => (
-                  <li className="pet_container_bottom_ul_li">
-                     <div className="pet_container_bottom_ul_li_product" key={i} onClick={() => {buyProduct(item, user.id)}} id={`product-${item.id}`}>
-                     <div className="pet_container_bottom_ul_li_product_img">
-                            <img src={item.image} alt="product" />
-                            <div className="pet_container_bottom_ul_li_product_img_action">
+          {/*  */}
+          {bagField.length > 0 ? (
+            bagField.map((item, i) => (
+              <li className="pet_container_bottom_ul_li">
+                <div
+                  className="pet_container_bottom_ul_li_product"
+                  key={i}
+                  onClick={() => {
+                    buyProduct(item, user.id);
+                  }}
+                  id={`product-${item.id}`}
+                >
+                  <div className="pet_container_bottom_ul_li_product_img">
+                    <img src={item.image} alt="product" />
+
+                    <div className="pet_container_bottom_ul_li_product_content">
+                      <div className="pet_container_bottom_ul_li_product_content_title">
+                        <p>{item.name}</p>
+                      </div>
+                      <div className="pet_container_bottom_ul_li_product_content_desc">
+                        <span>{item.description}</span>
+                        <span className="exp"> {item.value}EXP</span>
+                        <div className="pet_container_bottom_ul_li_product_img_action">
+                            <img src={feed_img} alt="catfoot"/>
                         </div>
-                        <div className="pet_container_bottom_ul_li_product_content">
-                <div className="pet_container_bottom_ul_li_product_content_title">
-                <p>{item.name}</p>
-                </div>
-                <div className="pet_container_bottom_ul_li_product_content_desc">
-                <span>{item.description }</span>
-                                <span className='exp'> {item.value}EXP</span> 
-                                <span>{item.price}<img src={feed_img} alt="catfoot" /></span>
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                    </div>
-                    </li>
-                ))
-            ) : (
-                <div>
-                    <h2 className="text-danger text-center">
-                        Không có sản phẩm nào
-                    </h2>
+                  </div>
                 </div>
-            )}        
-{/*  */}    
-         
+              </li>
+            ))
+          ) : (
+            <div>
+              <h2 className="text-danger text-center">Không có sản phẩm nào</h2>
+            </div>
+          )}
+          {/*  */}
         </ul>
       </div>
     </div>
