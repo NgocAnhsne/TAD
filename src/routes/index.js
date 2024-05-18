@@ -61,12 +61,10 @@ import GuessWord from '~/pages/Student/Game/GuessWordsGame/GuessWord.js';
 import PetBag from '~/pages/Student/Pet/Bag/index.js';
 // import topic_chooser from '~/pages/Student/gameChooser/topicChooser.js';
 import HistoryTestTeacher from '~/pages/Teacher/HistoryTestTeacher/index.js';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import EditProfileStudent from '~/pages/Student/Profile/editProfile.js';
 import Test from '~/pages/Student/Test/index.js';
 import HistoryTestStudent from '~/pages/Student/History/historyTest.js';
-import WordsMystery from '~/pages/Student/Game/WordsMystery/wordsmystery.js';
+import WordScramble from '~/pages/Student/Game/WordScramble/WordScramble.js';
 import PikachuGame from '~/pages/Student/Game/PikachuGame/index.js';
 import Shop from '~/pages/Student/Pet/Shop/index.js';
 import AdminShop from '~/pages/Admin/Shop/Shop.js';
@@ -110,7 +108,7 @@ const publicRoutes = [
     {path:'/student/game/:id/topic/',component:topic_chooser},
 
     //game mystery
-    {path:'/student/game/mystery',component:WordsMystery},
+    {path:'/student/game/wordscramble',component:WordScramble},
     {path:'/student/game/pikachu',component:PikachuGame},
 
 
