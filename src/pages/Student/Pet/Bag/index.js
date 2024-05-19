@@ -242,7 +242,9 @@ const Shop = () => {
       <div className="pet_container_top">
         <div className="pet_container_top_box_wrapper">
           <div className="pet_container_top_box_wrapper_inner">
-            <
+            <div className="pet_container_top_box_wrapper_inner_levelBar">
+                        
+            </div>
             <img src={pet_img} alt="pet" />
           </div>
         </div>

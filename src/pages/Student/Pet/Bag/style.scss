@@ -150,3 +150,38 @@
     left: 0;
     display: none;
 }
+
+
+.pet-level {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .level-bar {
+    width: 200px;
+    height: 20px;
+    background-color: #ccc;
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  .level-progress {
+    height: 100%;
+    background-color: #4CAF50;
+  }
+  
+  .level-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .level-info span {
+    margin-bottom: 5px;
+  }
+  
+  .level-number {
+    font-weight: bold;
+  }
+  
