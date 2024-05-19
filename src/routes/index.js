@@ -105,6 +105,7 @@ const publicRoutes = [
     // {path:'/student/GuessWordGame',component:GuessWord},
     {path: '/student/game/1/topic/:id', component: Game, layout: null},
     {path: '/student/game/4/topic/:id', component: GuessWord},
+    {path: '/student/game/5/topic/:id', component: WordScramble},
     {path:'/student/game/:id/topic/',component:topic_chooser},
 
     //game mystery
