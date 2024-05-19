@@ -25,22 +25,7 @@
         }
     }
 
-    .message {
-        width: 300px;
-        height: 100px;
-        position: absolute;
-        top: 70%;
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        p {
-            color: var(--color-text-4);
-            font-weight: 600;
-            font-size: 20px;
-        }
-    }
+   
 
     .content {
         display: flex;
@@ -56,7 +41,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1rem;
-            color: var();
+            margin-top: 10px;
+            
         }
         .board {
             display: flex;
@@ -78,9 +64,12 @@
                 color: var(--color-text-1);
                 font-weight: 600;
             }
-
-            
-
+        }
+        .scramble_suggestion{
+            color: var(--color-text-16);
+            width: 50%;
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
         }
         .field {
             display: flex;
@@ -89,7 +78,7 @@
             justify-content: center;
             width: 80%;
             gap: 10px;
-           
+            margin-top: 10px;
                 input{width: 20%;
                     padding: 10px 20px;
                     background-color: var(--color-background-1);
@@ -98,8 +87,7 @@
                     
                     padding-left: 10px;
                 }}
-            
-
+                
             button {
 
                 width: 8%;
@@ -109,19 +97,42 @@
                     border-radius: var(--border-radius-size-4);
             }
         }
+        .message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            p {
+                color: var(--color-text-4);
+                font-weight: 600;
+                font-size: 20px;
+                margin: 0;
+                
+            }
+        }
 
-        .start_game {
-            margin-top: 20px;
-            background-color: var(--color-background-4);
-            color: var(--color-background-1);
-            padding: 20px 25px;
-            width: 30%;
-            font-size: var(--size-text-7);
-            border-radius: var(--border-radius-size-5);
-            &.new {
-                position: absolute;
-                width: 21%;
-                bottom: 50px;
+        .scramble_button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+            .start_game {
+                margin-top: 20px;
+                background-color: var(--color-background-4);
+                color: var(--color-background-1);
+                padding: 20px 25px;
+                width: 20%;
+                font-size: var(--size-text-7);
+                border-radius: var(--border-radius-size-5);
+                &:first-child{
+                    margin-right: 20px;
+                }
+                // &.new {
+                //     position: absolute;
+                //     width: 50%;
+                //     bottom: 50px;
+                // }
             }
         }
     }
