@@ -51,19 +51,17 @@
 
     &_container_bottom {
         overflow: hidden;
-        width: 100%;
+    
         transition: 1s all ease;
-        width: 100%;
+        width: calc(100vw - 260px);
 
         &_ul {
-            position: absolute;
+
             overflow-x: scroll;
             display: flex;
             gap: 10px;
             scrollbar-width: none;
-            /* Firefox */
             -ms-overflow-style: none;
-            /* IE and Edge */
 
             &::-webkit-scrollbar {
                 display: none;
@@ -85,7 +83,7 @@
                         overflow: hidden;
 
                         &:hover {
-                            .pet_container_bottom_ul_li_product_img_action {
+                            .pet_container_bottom_ul_li_product_content{
                                 opacity: 1;
                                 visibility: visible;
                             }
@@ -97,33 +95,10 @@
                             transition: all .7s ease;
                         }
 
-                        .pet_container_bottom_ul_li_product_img_action {
-
-                            opacity: 0;
-                            visibility: hidden;
-                            background-color: #fff;
-                            box-shadow: 0 .3px 7px #0003;
-                            display: flex;
-                            justify-content: center;
-                            left: 50%;
-                            padding: 13px 0 11px;
-                            position: absolute;
-                            top: 60%;
-                            transform: translate(-50%, -50%);
-                            transition: all .6s ease;
-                            overflow: hidden;
-                            border-radius: 50%;
-
-                            img {
-                                width: 80%;
-                                object-fit: contain;
-                                z-index: 3;
-                            }
-
-                        }
                     }
 
                     &_content {
+                        opacity: 0;
                         margin-top: 5px;
                         background-color: white;
                         padding: 6px;
@@ -141,7 +116,6 @@
                             font-style: normal;
                             font-size: 14px;
                             color: #383838;
-
                             .exp {
                                 font-weight: 500;
                                 display: flex;
@@ -165,3 +139,5 @@
     left: 0;
     display: none;
 }
+
+    

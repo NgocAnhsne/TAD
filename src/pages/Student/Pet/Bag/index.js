@@ -118,9 +118,7 @@ const Shop = () => {
                       <div className="pet_container_bottom_ul_li_product_content_desc">
                         <span>{item.description}:</span>
                         <span className="exp">{item.value} EXP</span>
-                        <div className="pet_container_bottom_ul_li_product_img_action">
-                          <img src={feed_img} alt="catfoot"/>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
