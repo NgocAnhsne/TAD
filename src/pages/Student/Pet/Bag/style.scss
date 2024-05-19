@@ -30,7 +30,6 @@
                 img {
                     width: 100%;
                 }
-
                 &_box {
                     &_levelBar {
                         width: 100%;
@@ -38,11 +37,11 @@
                         background-color: #f0f0f0;
                         border-radius: 10px;
                         overflow: hidden;
-
                         &_exp   {
-                            height: 100%;
+                            height: 24px;
                             background-color: #007bff;
                             border-radius: 15px;
+                            margin-top: -26px;
                         }
                     }
                 }

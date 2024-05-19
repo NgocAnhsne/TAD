@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import pet_img from "~/components/asset/img/catgrey.gif";
-import { IoMdAdd } from "react-icons/io";
 import feed_img from "~/components/asset/img/feed_img.jpg";
 import axios from "axios";
 import anhNen from "~/components/asset/img/kitchen.jpg";
@@ -17,7 +16,6 @@ const Shop = () => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
   );
-  const width = `${(user.score / 10) * 10}%`;
 
   useEffect(() => {
     fetchData();
@@ -32,13 +30,27 @@ const Shop = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleAddScoreAndDelete = async (item) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/bag/delete/${id}`);
-      const newGameData = bagField.filter((item) => item.id !== id);
+      // Convert scores to numbers to avoid string concatenation
+      const newScore = Number(user.score) + Number(item.value);
+
+      // Add score to the user
+      await axios.put(`http://127.0.0.1:8000/api/addscore/${user.id}`, {
+        score: item.value,
+      });
+
+      // Update user score in state and localStorage
+      const updatedUser = { ...user, score: newScore };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      // Delete the product
+      await axios.delete(`http://127.0.0.1:8000/api/bag/delete/${item.id}`);
+      const newGameData = bagField.filter((bagItem) => bagItem.id !== item.id);
       setBagField(newGameData);
     } catch (error) {
-      alert("Đã có lỗi xảy ra khi xoá danh mục.");
+      alert("Đã có lỗi xảy ra khi thêm điểm hoặc xoá danh mục.");
     }
   };
 
@@ -58,6 +70,9 @@ const Shop = () => {
     };
   }, []);
 
+  const level = Math.floor(user.score / 10);
+  const expWidth = `${(user.score % 10) * 10}%`;
+
   return (
     <div className="pet">
       <img className="pet_background" src={anhNen} alt="background" />
@@ -71,10 +86,10 @@ const Shop = () => {
                   className="  "
                 >
                   <div style={{ width: "100%" }}>
-                    Cấp độ:{Math.floor(user.score / 10)}:
+                    Cấp độ: {level}
                     <div
                       className="pet_container_top_box_wrapper_inner_box_levelBar_exp"
-                      style={{ width }}
+                      style={{ width: expWidth }}
                     ></div>
                   </div>
                 </div>
@@ -92,7 +107,7 @@ const Shop = () => {
               <li className="pet_container_bottom_ul_li" key={i}>
                 <div
                   className="pet_container_bottom_ul_li_product fly-away"
-                  onClick={() => handleDelete(item.id)}
+                  onClick={() => handleAddScoreAndDelete(item)}
                 >
                   <div className="pet_container_bottom_ul_li_product_img">
                     <img src={item.image} alt="product" />
