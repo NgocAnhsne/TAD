@@ -4,9 +4,12 @@ import pet_img from "~/components/asset/img/catgrey.gif";
 import { IoMdAdd } from "react-icons/io";
 import feed_img from "~/components/asset/img/feed_img.jpg";
 import axios from "axios";
+import anhNen from "~/components/asset/img/kitchen.jpg";
 import { useParams } from "react-router-dom";
+
 const Shop = () => {
   const canvasRef = useRef(null);
+  const ulRef = useRef(null);
 
   const { id } = useParams();
   const [isVisibleLoading, setIsVisibleLoading] = useState(false);
@@ -18,7 +21,18 @@ const Shop = () => {
   useEffect(() => {
     fetchData();
   }, [id]);
-
+  const useBag = async (product) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api//bag/delete/${id}`);
+      const bagField = bagField.filter((item) => item.id !== id);
+      setBagField(bagField);
+      alert("Đã xoá danh mục thành công.");
+    } 
+    catch (err) {
+      console.log("something went wrong");
+    }
+  };
+ 
   const fetchData = async () => {
     try {
       const result = await axios("http://127.0.0.1:8000/api/shop/user");
@@ -206,44 +220,60 @@ const Shop = () => {
     return () => cancelAnimationFrame(loop);
   }, []);
 
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (event.deltaY !== 0) {
+        event.preventDefault();
+        ulRef.current.scrollLeft += event.deltaY;
+      }
+    };
+
+    const ulElement = ulRef.current;
+    ulElement.addEventListener("wheel", handleWheel);
+
+    return () => {
+      ulElement.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
     <div className="pet">
+      <img className="pet_background" src={anhNen} alt="background" />
       <div className="pet_container_top">
         <div className="pet_container_top_box_wrapper">
-          <div className="pet_container_top_box_wrapper_inner shadow">
+          <div className="pet_container_top_box_wrapper_inner">
+            <
             <img src={pet_img} alt="pet" />
           </div>
         </div>
         <canvas className="pet_canvas" ref={canvasRef} id="c"></canvas>
       </div>
       <div className="pet_container_bottom">
-        <ul className="pet_container_bottom_ul">
-          {/*  */}
+        <ul className="pet_container_bottom_ul" ref={ulRef}>
           {bagField.length > 0 ? (
             bagField.map((item, i) => (
-              <li className="pet_container_bottom_ul_li">
+              <li className="pet_container_bottom_ul_li" key={i}>
                 <div
                   className="pet_container_bottom_ul_li_product"
-                  key={i}
                   onClick={() => {
-                    buyProduct(item, user.id);
+                    
                   }}
                   id={`product-${item.id}`}
                 >
                   <div className="pet_container_bottom_ul_li_product_img">
                     <img src={item.image} alt="product" />
-
                     <div className="pet_container_bottom_ul_li_product_content">
                       <div className="pet_container_bottom_ul_li_product_content_title">
                         <p>{item.name}</p>
                       </div>
                       <div className="pet_container_bottom_ul_li_product_content_desc">
-                        <span>{item.description}</span>
-                        <span className="exp"> {item.value}EXP</span>
+                        <span>{item.description}:</span>
+                        <span className="exp">{item.value} EXP</span>
                         <div className="pet_container_bottom_ul_li_product_img_action">
-                            <img src={feed_img} alt="catfoot"/>
+                          <img src={feed_img} alt="catfoot" />
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -254,7 +284,6 @@ const Shop = () => {
               <h2 className="text-danger text-center">Không có sản phẩm nào</h2>
             </div>
           )}
-          {/*  */}
         </ul>
       </div>
     </div>
@@ -262,3 +291,4 @@ const Shop = () => {
 };
 
 export default Shop;
+  

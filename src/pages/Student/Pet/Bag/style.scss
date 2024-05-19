@@ -6,21 +6,25 @@
     z-index: 1;
     position: sticky;
 
+    &_background {
+        position: absolute;
+        width: calc(100vw - 260px);
+        height: -webkit-fill-available;
+        height: 100vh;
+    }
+
     &_container_top {
         position: relative;
-        padding: 30px;
-        height: 40vh;
+        padding: 18px;
+        height: 50vh;
         border-radius: 10px;
 
         &_box_wrapper {
-            padding-right: 30px;
-            max-width: 350px;
-            margin: 0 auto;
-            border-radius: 10px;
+            position: absolute;
+            right: 32%;
+            top: 42%;
 
             &_inner {
-                background-color: white;
-                border-radius: 10px;
                 max-width: 250px;
 
                 img {
@@ -31,33 +35,39 @@
     }
 
     &_container_bottom {
-        height: 60vh;
-        overflow-y: scroll;
+        overflow: hidden;
+        width: 100%;
+        transition: 1s all ease;
+        width: 100%;
 
         &_ul {
+            position: absolute;
+            overflow-x: scroll;
             display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
+            gap: 10px;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+
+            &::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari, Opera */
+            }
 
             &_li {
-                position: relative;
-                width: 100%;
-                min-height: 1px;
-                padding-right: 15px;
-                padding-left: 15px;
-                flex: 0 0 25%;
-                max-width: 25%;
+                flex: 0 0 auto;
+                width: 20%;
+                padding: 20px 10px;
+                box-sizing: border-box;
 
                 &_product {
-
                     transition: all .3s ease;
 
                     &_img {
                         text-align: center;
                         position: relative;
                         overflow: hidden;
-                        background-color: white;
 
                         &:hover {
                             .pet_container_bottom_ul_li_product_img_action {
@@ -67,12 +77,13 @@
                         }
 
                         img {
+
                             width: 65%;
                             transition: all .7s ease;
                         }
 
                         .pet_container_bottom_ul_li_product_img_action {
-                            
+
                             opacity: 0;
                             visibility: hidden;
                             background-color: #fff;
@@ -87,21 +98,24 @@
                             transition: all .6s ease;
                             overflow: hidden;
                             border-radius: 50%;
+
                             img {
                                 width: 100%;
                                 object-fit: contain;
                                 z-index: 3;
-
                             }
 
                         }
                     }
 
                     &_content {
-                        padding: 17px 10px 16px;
+                        margin-top: 5px;
+                        background-color: white;
+                        padding: 6px;
+                        border-radius: 30px;
 
                         &_title {
-                            font-size: 14px;
+                            font-size: 20px;
                             font-weight: 500;
                             margin: 0 0 10px;
                             letter-spacing: .08px;
@@ -112,20 +126,27 @@
                             font-style: normal;
                             font-size: 14px;
                             color: #383838;
+
+                            .exp {
+                                font-weight: 500;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
                         }
                     }
                 }
             }
         }
     }
+}
 
-    .pet_canvas {
-        height: 50vh;
-        width: 100%;
-        bottom: -10vh;
-        z-index: 3;
-        position: absolute;
-        left: 0;
-        display: none;
-    }
+.pet_canvas {
+    height: 50vh;
+    width: 100%;
+    bottom: -10vh;
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    display: none;
 }
