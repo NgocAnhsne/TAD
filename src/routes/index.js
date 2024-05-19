@@ -81,7 +81,7 @@ const publicRoutes = [
     //student
     {path: '/student/lesson/:id', component: AnswerStudent, layout: null},
     {path: '/student/rank', component: Rank},
-    {path: '/student/bag', component: PetBag},
+    {path: '/student/bag', component: PetBag },
     {path: '/student/quiz', component: Quiz},
     {path: '/student/success', component: SuccessStudent, layout: null},
     {path: '/student/profile', component: ProfileStudent },
