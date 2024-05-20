@@ -9,9 +9,7 @@ import { useParams } from "react-router-dom";
 const Shop = () => {
   const canvasRef = useRef(null);
   const ulRef = useRef(null);
-  const [score, setScore] = useState();
   const { id } = useParams();
-  const [isVisibleLoading, setIsVisibleLoading] = useState(false);
   const [bagField, setBagField] = useState([]);
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
@@ -89,7 +87,10 @@ const Shop = () => {
                     Cấp độ: {level}
                     <div
                       className="pet_container_top_box_wrapper_inner_box_levelBar_exp"
-                      style={{ width: expWidth }}
+                      style={{
+                        width: expWidth,
+                        transition: "width 2s",
+                      }}
                     ></div>
                   </div>
                 </div>
@@ -118,7 +119,6 @@ const Shop = () => {
                       <div className="pet_container_bottom_ul_li_product_content_desc">
                         <span>{item.description}:</span>
                         <span className="exp">{item.value} EXP</span>
-                        
                       </div>
                     </div>
                   </div>

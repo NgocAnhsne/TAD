@@ -58,7 +58,7 @@ export default function AdminGame() {
                         <th scope="col">ID</th>
                         <th scope="col-20">Tên trò chơi</th>
                         <th scope="col-20">Mô tả</th>
-                        <th scope="col-20">Xem các chủ để của trò chơi</th>
+                        <th scope="col-20">Xem các chủ đề của trò chơi</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xoá</th>
                     </tr>

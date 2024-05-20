@@ -6,8 +6,10 @@ import { GrLineChart } from "react-icons/gr";
 import { IoGameController } from "react-icons/io5";
 import { GrBook } from "react-icons/gr";
 import { SlBadge } from "react-icons/sl";
+import Upload from '~/pages/Upload';
 
 export default function Dashboard() {
+  const [isVisibleLoading, setIsVisibleLoading] = useState(true)
   const [userData, setUserData] = useState([]);
   const [gameData, setGameData] = useState([]);
   const [lessionData, setLessionData] = useState([]);
@@ -62,6 +64,34 @@ export default function Dashboard() {
     setFocusedItem(index); 
   };
 
+  useEffect(() => {
+      fetchData();
+      fetchGameData();
+      fetchUserData();
+  }, [])
+
+  const fetchGameData = async () => {
+      try {
+          const result = await axios("http://127.0.0.1:8000/api/allgame");
+          setGameData(result.data.data)
+          setIsVisibleLoading(false)
+      } catch (err) {
+          console.log("somthing Wrong");
+      }
+  }
+  const fetchUserData = async () => {
+    try {
+        const result = await axios("http://127.0.0.1:8000/api/alluser");
+        
+        setUserData(result.data.data)
+        setIsVisibleLoading(false);
+    } catch (err) {
+        console.log("somthing Wrong");
+    }
+    
+}
+ 
+
   return (
     <div className="db_container">
       <div className="db_container_counting">
@@ -84,7 +114,7 @@ export default function Dashboard() {
 
           <div className="db_container_counting_items_body">
             <div className="db_container_counting_items_body_note">
-              Total User
+              Người dùng
             </div>
             <div className="db_container_counting_items_body_numberCount">
               {userData.length}
@@ -94,7 +124,7 @@ export default function Dashboard() {
           {/* update date time */}
           <div className="db_container_counting_items_bottom">
             <div className="db_container_counting_items_bottom_note">
-              Update date dd/mm/yyyy
+              
             </div>
           </div>
         </div>
@@ -119,7 +149,7 @@ export default function Dashboard() {
 
           <div className="db_container_counting_items_body">
             <div className="db_container_counting_items_body_note">
-              Total Game
+              Trò chơi
             </div>
             <div className="db_container_counting_items_body_numberCount">
               {gameData.length}
@@ -129,7 +159,7 @@ export default function Dashboard() {
           {/* update date time */}
           <div className="db_container_counting_items_bottom">
             <div className="db_container_counting_items_bottom_note">
-              Update date dd/mm/yyyy
+              
             </div>
           </div>
         </div>
@@ -162,7 +192,7 @@ export default function Dashboard() {
           {/* update date time */}
           <div className="db_container_counting_items_bottom">
             <div className="db_container_counting_items_bottom_note">
-              Update date dd/mm/yyyy
+              
             </div>
           </div>
         </div>
@@ -186,7 +216,7 @@ export default function Dashboard() {
 
           <div className="db_container_counting_items_body">
             <div className="db_container_counting_items_body_note">
-              Total Rank
+              Bảng xếp hạng
             </div>
             <div className="db_container_counting_items_body_numberCount">
               {rankData.map((item, i) => (
@@ -200,10 +230,93 @@ export default function Dashboard() {
           {/* update date time */}
           <div className="db_container_counting_items_bottom">
             <div className="db_container_counting_items_bottom_note">
-              Update date dd/mm/yyyy
             </div>
           </div>
         </div>
+      </div>
+      <div className="db_container_bott">
+         <div className="db_container_bott_desc_1">
+         {isVisibleLoading ? (
+            <Upload />
+            ) : (
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Vai trò</th>
+                        <th scope="col">Cấp độ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {userData.length > 0 ? (
+                        userData.map((user, i) => (
+                            <tr key={i}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{(user.role == 0) ? 'Học Sinh' : ((user.role == 1) ? 'Giáo Viên' : 'Admin')}</td>
+                                <td>{Math.floor(user.score / 10)}</td>
+                                <td>{user.coin}</td>
+                                <td>{user.rank}</td>
+                               
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={7}>
+                                <h4 className="text-danger text-center">
+                                    Không tìm thấy người dùng nào
+                                </h4>
+                            </td>
+                        </tr>
+                    )}
+
+                </tbody>
+            </table>
+            )}
+          </div> 
+          
+          <div className="db_container_bott_desc_2">
+          {isVisibleLoading ? (
+            <Upload />
+            ) : (
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col-20">Tên trò chơi</th>
+                        <th scope="col-20">Mô tả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {gameData.length > 0 ? (
+                        gameData.map((game, i) => (
+                            <tr key={i}>
+                                <td>{game.id}</td>
+                                <td>{game.name}</td>
+                                <td>{game.description}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={6}>
+                                <h4 className="text-danger text-center">
+                                    Không tìm thấy trò chơi nào
+                                </h4>
+                            </td>
+                        </tr>
+                    )}
+
+                </tbody>
+            </table>
+            )}
+          </div>
+          <div className="db_container_bott_desc_3">
+          </div>
+          <div className="db_container_bott_desc_4">
+          </div>
       </div>
     </div>
   );
