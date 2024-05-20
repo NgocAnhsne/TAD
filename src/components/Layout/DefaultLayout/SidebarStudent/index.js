@@ -47,7 +47,7 @@ function SidebarStudent() {
           <Link to="/student/bag" style={{ textDecoration: "none" }}>
             <li>
               <GiCat className="icon" />
-              <span>Your Pet</span>
+              <span>Thú cưng</span>
             </li>
           </Link>
 
