@@ -116,7 +116,7 @@ const Shop = () => {
                   onClick={() => handleAddScoreAndDelete(item)}
                 >
                   <div className="pet_container_bottom_ul_li_product_img">
-                    <img src={item.image} alt="product" />
+                    <img className="moving_to_Y " src={item.image} alt="product" />
                     <div className="pet_container_bottom_ul_li_product_content">
                       <div className="pet_container_bottom_ul_li_product_content_title">
                         <p>{item.name}</p>
