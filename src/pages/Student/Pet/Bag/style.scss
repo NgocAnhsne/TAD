@@ -21,8 +21,8 @@
 
         &_box_wrapper {
             position: absolute;
-            right: 32%;
-            top: 42%;
+            right: 40%;
+            top: 32%;
 
             &_inner {
                 max-width: 250px;
@@ -30,18 +30,62 @@
                 img {
                     width: 100%;
                 }
+
                 &_box {
+                    background-color: white;
+                    padding: 8px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    position: relative;
+                    display: flex;
+
+                    &_right {
+                        border-right: 1px solid grey;
+                        justify-content: center;
+                        align-items: center;
+                        display: flex;
+                        background-color: #ffffff;
+                        position: absolute;
+                        z-index: 2;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        width: 40px;
+
+                        &_wrapper {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
                     &_levelBar {
+                        border: 0.2px solid #8080805e;
                         width: 100%;
-                        height: 20px;
-                        background-color: #f0f0f0;
-                        border-radius: 10px;
+                        height: 26px;
+                        background-color: #ffffff;
+                        border-radius: 5px;
                         overflow: hidden;
-                        &_exp   {
-                            height: 24px;
-                            background-color: #007bff;
-                            border-radius: 15px;
-                            margin-top: -26px;
+
+                        &_desc {
+
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            &_text {
+                                color: #656565;;
+                                width: 100%;
+                            }
+
+                            &_exp {
+                                transition: width 2s ease 0s;
+                                height: 32px;
+                                background-color: #0ef3ff;
+                                border-radius: 3px;
+                                margin-top: -24px;
+                            }
                         }
                     }
                 }
@@ -51,7 +95,7 @@
 
     &_container_bottom {
         overflow: hidden;
-    
+
         transition: 1s all ease;
         width: calc(100vw - 260px);
 
@@ -61,7 +105,7 @@
             display: flex;
             gap: 10px;
             scrollbar-width: none;
-            -ms-overflow-style: none;       
+            -ms-overflow-style: none;
 
             &::-webkit-scrollbar {
                 display: none;
@@ -83,7 +127,7 @@
                         overflow: hidden;
 
                         &:hover {
-                            .pet_container_bottom_ul_li_product_content{
+                            .pet_container_bottom_ul_li_product_content {
                                 opacity: 1;
                                 visibility: visible;
                             }
@@ -116,6 +160,7 @@
                             font-style: normal;
                             font-size: 14px;
                             color: #383838;
+
                             .exp {
                                 font-weight: 500;
                                 display: flex;
@@ -140,4 +185,24 @@
     display: none;
 }
 
-    
+@keyframes transition_to_Y {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.moving_to_Y {
+    margin-bottom: 5px;
+    animation-name: transition_to_Y;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15, .41, .69, .94);
+    animation-iteration-count: infinite;
+}
