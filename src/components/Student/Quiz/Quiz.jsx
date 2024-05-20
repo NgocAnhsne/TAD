@@ -15,6 +15,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]); //data
   let [isLock, setIsLock] = useState(false);
   let [score, setScore] = useState(0);
+  let [coin, setCoin] = useState(0);
 
   const user = JSON.parse(localStorage.getItem("user"));
   const { id } = useParams();
@@ -54,16 +55,18 @@ const Quiz = () => {
       console.log("Something Wrong");
     }
   };
+
   
 
   const updateScore = async () => {
     try {
-      const updatedUser = { ...user, score: score };
+      const newCoin = user.coin + score;
+      const updatedUser = { ...user, coin: newCoin };
       await axios.put(
-        "http://127.0.0.1:8000/api/addscore/" + user.id, updatedUser
+        "http://127.0.0.1:8000/api/addcoin/" + user.id, updatedUser
       );
       localStorage.setItem("user", JSON.stringify(updatedUser));
-      
+      console.log(coin)
     } catch (error) {
       console.log("Error updating score:", error);
       

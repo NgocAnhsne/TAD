@@ -63,9 +63,10 @@ const QuizTest = () => {
   };
   const updateScore = async () => {
     try {
-      const updatedUser = { ...user, score: score };
+      const newCoin = user.coin + score;
+      const updatedUser = { ...user, coin: newCoin };
       await axios.put(
-        "http://127.0.0.1:8000/api/addscore/" + user.id,
+        "http://127.0.0.1:8000/api/addcoin/" + user.id,
         updatedUser
       );
       localStorage.setItem("user", JSON.stringify(updatedUser));
