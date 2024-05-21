@@ -154,8 +154,8 @@ function Game() {
 
   const updateRank = async () => {
     try {
-      const updatedUser = { ...user, rank: matchedPairs };
-      await axios.put("http://127.0.0.1:8000/api/addrank/" + user.id, updatedUser); 
+      const updatedUser = { ...user, coin: matchedPairs };
+      await axios.put("http://127.0.0.1:8000/api/addcoin/" + user.id, updatedUser); 
       localStorage.setItem("user", JSON.stringify(updatedUser));
     } catch (error) {
       console.log("Error updating score:", error);
