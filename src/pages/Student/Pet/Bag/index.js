@@ -97,11 +97,11 @@ const Shop = () => {
   const nextLevelExp = getNextLevelExp(currentLevel);
   const currentExp = user.score - (nextLevelExp / expFactor); // EXP hiện tại trong cấp độ
 
-  // Tính toán độ rộng thanh exp
+  // Tính toán độ rộng thanh expconst currentLevel = Math.floor(user.score / 100);
 
   const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
   const scoreMod = user.score % 100; // lấy phần dư
-  const expWidth = `${scoreDiv + scoreMod}%`;
+  const expWidth = `${user.score % 100}%`;
 
   return (
     <div className="pet">
