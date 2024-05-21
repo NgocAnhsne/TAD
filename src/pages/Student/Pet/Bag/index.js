@@ -16,9 +16,9 @@ const Shop = () => {
     JSON.parse(localStorage.getItem("user")) || {}
   );
 
-  
-  const baseExp = 20; 
-  const expFactor = 0.3; 
+  // Các hằng số cơ bản cho công thức hàm mũ
+  const baseExp = 100; // EXP cơ bản để lên cấp
+  const expFactor = 1.5; // Hằng số cho công thức hàm mũ
 
   useEffect(() => {
     fetchData();
@@ -94,7 +94,9 @@ const Shop = () => {
 
   const currentLevel = getLevel(user.score);
   const nextLevelExp = getNextLevelExp(currentLevel);
-  const currentExp = user.score - (nextLevelExp / expFactor); 
+  const currentExp = user.score - (nextLevelExp / expFactor); // EXP hiện tại trong cấp độ
+
+  // Tính toán độ rộng thanh exp
 
   const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
   const scoreMod = user.score % 100; // lấy phần dư
