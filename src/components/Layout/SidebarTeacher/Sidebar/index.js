@@ -57,13 +57,13 @@ function SidebarTeacher() {
                     <Link to="/teacher" style={{textDecoration:"none"}}>
                         <li>
                             <IoIosCreate  className="icon"/>
-                            <span>Tạo bài test</span>
+                            <span>Tạo bài bài kiểm tra</span>
                         </li>
                     </Link>
                     <Link to="/teacher/test" style={{textDecoration:"none"}}>
                         <li>
                             <FaClipboardList  className="icon"/>
-                            <span>Danh sách đề</span>
+                            <span>Danh sách bài kiểm tra</span>
                         </li>
                     </Link>
                     <Link style={{textDecoration:"none"}} onClick={handleLogout} to="/">

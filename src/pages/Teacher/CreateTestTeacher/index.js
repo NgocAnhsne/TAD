@@ -9,7 +9,7 @@ function CreateTestTeacher() {
 
     return ( 
         <div className="teacher">
-            <h1>Tạo bộ đề </h1>
+            <h1>Tạo bài kiểm tra </h1>
                 <CreatTest/>
         </div>
 
