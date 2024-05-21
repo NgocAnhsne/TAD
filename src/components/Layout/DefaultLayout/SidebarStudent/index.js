@@ -44,12 +44,7 @@ function SidebarStudent() {
       </div>
       <div className="center">
         <ul>
-          <Link to="/student/bag" style={{ textDecoration: "none" }}>
-            <li>
-              <GiCat className="icon" />
-              <span>Your Pet</span>
-            </li>
-          </Link>
+          
 
           <Link to="/student/game" style={{ textDecoration: "none" }}>
             <li>
@@ -61,6 +56,12 @@ function SidebarStudent() {
             <li>
               <FaBagShopping className="icon" />
               <span>Cửa hàng</span>
+            </li>
+          </Link>
+          <Link to="/student/bag" style={{ textDecoration: "none" }}>
+            <li>
+              <GiCat className="icon" />
+              <span>Thú cưng</span>
             </li>
           </Link>
           <Link to="/student/lesson" style={{ textDecoration: "none" }}>

@@ -61,7 +61,7 @@ export default function AddWordlTopicAdmin() {
   return (
     <div className='admin'>
         <div className='header'>
-                <div><h1>Cập nhật trò chơi</h1></div>
+                <div><h1>Thêm các từ</h1></div>
                 <div>
                 <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>

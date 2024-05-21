@@ -43,7 +43,7 @@ function SidebarAdmin() {
                     <Link to="/admin" style={{textDecoration:"none"}}>
                         <li>
                             <FaHome  className="icon"/>
-                            <span>Dashboard</span>
+                            <span>Thống kê</span>
                         </li>
                     </Link>
                     <Link to="/admin/users" style={{textDecoration:"none"}}>

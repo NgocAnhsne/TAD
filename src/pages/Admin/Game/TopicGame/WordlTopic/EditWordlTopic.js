@@ -60,7 +60,7 @@ export default function EditWordlTopicAdmin() {
   return (
     <div className='admin'>
         <div className='header'>
-                <div><h1>Cập nhập/sửa đáp án</h1></div>
+                <div><h1>Sửa đáp án</h1></div>
                 <div>
                 <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>

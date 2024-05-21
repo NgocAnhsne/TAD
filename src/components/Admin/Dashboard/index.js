@@ -234,7 +234,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="db_container_bott">
+      {/* <div className="db_container_bott">
          <div className="db_container_bott_desc_1">
          {isVisibleLoading ? (
             <Upload />
@@ -317,7 +317,7 @@ export default function Dashboard() {
           </div>
           <div className="db_container_bott_desc_4">
           </div>
-      </div>
+      </div> */}
     </div>
   );
 }
