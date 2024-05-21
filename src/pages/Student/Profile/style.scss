@@ -77,6 +77,15 @@
           font-weight: 600;
           margin-bottom: 10px;
           font-size: var(--size-text-6);
+
+          &__item{
+            img{
+              object-fit: cover;
+            width: 30px;
+            transform: rotate(20deg);
+            color: var(--color-text-4);
+            }
+          }
         }
 
         &--level {
@@ -210,11 +219,13 @@
         }
       }
 
-      &__socre {
+      &__score {
         color: var(--color-text-4);
         font-weight: 600;
-
-        &--title {}
+        font-size: 25px;
+        &--title {
+          
+        }
 
         &--content {}
       }

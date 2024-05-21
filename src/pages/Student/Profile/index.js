@@ -6,6 +6,7 @@ import scoreImg from "~/components/asset/img/score.svg";
 import { FaRankingStar } from "react-icons/fa6";
 import rankProfileImg from "~/components/asset/img/rank 1.png";
 import { Link } from "react-router-dom";
+import catfoot from '~/components/asset/img/catfoot.png';
 
 function ProfileStudent() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -36,7 +37,12 @@ function ProfileStudent() {
             </div>
             <div className='profileStudent__left--personal__info--role'>
               <div>Vai trò: </div>
-              <div className="profileStudent__left--personal__info--role__item">{user.role === "0" ? "Học Sinh" : "Giáo Viên"}</div></div>
+              <div className="profileStudent__left--personal__info--role__item">{user.role === "0" ? "Học Sinh" : "Giáo Viên"}</div>
+              </div>
+            <div className='profileStudent__left--personal__info--role'>
+              <div>Tiền: </div>
+              <div className="profileStudent__left--personal__info--role__item">{user.coin}<img src={catfoot} alt="catfoot"/></div>
+              </div>
               
               <div style={{fontWeight:800,display:"flex", alignItems:"center"}} className="profileStudent__left--personal__info--role">
                 <div style={{width:"100%"}}>Cấp thú cưng:</div>
@@ -110,7 +116,7 @@ function ProfileStudent() {
           </div>
         <div className="profileStudent__right--content__score">
         <div className="profileStudent__right--content__score--title">
-          Điểm tuần này: {user.rank}
+          Điểm xếp hạng tuần này: {user.rank}
         </div>
         <div className="profileStudent__right--content__score--content">
         </div>
