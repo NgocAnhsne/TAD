@@ -11,11 +11,12 @@ import catfoot from '~/components/asset/img/catfoot.png';
 function ProfileStudent() {
   const user = JSON.parse(localStorage.getItem('user'));
   var moment = require('moment');
+
+  
   const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
   const scoreMod = user.score % 100; // lấy phần dư
-  
   const width = `${scoreDiv + scoreMod}%`;
-
+  const currentLevel = Math.floor(user.score / 10);
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">
@@ -47,7 +48,7 @@ function ProfileStudent() {
               <div style={{fontWeight:800,display:"flex", alignItems:"center"}} className="profileStudent__left--personal__info--role">
                 <div style={{width:"100%"}}>Cấp thú cưng:</div>
               <div className="profileStudent__left--personal__info--level">
-              <div className="profileStudent__left--personal__info--level_text"> {Math.floor(user.score / 10)}</div>
+              <div className="profileStudent__left--personal__info--level_text">{currentLevel}</div>
               <div className="profileStudent__left--personal__info--level__content" style={{ width }}>
              
               </div>

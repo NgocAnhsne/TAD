@@ -75,7 +75,7 @@ const Shop = () => {
 
   // Hàm tính cấp độ hiện tại dựa trên điểm số (score) của người dùng
   const getLevel = (score) => {
-    let level = 0;
+    let level = user.score;
     let expNeeded = baseExp;
 
     while (score >= expNeeded) {
@@ -92,7 +92,8 @@ const Shop = () => {
     return baseExp * Math.pow(expFactor, level);
   };
 
-  const currentLevel = getLevel(user.score);
+  const currentLevel = Math.floor(getLevel(user.score) / 10);
+
   const nextLevelExp = getNextLevelExp(currentLevel);
   const currentExp = user.score - (nextLevelExp / expFactor); // EXP hiện tại trong cấp độ
 
@@ -100,7 +101,6 @@ const Shop = () => {
 
   const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
   const scoreMod = user.score % 100; // lấy phần dư
-  
   const expWidth = `${scoreDiv + scoreMod}%`;
 
   return (
