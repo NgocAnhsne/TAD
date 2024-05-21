@@ -57,7 +57,7 @@ export default function EditTopicAdmin() {
   return (
     <div className='admin'>
         <div className='header'>
-                <div><h1>Cập nhập/sửa chủ để</h1></div>
+                <div><h1>Sửa chủ để</h1></div>
                 <div>
                 <Link onClick={goBack} className='header_cancel'>
                     <span>Hủy và quay lại</span>

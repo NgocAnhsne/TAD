@@ -56,7 +56,7 @@ export default function EditShop() {
     return (
         <div className='admin'>
             <div className='header'>
-                    <div><h1>Thêm sản phẩm</h1></div>
+                    <div><h1>Sửa sản phẩm</h1></div>
                     <div>
                     <Link to='/admin/shop' className='header_cancel'>
                         <span>Hủy và quay lại</span>
