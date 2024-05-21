@@ -21,7 +21,7 @@ function Game() {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const [numPairsToShow, setNumPairsToShow] = useState(8);
+  const [numPairsToShow, setNumPairsToShow] = useState(2);
   
   const [popupData, setPopupData] = useState({
     english: "",
@@ -154,7 +154,7 @@ function Game() {
 
   const updateRank = async () => {
     try {
-      const newCoin = user.coin + matchedPairs;
+      const newCoin = user.coin += matchedPairs;
       const updatedUser = { ...user, coin: newCoin };
       await axios.put("http://127.0.0.1:8000/api/addcoin/" + user.id, updatedUser); 
       localStorage.setItem("user", JSON.stringify(updatedUser));

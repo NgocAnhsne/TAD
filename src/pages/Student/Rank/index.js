@@ -83,7 +83,7 @@ function Rank() {
                   )}
                   <div className="rankServe__container--content__right">
                     <div className={`rank__content--box--list__item--right__score ${index === 0 ? 'toprank-bg' : ''}`}>
-                      LV:{item.score}
+                      LV:{ Math.floor(item.score/10)}
                     </div>
                     <div className="rank__content--box--list__item--right__medal"></div>
                   </div>
