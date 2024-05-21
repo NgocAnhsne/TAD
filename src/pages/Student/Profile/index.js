@@ -12,10 +12,8 @@ function ProfileStudent() {
   const user = JSON.parse(localStorage.getItem('user'));
   var moment = require('moment');
 
-  const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
-  const scoreMod = user.score % 100; // lấy phần dư
-  const width = `${scoreDiv + scoreMod}%`;
-  const currentLevel = Math.floor(user.score / 100);
+  const width = `${(user.score / 10) * 10}%`;
+  const currentLevel = Math.floor(user.score / 10);
   return (
     <div className="profileStudent">
       <div className="profileStudent__left">

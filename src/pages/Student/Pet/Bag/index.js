@@ -16,9 +16,6 @@ const Shop = () => {
     JSON.parse(localStorage.getItem("user")) || {}
   );
 
-  // Các hằng số cơ bản cho công thức hàm mũ
-  const baseExp = 100; // EXP cơ bản để lên cấp
-  const expFactor = 1.5; // Hằng số cho công thức hàm mũ
 
   useEffect(() => {
     fetchData();
@@ -73,35 +70,11 @@ const Shop = () => {
     };
   }, []);
 
-  // Hàm tính cấp độ hiện tại dựa trên điểm số (score) của người dùng
-  const getLevel = (score) => {
-    let level = user.score;
-    let expNeeded = baseExp;
 
-    while (score >= expNeeded) {
-      score -= expNeeded;
-      level++;
-      expNeeded = baseExp * Math.pow(expFactor, level);
-    }
 
-    return level;
-  };
 
-  // Hàm tính EXP cần thiết để lên cấp tiếp theo
-  const getNextLevelExp = (level) => {
-    return baseExp * Math.pow(expFactor, level);
-  };
-
-  const currentLevel = Math.floor(getLevel() / 100);
-
-  const nextLevelExp = getNextLevelExp(currentLevel);
-  const currentExp = user.score - (nextLevelExp / expFactor); // EXP hiện tại trong cấp độ
-
-  // Tính toán độ rộng thanh exp
-
-  const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
-  const scoreMod = user.score % 100; // lấy phần dư
-  const expWidth = `${scoreDiv + scoreMod}%`;
+  const currentLevel = Math.floor(user.score / 10);
+  const expWidth = `${Math.floor(user.score % 10)*10}%`;
 
   return (
     <div className="pet">
