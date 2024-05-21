@@ -5,7 +5,7 @@ import feed_img from "~/components/asset/img/feed_img.jpg";
 import axios from "axios";
 import anhNen from "~/components/asset/img/kitchen.jpg";
 import { useParams } from "react-router-dom";
-
+import levelBar from "~/components/asset/img/level_bar-.png"
 const Shop = () => {
   const canvasRef = useRef(null);
   const ulRef = useRef(null);
@@ -78,15 +78,20 @@ const Shop = () => {
         <div className="pet_container_top_box_wrapper">
           <div className="pet_container_top_box_wrapper_inner">
             <div className="pet_container_top_box_wrapper_inner_box">
-              <div className="pet_container_top_box_wrapper_inner_box_levelBar">
+              <div className="pet_container_top_box_wrapper_inner_box_right">
+              <div className="pet_container_top_box_wrapper_inner_box_right_wrapper">
+                <img src={levelBar}/>
+              </div>
+              </div>
+              <div className="pet_container_top_box_wrapper_inner_box_levelBar shadow">
                 <div
                   style={{ fontWeight: 800, alignItems: "center" }}
-                  className="  "
+                  className="pet_container_top_box_wrapper_inner_box_levelBar_desc"
                 >
-                  <div style={{ width: "100%" }}>
+                  <div className="pet_container_top_box_wrapper_inner_box_levelBar_desc_text">
                     Cấp độ: {level}
                     <div
-                      className="pet_container_top_box_wrapper_inner_box_levelBar_exp"
+                      className="pet_container_top_box_wrapper_inner_box_levelBar_desc_exp"
                       style={{
                         width: expWidth,
                         transition: "width 2s",
@@ -111,7 +116,7 @@ const Shop = () => {
                   onClick={() => handleAddScoreAndDelete(item)}
                 >
                   <div className="pet_container_bottom_ul_li_product_img">
-                    <img src={item.image} alt="product" />
+                    <img className="moving_to_Y " src={item.image} alt="product" />
                     <div className="pet_container_bottom_ul_li_product_content">
                       <div className="pet_container_bottom_ul_li_product_content_title">
                         <p>{item.name}</p>

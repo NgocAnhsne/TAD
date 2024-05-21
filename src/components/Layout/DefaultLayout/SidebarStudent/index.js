@@ -44,8 +44,6 @@ function SidebarStudent() {
       </div>
       <div className="center">
         <ul>
-          
-
           <Link to="/student/game" style={{ textDecoration: "none" }}>
             <li>
               <FaPlay className="icon" />
