@@ -22,7 +22,7 @@ function Rank() {
 
   const fetchData = async () => {
     try {
-      const result = await axios("http://127.0.0.1:8000/api/rank");
+      const result = await axios("http://127.0.0.1:8000/api/score");
       setLessionData(result.data.data);
       setIsVisibleLoading(false);
       console.log(result.data.data);
@@ -83,7 +83,7 @@ function Rank() {
                   )}
                   <div className="rankServe__container--content__right">
                     <div className={`rank__content--box--list__item--right__score ${index === 0 ? 'toprank-bg' : ''}`}>
-                      {item.rank}
+                      LV:{item.score}
                     </div>
                     <div className="rank__content--box--list__item--right__medal"></div>
                   </div>
