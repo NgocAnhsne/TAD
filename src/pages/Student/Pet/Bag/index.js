@@ -5,7 +5,8 @@ import feed_img from "~/components/asset/img/feed_img.jpg";
 import axios from "axios";
 import anhNen from "~/components/asset/img/kitchen.jpg";
 import { useParams } from "react-router-dom";
-import levelBar from "~/components/asset/img/level_bar-.png"
+import levelBar from "~/components/asset/img/level_bar-.png";
+
 const Shop = () => {
   const canvasRef = useRef(null);
   const ulRef = useRef(null);
@@ -14,6 +15,10 @@ const Shop = () => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
   );
+
+  
+  const baseExp = 20; 
+  const expFactor = 0.8; 
 
   useEffect(() => {
     fetchData();
@@ -68,8 +73,33 @@ const Shop = () => {
     };
   }, []);
 
-  const level = Math.floor(user.score / 10);
-  const expWidth = `${(user.score % 10) * 10}%`;
+  // Hàm tính cấp độ hiện tại dựa trên điểm số (score) của người dùng
+  const getLevel = (score) => {
+    let level = 0;
+    let expNeeded = baseExp;
+
+    while (score >= expNeeded) {
+      score -= expNeeded;
+      level++;
+      expNeeded = baseExp * Math.pow(expFactor, level);
+    }
+
+    return level;
+  };
+
+  // Hàm tính EXP cần thiết để lên cấp tiếp theo
+  const getNextLevelExp = (level) => {
+    return baseExp * Math.pow(expFactor, level);
+  };
+
+  const currentLevel = getLevel(user.score);
+  const nextLevelExp = getNextLevelExp(currentLevel);
+  const currentExp = user.score - (nextLevelExp / expFactor); 
+
+  const scoreDiv = Math.floor(user.score / 100); // chia lấy phần nguyên
+  const scoreMod = user.score % 100; // lấy phần dư
+  
+  const expWidth = `${scoreDiv + scoreMod}%`;
 
   return (
     <div className="pet">
@@ -79,9 +109,9 @@ const Shop = () => {
           <div className="pet_container_top_box_wrapper_inner">
             <div className="pet_container_top_box_wrapper_inner_box">
               <div className="pet_container_top_box_wrapper_inner_box_right">
-              <div className="pet_container_top_box_wrapper_inner_box_right_wrapper">
-                <img src={levelBar}/>
-              </div>
+                <div className="pet_container_top_box_wrapper_inner_box_right_wrapper">
+                  <img src={levelBar} alt="level bar" />
+                </div>
               </div>
               <div className="pet_container_top_box_wrapper_inner_box_levelBar shadow">
                 <div
@@ -89,7 +119,7 @@ const Shop = () => {
                   className="pet_container_top_box_wrapper_inner_box_levelBar_desc"
                 >
                   <div className="pet_container_top_box_wrapper_inner_box_levelBar_desc_text">
-                    Cấp độ: {level}
+                    Cấp độ: {currentLevel}
                     <div
                       className="pet_container_top_box_wrapper_inner_box_levelBar_desc_exp"
                       style={{
