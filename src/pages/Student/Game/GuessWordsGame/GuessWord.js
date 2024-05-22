@@ -72,9 +72,10 @@ const GuessWord = () => {
 
   const updateRank = async () => {
     try {
-      const updatedUser = { ...user, rank: rankPoint };
+      const newCoin = +user.coin + rankPoint;
+      const updatedUser = { ...user, coin: newCoin };
       await axios.put(
-        "http://127.0.0.1:8000/api/addrank/" + user.id,
+        "http://127.0.0.1:8000/api/addcoin/" + user.id,
         updatedUser
       );
       localStorage.setItem("user", JSON.stringify(updatedUser));

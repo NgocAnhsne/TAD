@@ -60,7 +60,7 @@ const Quiz = () => {
 
   const updateScore = async () => {
     try {
-      const newCoin = user.coin += score;
+      const newCoin = +user.coin + score;
       const updatedUser = { ...user, coin: newCoin };
       await axios.put(
         "http://127.0.0.1:8000/api/addcoin/" + user.id, updatedUser
