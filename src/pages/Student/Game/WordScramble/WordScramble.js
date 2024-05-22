@@ -91,41 +91,34 @@ const WordScramble = () => {
     setResult(true);
   };
 
-  const handleButtonClick = (e) => {
-
+  const handleButtonClick = () => {
     if (inputValue !== "") {
       if (correctWord === inputValue) {
         setRankPoint(rankPoint + 2);
         setScore((prev) => prev + 1);
         setMessage("Đúng rồi !!!");
         setRankPoint(rankPoint + 2);
-        setAttempts(5);
         setAnsweredCount((prevCount) => prevCount + 1);
+        setSuggestion();
         updateRank();
-      }
-      if (rankPoint + 2 === 10 || answeredCount >= 5) {
-        setVictory(true);
-        updateRank();
+        if (rankPoint + 2 === 10 || answeredCount >= 5) {
+          setVictory(true);
+          updateRank();
+        } 
       } else {
-        setShowTrueAns(true);
-        setTimeout(() => {
-          setShowTrueAns(false);
-          fetchWord();
-        });
+        setMessage("Oh sai mất rồi :<");
+        setAttempts((prevAttempts) => prevAttempts - 1);
+        if (attempts <= 1) {
+          setGameOver(true);
+          updateRank();
+        } else {
+          setShowFalseAns(true);
+          setTimeout(() => {
+            setShowFalseAns(false);
+          });
+        }
       }
-    } else {
-      setMessage("Oh sai mất rồi :<");
-      setAttempts((prevAttempts) => prevAttempts - 1);
-      if (attempts <= 1) {
-        setGameOver(true);
-        updateRank();
-      } else {
-        setShowFalseAns(true);
-        setTimeout(() => {
-          setShowFalseAns(false);
-        });
       }
-    }
   };
 
   const handleStartGame = () => {
@@ -200,7 +193,6 @@ const WordScramble = () => {
     setInputValue("");
     setMessage("");
     fetchWord();
-
   };
 
   
