@@ -33,7 +33,7 @@ export default function AdminShop() {
     return (
         <div className='admin'>
             <div className='header'>
-                <div><h1>Của hàng</h1></div>
+                <div><h1>Cửa hàng</h1></div>
                 <Link to='/admin/shop/add'>
                 <div className='header_add'>
                     <span>Thêm sản phẩm</span>

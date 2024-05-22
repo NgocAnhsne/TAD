@@ -3,17 +3,9 @@ import "./WordScramblestyle.scss";
 import { IoIosArrowBack } from "react-icons/io";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { BsSuitHeartFill } from "react-icons/bs";
+import successImg from "~/components/asset/img/image 27.png";
 
-// const WORDS = [
-// 	"React",
-// 	"Next",
-// 	"Website",
-// 	"Engineer",
-// 	"TypeScript",
-// 	"Developer",
-// 	"Dream Job",
-// 	"Time to code",
-// ];
 
 const WordScramble = () => {
   const navigate = useNavigate();
@@ -33,6 +25,9 @@ const WordScramble = () => {
   const [maxAttempts] = useState(5);
   const [suggestion, setSuggestion] = useState("");
   const [gameOver, setGameOver] = useState(false);
+  const [questions, setQuestions] = useState([]);
+
+  const [result, setResult] = useState(false);
 
   const [isPlayOn, setIsPlayOn] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -53,20 +48,26 @@ const WordScramble = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const fetchWord = () => {
+    if (!victory ) {
+
     fetch("http://127.0.0.1:8000/api/wordl-by-wordle/" + id)
       .then((response) => response.json())
       .then((data) => {
         if (data.data) {
+          
           const randomIndex = Math.floor(Math.random() * data.data.length);
           const randomWord = data.data[randomIndex].english;
           const randomSuggestion = data.data[randomIndex].description;
           setWord(randomWord);
           setSuggestion(randomSuggestion);
+          setQuestions(data.data);
+          
         }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    }
   };
 
   const updateRank = async () => {
@@ -87,10 +88,11 @@ const WordScramble = () => {
   };
 
   const handleSendRedirect = () => {
-    setVictory(true);
+    setResult(true);
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
+
     if (inputValue !== "") {
       if (correctWord === inputValue) {
         setRankPoint(rankPoint + 2);
@@ -99,7 +101,6 @@ const WordScramble = () => {
         setRankPoint(rankPoint + 2);
         setAttempts(5);
         setAnsweredCount((prevCount) => prevCount + 1);
-
         updateRank();
       }
       if (rankPoint + 2 === 10 || answeredCount >= 5) {
@@ -110,11 +111,10 @@ const WordScramble = () => {
         setTimeout(() => {
           setShowTrueAns(false);
           fetchWord();
-        }, 2000);
+        });
       }
     } else {
       setMessage("Oh sai mất rồi :<");
-      setScore((prev) => prev - 1);
       setAttempts((prevAttempts) => prevAttempts - 1);
       if (attempts <= 1) {
         setGameOver(true);
@@ -123,7 +123,7 @@ const WordScramble = () => {
         setShowFalseAns(true);
         setTimeout(() => {
           setShowFalseAns(false);
-        }, 2000);
+        });
       }
     }
   };
@@ -132,6 +132,8 @@ const WordScramble = () => {
     setIsPlayOn(true);
     setInputValue("");
     setMessage("");
+    setGameOver(false);
+    setVictory(false);
 
     const wordUpper = word.toUpperCase();
     setCorrectWord(wordUpper);
@@ -151,27 +153,27 @@ const WordScramble = () => {
     return shuffledArray.join("");
   };
 
-  const constructScrambledWordModernJS = (word) => {
-    const shuffledArray = word.split("").reduce(
-      (newArr, _, i) => {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-        return newArr;
-      },
-      [...word]
-    );
+  // const constructScrambledWordModernJS = (word) => {
+  //   const shuffledArray = word.split("").reduce(
+  //     (newArr, _, i) => {
+  //       const j = Math.floor(Math.random() * (i + 1));
+  //       [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  //       return newArr;
+  //     },
+  //     [...word]
+  //   );
 
-    return shuffledArray.join("");
-  };
+  //   return shuffledArray.join("");
+  // };
   const handleBack = () => {
-    navigate(-1);
+    navigate(-2);
   };
   const handleRestart = () => {
     setAttempts(5);
     setRankPoint(0);
+    fetchWord();
     setGameOver(false);
     setVictory(false);
-    fetchWord();
   };
   // useEffect(() => {
   // 	let clearMessage;
@@ -185,10 +187,31 @@ const WordScramble = () => {
   // 		}
   // 	};
   // }, [message]);
+  
+  const handleNextQuestion = () => {
+    const wordUpper = word.toUpperCase();
+    setCorrectWord(wordUpper);
+    setScrambledWord(constructScrambledWord(wordUpper));
+    setIndex((prevIndex) => prevIndex + 1); 
+    setAction({
+      isChoose: false,
+      answer: "",
+    });
+    setInputValue("");
+    setMessage("");
+    fetchWord();
+
+  };
+
+  
 
   return (
     <>
       <div className="word_scramble">
+    {result ? (
+      <></>
+    ) : (
+      <>
         
         <div className="answerStudent__header--wrap word_scramble--header">
           <Link onClick={handleBack} className="backBtn">
@@ -201,10 +224,60 @@ const WordScramble = () => {
               {score}
             </span>
           </div>
+
         </div>
+        {gameOver && (
+          <>
+              <div className="game-over-blur"></div>
+              <div className="game-over-overlay">
+                <div className="game-over-modal">
+                  <h2>Game Over</h2>
+                  <p>Điểm: {rankPoint}</p>
+                  <button className="start_game" onClick={handleRestart}>Chơi mới</button>
+                </div>
+              </div>
+              </>
+            )}
+            {victory && (
+              <>
+              <div className="game-over-blur"></div>
+              <div className="game-over-overlay">
+                <div className="game-over-modal">
+                  <h2>
+                    Chúc mừng, <br/> Bạn đã hoàn thành hết câu hỏi!
+                  </h2>
+                  <button className="start_game" onClick={handleRestart}>Chơi lại</button>
+                  <button className="start_game" onClick={handleBack} >Quay về</button>
+                
+                </div>
+              </div>
+              </>
+
+            )}
         <div className="content">
           {isPlayOn ? (
             <>
+            <div className="answerStudent__header--number">
+                  <span className="answerStudent__header--number__item">
+                   {attempts}
+                  </span>
+                  /
+                  <span className="answerStudent__header--number__total">
+                    {maxAttempts}
+                  </span>
+              <BsSuitHeartFill style={{ color: "#fa0000" }} />
+
+                </div>
+                <div className="answerStudent__header--number">
+                  <span className="answerStudent__header--number__item">
+                   {answeredCount}
+                  </span>
+                  /
+                  <span className="answerStudent__header--number__total">
+                    5
+                  </span>
+
+                </div>
               <p className="scrambled_word">{scrambledWord}</p>
               <div className="board">
                 {correctWord.split("").map((el, i) => (
@@ -241,6 +314,7 @@ const WordScramble = () => {
             </>
           ) : (
             <div className="scramble_button">
+            <div className="scramble_button-be">
             <button
               className="start_game"
               type="button"
@@ -250,47 +324,80 @@ const WordScramble = () => {
             </button>
 
 </div>
+</div>
           )}
-
+          
           {isPlayOn && (
             <div className="scramble_button">
               <div
-                className={`scramble_button${
-                  index == word.length - 1 ? "hide" : ""
+                className={`scramble_button-be ${
+                  index == questions.length - 1 ? "hide" : ""
                 }`}
+                disabled={!action.isChoose}
+
               >
                 <button
                   className={`start_game`}
                   type="button"
-                  onClick={handleStartGame}
+                  onClick={handleRestart}
                 >
                   Làm lại
                 </button>
                 <button
                   className="start_game"
-                  onClick={handleButtonClick}
+                  onClick={handleNextQuestion}
                   type="button"
                 >
                   Tiếp
                 </button>
               </div>
-              <div
-                className={`answerStudent__content--bottom__btnNext ${
-                  index !== word.length - 1 ? "hide" : ""
-                }`}
-              >
-                <button
-                  className="answerStudent__content--bottom__btnNext--btn"
-                  disabled={!action.isChoose}
-                  onClick={handleSendRedirect}
-                >
-                  Kết thúc 
-                </button>
-              </div>
             </div>
           )}
+          
         </div>
+        </>
+        )}
+        {result ? (
+          <>
+          <div>
+              <div className="successStudent">
+                <div className="successStudent__content">
+                  <div className="successStudent__content--wrap">
+                    <div className="successStudent__content--img">
+                      <img src={successImg} />
+                    </div>
+                    <div className="successStudent__content--info">
+                      <div className="successStudent__content--info__title">
+                        Hoàn thành bài học!
+                      </div>
+                      <div className="successStudent__content--info__box">
+                        <div className="successStudent__content--info__box--score">
+                          <h2>Tổng điểm</h2>
+                          <div className="successStudent__content--info__box--score__content">
+                            {score}
+                          </div>
+                        </div>
+                        <div className="successStudent__content--info__box--accuracy">
+                          <h2>Chính xác</h2>
+                          <div className="successStudent__content--info__box--accuracy__content">
+                            {(score / questions.length) * 100}%
+                          </div>
+                        </div>
+                      </div>
+                      <div className="successStudent__content--btn">
+                        <button onClick={handleBack}>Quay về</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
+      <div></div>
     </>
   );
 };
