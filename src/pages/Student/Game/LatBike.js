@@ -21,7 +21,7 @@ function Game() {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const [numPairsToShow, setNumPairsToShow] = useState(2);
+  const [numPairsToShow, setNumPairsToShow] = useState(8);
   
   const [popupData, setPopupData] = useState({
     english: "",
