@@ -22,7 +22,7 @@
         &_box_wrapper {
             position: absolute;
             right: 40%;
-            top: 32%;
+            top: 57%;
 
             &_inner {
                 max-width: 250px;
@@ -98,7 +98,7 @@
 
         transition: 1s all ease;
         width: calc(100vw - 260px);
-
+        margin-top: 124px;
         &_ul {
 
             overflow-x: scroll;
