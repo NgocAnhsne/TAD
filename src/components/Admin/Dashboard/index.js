@@ -52,7 +52,7 @@ export default function Dashboard() {
 
   const fetchDataRank = async () => {
     try {
-      const result = await axios("http://127.0.0.1:8000/api/rank");
+      const result = await axios("http://127.0.0.1:8000/api/score");
       const topThreeUsers = result.data.data.slice(0, 3);
       setRanknData(topThreeUsers);
     } catch (err) {
